@@ -895,10 +895,14 @@
 											"font": "Arial;13;0",
 <<<<<<< Updated upstream
 											"left": 448,
+<<<<<<< Updated upstream
 											"top": 96,
 =======
 											"left": 304,
 											"top": -160,
+>>>>>>> Stashed changes
+=======
+											"top": 64,
 >>>>>>> Stashed changes
 											"height": 13
 										},
@@ -911,10 +915,14 @@
 											"font": "Arial;13;1",
 <<<<<<< Updated upstream
 											"left": 460,
+<<<<<<< Updated upstream
 											"top": 203.5,
 =======
 											"left": 388,
 											"top": 75.5,
+>>>>>>> Stashed changes
+=======
+											"top": 187.5,
 >>>>>>> Stashed changes
 											"width": 98,
 											"height": 13,
@@ -930,10 +938,14 @@
 											"font": "Arial;13;0",
 <<<<<<< Updated upstream
 											"left": 448,
+<<<<<<< Updated upstream
 											"top": 96,
 =======
 											"left": 304,
 											"top": -160,
+>>>>>>> Stashed changes
+=======
+											"top": 64,
 >>>>>>> Stashed changes
 											"width": 80.9072265625,
 											"height": 13,
@@ -949,10 +961,14 @@
 											"font": "Arial;13;0",
 <<<<<<< Updated upstream
 											"left": 448,
+<<<<<<< Updated upstream
 											"top": 96,
 =======
 											"left": 304,
 											"top": -160,
+>>>>>>> Stashed changes
+=======
+											"top": 64,
 >>>>>>> Stashed changes
 											"height": 13,
 											"horizontalAlignment": 1
@@ -961,10 +977,14 @@
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
 									"left": 455,
+<<<<<<< Updated upstream
 									"top": 196.5,
 =======
 									"left": 383,
 									"top": 68.5,
+>>>>>>> Stashed changes
+=======
+									"top": 180.5,
 >>>>>>> Stashed changes
 									"width": 108.96630859375,
 									"height": 25,
@@ -994,10 +1014,14 @@
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
 									"left": 224,
+<<<<<<< Updated upstream
 									"top": 48,
 =======
 									"left": 152,
 									"top": -80,
+>>>>>>> Stashed changes
+=======
+									"top": 32,
 >>>>>>> Stashed changes
 									"width": 10,
 									"height": 10
@@ -1015,10 +1039,14 @@
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
 									"left": 224,
+<<<<<<< Updated upstream
 									"top": 48,
 =======
 									"left": 152,
 									"top": -80,
+>>>>>>> Stashed changes
+=======
+									"top": 32,
 >>>>>>> Stashed changes
 									"width": 10,
 									"height": 10
@@ -1036,10 +1064,14 @@
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
 									"left": 224,
+<<<<<<< Updated upstream
 									"top": 48,
 =======
 									"left": 152,
 									"top": -80,
+>>>>>>> Stashed changes
+=======
+									"top": 32,
 >>>>>>> Stashed changes
 									"width": 10,
 									"height": 10
@@ -1057,10 +1089,14 @@
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
 									"left": 224,
+<<<<<<< Updated upstream
 									"top": 48,
 =======
 									"left": 152,
 									"top": -80,
+>>>>>>> Stashed changes
+=======
+									"top": 32,
 >>>>>>> Stashed changes
 									"width": 10,
 									"height": 10
@@ -1078,10 +1114,14 @@
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
 									"left": 224,
+<<<<<<< Updated upstream
 									"top": 48,
 =======
 									"left": 152,
 									"top": -80,
+>>>>>>> Stashed changes
+=======
+									"top": 32,
 >>>>>>> Stashed changes
 									"width": 10,
 									"height": 10
@@ -1091,10 +1131,14 @@
 							"containerChangeable": true,
 <<<<<<< Updated upstream
 							"left": 432,
+<<<<<<< Updated upstream
 							"top": 192,
 =======
 							"left": 360,
 							"top": 64,
+>>>>>>> Stashed changes
+=======
+							"top": 176,
 >>>>>>> Stashed changes
 							"width": 154,
 							"height": 35,
@@ -1899,7 +1943,11 @@
 											"visible": false,
 											"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 											"left": 48,
+=======
+											"left": 224,
+>>>>>>> Stashed changes
 											"top": -186,
 =======
 											"left": 224,
@@ -1915,6 +1963,7 @@
 											},
 											"font": "Arial;13;1",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 											"left": 285,
 											"top": 283.5,
 											"width": 142,
@@ -1923,6 +1972,13 @@
 =======
 											"left": 373,
 											"top": 195.5,
+											"width": 142,
+											"height": 13,
+											"text": "Efetuar Registo"
+>>>>>>> Stashed changes
+=======
+											"left": 373,
+											"top": 283.5,
 											"width": 142,
 											"height": 13,
 											"text": "Efetuar Registo"
@@ -1937,7 +1993,11 @@
 											"visible": false,
 											"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 											"left": 48,
+=======
+											"left": 224,
+>>>>>>> Stashed changes
 											"top": -186,
 =======
 											"left": 224,
@@ -1956,7 +2016,11 @@
 											"visible": false,
 											"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 											"left": 48,
+=======
+											"left": 224,
+>>>>>>> Stashed changes
 											"top": -186,
 =======
 											"left": 224,
@@ -1968,12 +2032,18 @@
 									],
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 									"left": 280,
 									"top": 276.5,
 									"width": 153.025390625,
 =======
 									"left": 368,
 									"top": 188.5,
+									"width": 152,
+>>>>>>> Stashed changes
+=======
+									"left": 368,
+									"top": 276.5,
 									"width": 152,
 >>>>>>> Stashed changes
 									"height": 25,
@@ -2002,7 +2072,11 @@
 									"visible": false,
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 									"left": 96,
+=======
+									"left": 184,
+>>>>>>> Stashed changes
 									"top": 123,
 =======
 									"left": 184,
@@ -2023,7 +2097,11 @@
 									"visible": false,
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 									"left": 96,
+=======
+									"left": 184,
+>>>>>>> Stashed changes
 									"top": 123,
 =======
 									"left": 184,
@@ -2044,7 +2122,11 @@
 									"visible": false,
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 									"left": 96,
+=======
+									"left": 184,
+>>>>>>> Stashed changes
 									"top": 123,
 =======
 									"left": 184,
@@ -2065,7 +2147,11 @@
 									"visible": false,
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 									"left": 96,
+=======
+									"left": 184,
+>>>>>>> Stashed changes
 									"top": 123,
 =======
 									"left": 184,
@@ -2086,7 +2172,11 @@
 									"visible": false,
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 									"left": 96,
+=======
+									"left": 184,
+>>>>>>> Stashed changes
 									"top": 123,
 =======
 									"left": 184,
@@ -2099,7 +2189,11 @@
 							"font": "Arial;13;0",
 							"containerChangeable": true,
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 							"left": 248,
+=======
+							"left": 336,
+>>>>>>> Stashed changes
 							"top": 272,
 =======
 							"left": 336,
@@ -2157,11 +2251,16 @@
 											"visible": false,
 											"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 											"left": -448,
 											"top": -416,
 =======
 											"left": -592,
 											"top": -512,
+>>>>>>> Stashed changes
+=======
+											"left": -560,
+											"top": -448,
 >>>>>>> Stashed changes
 											"height": 13
 										},
@@ -2173,11 +2272,16 @@
 											},
 											"font": "Arial;13;1",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 											"left": 255,
 											"top": 331.5,
 =======
 											"left": 183,
 											"top": 283.5,
+>>>>>>> Stashed changes
+=======
+											"left": 199,
+											"top": 315.5,
 >>>>>>> Stashed changes
 											"width": 114,
 											"height": 13,
@@ -2192,11 +2296,16 @@
 											"visible": false,
 											"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 											"left": -448,
 											"top": -416,
 =======
 											"left": -592,
 											"top": -512,
+>>>>>>> Stashed changes
+=======
+											"left": -560,
+											"top": -448,
 >>>>>>> Stashed changes
 											"width": 80.9072265625,
 											"height": 13,
@@ -2211,11 +2320,16 @@
 											"visible": false,
 											"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 											"left": -448,
 											"top": -416,
 =======
 											"left": -592,
 											"top": -512,
+>>>>>>> Stashed changes
+=======
+											"left": -560,
+											"top": -448,
 >>>>>>> Stashed changes
 											"height": 13,
 											"horizontalAlignment": 1
@@ -2223,11 +2337,16 @@
 									],
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 									"left": 250,
 									"top": 324.5,
 =======
 									"left": 178,
 									"top": 276.5,
+>>>>>>> Stashed changes
+=======
+									"left": 194,
+									"top": 308.5,
 >>>>>>> Stashed changes
 									"width": 124.87353515625,
 									"height": 25,
@@ -2256,11 +2375,16 @@
 									"visible": false,
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 									"left": -336,
 									"top": -264,
 =======
 									"left": -408,
 									"top": -312,
+>>>>>>> Stashed changes
+=======
+									"left": -392,
+									"top": -280,
 >>>>>>> Stashed changes
 									"width": 10,
 									"height": 10
@@ -2277,11 +2401,16 @@
 									"visible": false,
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 									"left": -336,
 									"top": -264,
 =======
 									"left": -408,
 									"top": -312,
+>>>>>>> Stashed changes
+=======
+									"left": -392,
+									"top": -280,
 >>>>>>> Stashed changes
 									"width": 10,
 									"height": 10
@@ -2298,11 +2427,16 @@
 									"visible": false,
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 									"left": -336,
 									"top": -264,
 =======
 									"left": -408,
 									"top": -312,
+>>>>>>> Stashed changes
+=======
+									"left": -392,
+									"top": -280,
 >>>>>>> Stashed changes
 									"width": 10,
 									"height": 10
@@ -2319,11 +2453,16 @@
 									"visible": false,
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 									"left": -336,
 									"top": -264,
 =======
 									"left": -408,
 									"top": -312,
+>>>>>>> Stashed changes
+=======
+									"left": -392,
+									"top": -280,
 >>>>>>> Stashed changes
 									"width": 10,
 									"height": 10
@@ -2340,11 +2479,16 @@
 									"visible": false,
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 									"left": -336,
 									"top": -264,
 =======
 									"left": -408,
 									"top": -312,
+>>>>>>> Stashed changes
+=======
+									"left": -392,
+									"top": -280,
 >>>>>>> Stashed changes
 									"width": 10,
 									"height": 10
@@ -2353,11 +2497,16 @@
 							"font": "Arial;13;0",
 							"containerChangeable": true,
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 							"left": 224,
 							"top": 320,
 =======
 							"left": 152,
 							"top": 272,
+>>>>>>> Stashed changes
+=======
+							"left": 168,
+							"top": 304,
 >>>>>>> Stashed changes
 							"width": 176,
 							"height": 35,
@@ -2510,7 +2659,11 @@
 									"visible": false,
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 									"left": -416,
+=======
+									"left": -432,
+>>>>>>> Stashed changes
 									"top": -8,
 =======
 									"left": -344,
@@ -2531,7 +2684,11 @@
 									"visible": false,
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 									"left": -416,
+=======
+									"left": -432,
+>>>>>>> Stashed changes
 									"top": -8,
 =======
 									"left": -344,
@@ -2552,7 +2709,11 @@
 									"visible": false,
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 									"left": -416,
+=======
+									"left": -432,
+>>>>>>> Stashed changes
 									"top": -8,
 =======
 									"left": -344,
@@ -2573,7 +2734,11 @@
 									"visible": false,
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 									"left": -416,
+=======
+									"left": -432,
+>>>>>>> Stashed changes
 									"top": -8,
 =======
 									"left": -344,
@@ -2594,7 +2759,11 @@
 									"visible": false,
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 									"left": -416,
+=======
+									"left": -432,
+>>>>>>> Stashed changes
 									"top": -8,
 =======
 									"left": -344,
@@ -2665,8 +2834,13 @@
 											"visible": false,
 											"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 											"left": 288,
 											"top": -256,
+=======
+											"left": 208,
+											"top": -304,
+>>>>>>> Stashed changes
 =======
 											"left": 208,
 											"top": -304,
@@ -2681,8 +2855,13 @@
 											},
 											"font": "Arial;13;1",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 											"left": 244,
 											"top": 67.5,
+=======
+											"left": 204,
+											"top": 43.5,
+>>>>>>> Stashed changes
 =======
 											"left": 204,
 											"top": 43.5,
@@ -2700,8 +2879,13 @@
 											"visible": false,
 											"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 											"left": 288,
 											"top": -256,
+=======
+											"left": 208,
+											"top": -304,
+>>>>>>> Stashed changes
 =======
 											"left": 208,
 											"top": -304,
@@ -2719,8 +2903,13 @@
 											"visible": false,
 											"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 											"left": 288,
 											"top": -256,
+=======
+											"left": 208,
+											"top": -304,
+>>>>>>> Stashed changes
 =======
 											"left": 208,
 											"top": -304,
@@ -2731,8 +2920,13 @@
 									],
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 									"left": 239,
 									"top": 60.5,
+=======
+									"left": 199,
+									"top": 36.5,
+>>>>>>> Stashed changes
 =======
 									"left": 199,
 									"top": 36.5,
@@ -2764,8 +2958,13 @@
 									"visible": false,
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 									"left": 144,
 									"top": -128,
+=======
+									"left": 104,
+									"top": -152,
+>>>>>>> Stashed changes
 =======
 									"left": 104,
 									"top": -152,
@@ -2785,8 +2984,13 @@
 									"visible": false,
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 									"left": 144,
 									"top": -128,
+=======
+									"left": 104,
+									"top": -152,
+>>>>>>> Stashed changes
 =======
 									"left": 104,
 									"top": -152,
@@ -2806,8 +3010,13 @@
 									"visible": false,
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 									"left": 144,
 									"top": -128,
+=======
+									"left": 104,
+									"top": -152,
+>>>>>>> Stashed changes
 =======
 									"left": 104,
 									"top": -152,
@@ -2827,8 +3036,13 @@
 									"visible": false,
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 									"left": 144,
 									"top": -128,
+=======
+									"left": 104,
+									"top": -152,
+>>>>>>> Stashed changes
 =======
 									"left": 104,
 									"top": -152,
@@ -2848,8 +3062,13 @@
 									"visible": false,
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 									"left": 144,
 									"top": -128,
+=======
+									"left": 104,
+									"top": -152,
+>>>>>>> Stashed changes
 =======
 									"left": 104,
 									"top": -152,
@@ -2861,8 +3080,13 @@
 							"font": "Arial;13;0",
 							"containerChangeable": true,
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 							"left": 216,
 							"top": 56,
+=======
+							"left": 176,
+							"top": 32,
+>>>>>>> Stashed changes
 =======
 							"left": 176,
 							"top": 32,
@@ -2912,8 +3136,13 @@
 									"visible": false,
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 									"left": 163,
 									"top": 110,
+=======
+									"left": 147,
+									"top": 96,
+>>>>>>> Stashed changes
 =======
 									"left": 147,
 									"top": 96,
@@ -2938,8 +3167,13 @@
 									"visible": null,
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 									"left": 157,
 									"top": 96,
+=======
+									"left": 139,
+									"top": 84,
+>>>>>>> Stashed changes
 =======
 									"left": 139,
 									"top": 84,
@@ -2964,8 +3198,13 @@
 									"visible": false,
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 									"left": 176,
 									"top": 137,
+=======
+									"left": 164,
+									"top": 121,
+>>>>>>> Stashed changes
 =======
 									"left": 164,
 									"top": 121,
@@ -2990,8 +3229,13 @@
 									"visible": false,
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 									"left": 102,
 									"top": 139,
+=======
+									"left": 97,
+									"top": 130,
+>>>>>>> Stashed changes
 =======
 									"left": 97,
 									"top": 130,
@@ -3016,8 +3260,13 @@
 									"visible": false,
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 									"left": 98,
 									"top": 126,
+=======
+									"left": 92,
+									"top": 118,
+>>>>>>> Stashed changes
 =======
 									"left": 92,
 									"top": 118,
@@ -3043,7 +3292,11 @@
 									"font": "Arial;13;0",
 									"left": 109,
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 									"top": 166,
+=======
+									"top": 156,
+>>>>>>> Stashed changes
 =======
 									"top": 156,
 >>>>>>> Stashed changes
@@ -3067,8 +3320,13 @@
 									"visible": false,
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 									"left": 225,
 									"top": 82,
+=======
+									"left": 197,
+									"top": 63,
+>>>>>>> Stashed changes
 =======
 									"left": 197,
 									"top": 63,
@@ -3092,8 +3350,13 @@
 									"visible": false,
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 									"left": 217,
 									"top": 71,
+=======
+									"left": 187,
+									"top": 53,
+>>>>>>> Stashed changes
 =======
 									"left": 187,
 									"top": 53,
@@ -3117,8 +3380,13 @@
 									"visible": false,
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 									"left": 240,
 									"top": 105,
+=======
+									"left": 216,
+									"top": 83,
+>>>>>>> Stashed changes
 =======
 									"left": 216,
 									"top": 83,
@@ -3168,7 +3436,11 @@
 							},
 							"lineStyle": 1,
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 							"points": "85:170;255:91",
+=======
+							"points": "85:164;227:67",
+>>>>>>> Stashed changes
 =======
 							"points": "85:164;227:67",
 >>>>>>> Stashed changes
@@ -3237,11 +3509,16 @@
 											"visible": false,
 											"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 											"left": -336,
 											"top": -32,
 =======
 											"left": -144,
 											"top": -208,
+>>>>>>> Stashed changes
+=======
+											"left": -304,
+											"top": -48,
 >>>>>>> Stashed changes
 											"height": 13
 										},
@@ -3253,11 +3530,16 @@
 											},
 											"font": "Arial;13;1",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 											"left": 286.5,
 											"top": 235.5,
 =======
 											"left": 382.5,
 											"top": 147.5,
+>>>>>>> Stashed changes
+=======
+											"left": 302.5,
+											"top": 227.5,
 >>>>>>> Stashed changes
 											"width": 110,
 											"height": 13,
@@ -3272,11 +3554,16 @@
 											"visible": false,
 											"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 											"left": -336,
 											"top": -32,
 =======
 											"left": -144,
 											"top": -208,
+>>>>>>> Stashed changes
+=======
+											"left": -304,
+											"top": -48,
 >>>>>>> Stashed changes
 											"width": 80.9072265625,
 											"height": 13,
@@ -3291,11 +3578,16 @@
 											"visible": false,
 											"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 											"left": -336,
 											"top": -32,
 =======
 											"left": -144,
 											"top": -208,
+>>>>>>> Stashed changes
+=======
+											"left": -304,
+											"top": -48,
 >>>>>>> Stashed changes
 											"height": 13,
 											"horizontalAlignment": 1
@@ -3303,11 +3595,16 @@
 									],
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 									"left": 281.5,
 									"top": 228.5,
 =======
 									"left": 377.5,
 									"top": 140.5,
+>>>>>>> Stashed changes
+=======
+									"left": 297.5,
+									"top": 220.5,
 >>>>>>> Stashed changes
 									"width": 121.287109375,
 									"height": 25,
@@ -3336,11 +3633,16 @@
 									"visible": false,
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 									"left": -168,
 									"top": -16,
 =======
 									"left": -72,
 									"top": -104,
+>>>>>>> Stashed changes
+=======
+									"left": -152,
+									"top": -24,
 >>>>>>> Stashed changes
 									"width": 10,
 									"height": 10
@@ -3357,11 +3659,16 @@
 									"visible": false,
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 									"left": -168,
 									"top": -16,
 =======
 									"left": -72,
 									"top": -104,
+>>>>>>> Stashed changes
+=======
+									"left": -152,
+									"top": -24,
 >>>>>>> Stashed changes
 									"width": 10,
 									"height": 10
@@ -3378,11 +3685,16 @@
 									"visible": false,
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 									"left": -168,
 									"top": -16,
 =======
 									"left": -72,
 									"top": -104,
+>>>>>>> Stashed changes
+=======
+									"left": -152,
+									"top": -24,
 >>>>>>> Stashed changes
 									"width": 10,
 									"height": 10
@@ -3399,11 +3711,16 @@
 									"visible": false,
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 									"left": -168,
 									"top": -16,
 =======
 									"left": -72,
 									"top": -104,
+>>>>>>> Stashed changes
+=======
+									"left": -152,
+									"top": -24,
 >>>>>>> Stashed changes
 									"width": 10,
 									"height": 10
@@ -3420,11 +3737,16 @@
 									"visible": false,
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 									"left": -168,
 									"top": -16,
 =======
 									"left": -72,
 									"top": -104,
+>>>>>>> Stashed changes
+=======
+									"left": -152,
+									"top": -24,
 >>>>>>> Stashed changes
 									"width": 10,
 									"height": 10
@@ -3433,11 +3755,16 @@
 							"font": "Arial;13;0",
 							"containerChangeable": true,
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 							"left": 256,
 							"top": 224,
 =======
 							"left": 352,
 							"top": 136,
+>>>>>>> Stashed changes
+=======
+							"left": 272,
+							"top": 216,
 >>>>>>> Stashed changes
 							"width": 171,
 							"height": 35,
@@ -3491,11 +3818,16 @@
 											"visible": false,
 											"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 											"left": -192,
 											"top": -384,
 =======
 											"left": -336,
 											"top": -432,
+>>>>>>> Stashed changes
+=======
+											"left": -352,
+											"top": -416,
 >>>>>>> Stashed changes
 											"height": 13
 										},
@@ -3507,11 +3839,16 @@
 											},
 											"font": "Arial;13;1",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 											"left": 229,
 											"top": 379.5,
 =======
 											"left": 157,
 											"top": 355.5,
+>>>>>>> Stashed changes
+=======
+											"left": 149,
+											"top": 363.5,
 >>>>>>> Stashed changes
 											"width": 104,
 											"height": 13,
@@ -3526,11 +3863,16 @@
 											"visible": false,
 											"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 											"left": -192,
 											"top": -384,
 =======
 											"left": -336,
 											"top": -432,
+>>>>>>> Stashed changes
+=======
+											"left": -352,
+											"top": -416,
 >>>>>>> Stashed changes
 											"width": 80.9072265625,
 											"height": 13,
@@ -3545,11 +3887,16 @@
 											"visible": false,
 											"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 											"left": -192,
 											"top": -384,
 =======
 											"left": -336,
 											"top": -432,
+>>>>>>> Stashed changes
+=======
+											"left": -352,
+											"top": -416,
 >>>>>>> Stashed changes
 											"height": 13,
 											"horizontalAlignment": 1
@@ -3557,11 +3904,16 @@
 									],
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 									"left": 224,
 									"top": 372.5,
 =======
 									"left": 152,
 									"top": 348.5,
+>>>>>>> Stashed changes
+=======
+									"left": 144,
+									"top": 356.5,
 >>>>>>> Stashed changes
 									"width": 114.7998046875,
 									"height": 25,
@@ -3590,11 +3942,16 @@
 									"visible": false,
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 									"left": -96,
 									"top": -192,
 =======
 									"left": -168,
 									"top": -216,
+>>>>>>> Stashed changes
+=======
+									"left": -176,
+									"top": -208,
 >>>>>>> Stashed changes
 									"width": 10,
 									"height": 10
@@ -3611,11 +3968,16 @@
 									"visible": false,
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 									"left": -96,
 									"top": -192,
 =======
 									"left": -168,
 									"top": -216,
+>>>>>>> Stashed changes
+=======
+									"left": -176,
+									"top": -208,
 >>>>>>> Stashed changes
 									"width": 10,
 									"height": 10
@@ -3632,11 +3994,16 @@
 									"visible": false,
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 									"left": -96,
 									"top": -192,
 =======
 									"left": -168,
 									"top": -216,
+>>>>>>> Stashed changes
+=======
+									"left": -176,
+									"top": -208,
 >>>>>>> Stashed changes
 									"width": 10,
 									"height": 10
@@ -3653,11 +4020,16 @@
 									"visible": false,
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 									"left": -96,
 									"top": -192,
 =======
 									"left": -168,
 									"top": -216,
+>>>>>>> Stashed changes
+=======
+									"left": -176,
+									"top": -208,
 >>>>>>> Stashed changes
 									"width": 10,
 									"height": 10
@@ -3674,11 +4046,16 @@
 									"visible": false,
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 									"left": -96,
 									"top": -192,
 =======
 									"left": -168,
 									"top": -216,
+>>>>>>> Stashed changes
+=======
+									"left": -176,
+									"top": -208,
 >>>>>>> Stashed changes
 									"width": 10,
 									"height": 10
@@ -3687,11 +4064,16 @@
 							"font": "Arial;13;0",
 							"containerChangeable": true,
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 							"left": 200,
 							"top": 368,
 =======
 							"left": 128,
 							"top": 344,
+>>>>>>> Stashed changes
+=======
+							"left": 120,
+							"top": 352,
 >>>>>>> Stashed changes
 							"width": 162,
 							"height": 35,
@@ -3738,7 +4120,11 @@
 									"visible": false,
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 									"left": 182,
+=======
+									"left": 146,
+>>>>>>> Stashed changes
 									"top": 269,
 =======
 									"left": 150,
@@ -3764,11 +4150,16 @@
 									"visible": null,
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 									"left": 192,
 									"top": 258,
 =======
 									"left": 161,
 									"top": 253,
+>>>>>>> Stashed changes
+=======
+									"left": 158,
+									"top": 260,
 >>>>>>> Stashed changes
 									"height": 13,
 									"alpha": 1.5707963267948966,
@@ -3790,11 +4181,16 @@
 									"visible": false,
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 									"left": 161,
 									"top": 292,
 =======
 									"left": 127,
 									"top": 282,
+>>>>>>> Stashed changes
+=======
+									"left": 123,
+									"top": 288,
 >>>>>>> Stashed changes
 									"height": 13,
 									"alpha": -1.5707963267948966,
@@ -3816,11 +4212,16 @@
 									"visible": false,
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 									"left": 114,
 									"top": 208,
 =======
 									"left": 113,
 									"top": 219,
+>>>>>>> Stashed changes
+=======
+									"left": 112,
+									"top": 224,
 >>>>>>> Stashed changes
 									"height": 13,
 									"alpha": 0.5235987755982988,
@@ -3843,9 +4244,13 @@
 									"font": "Arial;13;0",
 									"left": 124,
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 									"top": 200,
 =======
 									"top": 212,
+>>>>>>> Stashed changes
+=======
+									"top": 218,
 >>>>>>> Stashed changes
 									"height": 13,
 									"alpha": 0.7853981633974483,
@@ -3867,11 +4272,16 @@
 									"visible": false,
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 									"left": 92,
 									"top": 225,
 =======
 									"left": 89,
 									"top": 233,
+>>>>>>> Stashed changes
+=======
+									"left": 88,
+									"top": 237,
 >>>>>>> Stashed changes
 									"height": 13,
 									"alpha": -0.5235987755982988,
@@ -3893,11 +4303,16 @@
 									"visible": false,
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 									"left": 250,
 									"top": 332,
 =======
 									"left": 187,
 									"top": 307,
+>>>>>>> Stashed changes
+=======
+									"left": 182,
+									"top": 315,
 >>>>>>> Stashed changes
 									"height": 13,
 									"alpha": -0.5235987755982988,
@@ -3918,11 +4333,16 @@
 									"visible": false,
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 									"left": 258,
 									"top": 321,
 =======
 									"left": 196,
 									"top": 297,
+>>>>>>> Stashed changes
+=======
+									"left": 191,
+									"top": 305,
 >>>>>>> Stashed changes
 									"height": 13,
 									"alpha": -0.7853981633974483,
@@ -3943,11 +4363,16 @@
 									"visible": false,
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 									"left": 235,
 									"top": 355,
 =======
 									"left": 169,
 									"top": 328,
+>>>>>>> Stashed changes
+=======
+									"left": 162,
+									"top": 335,
 >>>>>>> Stashed changes
 									"height": 13,
 									"alpha": 0.5235987755982988,
@@ -3994,9 +4419,13 @@
 							},
 							"lineStyle": 1,
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 							"points": "85:208;260:367",
 =======
 							"points": "85:215;193:343",
+>>>>>>> Stashed changes
+=======
+							"points": "85:219;186:351",
 >>>>>>> Stashed changes
 							"showVisibility": true,
 							"nameLabel": {
@@ -4069,7 +4498,7 @@
 											"visible": false,
 											"font": "Arial;13;0",
 											"left": -32,
-											"top": -704,
+											"top": -752,
 											"height": 13
 										},
 										{
@@ -4080,7 +4509,7 @@
 											},
 											"font": "Arial;13;1",
 											"left": 294.5,
-											"top": 139.5,
+											"top": 115.5,
 											"width": 149,
 											"height": 13,
 											"text": "Verificar disponibilidade"
@@ -4094,7 +4523,7 @@
 											"visible": false,
 											"font": "Arial;13;0",
 											"left": -32,
-											"top": -704,
+											"top": -752,
 											"width": 80.9072265625,
 											"height": 13,
 											"text": "(from Model1)"
@@ -4108,14 +4537,14 @@
 											"visible": false,
 											"font": "Arial;13;0",
 											"left": -32,
-											"top": -704,
+											"top": -752,
 											"height": 13,
 											"horizontalAlignment": 1
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 289.5,
-									"top": 132.5,
+									"top": 108.5,
 									"width": 160.26171875,
 									"height": 25,
 									"stereotypeLabel": {
@@ -4143,7 +4572,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": -16,
-									"top": -352,
+									"top": -376,
 									"width": 10,
 									"height": 10
 								},
@@ -4159,7 +4588,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": -16,
-									"top": -352,
+									"top": -376,
 									"width": 10,
 									"height": 10
 								},
@@ -4175,7 +4604,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": -16,
-									"top": -352,
+									"top": -376,
 									"width": 10,
 									"height": 10
 								},
@@ -4191,7 +4620,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": -16,
-									"top": -352,
+									"top": -376,
 									"width": 10,
 									"height": 10
 								},
@@ -4207,7 +4636,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": -16,
-									"top": -352,
+									"top": -376,
 									"width": 10,
 									"height": 10
 								}
@@ -4215,7 +4644,7 @@
 							"font": "Arial;13;0",
 							"containerChangeable": true,
 							"left": 256,
-							"top": 128,
+							"top": 104,
 							"width": 226,
 							"height": 35,
 							"nameCompartment": {
@@ -4260,8 +4689,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 340,
-									"top": 92,
+									"left": 317,
+									"top": 66,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 15,
@@ -4280,8 +4709,8 @@
 										"$ref": "AAAAAAGDyQtYrLnV24A="
 									},
 									"font": "Arial;13;0",
-									"left": 352,
-									"top": 96,
+									"left": 329,
+									"top": 62,
 									"width": 55.65625,
 									"height": 13,
 									"alpha": 0.9002744774692748,
@@ -4303,8 +4732,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 319,
-									"top": 113,
+									"left": 302,
+									"top": 91,
 									"height": 13,
 									"alpha": -1.5707963267948966,
 									"distance": 15,
@@ -4322,7 +4751,7 @@
 								"$ref": "AAAAAAGDyOo/tpxGp3k="
 							},
 							"lineStyle": 1,
-							"points": "312:91;349:127",
+							"points": "282:67;339:103",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAGDyQtYrLnYids="
@@ -4356,7 +4785,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 258,
-									"top": 174,
+									"top": 166,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 15,
@@ -4376,8 +4805,8 @@
 									},
 									"visible": null,
 									"font": "Arial;13;0",
-									"left": 259,
-									"top": 159,
+									"left": 258,
+									"top": 151,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 30,
@@ -4398,7 +4827,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 257,
-									"top": 203,
+									"top": 195,
 									"height": 13,
 									"alpha": -1.5707963267948966,
 									"distance": 15,
@@ -4419,7 +4848,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 111,
-									"top": 165,
+									"top": 163,
 									"height": 13,
 									"alpha": 0.5235987755982988,
 									"distance": 30,
@@ -4439,8 +4868,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 114,
-									"top": 152,
+									"left": 113,
+									"top": 150,
 									"height": 13,
 									"alpha": 0.7853981633974483,
 									"distance": 40,
@@ -4460,6 +4889,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
+<<<<<<< Updated upstream
 									"left": 105,
 									"top": 192,
 =======
@@ -4585,6 +5015,10 @@
 									"left": 109,
 									"top": 176,
 >>>>>>> Stashed changes
+=======
+									"left": 106,
+									"top": 190,
+>>>>>>> Stashed changes
 									"height": 13,
 									"alpha": -0.5235987755982988,
 									"distance": 25,
@@ -4606,10 +5040,14 @@
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
 									"left": 405,
+<<<<<<< Updated upstream
 									"top": 182,
 =======
 									"left": 339,
 									"top": 85,
+>>>>>>> Stashed changes
+=======
+									"top": 169,
 >>>>>>> Stashed changes
 									"height": 13,
 									"alpha": -0.5235987755982988,
@@ -4630,11 +5068,16 @@
 									"visible": false,
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 									"left": 404,
 									"top": 169,
 =======
 									"left": 334,
 									"top": 73,
+>>>>>>> Stashed changes
+=======
+									"left": 403,
+									"top": 156,
 >>>>>>> Stashed changes
 									"height": 13,
 									"alpha": -0.7853981633974483,
@@ -4655,11 +5098,16 @@
 									"visible": false,
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 									"left": 408,
 									"top": 210,
 =======
 									"left": 351,
 									"top": 110,
+>>>>>>> Stashed changes
+=======
+									"left": 409,
+									"top": 197,
 >>>>>>> Stashed changes
 									"height": 13,
 									"alpha": 0.5235987755982988,
@@ -4706,9 +5154,13 @@
 							},
 							"lineStyle": 1,
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 							"points": "85:185;431:205",
 =======
 							"points": "85:176;369:99",
+>>>>>>> Stashed changes
+=======
+							"points": "85:184;431:191",
 >>>>>>> Stashed changes
 							"showVisibility": true,
 							"nameLabel": {
@@ -4777,6 +5229,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 444,
+<<<<<<< Updated upstream
 									"top": 157,
 =======
 									"_id": "AAAAAAGDyREU77DqQ4k=",
@@ -4790,6 +5243,9 @@
 									"font": "Arial;13;0",
 									"left": 558,
 									"top": 46,
+>>>>>>> Stashed changes
+=======
+									"top": 137,
 >>>>>>> Stashed changes
 									"height": 13,
 									"alpha": 1.5707963267948966,
@@ -4815,7 +5271,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 440,
-									"top": 160,
+									"top": 141,
 									"width": 53.49169921875,
 									"height": 13,
 									"alpha": 0.7985277813618663,
@@ -4857,6 +5313,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 431,
+<<<<<<< Updated upstream
 									"top": 184,
 =======
 									"_id": "AAAAAAGDyREU77DsbmQ=",
@@ -4870,6 +5327,9 @@
 									"font": "Arial;13;0",
 									"left": 561,
 									"top": 75,
+>>>>>>> Stashed changes
+=======
+									"top": 164,
 >>>>>>> Stashed changes
 									"height": 13,
 									"alpha": -1.5707963267948966,
@@ -4893,7 +5353,7 @@
 								"$ref": "AAAAAAGDyP3u3XCL6VI="
 							},
 							"lineStyle": 1,
-							"points": "407:163;469:191",
+							"points": "403:139;473:175",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAGDyRB6l1nTGXE="
@@ -4953,6 +5413,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
+<<<<<<< Updated upstream
 									"left": 586,
 									"top": 156,
 =======
@@ -4967,6 +5428,10 @@
 									"font": "Arial;13;0",
 									"left": 557,
 									"top": 121,
+>>>>>>> Stashed changes
+=======
+									"left": 588,
+									"top": 148,
 >>>>>>> Stashed changes
 									"height": 13,
 									"alpha": 1.5707963267948966,
@@ -4991,8 +5456,8 @@
 										"$ref": "AAAAAAGDyREU77Dn6kE="
 									},
 									"font": "Arial;13;0",
-									"left": 547,
-									"top": 160,
+									"left": 548,
+									"top": 151,
 									"width": 53.49169921875,
 									"height": 13,
 									"alpha": -4.004899896163098,
@@ -5014,8 +5479,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 597,
-									"top": 185,
+									"left": 595,
+									"top": 177,
 									"height": 13,
 									"alpha": -1.5707963267948966,
 									"distance": 15,
@@ -5033,7 +5498,7 @@
 								"$ref": "AAAAAAGDyNaNwH820Zg="
 							},
 							"lineStyle": 1,
-							"points": "556:191;629:163",
+							"points": "571:175;614:163",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAGDyREU77DqQ4k="
@@ -5066,8 +5531,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 590,
-									"top": 234,
+									"left": 591,
+									"top": 226,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 15,
@@ -5087,7 +5552,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 576,
-									"top": 240,
+									"top": 233,
 									"width": 53.49169921875,
 									"height": 13,
 									"alpha": 0.8769094685198531,
@@ -5126,11 +5591,16 @@
 									"visible": false,
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 									"left": 575,
 									"top": 259,
 =======
 									"left": 544,
 									"top": 148,
+>>>>>>> Stashed changes
+=======
+									"left": 574,
+									"top": 251,
 >>>>>>> Stashed changes
 									"height": 13,
 									"alpha": -1.5707963267948966,
@@ -5150,9 +5620,13 @@
 							},
 							"lineStyle": 1,
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 							"points": "539:227;628:279",
 =======
 							"points": "471:99;632:183",
+>>>>>>> Stashed changes
+=======
+							"points": "534:211;633:279",
 >>>>>>> Stashed changes
 							"showVisibility": true,
 							"nameLabel": {
@@ -5187,11 +5661,16 @@
 									"visible": false,
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 									"left": 605,
 									"top": 198,
 =======
 									"left": 579,
 									"top": 86,
+>>>>>>> Stashed changes
+=======
+									"left": 612,
+									"top": 190,
 >>>>>>> Stashed changes
 									"height": 13,
 									"alpha": 1.5707963267948966,
@@ -5212,11 +5691,16 @@
 									},
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 									"left": 572,
 									"top": 195,
 =======
 									"left": 546,
 									"top": 83,
+>>>>>>> Stashed changes
+=======
+									"left": 579,
+									"top": 187,
 >>>>>>> Stashed changes
 									"width": 53.49169921875,
 									"height": 13,
@@ -5240,11 +5724,16 @@
 									"visible": false,
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 									"left": 602,
 									"top": 227,
 =======
 									"left": 574,
 									"top": 115,
+>>>>>>> Stashed changes
+=======
+									"left": 607,
+									"top": 219,
 >>>>>>> Stashed changes
 									"height": 13,
 									"alpha": -1.5707963267948966,
@@ -5264,9 +5753,13 @@
 							},
 							"lineStyle": 1,
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 							"points": "586:217;623:221",
 =======
 							"points": "514:95;641:119",
+>>>>>>> Stashed changes
+=======
+							"points": "586:207;635:215",
 >>>>>>> Stashed changes
 							"showVisibility": true,
 							"nameLabel": {
@@ -5301,11 +5794,16 @@
 									"visible": false,
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 									"left": 200,
 									"top": 211,
 =======
 									"left": 210,
 									"top": 169,
+>>>>>>> Stashed changes
+=======
+									"left": 234,
+									"top": 210,
 >>>>>>> Stashed changes
 									"height": 13,
 									"alpha": 1.5707963267948966,
@@ -5327,11 +5825,16 @@
 									"visible": null,
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 									"left": 205,
 									"top": 197,
 =======
 									"left": 211,
 									"top": 154,
+>>>>>>> Stashed changes
+=======
+									"left": 238,
+									"top": 196,
 >>>>>>> Stashed changes
 									"height": 13,
 									"alpha": 1.5707963267948966,
@@ -5353,11 +5856,16 @@
 									"visible": false,
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 									"left": 189,
 									"top": 240,
 =======
 									"left": 209,
 									"top": 198,
+>>>>>>> Stashed changes
+=======
+									"left": 227,
+									"top": 239,
 >>>>>>> Stashed changes
 									"height": 13,
 									"alpha": -1.5707963267948966,
@@ -5380,10 +5888,14 @@
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
 									"left": 114,
+<<<<<<< Updated upstream
 									"top": 181,
 =======
 									"left": 111,
 									"top": 164,
+>>>>>>> Stashed changes
+=======
+									"top": 177,
 >>>>>>> Stashed changes
 									"height": 13,
 									"alpha": 0.5235987755982988,
@@ -5405,11 +5917,16 @@
 									"visible": false,
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 									"left": 121,
 									"top": 169,
 =======
 									"left": 114,
 									"top": 151,
+>>>>>>> Stashed changes
+=======
+									"left": 119,
+									"top": 165,
 >>>>>>> Stashed changes
 									"height": 13,
 									"alpha": 0.7853981633974483,
@@ -5431,11 +5948,16 @@
 									"visible": false,
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 									"left": 101,
 									"top": 206,
 =======
 									"left": 106,
 									"top": 191,
+>>>>>>> Stashed changes
+=======
+									"left": 102,
+									"top": 202,
 >>>>>>> Stashed changes
 									"height": 13,
 									"alpha": -0.5235987755982988,
@@ -5457,11 +5979,16 @@
 									"visible": false,
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 									"left": 285,
 									"top": 242,
 =======
 									"left": 309,
 									"top": 173,
+>>>>>>> Stashed changes
+=======
+									"left": 356,
+									"top": 243,
 >>>>>>> Stashed changes
 									"height": 13,
 									"alpha": -0.5235987755982988,
@@ -5482,11 +6009,16 @@
 									"visible": false,
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 									"left": 287,
 									"top": 228,
 =======
 									"left": 308,
 									"top": 160,
+>>>>>>> Stashed changes
+=======
+									"left": 358,
+									"top": 230,
 >>>>>>> Stashed changes
 									"height": 13,
 									"alpha": -0.7853981633974483,
@@ -5507,11 +6039,16 @@
 									"visible": false,
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 									"left": 280,
 									"top": 269,
 =======
 									"left": 312,
 									"top": 201,
+>>>>>>> Stashed changes
+=======
+									"left": 353,
+									"top": 271,
 >>>>>>> Stashed changes
 									"height": 13,
 									"alpha": 0.5235987755982988,
@@ -5558,9 +6095,13 @@
 							},
 							"lineStyle": 1,
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 							"points": "85:193;305:271",
 =======
 							"points": "85:184;335:196",
+>>>>>>> Stashed changes
+=======
+							"points": "85:191;378:271",
 >>>>>>> Stashed changes
 							"showVisibility": true,
 							"nameLabel": {
@@ -5620,11 +6161,16 @@
 									"visible": false,
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 									"left": 190,
 									"top": 240,
 =======
 									"left": 153,
 									"top": 216,
+>>>>>>> Stashed changes
+=======
+									"left": 165,
+									"top": 233,
 >>>>>>> Stashed changes
 									"height": 13,
 									"alpha": 1.5707963267948966,
@@ -5646,11 +6192,16 @@
 									"visible": null,
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 									"left": 198,
 									"top": 227,
 =======
 									"left": 161,
 									"top": 203,
+>>>>>>> Stashed changes
+=======
+									"left": 174,
+									"top": 221,
 >>>>>>> Stashed changes
 									"height": 13,
 									"alpha": 1.5707963267948966,
@@ -5672,11 +6223,16 @@
 									"visible": false,
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 									"left": 175,
 									"top": 265,
 =======
 									"left": 138,
 									"top": 241,
+>>>>>>> Stashed changes
+=======
+									"left": 148,
+									"top": 258,
 >>>>>>> Stashed changes
 									"height": 13,
 									"alpha": -1.5707963267948966,
@@ -5699,9 +6255,13 @@
 									"font": "Arial;13;0",
 									"left": 114,
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 									"top": 194,
 =======
 									"top": 193,
+>>>>>>> Stashed changes
+=======
+									"top": 198,
 >>>>>>> Stashed changes
 									"height": 13,
 									"alpha": 0.5235987755982988,
@@ -5722,11 +6282,16 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
+<<<<<<< Updated upstream
 									"left": 123,
 <<<<<<< Updated upstream
 									"top": 184,
 =======
 									"top": 182,
+>>>>>>> Stashed changes
+=======
+									"left": 124,
+									"top": 189,
 >>>>>>> Stashed changes
 									"height": 13,
 									"alpha": 0.7853981633974483,
@@ -5747,11 +6312,16 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
+<<<<<<< Updated upstream
 									"left": 97,
 <<<<<<< Updated upstream
 									"top": 215,
 =======
 									"top": 214,
+>>>>>>> Stashed changes
+=======
+									"left": 95,
+									"top": 218,
 >>>>>>> Stashed changes
 									"height": 13,
 									"alpha": -0.5235987755982988,
@@ -5773,11 +6343,16 @@
 									"visible": false,
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 									"left": 266,
 									"top": 286,
 =======
 									"left": 193,
 									"top": 238,
+>>>>>>> Stashed changes
+=======
+									"left": 216,
+									"top": 269,
 >>>>>>> Stashed changes
 									"height": 13,
 									"alpha": -0.5235987755982988,
@@ -5798,11 +6373,16 @@
 									"visible": false,
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 									"left": 271,
 									"top": 274,
 =======
 									"left": 197,
 									"top": 226,
+>>>>>>> Stashed changes
+=======
+									"left": 222,
+									"top": 257,
 >>>>>>> Stashed changes
 									"height": 13,
 									"alpha": -0.7853981633974483,
@@ -5823,11 +6403,16 @@
 									"visible": false,
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 									"left": 256,
 									"top": 312,
 =======
 									"left": 183,
 									"top": 264,
+>>>>>>> Stashed changes
+=======
+									"left": 204,
+									"top": 294,
 >>>>>>> Stashed changes
 									"height": 13,
 									"alpha": 0.5235987755982988,
@@ -5874,9 +6459,13 @@
 							},
 							"lineStyle": 1,
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 							"points": "85:200;281:319",
 =======
 							"points": "85:199;208:271",
+>>>>>>> Stashed changes
+=======
+							"points": "85:202;229:303",
 >>>>>>> Stashed changes
 							"showVisibility": true,
 							"nameLabel": {
@@ -5936,11 +6525,16 @@
 									"visible": false,
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 									"left": 172,
 									"top": 185,
 =======
 									"left": 216,
 									"top": 149,
+>>>>>>> Stashed changes
+=======
+									"left": 180,
+									"top": 182,
 >>>>>>> Stashed changes
 									"height": 13,
 									"alpha": 1.5707963267948966,
@@ -5962,11 +6556,16 @@
 									"visible": null,
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 									"left": 175,
 									"top": 170,
 =======
 									"left": 215,
 									"top": 134,
+>>>>>>> Stashed changes
+=======
+									"left": 183,
+									"top": 167,
 >>>>>>> Stashed changes
 									"height": 13,
 									"alpha": 1.5707963267948966,
@@ -5988,11 +6587,16 @@
 									"visible": false,
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 									"left": 167,
 									"top": 214,
 =======
 									"left": 219,
 									"top": 178,
+>>>>>>> Stashed changes
+=======
+									"left": 175,
+									"top": 211,
 >>>>>>> Stashed changes
 									"height": 13,
 									"alpha": -1.5707963267948966,
@@ -6015,10 +6619,14 @@
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
 									"left": 113,
+<<<<<<< Updated upstream
 									"top": 173,
 =======
 									"left": 109,
 									"top": 158,
+>>>>>>> Stashed changes
+=======
+									"top": 171,
 >>>>>>> Stashed changes
 									"height": 13,
 									"alpha": 0.5235987755982988,
@@ -6040,11 +6648,16 @@
 									"visible": false,
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 									"left": 118,
 									"top": 160,
 =======
 									"left": 110,
 									"top": 144,
+>>>>>>> Stashed changes
+=======
+									"left": 117,
+									"top": 158,
 >>>>>>> Stashed changes
 									"height": 13,
 									"alpha": 0.7853981633974483,
@@ -6066,11 +6679,16 @@
 									"visible": false,
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 									"left": 103,
 									"top": 199,
 =======
 									"left": 107,
 									"top": 185,
+>>>>>>> Stashed changes
+=======
+									"left": 104,
+									"top": 197,
 >>>>>>> Stashed changes
 									"height": 13,
 									"alpha": -0.5235987755982988,
@@ -6092,11 +6710,16 @@
 									"visible": false,
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 									"left": 232,
 									"top": 197,
 =======
 									"left": 323,
 									"top": 141,
+>>>>>>> Stashed changes
+=======
+									"left": 247,
+									"top": 193,
 >>>>>>> Stashed changes
 									"height": 13,
 									"alpha": -0.5235987755982988,
@@ -6117,11 +6740,16 @@
 									"visible": false,
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 									"left": 232,
 									"top": 183,
 =======
 									"left": 320,
 									"top": 128,
+>>>>>>> Stashed changes
+=======
+									"left": 247,
+									"top": 180,
 >>>>>>> Stashed changes
 									"height": 13,
 									"alpha": -0.7853981633974483,
@@ -6142,11 +6770,16 @@
 									"visible": false,
 									"font": "Arial;13;0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 									"left": 231,
 									"top": 225,
 =======
 									"left": 330,
 									"top": 168,
+>>>>>>> Stashed changes
+=======
+									"left": 247,
+									"top": 221,
 >>>>>>> Stashed changes
 									"height": 13,
 									"alpha": 0.5235987755982988,
@@ -6193,9 +6826,13 @@
 							},
 							"lineStyle": 1,
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 							"points": "85:189;255:223",
 =======
 							"points": "85:181;351:160",
+>>>>>>> Stashed changes
+=======
+							"points": "85:188;271:219",
 >>>>>>> Stashed changes
 							"showVisibility": true,
 							"nameLabel": {
@@ -8851,6 +9488,488 @@
 								"$ref": "AAAAAAGD6kZtnsQxwaw="
 							}
 						},
+<<<<<<< Updated upstream
+=======
+						{
+							"_type": "UMLUseCaseView",
+							"_id": "AAAAAAGD7EXQuRv6xGo=",
+							"_parent": {
+								"$ref": "AAAAAAGDyLpLzXVX92c="
+							},
+							"model": {
+								"$ref": "AAAAAAGD7EXQtxv45r4="
+							},
+							"subViews": [
+								{
+									"_type": "UMLNameCompartmentView",
+									"_id": "AAAAAAGD7EXQuhv74ss=",
+									"_parent": {
+										"$ref": "AAAAAAGD7EXQuRv6xGo="
+									},
+									"model": {
+										"$ref": "AAAAAAGD7EXQtxv45r4="
+									},
+									"subViews": [
+										{
+											"_type": "LabelView",
+											"_id": "AAAAAAGD7EXQuhv8Pjs=",
+											"_parent": {
+												"$ref": "AAAAAAGD7EXQuhv74ss="
+											},
+											"visible": false,
+											"font": "Arial;13;0",
+											"left": -144,
+											"top": 64,
+											"height": 13
+										},
+										{
+											"_type": "LabelView",
+											"_id": "AAAAAAGD7EXQuhv9jRY=",
+											"_parent": {
+												"$ref": "AAAAAAGD7EXQuhv74ss="
+											},
+											"font": "Arial;13;1",
+											"left": 415.5,
+											"top": 358,
+											"width": 79,
+											"height": 13,
+											"text": "Efetuar login"
+										},
+										{
+											"_type": "LabelView",
+											"_id": "AAAAAAGD7EXQuhv+0gE=",
+											"_parent": {
+												"$ref": "AAAAAAGD7EXQuhv74ss="
+											},
+											"visible": false,
+											"font": "Arial;13;0",
+											"left": -144,
+											"top": 64,
+											"width": 80.9072265625,
+											"height": 13,
+											"text": "(from Model1)"
+										},
+										{
+											"_type": "LabelView",
+											"_id": "AAAAAAGD7EXQuhv/TZ0=",
+											"_parent": {
+												"$ref": "AAAAAAGD7EXQuhv74ss="
+											},
+											"visible": false,
+											"font": "Arial;13;0",
+											"left": -144,
+											"top": 64,
+											"height": 13,
+											"horizontalAlignment": 1
+										}
+									],
+									"font": "Arial;13;0",
+									"left": 410.5,
+									"top": 351,
+									"width": 89.447265625,
+									"height": 25,
+									"stereotypeLabel": {
+										"$ref": "AAAAAAGD7EXQuhv8Pjs="
+									},
+									"nameLabel": {
+										"$ref": "AAAAAAGD7EXQuhv9jRY="
+									},
+									"namespaceLabel": {
+										"$ref": "AAAAAAGD7EXQuhv+0gE="
+									},
+									"propertyLabel": {
+										"$ref": "AAAAAAGD7EXQuhv/TZ0="
+									}
+								},
+								{
+									"_type": "UMLAttributeCompartmentView",
+									"_id": "AAAAAAGD7EXQuhwAKWE=",
+									"_parent": {
+										"$ref": "AAAAAAGD7EXQuRv6xGo="
+									},
+									"model": {
+										"$ref": "AAAAAAGD7EXQtxv45r4="
+									},
+									"visible": false,
+									"font": "Arial;13;0",
+									"left": -72,
+									"top": 32,
+									"width": 10,
+									"height": 10
+								},
+								{
+									"_type": "UMLOperationCompartmentView",
+									"_id": "AAAAAAGD7EXQuhwBQCM=",
+									"_parent": {
+										"$ref": "AAAAAAGD7EXQuRv6xGo="
+									},
+									"model": {
+										"$ref": "AAAAAAGD7EXQtxv45r4="
+									},
+									"visible": false,
+									"font": "Arial;13;0",
+									"left": -72,
+									"top": 32,
+									"width": 10,
+									"height": 10
+								},
+								{
+									"_type": "UMLReceptionCompartmentView",
+									"_id": "AAAAAAGD7EXQuxwCd94=",
+									"_parent": {
+										"$ref": "AAAAAAGD7EXQuRv6xGo="
+									},
+									"model": {
+										"$ref": "AAAAAAGD7EXQtxv45r4="
+									},
+									"visible": false,
+									"font": "Arial;13;0",
+									"left": -72,
+									"top": 32,
+									"width": 10,
+									"height": 10
+								},
+								{
+									"_type": "UMLTemplateParameterCompartmentView",
+									"_id": "AAAAAAGD7EXQuxwDCWU=",
+									"_parent": {
+										"$ref": "AAAAAAGD7EXQuRv6xGo="
+									},
+									"model": {
+										"$ref": "AAAAAAGD7EXQtxv45r4="
+									},
+									"visible": false,
+									"font": "Arial;13;0",
+									"left": -72,
+									"top": 32,
+									"width": 10,
+									"height": 10
+								},
+								{
+									"_type": "UMLExtensionPointCompartmentView",
+									"_id": "AAAAAAGD7EXQuxwEpes=",
+									"_parent": {
+										"$ref": "AAAAAAGD7EXQuRv6xGo="
+									},
+									"model": {
+										"$ref": "AAAAAAGD7EXQtxv45r4="
+									},
+									"visible": false,
+									"font": "Arial;13;0",
+									"left": -72,
+									"top": 32,
+									"width": 10,
+									"height": 10
+								}
+							],
+							"font": "Arial;13;0",
+							"containerChangeable": true,
+							"left": 392,
+							"top": 336,
+							"width": 126,
+							"height": 56,
+							"nameCompartment": {
+								"$ref": "AAAAAAGD7EXQuhv74ss="
+							},
+							"suppressAttributes": true,
+							"suppressOperations": true,
+							"attributeCompartment": {
+								"$ref": "AAAAAAGD7EXQuhwAKWE="
+							},
+							"operationCompartment": {
+								"$ref": "AAAAAAGD7EXQuhwBQCM="
+							},
+							"receptionCompartment": {
+								"$ref": "AAAAAAGD7EXQuxwCd94="
+							},
+							"templateParameterCompartment": {
+								"$ref": "AAAAAAGD7EXQuxwDCWU="
+							},
+							"extensionPointCompartment": {
+								"$ref": "AAAAAAGD7EXQuxwEpes="
+							}
+						},
+						{
+							"_type": "UMLAssociationView",
+							"_id": "AAAAAAGD7EYZfye0Zaw=",
+							"_parent": {
+								"$ref": "AAAAAAGDyLpLzXVX92c="
+							},
+							"model": {
+								"$ref": "AAAAAAGD7EYZfiewCzc="
+							},
+							"subViews": [
+								{
+									"_type": "EdgeLabelView",
+									"_id": "AAAAAAGD7EYZfye1KKc=",
+									"_parent": {
+										"$ref": "AAAAAAGD7EYZfye0Zaw="
+									},
+									"model": {
+										"$ref": "AAAAAAGD7EYZfiewCzc="
+									},
+									"visible": false,
+									"font": "Arial;13;0",
+									"left": 244,
+									"top": 245,
+									"height": 13,
+									"alpha": 1.5707963267948966,
+									"distance": 15,
+									"hostEdge": {
+										"$ref": "AAAAAAGD7EYZfye0Zaw="
+									},
+									"edgePosition": 1
+								},
+								{
+									"_type": "EdgeLabelView",
+									"_id": "AAAAAAGD7EYZgCe2iDM=",
+									"_parent": {
+										"$ref": "AAAAAAGD7EYZfye0Zaw="
+									},
+									"model": {
+										"$ref": "AAAAAAGD7EYZfiewCzc="
+									},
+									"visible": null,
+									"font": "Arial;13;0",
+									"left": 250,
+									"top": 231,
+									"height": 13,
+									"alpha": 1.5707963267948966,
+									"distance": 30,
+									"hostEdge": {
+										"$ref": "AAAAAAGD7EYZfye0Zaw="
+									},
+									"edgePosition": 1
+								},
+								{
+									"_type": "EdgeLabelView",
+									"_id": "AAAAAAGD7EYZgCe38wc=",
+									"_parent": {
+										"$ref": "AAAAAAGD7EYZfye0Zaw="
+									},
+									"model": {
+										"$ref": "AAAAAAGD7EYZfiewCzc="
+									},
+									"visible": false,
+									"font": "Arial;13;0",
+									"left": 231,
+									"top": 272,
+									"height": 13,
+									"alpha": -1.5707963267948966,
+									"distance": 15,
+									"hostEdge": {
+										"$ref": "AAAAAAGD7EYZfye0Zaw="
+									},
+									"edgePosition": 1
+								},
+								{
+									"_type": "EdgeLabelView",
+									"_id": "AAAAAAGD7EYZgCe466k=",
+									"_parent": {
+										"$ref": "AAAAAAGD7EYZfye0Zaw="
+									},
+									"model": {
+										"$ref": "AAAAAAGD7EYZfiexdyU="
+									},
+									"visible": false,
+									"font": "Arial;13;0",
+									"left": 114,
+									"top": 186,
+									"height": 13,
+									"alpha": 0.5235987755982988,
+									"distance": 30,
+									"hostEdge": {
+										"$ref": "AAAAAAGD7EYZfye0Zaw="
+									},
+									"edgePosition": 2
+								},
+								{
+									"_type": "EdgeLabelView",
+									"_id": "AAAAAAGD7EYZgCe5c48=",
+									"_parent": {
+										"$ref": "AAAAAAGD7EYZfye0Zaw="
+									},
+									"model": {
+										"$ref": "AAAAAAGD7EYZfiexdyU="
+									},
+									"visible": false,
+									"font": "Arial;13;0",
+									"left": 122,
+									"top": 175,
+									"height": 13,
+									"alpha": 0.7853981633974483,
+									"distance": 40,
+									"hostEdge": {
+										"$ref": "AAAAAAGD7EYZfye0Zaw="
+									},
+									"edgePosition": 2
+								},
+								{
+									"_type": "EdgeLabelView",
+									"_id": "AAAAAAGD7EYZgCe6X1Q=",
+									"_parent": {
+										"$ref": "AAAAAAGD7EYZfye0Zaw="
+									},
+									"model": {
+										"$ref": "AAAAAAGD7EYZfiexdyU="
+									},
+									"visible": false,
+									"font": "Arial;13;0",
+									"left": 99,
+									"top": 209,
+									"height": 13,
+									"alpha": -0.5235987755982988,
+									"distance": 25,
+									"hostEdge": {
+										"$ref": "AAAAAAGD7EYZfye0Zaw="
+									},
+									"edgePosition": 2
+								},
+								{
+									"_type": "EdgeLabelView",
+									"_id": "AAAAAAGD7EYZgCe7XNw=",
+									"_parent": {
+										"$ref": "AAAAAAGD7EYZfye0Zaw="
+									},
+									"model": {
+										"$ref": "AAAAAAGD7EYZfieyjD8="
+									},
+									"visible": false,
+									"font": "Arial;13;0",
+									"left": 374,
+									"top": 304,
+									"height": 13,
+									"alpha": -0.5235987755982988,
+									"distance": 30,
+									"hostEdge": {
+										"$ref": "AAAAAAGD7EYZfye0Zaw="
+									}
+								},
+								{
+									"_type": "EdgeLabelView",
+									"_id": "AAAAAAGD7EYZgCe8ugo=",
+									"_parent": {
+										"$ref": "AAAAAAGD7EYZfye0Zaw="
+									},
+									"model": {
+										"$ref": "AAAAAAGD7EYZfieyjD8="
+									},
+									"visible": false,
+									"font": "Arial;13;0",
+									"left": 378,
+									"top": 291,
+									"height": 13,
+									"alpha": -0.7853981633974483,
+									"distance": 40,
+									"hostEdge": {
+										"$ref": "AAAAAAGD7EYZfye0Zaw="
+									}
+								},
+								{
+									"_type": "EdgeLabelView",
+									"_id": "AAAAAAGD7EYZgCe9qPY=",
+									"_parent": {
+										"$ref": "AAAAAAGD7EYZfye0Zaw="
+									},
+									"model": {
+										"$ref": "AAAAAAGD7EYZfieyjD8="
+									},
+									"visible": false,
+									"font": "Arial;13;0",
+									"left": 367,
+									"top": 331,
+									"height": 13,
+									"alpha": 0.5235987755982988,
+									"distance": 25,
+									"hostEdge": {
+										"$ref": "AAAAAAGD7EYZfye0Zaw="
+									}
+								},
+								{
+									"_type": "UMLQualifierCompartmentView",
+									"_id": "AAAAAAGD7EYZgCe+59Q=",
+									"_parent": {
+										"$ref": "AAAAAAGD7EYZfye0Zaw="
+									},
+									"model": {
+										"$ref": "AAAAAAGD7EYZfiexdyU="
+									},
+									"visible": false,
+									"font": "Arial;13;0",
+									"width": 10,
+									"height": 10
+								},
+								{
+									"_type": "UMLQualifierCompartmentView",
+									"_id": "AAAAAAGD7EYZgCe/qQI=",
+									"_parent": {
+										"$ref": "AAAAAAGD7EYZfye0Zaw="
+									},
+									"model": {
+										"$ref": "AAAAAAGD7EYZfieyjD8="
+									},
+									"visible": false,
+									"font": "Arial;13;0",
+									"width": 10,
+									"height": 10
+								}
+							],
+							"font": "Arial;13;0",
+							"head": {
+								"$ref": "AAAAAAGD7EXQuRv6xGo="
+							},
+							"tail": {
+								"$ref": "AAAAAAGDyNZjbX4e1iU="
+							},
+							"lineStyle": 1,
+							"points": "85:195;392:335",
+							"showVisibility": true,
+							"nameLabel": {
+								"$ref": "AAAAAAGD7EYZfye1KKc="
+							},
+							"stereotypeLabel": {
+								"$ref": "AAAAAAGD7EYZgCe2iDM="
+							},
+							"propertyLabel": {
+								"$ref": "AAAAAAGD7EYZgCe38wc="
+							},
+							"showEndOrder": "hide",
+							"tailRoleNameLabel": {
+								"$ref": "AAAAAAGD7EYZgCe466k="
+							},
+							"tailPropertyLabel": {
+								"$ref": "AAAAAAGD7EYZgCe5c48="
+							},
+							"tailMultiplicityLabel": {
+								"$ref": "AAAAAAGD7EYZgCe6X1Q="
+							},
+							"headRoleNameLabel": {
+								"$ref": "AAAAAAGD7EYZgCe7XNw="
+							},
+							"headPropertyLabel": {
+								"$ref": "AAAAAAGD7EYZgCe8ugo="
+							},
+							"headMultiplicityLabel": {
+								"$ref": "AAAAAAGD7EYZgCe9qPY="
+							},
+							"tailQualifiersCompartment": {
+								"$ref": "AAAAAAGD7EYZgCe+59Q="
+							},
+							"headQualifiersCompartment": {
+								"$ref": "AAAAAAGD7EYZgCe/qQI="
+							}
+						}
+					]
+				},
+				{
+					"_type": "UMLActor",
+					"_id": "AAAAAAGDyL17XnVbSD8=",
+					"_parent": {
+						"$ref": "AAAAAAGDyLpLzHVWx50="
+					},
+					"name": "Gestor de Hotel",
+					"ownedElements": [
+>>>>>>> Stashed changes
 						{
 							"_type": "UMLUseCaseView",
 							"_id": "AAAAAAGD7EXQuRv6xGo=",
@@ -12921,7 +14040,10 @@
 								"$ref": "AAAAAAGD6jzT7hVED1I="
 							}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
 						},
 						{
 							"_type": "UMLAssociation",
@@ -12950,6 +14072,7 @@
 								},
 								"navigable": "navigable"
 							}
+<<<<<<< Updated upstream
 						},
 						{
 							"_type": "UMLAssociation",
@@ -13034,6 +14157,8 @@
 								},
 								"navigable": "navigable"
 							}
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 						}
 					]
@@ -13530,7 +14655,11 @@
 						"$ref": "AAAAAAGDyLpLzHVWx50="
 					},
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 					"name": "Efetuar Registo Cliente"
+=======
+					"name": "Efetuar Registo"
+>>>>>>> Stashed changes
 =======
 					"name": "Efetuar Registo"
 >>>>>>> Stashed changes
@@ -13836,7 +14965,10 @@
 					},
 					"name": "Ver registros de um cartão"
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
 				},
 				{
 					"_type": "UMLUseCase",
@@ -13844,6 +14976,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGDyLpLzHVWx50="
 					},
+<<<<<<< Updated upstream
 					"name": "Efetuar login",
 					"ownedElements": [
 						{
@@ -13908,6 +15041,9 @@
 						"$ref": "AAAAAAGDyLpLzHVWx50="
 					},
 					"name": "Gestão de sugestões e queixas"
+>>>>>>> Stashed changes
+=======
+					"name": "Efetuar login"
 >>>>>>> Stashed changes
 				}
 			]
