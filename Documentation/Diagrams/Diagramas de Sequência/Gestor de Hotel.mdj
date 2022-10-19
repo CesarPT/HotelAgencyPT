@@ -86,7 +86,7 @@
 									"left": 8,
 									"top": 8,
 									"width": 1041,
-									"height": 417,
+									"height": 529,
 									"nameLabel": {
 										"$ref": "AAAAAAGDy8pzIkg2L4o="
 									},
@@ -136,7 +136,7 @@
 													"top": 47,
 													"width": 107.50634765625,
 													"height": 13,
-													"text": "Sistema"
+													"text": "UI"
 												},
 												{
 													"_type": "LabelView",
@@ -2480,7 +2480,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGDy8pzIEgzEFQ="
 							},
-							"name": "Sistema",
+							"name": "UI",
 							"represent": {
 								"$ref": "AAAAAAGDy9I2B0hEvwU="
 							},
@@ -2573,8 +2573,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGDy8pzH0gynBI="
 					},
-					"name": "Role1",
-					"type": ""
+					"name": "Role1"
 				},
 				{
 					"_type": "UMLAttribute",
@@ -2655,9 +2654,9 @@
 												"$ref": "AAAAAAGD6rz2M26a18s="
 											},
 											"font": "Arial;13;0",
-											"left": 24.72998046875,
+											"left": 22.55908203125,
 											"top": 21,
-											"width": 153.4580078125,
+											"width": 137.44921875,
 											"height": 13,
 											"text": "Ver registros de um cartão"
 										},
@@ -2670,7 +2669,7 @@
 											"font": "Arial;13;1",
 											"left": 5,
 											"top": 21,
-											"width": 14.72998046875,
+											"width": 12.55908203125,
 											"height": 13,
 											"text": "sd"
 										}
