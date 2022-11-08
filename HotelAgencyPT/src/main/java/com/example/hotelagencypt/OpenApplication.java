@@ -9,17 +9,16 @@ import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
-public class HelloApplication extends Application {
+public class OpenApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("clienteinterface.fxml"));
-        stage.initStyle(StageStyle.UNDECORATED);
-        stage.setScene(new Scene(root,520, 400));
+        FXMLLoader fxmlLoader = new FXMLLoader(OpenApplication.class.getResource("GestorHotel.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 600, 500);
+        stage.setTitle("Hotel >> Gestor de Hotel");
+        stage.setScene(scene);
         stage.show();
     }
-
-
-
+    
     public static void main(String[] args) {
         launch(args);
     }
