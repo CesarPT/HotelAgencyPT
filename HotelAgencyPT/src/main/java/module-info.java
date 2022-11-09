@@ -6,4 +6,6 @@ module com.example.hotelagencypt {
 
     opens com.example.hotelagencypt to javafx.fxml;
     exports com.example.hotelagencypt;
+    exports com.example.hotelagencypt.Controllers;
+    opens com.example.hotelagencypt.Controllers to javafx.fxml;
 }

@@ -1,4 +1,4 @@
-package com.example.hotelagencypt;
+package com.example.hotelagencypt.Controllers;
 
 import com.example.hotelagencypt.OpenApplication;
 import javafx.fxml.FXMLLoader;
