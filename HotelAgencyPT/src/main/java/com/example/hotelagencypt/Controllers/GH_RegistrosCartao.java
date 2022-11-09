@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 /**
  * Classe pública do controlador GestorHotel.fxml
  */
-public class RegistrosCartao {
+public class GH_RegistrosCartao {
     @FXML
     protected Button button;
     @FXML

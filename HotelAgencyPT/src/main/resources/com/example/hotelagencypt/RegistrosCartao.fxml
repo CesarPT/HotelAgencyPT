@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="514.0" prefWidth="909.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hotelagencypt.Controllers.RegistrosCartao">
+<AnchorPane prefHeight="514.0" prefWidth="909.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hotelagencypt.Controllers.GH_RegistrosCartao">
    <children>
       <Pane layoutX="21.0" layoutY="49.0" prefHeight="438.0" prefWidth="878.0" style="-fx-background-color: gray; -fx-background-radius: 20;">
          <children>

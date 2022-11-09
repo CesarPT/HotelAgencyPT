@@ -3,7 +3,7 @@ package com.example.hotelagencypt.Controllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
-public class ConfigQuarto {
+public class GH_ConfigQuarto {
 
     /**
      * Volta atrás para a View GestorHotel.fxml
