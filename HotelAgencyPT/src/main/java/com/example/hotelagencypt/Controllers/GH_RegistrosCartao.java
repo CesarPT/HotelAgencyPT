@@ -6,7 +6,7 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 /**
- * Classe pública do controlador GestorHotel.fxml
+ * Classe pública do controlador GH_RegistrosCartao.fxml
  */
 public class GH_RegistrosCartao {
     @FXML

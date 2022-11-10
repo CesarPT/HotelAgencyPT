@@ -4,9 +4,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
 /**
- * Classe pública do controlador GH_ConfigQuarto.fxml
+ * Classe pública do controlador GH_GerirStock.fxml
  */
-public class GH_ConfigQuarto {
+public class GH_GerirStock {
 
     /**
      * Volta atrás para a View GestorHotel.fxml
