@@ -171,7 +171,7 @@
 									"font": "Arial;13;1",
 									"left": 272,
 									"top": 429,
-									"width": 164.34814453125,
+									"width": 158.578125,
 									"height": 13,
 									"text": "Cliente"
 								},
@@ -197,7 +197,7 @@
 											"font": "Arial;13;0",
 											"left": 277,
 											"top": 452,
-											"width": 154.34814453125,
+											"width": 148.578125,
 											"height": 13
 										},
 										{
@@ -212,21 +212,21 @@
 											"font": "Arial;13;0",
 											"left": 277,
 											"top": 467,
-											"width": 154.34814453125,
+											"width": 148.578125,
 											"height": 13
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 272,
 									"top": 447,
-									"width": 164.34814453125,
+									"width": 158.578125,
 									"height": 38
 								}
 							],
 							"font": "Arial;13;0",
 							"left": 272,
 							"top": 424,
-							"width": 164.34814453125,
+							"width": 158.578125,
 							"height": 61,
 							"autoResize": true,
 							"nameLabel": {
@@ -632,7 +632,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 473,
+									"left": 471,
 									"top": 433,
 									"height": 13,
 									"alpha": 1.5707963267948966,
@@ -649,7 +649,7 @@
 										"$ref": "AAAAAAGEHpmBjHDp+hw="
 									},
 									"font": "Arial;13;0",
-									"left": 460,
+									"left": 455,
 									"top": 433,
 									"height": 13,
 									"alpha": 0.5235987755982988,
@@ -684,7 +684,7 @@
 								"$ref": "AAAAAAGEHmocI2+L2Q8="
 							},
 							"lineStyle": 2,
-							"points": "435:454;512:454",
+							"points": "430:454;512:454",
 							"nameLabel": {
 								"$ref": "AAAAAAGEHpmBjHDq1Jc="
 							},
@@ -3241,7 +3241,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGEHmQPbG80VBk="
 							},
-							"name": "idusuario",
+							"name": "iduser",
 							"type": "INTEGER",
 							"length": 0,
 							"primaryKey": true
@@ -3363,7 +3363,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGEHmocIm+J66E="
 							},
-							"name": "idusuario",
+							"name": "iduser",
 							"type": "INTEGER",
 							"length": 0,
 							"foreignKey": true
@@ -3613,7 +3613,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGEHpqAG3Esz7s="
 							},
-							"name": "idusuario",
+							"name": "iduser",
 							"type": "INTEGER",
 							"length": 0,
 							"foreignKey": true
@@ -3835,7 +3835,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGEHq9u+nG3Uio="
 							},
-							"name": "idusuario",
+							"name": "iduser",
 							"type": "INTEGER",
 							"length": 0,
 							"foreignKey": true
