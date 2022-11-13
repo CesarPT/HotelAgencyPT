@@ -876,7 +876,7 @@
 									"font": "Arial;13;1",
 									"left": 280,
 									"top": 605,
-									"width": 170.11181640625,
+									"width": 188.1708984375,
 									"height": 13,
 									"text": "Funcionario"
 								},
@@ -902,7 +902,7 @@
 											"font": "Arial;13;0",
 											"left": 285,
 											"top": 628,
-											"width": 160.11181640625,
+											"width": 178.1708984375,
 											"height": 13
 										},
 										{
@@ -917,21 +917,21 @@
 											"font": "Arial;13;0",
 											"left": 285,
 											"top": 643,
-											"width": 160.11181640625,
+											"width": 178.1708984375,
 											"height": 13
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 280,
 									"top": 623,
-									"width": 170.11181640625,
+									"width": 188.1708984375,
 									"height": 38
 								}
 							],
 							"font": "Arial;13;0",
 							"left": 280,
 							"top": 600,
-							"width": 170.11181640625,
+							"width": 188.1708984375,
 							"height": 61,
 							"nameLabel": {
 								"$ref": "AAAAAAGEHpqAG3EvAok="
@@ -1155,7 +1155,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 552,
+									"left": 561,
 									"top": 611,
 									"height": 13,
 									"alpha": 1.5707963267948966,
@@ -1172,7 +1172,7 @@
 										"$ref": "AAAAAAGEHp7OhXFz1PQ="
 									},
 									"font": "Arial;13;0",
-									"left": 474,
+									"left": 492,
 									"top": 611,
 									"height": 13,
 									"alpha": 0.5235987755982988,
@@ -1207,7 +1207,7 @@
 								"$ref": "AAAAAAGEHpqAG3EuUKM="
 							},
 							"lineStyle": 2,
-							"points": "449:632;656:632",
+							"points": "467:632;656:632",
 							"nameLabel": {
 								"$ref": "AAAAAAGEHp7OhXF0DfM="
 							},
@@ -1318,7 +1318,7 @@
 									"font": "Arial;13;1",
 									"left": 296,
 									"top": 725,
-									"width": 146.2890625,
+									"width": 164.34814453125,
 									"height": 13,
 									"text": "Gestor"
 								},
@@ -1344,7 +1344,7 @@
 											"font": "Arial;13;0",
 											"left": 301,
 											"top": 748,
-											"width": 136.2890625,
+											"width": 154.34814453125,
 											"height": 13
 										},
 										{
@@ -1359,21 +1359,21 @@
 											"font": "Arial;13;0",
 											"left": 301,
 											"top": 763,
-											"width": 136.2890625,
+											"width": 154.34814453125,
 											"height": 13
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 296,
 									"top": 743,
-									"width": 146.2890625,
+									"width": 164.34814453125,
 									"height": 38
 								}
 							],
 							"font": "Arial;13;0",
 							"left": 296,
 							"top": 720,
-							"width": 146.2890625,
+							"width": 164.34814453125,
 							"height": 61,
 							"nameLabel": {
 								"$ref": "AAAAAAGEHq9u+3G6NO8="
@@ -1498,7 +1498,7 @@
 										"$ref": "AAAAAAGEHrAjuXHv3Fw="
 									},
 									"font": "Arial;13;0",
-									"left": 466,
+									"left": 484,
 									"top": 740,
 									"height": 13,
 									"alpha": 0.5235987755982988,
@@ -1533,7 +1533,7 @@
 								"$ref": "AAAAAAGEHq9u+3G5P2w="
 							},
 							"lineStyle": 2,
-							"points": "441:761;744:761;744:660",
+							"points": "459:761;744:761;744:660",
 							"nameLabel": {
 								"$ref": "AAAAAAGEHrAjunHwBSo="
 							},
@@ -3604,7 +3604,8 @@
 							},
 							"name": "idfuncionario",
 							"type": "INTEGER",
-							"length": 0
+							"length": 0,
+							"primaryKey": true
 						},
 						{
 							"_type": "ERDColumn",
@@ -3614,7 +3615,8 @@
 							},
 							"name": "idusuario",
 							"type": "INTEGER",
-							"length": 0
+							"length": 0,
+							"foreignKey": true
 						}
 					]
 				},
@@ -3774,6 +3776,7 @@
 								"$ref": "AAAAAAGEHp6zj3Fg0Zw="
 							},
 							"name": "datacriacao",
+							"type": "DATE",
 							"length": 0
 						}
 					]
@@ -3823,7 +3826,8 @@
 							},
 							"name": "idgestor",
 							"type": "INTEGER",
-							"length": 0
+							"length": 0,
+							"primaryKey": true
 						},
 						{
 							"_type": "ERDColumn",
@@ -3833,7 +3837,8 @@
 							},
 							"name": "idusuario",
 							"type": "INTEGER",
-							"length": 0
+							"length": 0,
+							"foreignKey": true
 						}
 					]
 				},
@@ -4380,7 +4385,8 @@
 								"$ref": "AAAAAAGEH9tVKwltkHw="
 							},
 							"name": "estado",
-							"length": 0
+							"type": "VARCHAR",
+							"length": "10"
 						}
 					]
 				}
