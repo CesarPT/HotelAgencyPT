@@ -22,7 +22,7 @@ GO
 
 Create Table Feedback(
 	idfeedback int PRIMARY KEY,
-	idcliente int FOREIGN KEY REFERECES Cliente(idcliente),
+	idcliente int FOREIGN KEY REFERENCES Cliente(idcliente),
 	descricao varchar(500)
 
 );
@@ -52,7 +52,7 @@ Create Table RegEntrada(
 	idregisto int PRIMARY KEY,
 	local varchar(50),
 	data date,
-	numcartao int FOREIGN KEY REFERECES Cartao(numcartao)
+	numcartao int FOREIGN KEY REFERENCES Cartao(numcartao)
 );
 GO
 
@@ -70,10 +70,10 @@ GO
 
 Create Table Reserva(
 	idreserva int PRIMARY KEY,
-	idcliente int FOREIGN KEY REFERECES Cliente(idcliente),
-	idquarto int FOREIGN KEY REFERECES Quarto(idquarto),
-	idservico int FOREIGN KEY REFERECES Servico(idservico),
-	numcartao int FOREIGN KEY REFERECES Cartao(numcartao)
+	idcliente int FOREIGN KEY REFERENCES Cliente(idcliente),
+	idquarto int FOREIGN KEY REFERENCES Quarto(idquarto),
+	idservico int FOREIGN KEY REFERENCES Servico(idservico),
+	numcartao int FOREIGN KEY REFERENCES Cartao(numcartao)
 );
 GO
 
@@ -96,7 +96,7 @@ GO
 Create Table Stock(
 	iditem int PRIMARY KEY,
 	quantidade int,
-	FOREIGN KEY (iditem) REFERECES Item(iditem)
+	FOREIGN KEY (iditem) REFERENCES Item(iditem)
 );
 GO
 
