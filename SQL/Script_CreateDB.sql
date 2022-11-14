@@ -9,29 +9,26 @@ Create Table User(
 	nomeuser varchar(50),
 	password varchar(20),
 	tipouser char
-
 );
 GO
 
 Create Table Cliente(
 	idcliente int PRIMARY KEY,
 	iduser int FOREIGN KEY REFERENCES User(iduser)
-
 );
 GO
 
 Create Table Feedback(
 	idfeedback int PRIMARY KEY,
 	idcliente int FOREIGN KEY REFERENCES Cliente(idcliente),
-	descricao varchar(500)
-
+	descricao varchar(500),
+	tipofeedback char --(s = sugestao, r = reclamacao)
 );
 GO
 
 Create Table Gestor(
 	idgestor int PRIMARY KEY,
 	iduser int FOREIGN KEY REFERENCES User(iduser)
-
 );
 GO
 
@@ -59,6 +56,11 @@ GO
 Create Table Quarto(
 	idquarto int PRIMARY KEY,
 	descricao varchar(200)
+	/*
+O preco de cada quarto deve variar consoante o seu tipo e servicos associados.
+Devera ser configuravel pelos gestores do hotel.
+Ideia: preco smallmoney
+	*/
 );
 GO
 

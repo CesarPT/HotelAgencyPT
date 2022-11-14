@@ -66,4 +66,18 @@ public class GestorHotel {
             System.out.println("Erro ao fechar/abrir o stage.");
         }
     }
+
+    /**
+     * Fecha o stage atual e abre o stage próprio do botão
+     */
+    @FXML
+    protected void abrirGerirFuncionario() {
+        try {
+            Stage window = (Stage) button.getScene().getWindow();
+            window.close();
+            Singleton.open("GH_GerirFuncionario", "Hotel >> Gestor de Hotel >> Gerir Funcionários");
+        } catch (Exception e) {
+            System.out.println("Erro ao fechar/abrir o stage.");
+        }
+    }
 }
