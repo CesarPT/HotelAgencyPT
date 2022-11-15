@@ -1,5 +1,6 @@
 package hotel.agencypt.Controller;
 
+import DataBase.ConnectionDB;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -16,9 +17,7 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.Objects;
 import java.util.ResourceBundle;
-import DataBase.ConnectionDB;
 
 
 public class LoginController implements Initializable {
@@ -75,25 +74,25 @@ public class LoginController implements Initializable {
     /**
      * Validação do login para verificar se existe na base de dados
      */
-    public void validateLogin(){
+    public void validateLogin() {
 
         Connection con = ConnectionDB.establishConnection();
 
-        String verifyLogin = "SELECT count(1) FROM Utilizador WHERE nomeuser ='"+ usernameTextField.getText()+ "' AND password ='"+ enterPasswordField.getText() +"'";
+        String verifyLogin = "SELECT count(1) FROM Utilizador WHERE nomeuser ='" + usernameTextField.getText() + "' AND password ='" + enterPasswordField.getText() + "'";
 
         try {
             PreparedStatement stmt = con.prepareStatement(verifyLogin);
             ResultSet rs = stmt.executeQuery();
 
-            while(rs.next()){
-                if(rs.getInt(1) == 1){
+            while (rs.next()) {
+                if (rs.getInt(1) == 1) {
                     loginMessageLabel.setText("Login com sucesso!");
                     //validatePerms(con);
                 } else {
                     loginMessageLabel.setText("Login invalido, tente novamente!");
                 }
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             e.getCause();
         }

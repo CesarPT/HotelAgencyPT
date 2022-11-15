@@ -10,6 +10,7 @@ public class Entrega {
 
     /**
      * Construtor completo
+     *
      * @param id_entrega
      * @param id_item
      * @param quantidade
@@ -22,20 +23,25 @@ public class Entrega {
 
     /**
      * Recebe:
+     *
      * @return id_entrega
      */
     public int getId_entrega() {
         return id_entrega;
     }
+
     /**
      * Recebe:
+     *
      * @return id_item
      */
     public int getId_item() {
         return id_item;
     }
+
     /**
      * Recebe:
+     *
      * @return quantidade
      */
     public int getQuantidade() {
@@ -44,20 +50,25 @@ public class Entrega {
 
     /**
      * Muda o valor:
+     *
      * @param id_entrega set
      */
     public void setId_entrega(int id_entrega) {
         this.id_entrega = id_entrega;
     }
+
     /**
      * Muda o valor:
+     *
      * @param id_item set
      */
     public void setId_item(int id_item) {
         this.id_item = id_item;
     }
+
     /**
      * Muda o valor:
+     *
      * @param quantidade set
      */
     public void setQuantidade(int quantidade) {

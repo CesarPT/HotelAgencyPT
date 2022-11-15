@@ -1,6 +1,5 @@
 package hotel.agencypt.Controller;
 
-import hotel.agencypt.Controller.Singleton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -12,6 +11,7 @@ import javafx.stage.Stage;
 public class GH_RegistrosCartao {
     @FXML
     protected Button button;
+
     @FXML
     protected void abrirRegistrosCartao() throws Exception {
         Stage window = (Stage) button.getScene().getWindow();
@@ -21,6 +21,7 @@ public class GH_RegistrosCartao {
 
     /**
      * Volta atrás para a View GestorHotel.fxml
+     *
      * @param actionEvent
      */
     @FXML

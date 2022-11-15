@@ -9,6 +9,7 @@ public class Ficheiro {
 
     /**
      * Construtor completo
+     *
      * @param id_ficheiro
      * @param descricao
      */
@@ -19,13 +20,16 @@ public class Ficheiro {
 
     /**
      * Recebe:
+     *
      * @return id_ficheiro
      */
     public int getId_ficheiro() {
         return id_ficheiro;
     }
+
     /**
      * Recebe:
+     *
      * @return descricao
      */
     public String getDescricao() {
@@ -34,13 +38,16 @@ public class Ficheiro {
 
     /**
      * Muda o valor:
+     *
      * @param id_ficheiro set
      */
     public void setId_ficheiro(int id_ficheiro) {
         this.id_ficheiro = id_ficheiro;
     }
+
     /**
      * Muda o valor:
+     *
      * @param descricao set
      */
     public void setDescricao(String descricao) {

@@ -2,8 +2,6 @@ package DataBase;
 
 import java.sql.*;
 
-import javafx.stage.Stage;
-
 
 public class ConnectionDB {
 
@@ -44,7 +42,7 @@ public class ConnectionDB {
     /**
      * Fechar através da conexão com a base de dados e da declaração preparada para inserir os valores
      *
-     * @param con Conexão com a base de dados
+     * @param con  Conexão com a base de dados
      * @param stmt Declaração preparada para inserir
      */
     public static void closeConnection(Connection con, PreparedStatement stmt) {
@@ -61,11 +59,11 @@ public class ConnectionDB {
     /**
      * Fechar através da conexão com a base de dados, da declaração preparada para inserir e o resultados inseridos
      *
-     * @param con Conexão com a base de dados
+     * @param con  Conexão com a base de dados
      * @param stmt Declaração preparada para inserir/update/delete/...
-     * @param rs Conjunto de resultados para inserir/update/delete/...
+     * @param rs   Conjunto de resultados para inserir/update/delete/...
      */
-    public static void closeConnection(Connection con, PreparedStatement stmt, ResultSet rs){
+    public static void closeConnection(Connection con, PreparedStatement stmt, ResultSet rs) {
         if (rs != null) {
             try {
                 rs.close();

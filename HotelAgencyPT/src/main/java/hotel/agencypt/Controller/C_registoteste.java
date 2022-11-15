@@ -5,8 +5,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 
-import java.security.NoSuchAlgorithmException;
 import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 public class C_registoteste {
 
     @FXML
@@ -15,12 +16,11 @@ public class C_registoteste {
     @FXML
     private PasswordField passwordController;
 
-    public void validarPassword()
-    {
+    public void validarPassword() {
         String password;
         password = passwordController.getText();
         String encryptedpassword = null;
-        try{
+        try {
             /* MessageDigest instance for MD5. */
             MessageDigest m = MessageDigest.getInstance("MD5");
 
@@ -32,16 +32,13 @@ public class C_registoteste {
 
             /* The bytes array has bytes in decimal form. Converting it into hexadecimal format. */
             StringBuilder s = new StringBuilder();
-            for(int i=0; i< bytes.length ;i++)
-            {
+            for (int i = 0; i < bytes.length; i++) {
                 s.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
             }
 
             /* Complete hashed password in hexadecimal format */
             encryptedpassword = s.toString();
-        }
-        catch (NoSuchAlgorithmException e)
-        {
+        } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
         System.out.println("Plain-Text password: " + password);
