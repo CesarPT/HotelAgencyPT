@@ -1,6 +1,5 @@
 package hotel.agencypt.Controller;
 
-import hotel.agencypt.Controller.Singleton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
@@ -11,6 +10,7 @@ public class GH_ConfigQuarto {
 
     /**
      * Volta atrás para a View GestorHotel.fxml
+     *
      * @param actionEvent
      */
     @FXML

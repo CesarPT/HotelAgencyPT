@@ -1,33 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
-
-<AnchorPane prefHeight="514.0" prefWidth="909.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hotel.agencypt.Controller.GH_GerirStock">
-   <children>
-      <Pane layoutX="43.0" layoutY="49.0" prefHeight="466.0" prefWidth="856.0" style="-fx-background-color: #BBB6B6;" />
-      <Label layoutX="416.0" layoutY="14.0" text="Gerir Stock">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <Button layoutX="-4.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#voltarAtras" prefHeight="515.0" prefWidth="48.0" style="-fx-background-color: #ccffff; -fx-border-color: gray;">
-         <graphic>
-            <ImageView fitHeight="211.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../Imagens/voltar.png" />
-               </image>
-            </ImageView>
-         </graphic>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </Button>
-   </children>
+<AnchorPane prefHeight="514.0" prefWidth="909.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="hotel.agencypt.Controller.GH_GerirStock">
+    <children>
+        <Pane layoutX="43.0" layoutY="49.0" prefHeight="466.0" prefWidth="856.0"
+              style="-fx-background-color: #BBB6B6;"/>
+        <Label layoutX="416.0" layoutY="14.0" text="Gerir Stock">
+            <font>
+                <Font size="18.0"/>
+            </font>
+        </Label>
+        <Button layoutX="-4.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false"
+                onAction="#voltarAtras" prefHeight="515.0" prefWidth="48.0"
+                style="-fx-background-color: #ccffff; -fx-border-color: gray;">
+            <graphic>
+                <ImageView fitHeight="211.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../Imagens/voltar.png"/>
+                    </image>
+                </ImageView>
+            </graphic>
+            <cursor>
+                <Cursor fx:constant="HAND"/>
+            </cursor>
+        </Button>
+    </children>
 </AnchorPane>
