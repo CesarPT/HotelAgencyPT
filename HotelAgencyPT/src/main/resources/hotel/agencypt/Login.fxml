@@ -16,7 +16,7 @@
             <children>
                 <ImageView fx:id="lockImageView" fitHeight="45.0" fitWidth="55.0" layoutX="117.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../../Images/LoginIcon.PNG" />
+                        <Image url="@../../Imagens/LoginIcon.PNG" />
                     </image>
                 </ImageView>
                 <Label fx:id="loginMessageLabel" alignment="CENTER" layoutX="6.0" layoutY="191.0" prefHeight="19.0" prefWidth="262.0" textAlignment="CENTER">
@@ -54,7 +54,7 @@
             <children>
                 <ImageView fx:id="brandingImageView1" fitHeight="400.0" fitWidth="249.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../../Images/Login.png" />
+                        <Image url="@../../Imagens/Login.png" />
                     </image>
                 </ImageView>
             </children>

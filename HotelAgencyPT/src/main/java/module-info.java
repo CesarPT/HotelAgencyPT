@@ -8,5 +8,4 @@ module hotel.agencypt {
     opens hotel.agencypt.Controller to javafx.fxml;
     exports hotel.agencypt;
     exports hotel.agencypt.Controller;
-
 }
