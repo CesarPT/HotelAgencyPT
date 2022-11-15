@@ -1,4 +1,4 @@
-package com.example.hotelagencypt;
+package hotel.agencypt.Controller;
 
 /**
  * Classe pública para passar informações de um scene para outro scene

@@ -1,4 +1,4 @@
-package com.example.hotelagencypt;
+package hotel.agencypt.Controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -7,7 +7,7 @@ import javafx.scene.control.PasswordField;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.MessageDigest;
-public class registotesteController {
+public class C_registoteste {
 
     @FXML
     private Button butaoteste;

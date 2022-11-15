@@ -1,37 +1,41 @@
 package DataBase;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
 public class ConnectionDB {
-    private String url, username, password;
+    private static String url;
+    private static String username;
+    private static String password;
 
     public ConnectionDB() {
         this.url = "jdbc:sqlserver://DESKTOP-2IMNL57\\SQLEXPRESS;databaseName=arroz;TrustServerCertificate=True";
         this.username = "sa";
         this.password = "123";
     }
-    public void TestConnection() {
+
+    public static Connection establishConnection() {
+        Connection con = null;
         try {
-            Connection con = DriverManager.getConnection(returnUrl(), returnUser(), returnPassword());
+            con = DriverManager.getConnection(returnUrl(), returnUser(), returnPassword());
             System.out.println("Connected!");
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return con;
     }
-    public String returnUrl() {
+
+    public static String returnUrl() {
         return url;
     }
 
-    public String returnUser() {
+    public static String returnUser() {
         return username;
     }
 
-    public String returnPassword() {
+    public static String returnPassword() {
         return password;
-    }
-
-    public static void main(String[] args){
-        ConnectionDB a = new ConnectionDB();
-        a.TestConnection();
     }
 }
 
