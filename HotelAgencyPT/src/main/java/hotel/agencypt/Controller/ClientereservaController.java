@@ -1,4 +1,4 @@
-package com.example.hotelagencypt;
+package hotel.agencypt.Controller;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

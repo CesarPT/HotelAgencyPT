@@ -1,4 +1,4 @@
-package com.example.hotelagencypt;
+package hotel.agencypt.Controller;
 
 import hotel.agencypt.Controller.Singleton;
 import javafx.fxml.FXML;
