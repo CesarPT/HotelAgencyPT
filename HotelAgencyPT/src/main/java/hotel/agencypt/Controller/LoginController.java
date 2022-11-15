@@ -13,7 +13,12 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.Objects;
 import java.util.ResourceBundle;
+import DataBase.ConnectionDB;
 
 
 public class LoginController implements Initializable {
@@ -51,7 +56,7 @@ public class LoginController implements Initializable {
      */
     public void loginButtonOnAction(ActionEvent event) {
         if (usernameTextField.getText().isBlank() == false && enterPasswordField.getText().isBlank() == false) {
-            //validateLogin();
+            validateLogin();
         } else {
             loginMessageLabel.setText("Preencha o username e a password");
         }
@@ -70,11 +75,11 @@ public class LoginController implements Initializable {
     /**
      * Validação do login para verificar se existe na base de dados
      */
-    /*public void validateLogin(){
+    public void validateLogin(){
 
-        Connection con = ConnectionBd.establishConnection();
+        Connection con = ConnectionDB.establishConnection();
 
-        String verifyLogin = "SELECT count(1) FROM user_account WHERE username ='"+ usernameTextField.getText()+ "' AND password ='"+ enterPasswordField.getText() +"'";
+        String verifyLogin = "SELECT count(1) FROM Utilizador WHERE nomeuser ='"+ usernameTextField.getText()+ "' AND password ='"+ enterPasswordField.getText() +"'";
 
         try {
             PreparedStatement stmt = con.prepareStatement(verifyLogin);
@@ -83,7 +88,7 @@ public class LoginController implements Initializable {
             while(rs.next()){
                 if(rs.getInt(1) == 1){
                     loginMessageLabel.setText("Login com sucesso!");
-                    validatePerms();
+                    //validatePerms(con);
                 } else {
                     loginMessageLabel.setText("Login invalido, tente novamente!");
                 }
@@ -97,8 +102,7 @@ public class LoginController implements Initializable {
     /**
      * Validação das permissões
      */
-   /* public void validatePerms() {
-        Connection con = ConnectionBd.establishConnection();
+   /*public void validatePerms(Connection con) {
         String verifyPerm = ("SELECT permission FROM user_account WHERE username ='"+usernameTextField.getText()+"'");
 
         try {
@@ -106,21 +110,21 @@ public class LoginController implements Initializable {
             ResultSet rs = stmt.executeQuery();
 
             while(rs.next()) {
-                if (Objects.equals(rs.getString("permission"), "Administrador")) {
+                if (Objects.equals(rs.getString("tipouser"), "Administrador")) {
                     Controller.getInstance().setEsconderBotoes("1");
 
                     Stage window = (Stage) loginButton.getScene().getWindow();
                     window.close();
                     SwitchMenus.open("MenuPrincipal", "SUPERLIGA | Menu Principal 1");
                 }
-                if (Objects.equals(rs.getString("permission"), "Operador")) {
+                if (Objects.equals(rs.getString("tipouser"), "Operador")) {
                     Controller.getInstance().setEsconderBotoes("2");
 
                     Stage window = (Stage) loginButton.getScene().getWindow();
                     window.close();
                     SwitchMenus.open("MenuPrincipal", "SUPERLIGA | Menu Principal 2");
                 }
-                if (Objects.equals(rs.getString("permission"), "Milionario")) {
+                if (Objects.equals(rs.getString("tipouser"), "Milionario")) {
                     Controller.getInstance().setEsconderBotoes("3");
 
                     Stage window = (Stage) loginButton.getScene().getWindow();

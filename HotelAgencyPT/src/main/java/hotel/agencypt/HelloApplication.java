@@ -8,10 +8,12 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class HelloApplication extends Application {
     @Override
-    public void start(Stage stage) throws IOException {
+    public void start(Stage stage) throws IOException, SQLException {
+
         Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
         stage.initStyle(StageStyle.UNDECORATED);
         stage.setScene(new Scene(root, 520, 400));
