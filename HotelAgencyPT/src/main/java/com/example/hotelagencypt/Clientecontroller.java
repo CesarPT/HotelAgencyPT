@@ -1,16 +1,27 @@
 package com.example.hotelagencypt;
 
-import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.stage.Popup;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 
 public class Clientecontroller {
 
-    public void onCreateReserva() throws IOException {
+    @FXML
+    protected Button creatReserva;
 
+    public void abrirCLienteReserva(){
+        try {
+            Stage window = (Stage) creatReserva.getScene().getWindow();
+            window.close();
+            Singleton.open("clientereserva", "Hotel >> Cliente >> Criar reserva");
+
+        }
+        catch (Exception e){
+            System.out.println("erro ao abrir o scene");
+        }
+        }
     }
 
-}
+

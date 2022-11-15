@@ -8,7 +8,7 @@
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hotelagencypt.Clientecontroller">
    <children>
       <Text layoutX="14.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cliente" />
-      <Button fx:id="creatReserva" layoutX="32.0" layoutY="48.0" mnemonicParsing="false" onAction="#onCreateReserva" text="Criar reserva(abre popup)" />
+      <Button fx:id="creatReserva" layoutX="32.0" layoutY="48.0" mnemonicParsing="false" onAction="#abrirCLienteReserva" text="Criar reserva(abre popup)" />
       <ListView layoutX="32.0" layoutY="85.0" prefHeight="216.0" prefWidth="238.0" />
       <Button layoutX="194.0" layoutY="48.0" mnemonicParsing="false" text="Ver reserva" />
       <Button layoutX="300.0" layoutY="48.0" mnemonicParsing="false" text="Criar Reclamacao" />
