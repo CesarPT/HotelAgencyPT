@@ -62,13 +62,15 @@ Create Table Servico(
 	descricao varchar (20)
 );
 GO
-
+ALTER TABLE Reserva
+ADD 
 Create Table Reserva(
 	idreserva int PRIMARY KEY,
 	idcliente int FOREIGN KEY REFERENCES Cliente(idcliente),
 	idquarto int FOREIGN KEY REFERENCES Quarto(idquarto),
 	idservico int FOREIGN KEY REFERENCES Servico(idservico),
-	numcartao int FOREIGN KEY REFERENCES Cartao(numcartao)
+	numcartao int FOREIGN KEY REFERENCES Cartao(numcartao),
+	data date
 );
 GO
 

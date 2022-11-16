@@ -126,7 +126,7 @@ public class LoginController implements Initializable {
 
                     Stage window = (Stage) loginButton.getScene().getWindow();
                     window.close();
-                    Singleton.open("Cliente", "Hotel >> Cliente");
+                    Singleton.open("clienteinterface", "Hotel >> Cliente");
                 }
             }
         }catch (Exception e){
