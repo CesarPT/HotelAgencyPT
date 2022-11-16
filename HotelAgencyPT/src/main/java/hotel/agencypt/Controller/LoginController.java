@@ -120,7 +120,7 @@ public class LoginController implements Initializable {
 
                     Stage window = (Stage) loginButton.getScene().getWindow();
                     window.close();
-                    Singleton.open("Funcionario", "Hotel >> Funcionário");
+                    Singleton.open("funcionariointerface", "Hotel >> Funcionário");
                 }
                 if (Objects.equals(rs.getString("tipouser"), "C")) {
 
