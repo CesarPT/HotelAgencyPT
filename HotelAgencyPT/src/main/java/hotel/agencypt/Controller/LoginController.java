@@ -14,6 +14,8 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.net.URL;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -75,10 +77,11 @@ public class LoginController implements Initializable {
      * Validação do login para verificar se existe na base de dados
      */
     public void validateLogin() {
-
+        String encryptedpassword = null;
+        encryptarPass(encryptedpassword);
         Connection con = ConnectionDB.establishConnection();
 
-        String verifyLogin = "SELECT count(1) FROM Utilizador WHERE nomeuser ='" + usernameTextField.getText() + "' AND password ='" + enterPasswordField.getText() + "'";
+        String verifyLogin = "SELECT count(1) FROM Utilizador WHERE nomeuser ='" + usernameTextField.getText() + "' AND password ='" + encryptedpassword + "'";
 
         try {
             PreparedStatement stmt = con.prepareStatement(verifyLogin);
@@ -96,6 +99,35 @@ public class LoginController implements Initializable {
             e.printStackTrace();
             e.getCause();
         }
+    }
+
+    public String encryptarPass(String encryptedpassword) {
+        String password = enterPasswordField.getText();
+
+        try {
+            /* MessageDigest instance for MD5. */
+            MessageDigest m = MessageDigest.getInstance("MD5");
+
+            /* Add plain-text password bytes to digest using MD5 update() method. */
+            m.update(password.getBytes());
+
+            /* Convert the hash value into bytes */
+            byte[] bytes = m.digest();
+
+            /* The bytes array has bytes in decimal form. Converting it into hexadecimal format. */
+            StringBuilder s = new StringBuilder();
+            for (int i = 0; i < bytes.length; i++) {
+                s.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
+            }
+
+            /* Complete hashed password in hexadecimal format */
+            encryptedpassword = s.toString();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        System.out.println("Plain-Text password: " + password);
+        System.out.println("encryptrdpassword:" + encryptedpassword);
+        return encryptedpassword;
     }
 
     /**
