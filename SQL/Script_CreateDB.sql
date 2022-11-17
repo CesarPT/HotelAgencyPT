@@ -53,13 +53,15 @@ GO
 Create Table Quarto(
 	idquarto int PRIMARY KEY,
 	descricao varchar(200),
+	piso tinyint,
 	preco smallmoney
 );
 GO
 
 Create Table Servico(
 	idservico int PRIMARY KEY,
-	descricao varchar (20)
+	descricao varchar (20),
+	preco smallmoney
 );
 GO
 
@@ -68,7 +70,8 @@ Create Table Reserva(
 	idcliente int FOREIGN KEY REFERENCES Cliente(idcliente),
 	idquarto int FOREIGN KEY REFERENCES Quarto(idquarto),
 	idservico int FOREIGN KEY REFERENCES Servico(idservico),
-	numcartao int FOREIGN KEY REFERENCES Cartao(numcartao)
+	numcartao int FOREIGN KEY REFERENCES Cartao(numcartao),
+	data date
 );
 GO
 
