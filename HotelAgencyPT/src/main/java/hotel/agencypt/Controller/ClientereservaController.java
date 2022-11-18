@@ -1,6 +1,5 @@
-package com.example.hotelagencypt;
+package hotel.agencypt.Controller;
 
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;

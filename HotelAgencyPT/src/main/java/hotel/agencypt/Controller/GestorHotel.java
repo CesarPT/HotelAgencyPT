@@ -1,6 +1,6 @@
 package hotel.agencypt.Controller;
 
-import hotel.agencypt.Controller.Singleton;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
@@ -79,6 +79,15 @@ public class GestorHotel {
             Singleton.open("GH_GerirFuncionario", "Hotel >> Gestor de Hotel >> Gerir Funcionários");
         } catch (Exception e) {
             System.out.println("Erro ao fechar/abrir o stage.");
+        }
+    }
+
+    @FXML
+    public void voltarAtras(ActionEvent actionEvent) {
+        try {
+            Singleton.open("Login", "Hotel Agency PT");
+        } catch (Exception e) {
+            System.out.println("Erro ao voltar atrás.");
         }
     }
 }

@@ -9,6 +9,7 @@ public class Stock {
 
     /**
      * Construtor completo
+     *
      * @param id_item
      * @param quantidade
      */
@@ -19,13 +20,16 @@ public class Stock {
 
     /**
      * Recebe:
+     *
      * @return id_item
      */
     public int getId_item() {
         return id_item;
     }
+
     /**
      * Recebe:
+     *
      * @return quantidade;
      */
     public int getQuantidade() {
@@ -34,13 +38,16 @@ public class Stock {
 
     /**
      * Muda o valor:
+     *
      * @param id_item set
      */
     public void setId_item(int id_item) {
         this.id_item = id_item;
     }
+
     /**
      * Muda o valor:
+     *
      * @param quantidade set
      */
     public void setQuantidade(int quantidade) {

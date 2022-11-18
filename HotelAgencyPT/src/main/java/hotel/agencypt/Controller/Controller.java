@@ -5,6 +5,7 @@ package hotel.agencypt.Controller;
  */
 public class Controller {
     private int id_clube;
+    private String esconderBotoes;
     private final static Controller INSTANCE = new Controller();
 
     /**
@@ -16,10 +17,15 @@ public class Controller {
 
     /**
      * Obter a instância
+     *
      * @return INSTANCE
      */
     public static Controller getInstance() {
         return INSTANCE;
+    }
+
+    public String getEsconderBotoes() {
+        return esconderBotoes;
     }
 
     //PASSAR INFORMAÇÕES AQUI

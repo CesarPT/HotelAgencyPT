@@ -1,5 +1,6 @@
 package hotel.agencypt.Controller;
 
+import DataBase.ConnectionDB;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -13,6 +14,10 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 
@@ -51,7 +56,7 @@ public class LoginController implements Initializable {
      */
     public void loginButtonOnAction(ActionEvent event) {
         if (usernameTextField.getText().isBlank() == false && enterPasswordField.getText().isBlank() == false) {
-            //validateLogin();
+            validateLogin();
         } else {
             loginMessageLabel.setText("Preencha o username e a password");
         }
@@ -70,25 +75,25 @@ public class LoginController implements Initializable {
     /**
      * Validação do login para verificar se existe na base de dados
      */
-    /*public void validateLogin(){
+    public void validateLogin() {
 
-        Connection con = ConnectionBd.establishConnection();
+        Connection con = ConnectionDB.establishConnection();
 
-        String verifyLogin = "SELECT count(1) FROM user_account WHERE username ='"+ usernameTextField.getText()+ "' AND password ='"+ enterPasswordField.getText() +"'";
+        String verifyLogin = "SELECT count(1) FROM Utilizador WHERE nomeuser ='" + usernameTextField.getText() + "' AND password ='" + enterPasswordField.getText() + "'";
 
         try {
             PreparedStatement stmt = con.prepareStatement(verifyLogin);
             ResultSet rs = stmt.executeQuery();
 
-            while(rs.next()){
-                if(rs.getInt(1) == 1){
+            while (rs.next()) {
+                if (rs.getInt(1) == 1) {
                     loginMessageLabel.setText("Login com sucesso!");
-                    validatePerms();
+                    validatePerms(con);
                 } else {
                     loginMessageLabel.setText("Login invalido, tente novamente!");
                 }
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             e.getCause();
         }
@@ -97,40 +102,36 @@ public class LoginController implements Initializable {
     /**
      * Validação das permissões
      */
-   /* public void validatePerms() {
-        Connection con = ConnectionBd.establishConnection();
-        String verifyPerm = ("SELECT permission FROM user_account WHERE username ='"+usernameTextField.getText()+"'");
+   public void validatePerms(Connection con) {
+        String verifyPerm = ("SELECT tipouser FROM Utilizador WHERE nomeuser ='"+usernameTextField.getText()+"'");
 
         try {
             PreparedStatement stmt = con.prepareStatement(verifyPerm);
             ResultSet rs = stmt.executeQuery();
 
             while(rs.next()) {
-                if (Objects.equals(rs.getString("permission"), "Administrador")) {
-                    Controller.getInstance().setEsconderBotoes("1");
+                if (Objects.equals(rs.getString("tipouser"), "G")) {
 
                     Stage window = (Stage) loginButton.getScene().getWindow();
                     window.close();
-                    SwitchMenus.open("MenuPrincipal", "SUPERLIGA | Menu Principal 1");
+                    Singleton.open("GestorHotel", "Hotel >> Gestor de Hotel");
                 }
-                if (Objects.equals(rs.getString("permission"), "Operador")) {
-                    Controller.getInstance().setEsconderBotoes("2");
+                if (Objects.equals(rs.getString("tipouser"), "F")) {
 
                     Stage window = (Stage) loginButton.getScene().getWindow();
                     window.close();
-                    SwitchMenus.open("MenuPrincipal", "SUPERLIGA | Menu Principal 2");
+                    Singleton.open("funcionariointerface", "Hotel >> Funcionário");
                 }
-                if (Objects.equals(rs.getString("permission"), "Milionario")) {
-                    Controller.getInstance().setEsconderBotoes("3");
+                if (Objects.equals(rs.getString("tipouser"), "C")) {
 
                     Stage window = (Stage) loginButton.getScene().getWindow();
                     window.close();
-                    SwitchMenus.open("MenuPrincipal", "SUPERLIGA | Menu Principal 3");
+                    Singleton.open("clienteinterface", "Hotel >> Cliente");
                 }
             }
         }catch (Exception e){
             e.printStackTrace();
             e.getCause();
         }
-    }*/
+    }
 }
