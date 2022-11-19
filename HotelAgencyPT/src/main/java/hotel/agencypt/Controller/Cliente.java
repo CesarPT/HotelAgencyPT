@@ -2,7 +2,9 @@ package hotel.agencypt.Controller;
 
 import Classes.Cartao;
 import Classes.DAO.CartaoDAO;
+import Classes.DAO.RegEntradaDAO;
 import Classes.DAO.ReservaDAO;
+import Classes.RegEntrada;
 import Classes.Reserva;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -20,6 +22,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class Cliente implements Initializable {
@@ -27,6 +30,8 @@ public class Cliente implements Initializable {
     protected Button creatReserva;
     @FXML
     private ListView<String> listReserva;
+    @FXML
+    private ListView<String> listRegEntrada;
     @FXML
     private Label teste;
     @FXML
@@ -39,8 +44,10 @@ public class Cliente implements Initializable {
     private TextArea dataexp;
     CartaoDAO cDAO = new CartaoDAO();
     ReservaDAO rDAO = new ReservaDAO();
+    RegEntradaDAO reDAO = new RegEntradaDAO();
     List<Cartao> arrayCartao = new ArrayList<>();
     List<Reserva> arrayReserva = new ArrayList<>();
+    List<RegEntrada> arrayRegEntrada = new ArrayList<>();
     String reservasel;
 
     /**
@@ -71,7 +78,7 @@ public class Cliente implements Initializable {
                     labelSemCartao.setText("Cartão validado.");
                 }
 
-                //Adicionar reservas com o username
+        //Adicionar reservas com o username
         arrayReserva = rDAO.findReserva();
         for (Reserva r : arrayReserva) {
             listReserva.getItems().add(
@@ -85,7 +92,30 @@ public class Cliente implements Initializable {
                 teste.setText(reservasel);
             }
         });
+
+        //Adicionar registros de entrada
+        arrayRegEntrada = reDAO.findRegEntradaQuarto();
+        for (RegEntrada r : arrayRegEntrada) {
+            listRegEntrada.getItems().add(
+                    "Entrada: " + r.getLocal() + " | " + r.getData()
+            );
+        }
+        listRegEntrada.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                reservasel=listRegEntrada.getSelectionModel().getSelectedItem();
+            }
+        });
+
+
     }
+
+
+    //Adicionar RegEntrada de quarto na base de dados
+    @FXML
+    public void registroEntradaQuarto(ActionEvent actionEvent){
+    }
+
 
     /**
      * @param actionEvent
