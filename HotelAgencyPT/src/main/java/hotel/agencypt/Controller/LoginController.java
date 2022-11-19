@@ -88,6 +88,8 @@ public class LoginController implements Initializable {
             while (rs.next()) {
                 if (rs.getInt(1) == 1) {
                     loginMessageLabel.setText("Login com sucesso!");
+                    //Passa informações para a scene seguinte
+                    Controller.getInstance().setUsername(usernameTextField.getText());
                     validatePerms(con);
                 } else {
                     loginMessageLabel.setText("Login invalido, tente novamente!");
@@ -126,7 +128,7 @@ public class LoginController implements Initializable {
 
                     Stage window = (Stage) loginButton.getScene().getWindow();
                     window.close();
-                    Singleton.open("clienteinterface", "Hotel >> Cliente");
+                    Singleton.open("Cliente", "Hotel >> Cliente");
                 }
             }
         }catch (Exception e){
