@@ -20,12 +20,14 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-public class Cliente implements Initializable {
+public class Cliente {
     @FXML
     protected Button creatReserva;
     @FXML
@@ -50,18 +52,7 @@ public class Cliente implements Initializable {
     List<RegEntrada> arrayRegEntrada = new ArrayList<>();
     String reservasel;
 
-    /**
-     * @param location
-     * The location used to resolve relative paths for the root object, or
-     * {@code null} if the location is not known.
-     *
-     * @param resources
-     * The resources used to localize the root object, or {@code null} if
-     * the root object was not localized.
-     *
-     */
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    public void initialize() {
             //numcartao, datacriacao, dataexp do username do cliente
             arrayCartao = cDAO.findCartao();
             for (Cartao c : arrayCartao) {
@@ -78,7 +69,8 @@ public class Cliente implements Initializable {
                     labelSemCartao.setText("Cartão validado.");
                 }
 
-        //Adicionar reservas com o username
+        //Limpar tudo e Adicionar reservas com o username
+        listReserva.getItems().clear();
         arrayReserva = rDAO.findReserva();
         for (Reserva r : arrayReserva) {
             listReserva.getItems().add(
@@ -93,7 +85,8 @@ public class Cliente implements Initializable {
             }
         });
 
-        //Adicionar registros de entrada
+        //Limpar tudo e Adicionar registros de entrada
+        listRegEntrada.getItems().clear();
         arrayRegEntrada = reDAO.findRegEntradaQuarto();
         for (RegEntrada r : arrayRegEntrada) {
             listRegEntrada.getItems().add(
@@ -114,10 +107,26 @@ public class Cliente implements Initializable {
     //Adicionar RegEntrada de quarto na base de dados
     @FXML
     public void registroEntradaQuarto(ActionEvent actionEvent){
+        RegEntradaDAO daoRegEntrada = new RegEntradaDAO();
+        RegEntrada regentrada =new RegEntrada();
+
+        //Receber a data e hora atual do Computador
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        LocalDateTime now = LocalDateTime.now();
+
+        //Adiciona numcartao, local e data
+        regentrada.setLocal("Quarto");
+        regentrada.setData(dtf.format(now));
+        regentrada.setNumcartao(Integer.parseInt(numcartao.getText()));
+        daoRegEntrada.insertRegEntrada(regentrada);
+
+        //Atualizar listviews
+        initialize();
     }
 
 
     /**
+     * Método para voltar atrás
      * @param actionEvent
      */
     @FXML
@@ -134,17 +143,17 @@ public class Cliente implements Initializable {
     }
 
     /**
-     *
+     * Método que abre um Scene para criar uma reserva
      */
     public void abrirCLienteReserva(){
         try {
             Stage window = (Stage) creatReserva.getScene().getWindow();
             window.close();
-            Singleton.open("C_Reserva", "Hotel >> Cliente >> Informações do Cliente");
+            Singleton.open("C_Reserva", "Hotel >> Cliente >> Criar uma reserva");
 
         }
         catch (Exception e){
-            System.out.println("erro ao abrir o scene");
+            System.out.println("Erro ao fechar/abrir o scene.");
         }
     }
 

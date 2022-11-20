@@ -71,17 +71,17 @@ public class RegEntradaDAO {
 
     /**
      * Método para inserir registro de entrada
-     * @param evento variavel tipo Evento
+     * @param regentrada
+     * @return
      */
     public boolean insertRegEntrada(RegEntrada regentrada){
-        String sql = "INSERT INTO RegEntrada (numcartao, local, data) " +
-                "VALUES (?, ?, ?)";
+        String sql = "INSERT INTO RegEntrada (local, data, numcartao) VALUES (?, ?, ?)";
         PreparedStatement stmt = null;
         try {
             stmt = con.prepareStatement(sql);
-            stmt.setInt(1, regentrada.getNumcartao());
-            stmt.setString(2, regentrada.getLocal());
-            stmt.setString(3, regentrada.getData());
+            stmt.setString(1, regentrada.getLocal());
+            stmt.setString(2, regentrada.getData());
+            stmt.setInt(3, regentrada.getNumcartao());
             stmt.executeUpdate();
             return true;
         } catch (SQLException e) {
