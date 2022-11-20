@@ -91,4 +91,45 @@ public class RegEntradaDAO {
             ConnectionDB.closeConnection(con,stmt);
         }
     }
+
+    /**
+     * Método para pesquisar todos os cartões
+     */
+    public List<RegEntrada> findTodosCartoes() {
+        String sql = "SELECT RegEntrada.numcartao, RegEntrada.data, RegEntrada.local\n" +
+                "FROM RegEntrada\n" +
+                "INNER JOIN Cartao\n" +
+                "ON Cartao.numcartao = RegEntrada.numcartao\n" +
+                "INNER JOIN Reserva\n" +
+                "ON Reserva.numcartao = Cartao.numcartao\n" +
+                "INNER JOIN Cliente\n" +
+                "ON Cliente.idcliente = Reserva.idcliente\n" +
+                "INNER JOIN Utilizador\n" +
+                "ON Utilizador.iduser = Cliente.iduser";
+
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        List<RegEntrada> listRegEntrada = new ArrayList<>();
+
+        try {
+            con = ConnectionDB.establishConnection();
+            stmt = con.prepareStatement(sql);
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                RegEntrada regentrada = new RegEntrada();
+                regentrada.setNumcartao(rs.getInt("numcartao"));
+                regentrada.setData(rs.getString("data"));
+                regentrada.setLocal(rs.getString("local"));
+                listRegEntrada.add(regentrada);
+            }
+
+        } catch (SQLException e) {
+            System.err.println("[ERRO]: findTodosCartoes " + e.getMessage());
+        } finally {
+            ConnectionDB.closeConnection(con, stmt, rs);
+        }
+        return listRegEntrada;
+    }
 }

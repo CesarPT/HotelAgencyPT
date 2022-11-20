@@ -6,6 +6,9 @@ module hotel.agencypt {
 
     opens hotel.agencypt to javafx.fxml;
     opens hotel.agencypt.Controller to javafx.fxml;
+    opens Classes to javafx.base;
+
     exports hotel.agencypt;
     exports hotel.agencypt.Controller;
+    exports Classes;
 }

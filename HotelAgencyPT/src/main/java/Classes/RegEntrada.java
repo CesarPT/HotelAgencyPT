@@ -24,7 +24,6 @@ public class RegEntrada {
      * Construtor simples
      */
     public RegEntrada(){
-
     }
 
     public int getNumcartao() {
