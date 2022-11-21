@@ -1,112 +1,90 @@
 package Classes;
 
+import java.util.Date;
+
+/**
+ * Classe pública com todas os métodos usadas na aplicação
+ */
 public class Reserva {
-    int idReserva, idCliente, idQuarto, idServico, numCartao;
+    private int idreserva;
+    private int idcliente;
+    private int idquarto;
+    private int idservico;
+    private int numcartao;
+    private Date data;
 
     /**
      * Construtor completo
      *
-     * @param idReserva
-     * @param idCliente
-     * @param idQuarto
-     * @param idServico
-     * @param numCartao
+     * @param idreserva
+     * @param idcliente
+     * @param idquarto
+     * @param idservico
+     * @param numcartao
+     * @param data
      */
-    public Reserva(int idReserva, int idCliente, int idQuarto, int idServico, int numCartao) {
-        this.idReserva = idReserva;
-        this.idCliente = idCliente;
-        this.idQuarto = idQuarto;
-        this.idServico = idServico;
-        this.numCartao = numCartao;
+    public Reserva(int idreserva, int idcliente, int idquarto, int idservico, int numcartao, Date data) {
+        this.idreserva = idreserva;
+        this.idcliente = idcliente;
+        this.idquarto = idquarto;
+        this.idservico = idservico;
+        this.numcartao = numcartao;
+        this.data = data;
     }
 
     /**
-     * Devolve:
-     *
-     * @return Id da reserva
+     * Construtor simples
      */
-    public int getIdReserva() {
-        return idReserva;
+    public Reserva() {
+
     }
 
-    /**
-     * Muda o valor:
-     *
-     * @param idReserva set
-     */
-    public void setIdReserva(int idReserva) {
-        this.idReserva = idReserva;
+    public int getIdreserva() {
+        return idreserva;
     }
 
-    /**
-     * Devolve:
-     *
-     * @return Id do cliente
-     */
-    public int getIdCliente() {
-        return idCliente;
+    public int getIdcliente() {
+        return idcliente;
     }
 
-    /**
-     * Muda o valor:
-     *
-     * @param idCliente set
-     */
-    public void setIdCliente(int idCliente) {
-        this.idCliente = idCliente;
+
+    public int getIdquarto() {
+        return idquarto;
     }
 
-    /**
-     * Devolve:
-     *
-     * @return Id do quarto
-     */
-    public int getIdQuarto() {
-        return idQuarto;
+    public int getIdservico() {
+        return idservico;
     }
 
-    /**
-     * Muda o valor:
-     *
-     * @param idQuarto set
-     */
-    public void setIdQuarto(int idQuarto) {
-        this.idQuarto = idQuarto;
+    public int getNumcartao() {
+        return numcartao;
     }
 
-    /**
-     * Devolve:
-     *
-     * @return Id de Serviço
-     */
-    public int getIdServico() {
-        return idServico;
+    public Date getData() {
+        return data;
     }
 
-    /**
-     * Muda o valor:
-     *
-     * @param idServico set
-     */
-    public void setIdServico(int idServico) {
-        this.idServico = idServico;
+    public void setIdreserva(int idreserva) {
+        this.idreserva = idreserva;
     }
 
-    /**
-     * Devolve:
-     *
-     * @return Numero do cartão
-     */
-    public int getNumCartao() {
-        return numCartao;
+    public void setIdcliente(int idcliente) {
+        this.idcliente = idcliente;
     }
 
-    /**
-     * Muda o valor:
-     *
-     * @param numCartao set
-     */
-    public void setNumCartao(int numCartao) {
-        this.numCartao = numCartao;
+    public void setIdquarto(int idquarto) {
+        this.idquarto = idquarto;
+    }
+
+    public void setIdservico(int idservico) {
+        this.idservico = idservico;
+    }
+
+    public void setNumcartao(int numcartao) {
+        this.numcartao = numcartao;
+    }
+
+    public void setData(Date data) {
+        this.data = data;
     }
 }

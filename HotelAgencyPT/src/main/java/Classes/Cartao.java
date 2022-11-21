@@ -2,54 +2,52 @@ package Classes;
 
 import java.util.Date;
 
+/**
+ * Classe pública com todas os métodos usadas na aplicação
+ */
 public class Cartao {
-    int numeroCartao;
-    Date datacriacao;
+    private int numcartao;
+    private Date datacriacao;
+    private Date dataexp;
 
     /**
-     * Contrutor completo
+     * Construtor completo
      *
-     * @param numeroCartao
+     * @param numcartao
      * @param datacriacao
+     * @param dataexp
      */
-    public Cartao(int numeroCartao, Date datacriacao) {
-        this.numeroCartao = numeroCartao;
+    public Cartao(int numcartao, Date datacriacao, Date dataexp) {
+        this.numcartao = numcartao;
         this.datacriacao = datacriacao;
+        this.dataexp = dataexp;
     }
 
-    /**
-     * Devolve:
-     *
-     * @return numero do cartao
-     */
-    public int getNumeroCartao() {
-        return numeroCartao;
+    //Construtor simples
+    public Cartao() {
     }
 
-    /**
-     * Muda o valor:
-     *
-     * @param numeroCartao set
-     */
-    public void setNumeroCartao(int numeroCartao) {
-        this.numeroCartao = numeroCartao;
+    public int getNumcartao() {
+        return numcartao;
     }
 
-    /**
-     * Devolve:
-     *
-     * @return data de criaçao
-     */
     public Date getDatacriacao() {
         return datacriacao;
     }
 
-    /**
-     * Muda o valor:
-     *
-     * @param datacriacao set
-     */
+    public Date getDataexp() {
+        return dataexp;
+    }
+
+    public void setNumcartao(int numcartao) {
+        this.numcartao = numcartao;
+    }
+
     public void setDatacriacao(Date datacriacao) {
         this.datacriacao = datacriacao;
+    }
+
+    public void setDataexp(Date dataexp) {
+        this.dataexp = dataexp;
     }
 }
