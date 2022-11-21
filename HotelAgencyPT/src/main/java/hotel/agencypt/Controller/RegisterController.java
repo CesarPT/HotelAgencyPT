@@ -75,12 +75,10 @@ public class RegisterController implements Initializable {
         verifyPass();
         verifyUser();
         if (setPasswordField.getText().isBlank() == false && usernameTextField.getText().isBlank() == false) {
-            registrationMessageLabel.setText("arroz");
+            registrationMessageLabel.setText("");
             registrationMessageLabel.setTextFill(Color.BLACK);
             if (verifyPass() == true && verifyUser() == true) {
                 registerUser();
-
-
             }
         } else {
             registrationMessageLabel.setTextFill(Color.RED);
@@ -101,6 +99,8 @@ public class RegisterController implements Initializable {
             while (rs.next()) {
                 if (rs.getInt(1) == 1) {
                     VerifyUserLabel.setText("O nome já existe!");
+                } else {
+                    VerifyUserLabel.setText("");
                 }
             }
         } catch (SQLException e) {
@@ -117,6 +117,7 @@ public class RegisterController implements Initializable {
     public boolean verifyPass() {
         boolean pass;
         if (setPasswordField.getText().equals(confirmPasswordField.getText())) {
+            confirmPasswordLabel.setText("");
             pass = true;
         } else {
             confirmPasswordLabel.setText("Palavra-passe não coincide!");
