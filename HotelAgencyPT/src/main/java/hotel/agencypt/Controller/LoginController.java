@@ -29,11 +29,9 @@ public class LoginController implements Initializable {
     @FXML
     private Button cancelButton;
     @FXML
-    private Label loginMessageLabel;
-
+    private Button RegisterButton;
     @FXML
-    private ImageView brandingImageView;
-
+    private Label loginMessageLabel;
     @FXML
     private ImageView lockImageView;
     @FXML
@@ -78,31 +76,11 @@ public class LoginController implements Initializable {
      * Validação do login para verificar se existe na base de dados
      */
     public void validateLogin() {
-        String encryptedpassword = null;
-        encryptarPass(encryptedpassword);
         Connection con = ConnectionDB.establishConnection();
 
-        String verifyLogin = "SELECT count(1) FROM Utilizador WHERE nomeuser ='" + usernameTextField.getText() + "' AND password ='" + encryptedpassword + "'";
 
-        try {
-            PreparedStatement stmt = con.prepareStatement(verifyLogin);
-            ResultSet rs = stmt.executeQuery();
-
-            while (rs.next()) {
-                if (rs.getInt(1) == 1) {
-                    loginMessageLabel.setText("Login com sucesso!");
-                    validatePerms(con);
-                } else {
-                    loginMessageLabel.setText("Login invalido, tente novamente!");
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            e.getCause();
-        }
-    }
-
-    public String encryptarPass(String encryptedpassword) {
+        //Encyptação da password
+        String encryptedpassword = "";
         String password = enterPasswordField.getText();
 
         try {
@@ -128,20 +106,40 @@ public class LoginController implements Initializable {
         }
         System.out.println("Plain-Text password: " + password);
         System.out.println("encryptrdpassword:" + encryptedpassword);
-        return encryptedpassword;
+
+
+        // Verificação se existe na base dados
+        String verifyLogin = "SELECT count(1) FROM Utilizador WHERE nomeuser ='" + usernameTextField.getText() + "' AND convert (varchar(MAX), password) = '" + encryptedpassword + "'";
+
+        try {
+            PreparedStatement stmt = con.prepareStatement(verifyLogin);
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                if (rs.getInt(1) == 1) {
+                    loginMessageLabel.setText("Login com sucesso!");
+                    validatePerms(con);
+                } else {
+                    loginMessageLabel.setText("Login invalido, tente novamente!");
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            e.getCause();
+        }
     }
 
     /**
      * Validação das permissões
      */
-   public void validatePerms(Connection con) {
-        String verifyPerm = ("SELECT tipouser FROM Utilizador WHERE nomeuser ='"+usernameTextField.getText()+"'");
+    public void validatePerms(Connection con) {
+        String verifyPerm = ("SELECT tipouser FROM Utilizador WHERE nomeuser ='" + usernameTextField.getText() + "'");
 
         try {
             PreparedStatement stmt = con.prepareStatement(verifyPerm);
             ResultSet rs = stmt.executeQuery();
 
-            while(rs.next()) {
+            while (rs.next()) {
                 if (Objects.equals(rs.getString("tipouser"), "G")) {
 
                     Stage window = (Stage) loginButton.getScene().getWindow();
@@ -161,9 +159,17 @@ public class LoginController implements Initializable {
                     Singleton.open("clienteinterface", "Hotel >> Cliente");
                 }
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             e.getCause();
         }
     }
+
+    public void SwitchToRegister(ActionEvent event) throws Exception {
+        Stage stage = (Stage) RegisterButton.getScene().getWindow();
+        stage.close();
+        Singleton.open("Register", "Hotel >> Register");
+
+    }
 }
+
