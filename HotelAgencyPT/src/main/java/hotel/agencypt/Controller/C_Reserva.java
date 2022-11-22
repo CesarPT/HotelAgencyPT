@@ -7,6 +7,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -14,8 +15,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class C_Reserva implements Initializable {
-    @FXML
-    public Label labelAviso;
     @FXML
     public ComboBox cboxquarto;
     @FXML
@@ -27,6 +26,7 @@ public class C_Reserva implements Initializable {
     String[] servico = {"servico 1", "servico 2", "servico 3", "servico 4"};
     String servicoselct;
     String servicoselce;
+    Integer index = -1;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -41,14 +41,38 @@ public class C_Reserva implements Initializable {
         });
     }
 
+    /**
+     * Adicionar item da lista selecionada para a outra lista
+     */
     public void onAdicionar () {
+        index = listServtodos.getSelectionModel().getSelectedIndex();
+        if (index == -1){
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Aviso");
+            alert.setHeaderText("Sem seleção");
+            alert.setContentText("Selecione primeiro um serviço da lista.");
+            alert.showAndWait();
+        } else {
             listServesco.getItems().add(servicoselct);
             listServtodos.getItems().remove(servicoselct);
+        }
     }
 
+    /**
+     * Remover item da lista selecionada
+     */
     public void onRemover() {
-        listServtodos.getItems().add(servicoselce);
-        listServesco.getItems().remove(servicoselce);
+        index = listServesco.getSelectionModel().getSelectedIndex();
+        if (index == -1){
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Aviso");
+            alert.setHeaderText("Sem seleção");
+            alert.setContentText("Selecione primeiro um serviço da lista.");
+            alert.showAndWait();
+        } else {
+            listServtodos.getItems().add(listServesco.getSelectionModel().getSelectedItem());
+            listServesco.getItems().remove(listServesco.getSelectionModel().getSelectedItem());
+        }
     }
 
     /**
