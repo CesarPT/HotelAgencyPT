@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.*?>
+<AnchorPane prefHeight="401.0" prefWidth="578.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="hotel.agencypt.Controller.GestorHotel">
+    <children>
+        <Pane layoutX="50.0" layoutY="41.0" prefHeight="358.0" prefWidth="525.0" style="-fx-background-color: #BBB6B6;">
+            <children>
+                <Pane layoutX="285.0" layoutY="239.0" prefHeight="105.0" prefWidth="224.0"
+                      style="-fx-background-color: white; -fx-background-radius: 20;">
+                    <children>
+                        <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#abrirGerirStock"
+                                text="Assitstir serviços de quarto">
+                            <font>
+                                <Font size="15.0"/>
+                            </font>
+                        </Button>
+                        <Button layoutX="67.0" layoutY="60.0" mnemonicParsing="false" onAction="#abrirGerirStock"
+                                text="Gerir stock">
+                            <font>
+                                <Font size="15.0"/>
+                            </font>
+                        </Button>
+                    </children>
+                </Pane>
+                <Button layoutX="190.0" layoutY="106.0" mnemonicParsing="false" onAction="#abrirConfigQuarto"
+                        text="Criar reserva">
+                    <font>
+                        <Font size="15.0"/>
+                    </font>
+                </Button>
+                <Button fx:id="button" layoutX="181.0" layoutY="60.0" mnemonicParsing="false"
+                        onAction="#abrirRegistrosCartao" text="Registar cliente">
+                    <font>
+                        <Font size="15.0"/>
+                    </font>
+                </Button>
+                <Button layoutX="14.0" layoutY="313.0" mnemonicParsing="false" text="Apagar reservas">
+                    <font>
+                        <Font size="15.0"/>
+                    </font>
+                </Button>
+                <Label alignment="CENTER" layoutX="368.0" layoutY="212.0" text="Gestão" textFill="#bf4c4c">
+                    <font>
+                        <Font name="System Bold" size="18.0"/>
+                    </font>
+                </Label>
+                <Button layoutX="203.0" layoutY="152.0" mnemonicParsing="false" text="Check-in">
+                    <font>
+                        <Font size="15.0"/>
+                    </font>
+                </Button>
+                <Button layoutX="154.0" layoutY="313.0" mnemonicParsing="false" text="Check-out">
+                    <font>
+                        <Font size="15.0"/>
+                    </font>
+                </Button>
+            </children>
+        </Pane>
+        <Label layoutX="266.0" layoutY="14.0" text="Funcionário">
+            <font>
+                <Font size="18.0"/>
+            </font>
+        </Label>
+        <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#voltarAtras"
+                prefHeight="401.0" prefWidth="48.0" style="-fx-background-color: #ccffff; -fx-border-color: gray;">
+            <graphic>
+                <ImageView fitHeight="211.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../Imagens/voltar.png"/>
+                    </image>
+                </ImageView>
+            </graphic>
+            <cursor>
+                <Cursor fx:constant="HAND"/>
+            </cursor>
+        </Button>
+    </children>
+</AnchorPane>

@@ -13,6 +13,7 @@ public class RegistroEntrada {
 
     /**
      * Construtor completo
+     *
      * @param id_registro
      * @param local
      * @param data
@@ -27,27 +28,34 @@ public class RegistroEntrada {
 
     /**
      * Recebe:
+     *
      * @return id_registro
      */
     public int getId_registro() {
         return id_registro;
     }
+
     /**
      * Recebe:
+     *
      * @return local
      */
     public String getLocal() {
         return local;
     }
+
     /**
      * Recebe:
+     *
      * @return data;
      */
     public Date getData() {
         return data;
     }
+
     /**
      * Recebe:
+     *
      * @return num_cartao
      */
     public int getNum_cartao() {
@@ -56,27 +64,34 @@ public class RegistroEntrada {
 
     /**
      * Muda o valor:
+     *
      * @param id_registro set
      */
     public void setId_registro(int id_registro) {
         this.id_registro = id_registro;
     }
+
     /**
      * Muda o valor:
+     *
      * @param local set
      */
     public void setLocal(String local) {
         this.local = local;
     }
+
     /**
      * Muda o valor:
+     *
      * @param data set
      */
     public void setData(Date data) {
         this.data = data;
     }
+
     /**
      * Muda o valor
+     *
      * @param num_cartao set
      */
     public void setNum_cartao(int num_cartao) {

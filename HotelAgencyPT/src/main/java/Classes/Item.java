@@ -10,6 +10,7 @@ public class Item {
 
     /**
      * Construtor completo
+     *
      * @param id_item
      * @param nome_item
      * @param estado
@@ -22,20 +23,25 @@ public class Item {
 
     /**
      * Recebe:
+     *
      * @return id_item
      */
     public int getId_item() {
         return id_item;
     }
+
     /**
      * Recebe:
+     *
      * @return nome_item
      */
     public String getNome_item() {
         return nome_item;
     }
+
     /**
      * Recebe:
+     *
      * @return estado
      */
     public String getEstado() {
@@ -44,20 +50,25 @@ public class Item {
 
     /**
      * Muda o valor:
+     *
      * @param id_item set
      */
     public void setId_item(int id_item) {
         this.id_item = id_item;
     }
+
     /**
      * Muda o valor:
+     *
      * @param nome_item set
      */
     public void setNome_item(String nome_item) {
         this.nome_item = nome_item;
     }
+
     /**
      * Muda o valor:
+     *
      * @param estado set
      */
     public void setEstado(String estado) {
