@@ -4,15 +4,18 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class C_Reserva implements Initializable {
-
+    @FXML
+    public Label labelAviso;
     @FXML
     public ComboBox cboxquarto;
     @FXML
@@ -38,14 +41,26 @@ public class C_Reserva implements Initializable {
         });
     }
 
-        public void onAdicionar () {
+    public void onAdicionar () {
             listServesco.getItems().add(servicoselct);
             listServtodos.getItems().remove(servicoselct);
-        }
-
-        public void onRemover () {
-            listServtodos.getItems().add(servicoselce);
-            listServesco.getItems().remove(servicoselce);
-        }
     }
 
+    public void onRemover() {
+        listServtodos.getItems().add(servicoselce);
+        listServesco.getItems().remove(servicoselce);
+    }
+
+    /**
+     * Método para voltar atrás
+     * @param actionEvent
+     */
+    @FXML
+    public void voltarAtras(ActionEvent actionEvent) {
+        try {
+            Singleton.open("Cliente", "Hotel >> Cliente");
+        } catch (Exception e) {
+            System.out.println("Erro ao voltar atrás.");
+        }
+    }
+}

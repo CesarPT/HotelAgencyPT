@@ -30,8 +30,14 @@ VALUES ('Individual 1', 1, 50),
 	   ('Familiar 3', 2, 100);
 go
 
+select * from Servico
 INSERT INTO Servico
-VALUES ('gratis', 0)
+VALUES ('base', 0),
+	   ('Restaurante', 30),
+	   ('Eventos culturais', 15),
+	   ('Piscina privada', 40),
+	   ('Spá', 20),
+	   ('Sala de conferência', 15);
 go
 
 INSERT INTO Cartao
