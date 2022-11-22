@@ -4,8 +4,8 @@ package hotel.agencypt.Controller;
  * Classe pública para passar informações de um scene para outro scene
  */
 public class Controller {
-    private int id_clube;
-    private String esconderBotoes;
+    private String username;
+
     private final static Controller INSTANCE = new Controller();
 
     /**
@@ -13,7 +13,6 @@ public class Controller {
      */
     private Controller() {
     }
-
 
     /**
      * Obter a instância
@@ -24,11 +23,12 @@ public class Controller {
         return INSTANCE;
     }
 
-    public String getEsconderBotoes() {
-        return esconderBotoes;
+    //------------PASSAR INFORMAÇÕES AQUI------------
+    public String getUsername() {
+        return username;
     }
 
-    //PASSAR INFORMAÇÕES AQUI
-
-
+    public void setUsername(String username) {
+        this.username = username;
+    }
 }

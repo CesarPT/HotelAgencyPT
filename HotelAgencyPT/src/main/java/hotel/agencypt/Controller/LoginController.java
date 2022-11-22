@@ -14,6 +14,8 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.net.URL;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -27,11 +29,9 @@ public class LoginController implements Initializable {
     @FXML
     private Button cancelButton;
     @FXML
-    private Label loginMessageLabel;
-
+    private Button RegisterButton;
     @FXML
-    private ImageView brandingImageView;
-
+    private Label loginMessageLabel;
     @FXML
     private ImageView lockImageView;
     @FXML
@@ -76,10 +76,40 @@ public class LoginController implements Initializable {
      * Validação do login para verificar se existe na base de dados
      */
     public void validateLogin() {
-
         Connection con = ConnectionDB.establishConnection();
 
-        String verifyLogin = "SELECT count(1) FROM Utilizador WHERE nomeuser ='" + usernameTextField.getText() + "' AND password ='" + enterPasswordField.getText() + "'";
+
+        //Encyptação da password
+        String encryptedpassword = "";
+        String password = enterPasswordField.getText();
+
+        try {
+            /* MessageDigest instance for MD5. */
+            MessageDigest m = MessageDigest.getInstance("MD5");
+
+            /* Add plain-text password bytes to digest using MD5 update() method. */
+            m.update(password.getBytes());
+
+            /* Convert the hash value into bytes */
+            byte[] bytes = m.digest();
+
+            /* The bytes array has bytes in decimal form. Converting it into hexadecimal format. */
+            StringBuilder s = new StringBuilder();
+            for (int i = 0; i < bytes.length; i++) {
+                s.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
+            }
+
+            /* Complete hashed password in hexadecimal format */
+            encryptedpassword = s.toString();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        System.out.println("Plain-Text password: " + password);
+        System.out.println("encryptrdpassword:" + encryptedpassword);
+
+
+        // Verificação se existe na base dados
+        String verifyLogin = "SELECT count(1) FROM Utilizador WHERE nomeuser ='" + usernameTextField.getText() + "' AND convert (varchar(MAX), password) = '" + encryptedpassword + "'";
 
         try {
             PreparedStatement stmt = con.prepareStatement(verifyLogin);
@@ -88,6 +118,8 @@ public class LoginController implements Initializable {
             while (rs.next()) {
                 if (rs.getInt(1) == 1) {
                     loginMessageLabel.setText("Login com sucesso!");
+                    //Passa informações para a scene seguinte
+                    Controller.getInstance().setUsername(usernameTextField.getText());
                     validatePerms(con);
                 } else {
                     loginMessageLabel.setText("Login invalido, tente novamente!");
@@ -102,14 +134,14 @@ public class LoginController implements Initializable {
     /**
      * Validação das permissões
      */
-   public void validatePerms(Connection con) {
-        String verifyPerm = ("SELECT tipouser FROM Utilizador WHERE nomeuser ='"+usernameTextField.getText()+"'");
+    public void validatePerms(Connection con) {
+        String verifyPerm = ("SELECT tipouser FROM Utilizador WHERE nomeuser ='" + usernameTextField.getText() + "'");
 
         try {
             PreparedStatement stmt = con.prepareStatement(verifyPerm);
             ResultSet rs = stmt.executeQuery();
 
-            while(rs.next()) {
+            while (rs.next()) {
                 if (Objects.equals(rs.getString("tipouser"), "G")) {
 
                     Stage window = (Stage) loginButton.getScene().getWindow();
@@ -126,12 +158,20 @@ public class LoginController implements Initializable {
 
                     Stage window = (Stage) loginButton.getScene().getWindow();
                     window.close();
-                    Singleton.open("clienteinterface", "Hotel >> Cliente");
+                    Singleton.open("Cliente", "Hotel >> Cliente");
                 }
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             e.getCause();
         }
     }
+
+    public void SwitchToRegister(ActionEvent event) throws Exception {
+        Stage stage = (Stage) RegisterButton.getScene().getWindow();
+        stage.close();
+        Singleton.open("Register", "Hotel >> Register");
+
+    }
 }
+

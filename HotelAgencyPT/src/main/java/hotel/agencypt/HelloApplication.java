@@ -11,14 +11,11 @@ import java.io.IOException;
 
 public class HelloApplication extends Application {
     public void start(Stage stage) throws IOException {
-<<<<<<< HEAD
-
-        Parent root = FXMLLoader.load(getClass().getResource("Cliente.fxml"));
-=======
         Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
->>>>>>> d0b5c53244b125d85b3de6ece4c66aa30dc5bd7d
         stage.initStyle(StageStyle.UNDECORATED);
-        stage.setScene(new Scene(root, 520, 400));
+
+        stage.setScene(new Scene(root, 520, 400));//Login
+        //stage.setScene(new Scene(root, 765, 480));//Register
         stage.show();
     }
 

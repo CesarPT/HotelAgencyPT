@@ -12,7 +12,7 @@
         <AnchorPane prefHeight="400.0" prefWidth="332.0" style="-fx-background-color: #ECECE7;"
                     BorderPane.alignment="CENTER">
             <children>
-                <ImageView fx:id="lockImageView" fitHeight="45.0" fitWidth="55.0" layoutX="117.0" layoutY="14.0"
+                <ImageView fx:id="lockImageView" fitHeight="45.0" fitWidth="47.0" layoutX="114.0" layoutY="14.0"
                            pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../../Imagens/LoginIcon.PNG"/>
@@ -34,14 +34,14 @@
                 </Label>
                 <Button fx:id="loginButton" contentDisplay="CENTER" layoutX="12.0" layoutY="242.0"
                         mnemonicParsing="false" onAction="#loginButtonOnAction" prefHeight="25.0" prefWidth="250.0"
-                        style="-fx-background-color: #0CEEF4;" text="Login">
+                        style="-fx-background-color: #BDA880;" text="Login">
                     <font>
                         <Font name="System Bold" size="12.0"/>
                     </font>
                 </Button>
                 <Button fx:id="cancelButton" contentDisplay="CENTER" layoutX="12.0" layoutY="280.0"
                         mnemonicParsing="false" onAction="#cancelButtonOnAction" prefHeight="25.0" prefWidth="250.0"
-                        style="-fx-background-color: #0CEEF4;" text="Cancel">
+                        style="-fx-background-color: #BDA880;" text="Cancel">
                     <font>
                         <Font name="System Bold" size="12.0"/>
                     </font>
@@ -54,6 +54,9 @@
                 </Label>
                 <PasswordField fx:id="enterPasswordField" layoutX="90.0" layoutY="140.0" prefHeight="25.0"
                                prefWidth="175.0" promptText="Password"/>
+                <Button fx:id="RegisterButton" layoutX="159.0" layoutY="361.0" mnemonicParsing="false"
+                        onAction="#SwitchToRegister" prefHeight="25.0" prefWidth="101.0"
+                        style="-fx-background-color: #BDA880;" text="Registrar"/>
             </children>
         </AnchorPane>
     </right>
