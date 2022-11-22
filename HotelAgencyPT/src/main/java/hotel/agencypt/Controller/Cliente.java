@@ -48,7 +48,9 @@ public class Cliente {
     String reservasel;
 
     public void initialize() {
-        //opcoes da choicebox
+        //Limpar e aparecer opcoes da choicebox
+        opcoesEntrada.getSelectionModel().clearSelection();
+        opcoesEntrada.getItems().clear();
         opcoesEntrada.getItems().addAll(opEntrada);
         opcoesEntrada.setOnAction(this::getopEntrada);
 
