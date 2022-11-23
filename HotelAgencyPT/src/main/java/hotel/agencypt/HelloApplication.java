@@ -31,8 +31,8 @@ public class HelloApplication extends Application {
     }
 
     public static void main(String[] args) throws Exception {
-        //metodo para ler o xml
-       // Lexml();
+        //metodo para ler e dar print na consola o xml
+        //Lexml();
         launch();
 
     }

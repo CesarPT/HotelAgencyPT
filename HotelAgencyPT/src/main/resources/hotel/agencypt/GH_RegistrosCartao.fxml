@@ -15,16 +15,6 @@
             <image>
                 <Image url="@../../Imagens/hotel.png"/>
             </image>
-            <effect>
-                <Lighting>
-                    <bumpInput>
-                        <Shadow/>
-                    </bumpInput>
-                    <light>
-                        <Light.Distant/>
-                    </light>
-                </Lighting>
-            </effect>
         </ImageView>
         <Button layoutX="-5.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false"
                 onAction="#voltarAtras" prefHeight="540.0" prefWidth="49.0"

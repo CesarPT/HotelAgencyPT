@@ -11,11 +11,14 @@ import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathFactory;
 import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class XMLpath {
 
     public static void Lexml()throws Exception  {
 
+        Path path = Paths.get("..\\HotelAgencyPT\\src\\main\\java\\hotel\\agencypt\\ProductHero.xml");
 
         //documento builder para o XML
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -23,7 +26,7 @@ public class XMLpath {
         DocumentBuilder builder = factory.newDocumentBuilder();
 
         //get Document
-        Document document = builder.parse(new File("D:\\Escola\\LP3\\TesteXML\\src\\main\\java\\org\\example\\ProductHero.xml"));
+        Document document = builder.parse(new File(path.toUri()));
 
 
         XPathFactory xpathfactory = XPathFactory.newInstance();
