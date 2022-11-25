@@ -20,7 +20,7 @@
                         <Image url="@../../Imagens/hotel.png" />
                     </image>
                 </ImageView>
-                <Pane layoutX="304.0" layoutY="260.0" prefHeight="53.0" prefWidth="273.0" style="-fx-background-color: lightblue;">
+                <Pane layoutX="304.0" layoutY="271.0" prefHeight="53.0" prefWidth="273.0" style="-fx-background-color: lightblue;">
                     <children>
                         <TextArea layoutX="145.0" layoutY="8.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="37.0" prefWidth="118.0" text="€">
                             <font>
@@ -45,14 +45,14 @@
                         <Font size="16.0" />
                     </font>
                 </Label>
-                <ComboBox layoutX="180.0" layoutY="74.0" prefHeight="25.0" prefWidth="170.0" promptText="Selecione um quarto" />
-                <Button layoutX="374.0" layoutY="27.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="208.0" text="OK" />
+                <ComboBox disable="true" layoutX="180.0" layoutY="74.0" prefHeight="25.0" prefWidth="170.0" promptText="Selecione um quarto" />
+                <Button disable="true" layoutX="374.0" layoutY="27.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="224.0" text="OK" />
                 <Label alignment="CENTER" layoutX="304.0" layoutY="172.0" prefHeight="37.0" prefWidth="132.0" style="-fx-background-color: lightblue;" text="Preço do Quarto:">
                     <font>
                         <Font size="16.0" />
                     </font>
                 </Label>
-                <TextArea editable="false" layoutX="454.0" layoutY="172.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="37.0" prefWidth="118.0" text="€">
+                <TextArea editable="false" layoutX="454.0" layoutY="172.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="37.0" prefWidth="125.0" text="€">
                     <font>
                         <Font size="16.0" />
                     </font>
@@ -67,7 +67,7 @@
                         <Font size="16.0" />
                     </font>
                 </TextArea>
-                <Button layoutX="579.0" layoutY="339.0" mnemonicParsing="false" prefHeight="113.0" prefWidth="44.0">
+                <Button disable="true" layoutX="579.0" layoutY="339.0" mnemonicParsing="false" prefHeight="113.0" prefWidth="44.0">
                     <font>
                         <Font size="16.0" />
                     </font>
@@ -79,17 +79,17 @@
                         </ImageView>
                     </graphic>
                 </Button>
-                <Label alignment="CENTER" layoutX="304.0" layoutY="219.0" prefHeight="37.0" prefWidth="132.0" style="-fx-background-color: lightblue;" text="Nº Quarto:">
+                <Label alignment="CENTER" layoutX="304.0" layoutY="219.0" prefHeight="37.0" prefWidth="57.0" style="-fx-background-color: lightblue;" text="Piso:">
                     <font>
                         <Font size="16.0" />
                     </font>
                 </Label>
-                <TextArea editable="false" layoutX="454.0" layoutY="219.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="37.0" prefWidth="51.0">
+                <TextArea editable="false" layoutX="370.0" layoutY="219.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="37.0" prefWidth="51.0">
                     <font>
                         <Font size="16.0" />
                     </font>
                 </TextArea>
-                <Button layoutX="582.0" layoutY="268.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="28.0">
+                <Button disable="true" layoutX="582.0" layoutY="271.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="44.0">
                     <graphic>
                         <ImageView fitHeight="28.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -103,12 +103,22 @@
                         <Font size="16.0" />
                     </font>
                 </Label>
-                <Label layoutX="440.0" layoutY="75.0" text="Quarto ocupado" textFill="RED">
+                <Label layoutX="440.0" layoutY="75.0" text="Não escolheu um piso" textFill="RED">
                     <font>
                         <Font size="16.0" />
                     </font>
                 </Label>
-            <Button layoutX="170.0" layoutY="297.0" mnemonicParsing="false" text="Ver descrição" />
+            <Button disable="true" layoutX="170.0" layoutY="297.0" mnemonicParsing="false" text="Ver descrição" />
+            <Label alignment="CENTER" layoutX="436.0" layoutY="219.0" prefHeight="37.0" prefWidth="87.0" style="-fx-background-color: lightblue;" text="Nº Quarto:">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <TextArea editable="false" layoutX="528.0" layoutY="219.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="37.0" prefWidth="51.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextArea>
             </children>
         </Pane>
         <Label layoutX="526.0" layoutY="14.0" text="Configurar Quarto">
