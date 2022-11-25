@@ -36,6 +36,10 @@ public class GH_RegistrosCartao implements Initializable {
     @FXML
     private TableColumn<RegEntrada, Integer> NumColumn;
     @FXML
+    private TableColumn<RegEntrada, Integer> NumClienteColumn;
+    @FXML
+    private TableColumn<RegEntrada, Integer> NumReservaColumn;
+    @FXML
     private TableColumn<RegEntrada, String> LocalColumn;
     @FXML
     private TableColumn<RegEntrada, String> DataColumn;
@@ -53,16 +57,16 @@ public class GH_RegistrosCartao implements Initializable {
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        String sql = "SELECT RegEntrada.numcartao, RegEntrada.data, RegEntrada.local\n" +
-                "FROM RegEntrada\n" +
-                "INNER JOIN Cartao\n" +
-                "ON Cartao.numcartao = RegEntrada.numcartao\n" +
-                "INNER JOIN Reserva\n" +
-                "ON Reserva.numcartao = Cartao.numcartao\n" +
-                "INNER JOIN Cliente\n" +
-                "ON Cliente.idcliente = Reserva.idcliente\n" +
-                "INNER JOIN Utilizador\n" +
-                "ON Utilizador.iduser = Cliente.iduser";
+        String sql = "SELECT RegEntrada.numcartao, Reserva.idcliente, Reserva.idreserva, RegEntrada.data, RegEntrada.local\n" +
+                "                FROM RegEntrada\n" +
+                "                INNER JOIN Cartao\n" +
+                "                ON Cartao.numcartao = RegEntrada.numcartao\n" +
+                "                INNER JOIN Reserva\n" +
+                "                ON Reserva.numcartao = Cartao.numcartao\n" +
+                "                INNER JOIN Cliente\n" +
+                "                ON Cliente.idcliente = Reserva.idcliente\n" +
+                "                INNER JOIN Utilizador\n" +
+                "                ON Utilizador.iduser = Cliente.iduser";
 
         PreparedStatement stmt = null;
         ResultSet rs = null;
@@ -75,12 +79,16 @@ public class GH_RegistrosCartao implements Initializable {
 
             while (rs.next()) {
                 Integer numcartao = rs.getInt("numcartao");
+                Integer idcliente = rs.getInt("idcliente");
+                Integer idreserva = rs.getInt("idreserva");
                 String local = rs.getString("local");
                 String data = rs.getString("data");
-                obsRegEntrada.add(new RegEntrada(numcartao, local, data));
+                obsRegEntrada.add(new RegEntrada(numcartao, idcliente, idreserva, local, data));
             }
             //Colocar os valores nas colunas da TableView
             NumColumn.setCellValueFactory(new PropertyValueFactory<>("numcartao"));
+            NumClienteColumn.setCellValueFactory(new PropertyValueFactory<>("idcliente"));
+            NumReservaColumn.setCellValueFactory(new PropertyValueFactory<>("idreserva"));
             LocalColumn.setCellValueFactory(new PropertyValueFactory<>("data"));
             DataColumn.setCellValueFactory(new PropertyValueFactory<>("local"));
             TableViewRegistros.setItems(obsRegEntrada);

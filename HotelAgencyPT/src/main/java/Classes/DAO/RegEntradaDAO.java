@@ -28,7 +28,7 @@ public class RegEntradaDAO {
      * Método para pesquisar o cartão com o username
      */
     public List<RegEntrada> findRegEntradaQuarto() {
-        String sql = "SELECT RegEntrada.numcartao, RegEntrada.data, RegEntrada.local\n" +
+        String sql = "SELECT RegEntrada.numcartao, Reserva.idcliente, Reserva.idreserva, RegEntrada.data, RegEntrada.local\n" +
                 "FROM RegEntrada\n" +
                 "INNER JOIN Cartao\n" +
                 "ON Cartao.numcartao = RegEntrada.numcartao\n" +
@@ -53,6 +53,8 @@ public class RegEntradaDAO {
             while (rs.next()) {
                 RegEntrada regentrada = new RegEntrada();
                 regentrada.setNumcartao(rs.getInt("numcartao"));
+                regentrada.setIdcliente(rs.getInt("idcliente"));
+                regentrada.setIdreserva(rs.getInt("idreserva"));
                 regentrada.setData(rs.getString("data"));
                 regentrada.setLocal(rs.getString("local"));
                 listRegEntrada.add(regentrada);

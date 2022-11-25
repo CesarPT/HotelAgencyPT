@@ -14,7 +14,7 @@ import javafx.scene.control.ListView;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class C_Reserva implements Initializable {
+public class C_Reserva {
     @FXML
     public ComboBox cboxquarto;
     @FXML
@@ -28,8 +28,7 @@ public class C_Reserva implements Initializable {
     String servicoselce;
     Integer index = -1;
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    public void initialize() {
         cboxquarto.setItems(listTquarto);
 
         listServtodos.getItems().addAll(servico);
