@@ -20,18 +20,23 @@
                         <Image url="@../../Imagens/hotel.png" />
                     </image>
                 </ImageView>
-                <Pane layoutX="304.0" layoutY="271.0" prefHeight="53.0" prefWidth="273.0" style="-fx-background-color: lightblue;">
+                <Pane layoutX="304.0" layoutY="271.0" prefHeight="53.0" prefWidth="273.0" style="-fx-background-color: lightblue; -fx-background-radius: 10;">
                     <children>
-                        <TextArea layoutX="145.0" layoutY="8.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="37.0" prefWidth="118.0" text="€">
-                            <font>
-                                <Font size="16.0" />
-                            </font>
-                        </TextArea>
                         <Label alignment="CENTER" layoutX="11.0" layoutY="8.0" prefHeight="37.0" prefWidth="132.0" style="-fx-background-color: yellow;" text="Alterar preço:">
                             <font>
                                 <Font size="16.0" />
                             </font>
                         </Label>
+                  <Label layoutX="252.0" layoutY="13.0" prefHeight="27.0" prefWidth="14.0" text="€">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <TextArea fx:id="textAlterarPreco" editable="false" layoutX="149.0" layoutY="8.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="37.0" prefWidth="95.0" text="-">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </TextArea>
                     </children>
                 </Pane>
                 <Label layoutX="21.0" layoutY="14.0" text="Selecione um piso:" textFill="WHITE">
@@ -39,20 +44,19 @@
                         <Font size="16.0" />
                     </font>
                 </Label>
-                <ComboBox layoutX="180.0" layoutY="14.0" prefHeight="25.0" prefWidth="170.0" promptText="Selecione um piso" />
+                <ComboBox fx:id="comboBoxPisoID" layoutX="180.0" layoutY="14.0" prefHeight="25.0" prefWidth="170.0" promptText="Selecione um piso" />
                 <Label layoutX="21.0" layoutY="74.0" text="Selecione um quarto:" textFill="WHITE">
                     <font>
                         <Font size="16.0" />
                     </font>
                 </Label>
-                <ComboBox disable="true" layoutX="180.0" layoutY="74.0" prefHeight="25.0" prefWidth="170.0" promptText="Selecione um quarto" />
-                <Button disable="true" layoutX="374.0" layoutY="27.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="224.0" text="OK" />
-                <Label alignment="CENTER" layoutX="304.0" layoutY="172.0" prefHeight="37.0" prefWidth="132.0" style="-fx-background-color: lightblue;" text="Preço do Quarto:">
+                <ComboBox fx:id="comboBoxQuartoID" disable="true" layoutX="180.0" layoutY="74.0" prefHeight="25.0" prefWidth="170.0" promptText="Selecione um quarto" />
+                <Label alignment="CENTER" layoutX="303.0" layoutY="222.0" prefHeight="37.0" prefWidth="132.0" style="-fx-background-color: lightblue; -fx-background-radius: 10;" text="Preço do Quarto:">
                     <font>
                         <Font size="16.0" />
                     </font>
                 </Label>
-                <TextArea editable="false" layoutX="454.0" layoutY="172.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="37.0" prefWidth="125.0" text="€">
+                <TextArea fx:id="textPreco" editable="false" layoutX="453.0" layoutY="222.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="37.0" prefWidth="95.0" text="-">
                     <font>
                         <Font size="16.0" />
                     </font>
@@ -67,7 +71,7 @@
                         <Font size="16.0" />
                     </font>
                 </TextArea>
-                <Button disable="true" layoutX="579.0" layoutY="339.0" mnemonicParsing="false" prefHeight="113.0" prefWidth="44.0">
+                <Button fx:id="verificarDescricao" disable="true" layoutX="579.0" layoutY="339.0" mnemonicParsing="false" prefHeight="113.0" prefWidth="44.0">
                     <font>
                         <Font size="16.0" />
                     </font>
@@ -79,17 +83,7 @@
                         </ImageView>
                     </graphic>
                 </Button>
-                <Label alignment="CENTER" layoutX="304.0" layoutY="219.0" prefHeight="37.0" prefWidth="57.0" style="-fx-background-color: lightblue;" text="Piso:">
-                    <font>
-                        <Font size="16.0" />
-                    </font>
-                </Label>
-                <TextArea editable="false" layoutX="370.0" layoutY="219.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="37.0" prefWidth="51.0">
-                    <font>
-                        <Font size="16.0" />
-                    </font>
-                </TextArea>
-                <Button disable="true" layoutX="582.0" layoutY="271.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="44.0">
+                <Button fx:id="verificarPrecoID" disable="true" layoutX="582.0" layoutY="271.0" mnemonicParsing="false" onAction="#verificarAlterarPreco" prefHeight="53.0" prefWidth="44.0">
                     <graphic>
                         <ImageView fitHeight="28.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -98,27 +92,30 @@
                         </ImageView>
                     </graphic>
                 </Button>
-                <Label layoutX="374.0" layoutY="75.0" text="Estado:">
+                <Label layoutX="404.0" layoutY="75.0" text="Estado:">
                     <font>
                         <Font size="16.0" />
                     </font>
                 </Label>
-                <Label layoutX="440.0" layoutY="75.0" text="Não escolheu um piso" textFill="RED">
-                    <font>
-                        <Font size="16.0" />
-                    </font>
-                </Label>
-            <Button disable="true" layoutX="170.0" layoutY="297.0" mnemonicParsing="false" text="Ver descrição" />
-            <Label alignment="CENTER" layoutX="436.0" layoutY="219.0" prefHeight="37.0" prefWidth="87.0" style="-fx-background-color: lightblue;" text="Nº Quarto:">
+            <Button fx:id="verDescricaoID" disable="true" layoutX="170.0" layoutY="297.0" mnemonicParsing="false" text="Ver descrição">
                <font>
-                  <Font size="16.0" />
+                  <Font size="13.0" />
+               </font></Button>
+            <Button layoutX="354.0" layoutY="13.0" mnemonicParsing="false" onAction="#verificarPiso" prefHeight="25.0" prefWidth="44.0">
+               <graphic>
+                  <ImageView fitHeight="19.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Imagens/certo.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="verificarQuartoID" disable="true" layoutX="470.0" layoutY="74.0" mnemonicParsing="false" onAction="#atualizar" prefHeight="25.0" prefWidth="84.0" text="Atualizar" />
+            <Label layoutX="554.0" layoutY="228.0" prefHeight="27.0" prefWidth="14.0" text="€">
+               <font>
+                  <Font size="18.0" />
                </font>
             </Label>
-            <TextArea editable="false" layoutX="528.0" layoutY="219.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="37.0" prefWidth="51.0">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </TextArea>
             </children>
         </Pane>
         <Label layoutX="526.0" layoutY="14.0" text="Configurar Quarto">
