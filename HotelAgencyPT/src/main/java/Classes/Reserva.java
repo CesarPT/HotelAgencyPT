@@ -1,6 +1,7 @@
 package Classes;
 
 import java.util.Date;
+import java.time.LocalDate;
 
 /**
  * Classe pública com todas os métodos usadas na aplicação
@@ -11,8 +12,8 @@ public class Reserva {
     private int idquarto;
     private int idservico;
     private int numcartao;
-    private Date data;
-
+    private Date datai;
+    private Date dataf;
     /**
      * Construtor completo
      *
@@ -21,15 +22,17 @@ public class Reserva {
      * @param idquarto
      * @param idservico
      * @param numcartao
-     * @param data
+     * @param datai
+     * @param dataf
      */
-    public Reserva(int idreserva, int idcliente, int idquarto, int idservico, int numcartao, Date data) {
+    public Reserva(int idreserva, int idcliente, int idquarto, int idservico, int numcartao, Date datai, Date dataf) {
         this.idreserva = idreserva;
         this.idcliente = idcliente;
         this.idquarto = idquarto;
         this.idservico = idservico;
         this.numcartao = numcartao;
-        this.data = data;
+        this.datai = datai;
+        this.dataf = dataf;
     }
 
     /**
@@ -60,9 +63,14 @@ public class Reserva {
         return numcartao;
     }
 
-    public Date getData() {
-        return data;
+    public Date getDataI() {
+        return datai;
     }
+
+    public Date getDataF() {
+        return dataf;
+    }
+
 
     public void setIdreserva(int idreserva) {
         this.idreserva = idreserva;
@@ -84,7 +92,12 @@ public class Reserva {
         this.numcartao = numcartao;
     }
 
-    public void setData(Date data) {
-        this.data = data;
+    public void setDataI(Date datai) {
+        this.datai = datai;
     }
+
+    public void setDataF(Date dataf) {
+        this.dataf = dataf;
+    }
+
 }

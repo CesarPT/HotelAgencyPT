@@ -3,6 +3,7 @@ package Classes;
 public class Servico {
     int idServico;
     String descricao;
+    float preco;
 
     /**
      * Contrutor completo
@@ -10,9 +11,16 @@ public class Servico {
      * @param idServico
      * @param descricao
      */
-    public Servico(int idServico, String descricao) {
+    public Servico(int idServico, String descricao,float preco) {
         this.idServico = idServico;
         this.descricao = descricao;
+        this.preco=preco;
+    }
+
+    /**
+     * Contrutor vasio
+     */
+    public Servico() {
     }
 
     /**
@@ -49,5 +57,24 @@ public class Servico {
      */
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+
+
+    /**
+     * Devolve:
+     *
+     * @return id do Serviço
+     */
+    public float getPreco() {
+        return preco;
+    }
+
+    /**
+     * Muda o valor:
+     *
+     * @param preco set
+     */
+    public void setPreco(float preco) {
+        this.preco = preco;
     }
 }

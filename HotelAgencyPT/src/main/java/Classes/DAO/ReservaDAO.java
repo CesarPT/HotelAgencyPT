@@ -4,10 +4,7 @@ import Classes.Reserva;
 import DataBase.ConnectionDB;
 import hotel.agencypt.Controller.Controller;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +12,7 @@ import java.util.List;
  * Classe pública que recebe dados da Base de Dados
  */
 public class ReservaDAO {
-    private Connection con;
+    private static Connection con;
 
     /**
      * Ligar à base de dados
@@ -27,7 +24,7 @@ public class ReservaDAO {
     /**
      * Método para pesquisar reservas pelo username
      */
-    public List<Reserva> findReserva() {
+    public static List<Reserva> findReserva() {
         String sql = "SELECT Reserva.idreserva\n" +
                 "FROM Reserva\n" +
                 "INNER JOIN Cliente\n" +
@@ -60,4 +57,27 @@ public class ReservaDAO {
         return listreserva;
     }
 
+
+    public static boolean criaReserva(Reserva reserva) {
+        String sql = "INSERT INTO Reserva (idcliente,idquarto,idservico,numcartao,datai,dataf) Values(?,?,?,?,?,?)";
+        PreparedStatement stmt = null;
+
+        try {
+            con = ConnectionDB.establishConnection();
+            stmt = con.prepareStatement(sql);
+            stmt.setInt(1, reserva.getIdcliente());
+            stmt.setInt(2, reserva.getIdquarto());
+            stmt.setInt(3, reserva.getIdservico());
+            stmt.setInt(4, reserva.getNumcartao());
+            stmt.setDate(5, (Date) reserva.getDataI());
+            stmt.setDate(6, (Date) reserva.getDataF());
+            stmt.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            System.err.println("[ERRO]: insertReserva " + e.getMessage());
+            return false;
+        } finally {
+            ConnectionDB.closeConnection(con, stmt);
+        }
+    }
 }
