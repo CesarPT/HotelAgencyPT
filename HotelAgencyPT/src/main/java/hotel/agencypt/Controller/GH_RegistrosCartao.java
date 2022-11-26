@@ -44,6 +44,8 @@ public class GH_RegistrosCartao implements Initializable {
     @FXML
     private TableColumn<RegEntrada, String> DataColumn;
     @FXML
+    private TableColumn<RegEntrada, String> HoraColumn;
+    @FXML
     private TextField textNum;
     ObservableList<RegEntrada> obsRegEntrada = FXCollections.observableArrayList();
 
@@ -57,7 +59,7 @@ public class GH_RegistrosCartao implements Initializable {
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        String sql = "SELECT RegEntrada.numcartao, Reserva.idcliente, Reserva.idreserva, RegEntrada.data, RegEntrada.local\n" +
+        String sql = "SELECT RegEntrada.numcartao, Reserva.idcliente, Reserva.idreserva, RegEntrada.local, RegEntrada.data, RegEntrada.hora\n" +
                 "                FROM RegEntrada\n" +
                 "                INNER JOIN Cartao\n" +
                 "                ON Cartao.numcartao = RegEntrada.numcartao\n" +
@@ -83,14 +85,16 @@ public class GH_RegistrosCartao implements Initializable {
                 Integer idreserva = rs.getInt("idreserva");
                 String local = rs.getString("local");
                 String data = rs.getString("data");
-                obsRegEntrada.add(new RegEntrada(numcartao, idcliente, idreserva, local, data));
+                String hora = rs.getString("hora");
+                obsRegEntrada.add(new RegEntrada(numcartao, idcliente, idreserva, local, data, hora));
             }
             //Colocar os valores nas colunas da TableView
             NumColumn.setCellValueFactory(new PropertyValueFactory<>("numcartao"));
             NumClienteColumn.setCellValueFactory(new PropertyValueFactory<>("idcliente"));
             NumReservaColumn.setCellValueFactory(new PropertyValueFactory<>("idreserva"));
-            LocalColumn.setCellValueFactory(new PropertyValueFactory<>("data"));
-            DataColumn.setCellValueFactory(new PropertyValueFactory<>("local"));
+            LocalColumn.setCellValueFactory(new PropertyValueFactory<>("local"));
+            DataColumn.setCellValueFactory(new PropertyValueFactory<>("data"));
+            HoraColumn.setCellValueFactory(new PropertyValueFactory<>("hora"));
             TableViewRegistros.setItems(obsRegEntrada);
 
             //Barra de pesquisa

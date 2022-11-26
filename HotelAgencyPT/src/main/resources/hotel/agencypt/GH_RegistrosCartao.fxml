@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="541.0" prefWidth="934.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hotel.agencypt.Controller.GH_RegistrosCartao">
+<AnchorPane prefHeight="541.0" prefWidth="936.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hotel.agencypt.Controller.GH_RegistrosCartao">
     <children>
         <ImageView fitHeight="393.0" fitWidth="564.0" layoutX="44.0" layoutY="114.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
             <image>
@@ -40,25 +40,26 @@
                 <Cursor fx:constant="HAND" />
             </cursor>
         </Button>
-        <Label layoutX="145.0" layoutY="15.0" text="Pesquise:">
+        <Label layoutX="184.0" layoutY="15.0" text="Pesquise:">
             <font>
                 <Font size="18.0" />
             </font>
         </Label>
-        <ImageView fitHeight="38.0" fitWidth="43.0" layoutX="69.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="38.0" fitWidth="43.0" layoutX="221.0" layoutY="66.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../../Imagens/searchCard.png" />
             </image>
         </ImageView>
-        <TableView fx:id="TableViewRegistros" layoutX="272.0" layoutY="54.0" prefHeight="482.0" prefWidth="647.0">
+        <TableView fx:id="TableViewRegistros" layoutX="272.0" layoutY="54.0" prefHeight="482.0" prefWidth="662.0">
             <columns>
                 <TableColumn fx:id="NumColumn" prefWidth="102.0" text="Nº Cartão" />
             <TableColumn fx:id="NumClienteColumn" prefWidth="99.0" text="Nº Cliente" />
             <TableColumn fx:id="NumReservaColumn" prefWidth="99.0" text="Nº Reserva" />
                 <TableColumn fx:id="LocalColumn" prefWidth="167.0" text="Local" />
-                <TableColumn fx:id="DataColumn" prefWidth="175.0" text="Data/Hora" />
+                <TableColumn fx:id="DataColumn" prefWidth="109.0" text="Data" />
+            <TableColumn fx:id="HoraColumn" prefWidth="78.0" text="Hora" />
             </columns>
         </TableView>
-        <TextField fx:id="textNum" layoutX="241.0" layoutY="5.0" prefHeight="38.0" prefWidth="231.0" />
+        <TextField fx:id="textNum" layoutX="272.0" layoutY="9.0" prefHeight="38.0" prefWidth="231.0" />
     </children>
 </AnchorPane>
