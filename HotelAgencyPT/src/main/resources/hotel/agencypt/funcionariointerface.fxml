@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="401.0" prefWidth="578.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hotel.agencypt.Controller.GestorHotel">
+<AnchorPane prefHeight="401.0" prefWidth="578.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hotel.agencypt.Controller.GestorHotel">
     <children>
         <Pane layoutX="50.0" layoutY="41.0" prefHeight="358.0" prefWidth="525.0" style="-fx-background-color: #BBB6B6;">
             <children>
@@ -32,7 +32,7 @@
                         <Font size="15.0" />
                     </font>
                 </Button>
-                <Button fx:id="button" layoutX="181.0" layoutY="60.0" mnemonicParsing="false" onAction="#abrirRegistrosCartao" text="Registar cliente">
+                <Button fx:id="button" layoutX="181.0" layoutY="61.0" mnemonicParsing="false" onAction="#abrirRegistrosCartao" text="Registar cliente">
                     <font>
                         <Font size="15.0" />
                     </font>
@@ -57,7 +57,10 @@
                         <Font size="15.0" />
                     </font>
                 </Button>
-            <Button layoutX="97.0" layoutY="109.0" mnemonicParsing="false" onAction="#abrirCriaReserva" text="Cria reserv" />
+            <Button layoutX="63.0" layoutY="61.0" mnemonicParsing="false" onAction="#abrirCriaReserva" text="Cria reserva">
+               <font>
+                  <Font size="14.0" />
+               </font></Button>
             </children>
         </Pane>
         <Label layoutX="266.0" layoutY="14.0" text="Funcionário">
