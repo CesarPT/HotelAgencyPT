@@ -22,11 +22,14 @@ import java.util.ArrayList;
 import java.sql.Date;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Stream;
 
 public class F_Reserva implements Initializable {
 
     Connection con = ConnectionDB.establishConnection();
 
+    @FXML
+    private TextField textPrecoServicos;
     @FXML
     public DatePicker datePickerI=new DatePicker();
     @FXML
@@ -50,6 +53,8 @@ public class F_Reserva implements Initializable {
     String servicoselct;
     String servicoselce;
     String escolhaTquarto;
+    String preco;
+
     Integer index = -1;
 
     List<Servico> arrayServico = new ArrayList<>();
@@ -76,6 +81,13 @@ public class F_Reserva implements Initializable {
                 servicoselct = listServtodos.getSelectionModel().getSelectedItem();
             }
         });
+
+        listServesco.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                servicoselce = listServesco.getSelectionModel().getSelectedItem();
+            }
+        });
         //drop box dos tipos de quartos
         cboxTquarto.setItems(listTquarto);
     }
@@ -92,9 +104,27 @@ public class F_Reserva implements Initializable {
             alert.setContentText("Selecione primeiro um serviço da lista.");
             alert.showAndWait();
         } else {
+            //Atualizar preço dos serviços
             listServesco.getItems().add(servicoselct);
+            /**
+             * Recebe os valores da listview
+             * Resultado original:  [Restaurante: 15.0] por exemplo
+             * Retira-se [ ] espaços
+             * Altera qualquer caracter de A a Z por espaço
+             * Resultado final: 15.0,valor_seguinte,...
+             */
+            preco = listServesco.getItems().toString()
+                    .replace("[", "")
+                    .replace("]", "")
+                    .replace(" ", "")
+                    .replaceAll("[a-zA-Z]", "");
+            //Soma o que está antes da virgula e depois da virgula
+            textPrecoServicos.setText(Stream.of(preco.split(","))
+                    .mapToDouble(Double::parseDouble).sum() + " €");
+
             listServtodos.getItems().remove(servicoselct);
         }
+
     }
 
     /**
@@ -102,15 +132,37 @@ public class F_Reserva implements Initializable {
      */
     public void onRemover() {
         index = listServesco.getSelectionModel().getSelectedIndex();
-        if (index == -1){
+        if (index == -1) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Aviso");
             alert.setHeaderText("Sem seleção");
             alert.setContentText("Selecione primeiro um serviço da lista.");
             alert.showAndWait();
         } else {
+            //Atualizar preço dos serviços
             listServtodos.getItems().add(listServesco.getSelectionModel().getSelectedItem());
             listServesco.getItems().remove(listServesco.getSelectionModel().getSelectedItem());
+            /**
+             * Recebe os valores da listview
+             * Resultado original:  [Restaurante: 15.0] por exemplo
+             * Retira-se [ ] espaços
+             * Altera qualquer caracter de A a Z por espaço
+             * Resultado final: 15.0,valor_seguinte,...
+             */
+            //Resolver erro do empty String quando não tem nada na listview:
+                if (listServesco.getItems().isEmpty()){
+                    textPrecoServicos.setText("0 €");
+                } else {
+                    preco = listServesco.getItems().toString()
+                            .replace("[", "")
+                            .replace("]", "")
+                            .replace(" ", "")
+                            .replaceAll("[a-zA-Z]", "");
+                    System.out.println(preco);
+                    //Soma o que está antes da virgula e depois da virgula
+                    textPrecoServicos.setText(Stream.of(preco.split(","))
+                            .mapToDouble(Double::parseDouble).sum() + " €");
+                }
         }
     }
 

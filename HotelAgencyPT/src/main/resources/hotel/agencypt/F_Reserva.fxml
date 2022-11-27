@@ -90,12 +90,12 @@
                 <Font size="14.0" />
             </font>
         </TextField>
-        <Label layoutX="451.0" layoutY="272.0" text="Preço dos servios:">
+        <Label layoutX="445.0" layoutY="272.0" text="Preço dos serviços:">
             <font>
                 <Font size="16.0" />
             </font>
         </Label>
-        <TextField editable="false" layoutX="591.0" layoutY="269.0" prefHeight="30.0" prefWidth="91.0" text="0 €">
+        <TextField fx:id="textPrecoServicos" editable="false" layoutX="591.0" layoutY="269.0" prefHeight="30.0" prefWidth="91.0" text="0 €">
             <font>
                 <Font size="14.0" />
             </font>
