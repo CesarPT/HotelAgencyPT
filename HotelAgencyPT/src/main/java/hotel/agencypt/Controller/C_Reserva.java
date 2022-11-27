@@ -161,6 +161,19 @@ public class C_Reserva implements Initializable {
 
     @FXML
  public void onCriaReserva(){
+        if (datePickerI.getValue() == null || datePickerF.getValue() == null){
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Aviso");
+            alert.setHeaderText("Sem seleção");
+            alert.setContentText("Selecione uma data de inicio e fim.");
+            alert.showAndWait();
+        } else if (datePickerF.getValue().compareTo(datePickerI.getValue())<0) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Aviso");
+            alert.setHeaderText("Datas inválidas");
+            alert.setContentText("A data de fim deve ser maior que a data de inicio.");
+            alert.showAndWait();
+        } else {
      ReservaDAO reservaDAO=new ReservaDAO();
      Reserva reserva=new Reserva();
 
@@ -173,7 +186,7 @@ public class C_Reserva implements Initializable {
      reserva.setDataF(dataf);
 
      reservaDAO.criaReserva(reserva);
-
+        }
  }
 
     /**
