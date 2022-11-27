@@ -23,7 +23,7 @@ import java.sql.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class C_Reserva implements Initializable {
+public class F_Reserva implements Initializable {
 
     Connection con = ConnectionDB.establishConnection();
 

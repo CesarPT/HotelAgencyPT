@@ -251,18 +251,5 @@ public class Cliente {
 
     }
 
-    /**
-     * Método que abre um Scene para criar uma reserva
-     */
-    public void abrirCLienteReserva() {
-        try {
-            Stage window = (Stage) creatReserva.getScene().getWindow();
-            window.close();
-            Singleton.open("C_Reserva", "Hotel >> Cliente >> Criar uma reserva");
-
-        } catch (Exception e) {
-            System.out.println("Erro ao fechar/abrir o scene.");
-        }
-    }
 
 }
