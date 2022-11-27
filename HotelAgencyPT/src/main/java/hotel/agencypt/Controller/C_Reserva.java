@@ -13,8 +13,15 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+<<<<<<< .merge_file_ZuR1Mt
 import javafx.scene.control.*;
 
+=======
+import javafx.scene.control.Alert;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+>>>>>>> .merge_file_SYmckF
 import java.net.URL;
 import java.sql.Connection;
 import java.time.LocalDate;
@@ -25,6 +32,7 @@ import java.sql.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 
+<<<<<<< .merge_file_ZuR1Mt
 public class C_Reserva implements Initializable {
     Connection con = ConnectionDB.establishConnection();
 
@@ -38,6 +46,9 @@ public class C_Reserva implements Initializable {
     public Label dataFLabel=new Label();
     @FXML
     public Label labelAviso;
+=======
+public class C_Reserva {
+>>>>>>> .merge_file_SYmckF
     @FXML
     public ComboBox cboxTquarto;
     @FXML
@@ -50,7 +61,9 @@ public class C_Reserva implements Initializable {
     //var para selecionar na Listview dos servicos
     String servicoselct;
     String servicoselce;
+    Integer index = -1;
 
+<<<<<<< .merge_file_ZuR1Mt
     List<Servico> arrayServico = new ArrayList<>();
 
 
@@ -59,6 +72,10 @@ public class C_Reserva implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+=======
+    public void initialize() {
+        cboxquarto.setItems(listTquarto);
+>>>>>>> .merge_file_SYmckF
 
         arrayServico = servicoDAO.findServico();
         for (Servico s : arrayServico) {
@@ -77,14 +94,38 @@ public class C_Reserva implements Initializable {
         cboxTquarto.setItems(listTquarto);
     }
 
+    /**
+     * Adicionar item da lista selecionada para a outra lista
+     */
     public void onAdicionar () {
+        index = listServtodos.getSelectionModel().getSelectedIndex();
+        if (index == -1){
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Aviso");
+            alert.setHeaderText("Sem seleção");
+            alert.setContentText("Selecione primeiro um serviço da lista.");
+            alert.showAndWait();
+        } else {
             listServesco.getItems().add(servicoselct);
             listServtodos.getItems().remove(servicoselct);
+        }
     }
 
+    /**
+     * Remover item da lista selecionada
+     */
     public void onRemover() {
-        listServtodos.getItems().add(servicoselce);
-        listServesco.getItems().remove(servicoselce);
+        index = listServesco.getSelectionModel().getSelectedIndex();
+        if (index == -1){
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Aviso");
+            alert.setHeaderText("Sem seleção");
+            alert.setContentText("Selecione primeiro um serviço da lista.");
+            alert.showAndWait();
+        } else {
+            listServtodos.getItems().add(listServesco.getSelectionModel().getSelectedItem());
+            listServesco.getItems().remove(listServesco.getSelectionModel().getSelectedItem());
+        }
     }
 
 

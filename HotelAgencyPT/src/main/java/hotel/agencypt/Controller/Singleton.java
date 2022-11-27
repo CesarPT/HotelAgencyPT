@@ -1,6 +1,6 @@
 package hotel.agencypt.Controller;
 
-import hotel.agencypt.HelloApplication;
+import hotel.agencypt.OpenApplication;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -65,7 +65,7 @@ public class Singleton {
      */
     private static Parent getLoader(String path) throws Exception {
         try {
-            return new FXMLLoader(HelloApplication.class.getResource(path + ".fxml")).load();
+            return new FXMLLoader(OpenApplication.class.getResource(path + ".fxml")).load();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

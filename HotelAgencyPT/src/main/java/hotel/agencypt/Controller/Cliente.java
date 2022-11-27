@@ -14,9 +14,14 @@ import javafx.scene.control.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class Cliente {
@@ -72,6 +77,7 @@ public class Cliente {
 
         //Limpar tudo e Adicionar reservas com o username
         listReserva.getItems().clear();
+        arrayReserva.clear();
         arrayReserva = rDAO.findReserva();
         for (Reserva r : arrayReserva) {
             listReserva.getItems().add(
@@ -88,10 +94,11 @@ public class Cliente {
 
         //Limpar tudo e Adicionar registros de entrada
         listRegEntrada.getItems().clear();
+        arrayRegEntrada.clear();
         arrayRegEntrada = reDAO.findRegEntradaQuarto();
         for (RegEntrada r : arrayRegEntrada) {
             listRegEntrada.getItems().add(
-                    "Entrada: " + r.getLocal() + " | " + r.getData()
+                   "Reserva " + r.getIdreserva() + " | " + r.getLocal() + " | " + r.getData() + " | " + r.getHora()
             );
         }
         listRegEntrada.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
@@ -100,7 +107,6 @@ public class Cliente {
                 reservasel = listRegEntrada.getSelectionModel().getSelectedItem();
             }
         });
-
 
     }
 
@@ -112,13 +118,14 @@ public class Cliente {
         RegEntrada regentrada = new RegEntrada();
 
         //Receber a data e hora atual do Computador
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+        LocalDateTime data = LocalDateTime.now();
 
-        //Adiciona numcartao, local e data
+        //Adiciona numcartao, local, data e hora
+        regentrada.setNumcartao(Integer.parseInt(numcartao.getText()));
         regentrada.setLocal("Quarto");
-        regentrada.setData(dtf.format(now));
-         regentrada.setNumcartao(Integer.parseInt(numcartao.getText()));
+        regentrada.setData(dtf.format(data));
+        regentrada.setHora(new SimpleDateFormat("HH:mm:ss").format(Calendar.getInstance().getTime()));
         daoRegEntrada.insertRegEntrada(regentrada);
 
         //Atualizar listviews
@@ -135,12 +142,13 @@ public class Cliente {
 
             //Receber a data e hora atual do Computador
             DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-            LocalDateTime now = LocalDateTime.now();
+            LocalDateTime data = LocalDateTime.now();
 
-            //Adiciona numcartao, local e data
-            regentrada.setLocal("Restaurante");
-            regentrada.setData(dtf.format(now));
+            //Adiciona numcartao, local, data e hora
             regentrada.setNumcartao(Integer.parseInt(numcartao.getText()));
+            regentrada.setLocal("Restaurante");
+            regentrada.setData(dtf.format(data));
+            regentrada.setHora(new SimpleDateFormat("HH:mm:ss").format(Calendar.getInstance().getTime()));
             daoRegEntrada.insertRegEntrada(regentrada);
 
             //Atualizar listviews
@@ -153,12 +161,13 @@ public class Cliente {
 
             //Receber a data e hora atual do Computador
             DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-            LocalDateTime now = LocalDateTime.now();
+            LocalDateTime data = LocalDateTime.now();
 
-            //Adiciona numcartao, local e data
-            regentrada.setLocal("Piscina Privada");
-            regentrada.setData(dtf.format(now));
+            //Adiciona numcartao, local, data e hora
             regentrada.setNumcartao(Integer.parseInt(numcartao.getText()));
+            regentrada.setLocal("Piscina privada");
+            regentrada.setData(dtf.format(data));
+            regentrada.setHora(new SimpleDateFormat("HH:mm:ss").format(Calendar.getInstance().getTime()));
             daoRegEntrada.insertRegEntrada(regentrada);
 
             //Atualizar listviews
@@ -171,12 +180,13 @@ public class Cliente {
 
             //Receber a data e hora atual do Computador
             DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-            LocalDateTime now = LocalDateTime.now();
+            LocalDateTime data = LocalDateTime.now();
 
-            //Adiciona numcartao, local e data
-            regentrada.setLocal("Spá");
-            regentrada.setData(dtf.format(now));
+            //Adiciona numcartao, local, data e hora
             regentrada.setNumcartao(Integer.parseInt(numcartao.getText()));
+            regentrada.setLocal("Spá");
+            regentrada.setData(dtf.format(data));
+            regentrada.setHora(new SimpleDateFormat("HH:mm:ss").format(Calendar.getInstance().getTime()));
             daoRegEntrada.insertRegEntrada(regentrada);
 
             //Atualizar listviews
@@ -189,12 +199,13 @@ public class Cliente {
 
             //Receber a data e hora atual do Computador
             DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-            LocalDateTime now = LocalDateTime.now();
+            LocalDateTime data = LocalDateTime.now();
 
-            //Adiciona numcartao, local e data
-            regentrada.setLocal("Sala de Conferência");
-            regentrada.setData(dtf.format(now));
+            //Adiciona numcartao, local, data e hora
             regentrada.setNumcartao(Integer.parseInt(numcartao.getText()));
+            regentrada.setLocal("Sala de Conferência");
+            regentrada.setData(dtf.format(data));
+            regentrada.setHora(new SimpleDateFormat("HH:mm:ss").format(Calendar.getInstance().getTime()));
             daoRegEntrada.insertRegEntrada(regentrada);
 
             //Atualizar listviews
@@ -207,12 +218,13 @@ public class Cliente {
 
             //Receber a data e hora atual do Computador
             DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-            LocalDateTime now = LocalDateTime.now();
+            LocalDateTime data = LocalDateTime.now();
 
-            //Adiciona numcartao, local e data
-            regentrada.setLocal("Evento Cultural");
-            regentrada.setData(dtf.format(now));
+            //Adiciona numcartao, local, data e hora
             regentrada.setNumcartao(Integer.parseInt(numcartao.getText()));
+            regentrada.setLocal("Evento Cultural");
+            regentrada.setData(dtf.format(data));
+            regentrada.setHora(new SimpleDateFormat("HH:mm:ss").format(Calendar.getInstance().getTime()));
             daoRegEntrada.insertRegEntrada(regentrada);
 
             //Atualizar listviews

@@ -46,6 +46,7 @@ Create Table RegEntrada(
 	idregisto int PRIMARY KEY IDENTITY,
 	local varchar(50),
 	data date,
+	hora text,
 	numcartao int FOREIGN KEY REFERENCES Cartao(numcartao)
 );
 GO
