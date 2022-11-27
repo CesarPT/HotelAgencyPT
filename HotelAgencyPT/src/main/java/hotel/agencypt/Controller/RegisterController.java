@@ -21,8 +21,6 @@ import java.util.ResourceBundle;
 public class RegisterController implements Initializable {
 
     @FXML
-    private ImageView verifyImageView;
-    @FXML
     private Button closeButton;
     @FXML
     private Button LoginButton;
@@ -183,10 +181,10 @@ public class RegisterController implements Initializable {
 
             if (rs.next()) {
                 registrationMessageLabel.setText("O utilizador foi registrado com sucesso!");
-                registrationMessageLabel.setTextFill(Color.BLACK);
+                //registrationMessageLabel.setTextFill(Color.GREEN);
             } else {
                 registrationMessageLabel.setText("O utilizador não foi registrado!");
-                registrationMessageLabel.setTextFill(Color.RED);
+                //registrationMessageLabel.setTextFill(Color.RED);
             }
 
         } catch (Exception e) {
