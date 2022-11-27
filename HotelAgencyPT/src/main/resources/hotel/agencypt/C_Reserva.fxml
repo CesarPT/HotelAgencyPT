@@ -3,11 +3,8 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
-<<<<<<< .merge_file_nPArOR
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-=======
->>>>>>> .merge_file_gVw8r0
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -57,7 +54,6 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-<<<<<<< .merge_file_nPArOR
       <Label fx:id="labelAviso" layoutX="228.0" layoutY="365.0">
          <font>
             <Font size="14.0" />
@@ -68,7 +64,5 @@
       <ComboBox fx:id="cboxquarto1" layoutX="87.0" layoutY="260.0" prefWidth="150.0" promptText="escolher o quarto" visibleRowCount="3" />
       <DatePicker fx:id="datePickerI" layoutX="76.0" layoutY="119.0" onAction="#getDateI" />
       <DatePicker fx:id="datePickerF" layoutX="76.0" layoutY="172.0" onAction="#getDateF" />
-=======
->>>>>>> .merge_file_gVw8r0
     </children>
 </AnchorPane>

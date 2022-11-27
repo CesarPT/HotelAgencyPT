@@ -1,28 +1,21 @@
 package Classes.DAO;
 
-<<<<<<< .merge_file_tuXLRN
+//Bibliotecas
 import DataBase.ConnectionDB;
-
 import java.sql.Connection;
-
-public class QuartoDAO {
-    private static Connection con;
-=======
 import Classes.Quarto;
-import Classes.RegEntrada;
-import DataBase.ConnectionDB;
 import hotel.agencypt.Controller.Controller;
-
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ *  Classe pública com todos os métodos/atributos necessários.
+ */
 public class QuartoDAO {
     private Connection con;
->>>>>>> .merge_file_UDLBOn
 
     /**
      * Ligar à base de dados
@@ -31,14 +24,8 @@ public class QuartoDAO {
         con = ConnectionDB.establishConnection();
     }
 
-<<<<<<< .merge_file_tuXLRN
-
-
-}
-=======
     /**
      * Método para pesquisar a descrição de quartos do piso escolhido
-     *
      * @return lista
      */
     public List<Quarto> findQuarto() {
@@ -106,7 +93,6 @@ public class QuartoDAO {
 
     /**
      *
-     * @param preco
      * @return true or false
      */
     public boolean updatePreco(Quarto quarto){
@@ -129,5 +115,3 @@ public class QuartoDAO {
     }
 
 }
-
->>>>>>> .merge_file_UDLBOn

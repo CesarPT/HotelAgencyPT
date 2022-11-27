@@ -1,6 +1,6 @@
 package hotel.agencypt.Controller;
 
-
+//Bibliotecas
 import Classes.DAO.ReservaDAO;
 import Classes.DAO.ServicoDAO;
 import Classes.Reserva;
@@ -13,27 +13,18 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-<<<<<<< .merge_file_ZuR1Mt
 import javafx.scene.control.*;
-
-=======
-import javafx.scene.control.Alert;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
->>>>>>> .merge_file_SYmckF
 import java.net.URL;
 import java.sql.Connection;
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.sql.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 
-<<<<<<< .merge_file_ZuR1Mt
 public class C_Reserva implements Initializable {
+
     Connection con = ConnectionDB.establishConnection();
 
     @FXML
@@ -46,9 +37,6 @@ public class C_Reserva implements Initializable {
     public Label dataFLabel=new Label();
     @FXML
     public Label labelAviso;
-=======
-public class C_Reserva {
->>>>>>> .merge_file_SYmckF
     @FXML
     public ComboBox cboxTquarto;
     @FXML
@@ -61,9 +49,9 @@ public class C_Reserva {
     //var para selecionar na Listview dos servicos
     String servicoselct;
     String servicoselce;
+    String escolhaTquarto;
     Integer index = -1;
 
-<<<<<<< .merge_file_ZuR1Mt
     List<Servico> arrayServico = new ArrayList<>();
 
 
@@ -72,10 +60,8 @@ public class C_Reserva {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-=======
-    public void initialize() {
-        cboxquarto.setItems(listTquarto);
->>>>>>> .merge_file_SYmckF
+
+        cboxTquarto.setItems(listTquarto);
 
         arrayServico = servicoDAO.findServico();
         for (Servico s : arrayServico) {
@@ -161,7 +147,6 @@ public class C_Reserva {
     }
 
 
-    String escolhaTquarto;
     @FXML
     public void onEsTquarto(){
         escolhaTquarto= (String) cboxTquarto.getValue();
@@ -179,8 +164,6 @@ public class C_Reserva {
      ReservaDAO reservaDAO=new ReservaDAO();
      Reserva reserva=new Reserva();
 
-
-
      //testestar dps colocar os valores inseridos
      reserva.setIdcliente(1);
      reserva.setIdquarto(1);
@@ -189,12 +172,9 @@ public class C_Reserva {
      reserva.setDataI(datai);
      reserva.setDataF(dataf);
 
-
      reservaDAO.criaReserva(reserva);
 
-
  }
-
 
     /**
      * Método para voltar atrás
