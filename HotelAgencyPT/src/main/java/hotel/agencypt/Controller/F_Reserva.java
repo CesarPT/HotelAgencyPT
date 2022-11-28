@@ -251,7 +251,7 @@ public class F_Reserva implements Initializable {
     @FXML
     public void voltarAtras(ActionEvent actionEvent) {
         try {
-            Singleton.open("Cliente", "Hotel >> Cliente");
+            Singleton.open("funcionariointerface", "Hotel >> Funcionario");
         } catch (Exception e) {
             System.out.println("Erro ao voltar atrás.");
         }
