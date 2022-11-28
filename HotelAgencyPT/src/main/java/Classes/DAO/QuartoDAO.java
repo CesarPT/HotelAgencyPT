@@ -33,7 +33,7 @@ public class QuartoDAO {
      * @return lista
      */
     public List<Quarto> findQuarto() {
-        String sql = "SELECT descricao\n" +
+        String sql = "SELECT idquarto, descricao\n" +
                 "FROM Quarto\n" +
                 "WHERE piso='" + Controller.getInstance().getPiso() + "'";
 
@@ -49,6 +49,7 @@ public class QuartoDAO {
 
             while (rs.next()) {
                 Quarto quarto = new Quarto();
+                quarto.setIdQuarto(rs.getInt("idquarto"));
                 quarto.setDescricao(rs.getString("descricao"));
                 listQuarto.add(quarto);
             }
@@ -69,7 +70,7 @@ public class QuartoDAO {
     public List<Quarto> findPreco() {
         String sql = "SELECT preco\n" +
                 "FROM Quarto\n" +
-                "WHERE piso=" + Controller.getInstance().getPiso() + " AND descricao='" + Controller.getInstance().getDescricaoQuarto() + "'";
+                "WHERE idquarto=" + Controller.getInstance().getIdQuarto();
 
         PreparedStatement stmt = null;
         ResultSet rs = null;
@@ -100,8 +101,7 @@ public class QuartoDAO {
      */
     public boolean updatePreco(Quarto quarto) {
         String sql = "UPDATE Quarto SET preco = ?" +
-                " WHERE descricao='" + Controller.getInstance().getDescricaoQuarto() + "' AND" +
-                " piso=" + Controller.getInstance().getPiso();
+                " WHERE idquarto=" + Controller.getInstance().getIdQuarto();
         PreparedStatement stmt = null;
 
         try {
