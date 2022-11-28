@@ -1,10 +1,18 @@
 package Classes.DAO;
 
+<<<<<<< HEAD
 //Bibliotecas
 import DataBase.ConnectionDB;
 import java.sql.Connection;
 import Classes.Quarto;
 import hotel.agencypt.Controller.Controller;
+=======
+import Classes.Reserva;
+import DataBase.ConnectionDB;
+import hotel.agencypt.Controller.Controller;
+
+import java.sql.Connection;
+>>>>>>> feature/BDCriaReserva
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -33,6 +41,7 @@ public class QuartoDAO {
                 "FROM Quarto\n" +
                 "WHERE piso='" + Controller.getInstance().getPiso() + "'";
 
+<<<<<<< HEAD
         PreparedStatement stmt = null;
         ResultSet rs = null;
 
@@ -113,5 +122,33 @@ public class QuartoDAO {
             ConnectionDB.closeConnection(con,stmt);
         }
     }
+=======
+    public static List<Reserva> findQuartoIndividual() {
+        String sql = " SELECT LEFT(descricao, charindex(' ', descricao) - 1) from Quarto where ";
+>>>>>>> feature/BDCriaReserva
 
+
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        List<Reserva> listreserva = new ArrayList<>();
+
+        try {
+            con = ConnectionDB.establishConnection();
+            stmt = con.prepareStatement(sql);
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                Reserva reserva = new Reserva();
+                reserva.setIdreserva(rs.getInt("idQuarto"));
+                listreserva.add(reserva);
+            }
+
+        } catch (SQLException e) {
+            System.err.println("[ERRO]: findReserva " + e.getMessage());
+        } finally {
+            ConnectionDB.closeConnection(con, stmt, rs);
+        }
+        return listreserva;
+    }
 }
