@@ -15,6 +15,7 @@ public class RegEntrada {
 
     /**
      * Construtor completo
+     *
      * @param numcartao
      * @param idcliente
      * @param idreserva
@@ -50,6 +51,7 @@ public class RegEntrada {
     public int getIdreserva() {
         return idreserva;
     }
+
     public int getIdquarto() {
         return idquarto;
     }
@@ -77,6 +79,7 @@ public class RegEntrada {
     public void setIdreserva(int idreserva) {
         this.idreserva = idreserva;
     }
+
     public int setIdquarto() {
         return idquarto;
     }
