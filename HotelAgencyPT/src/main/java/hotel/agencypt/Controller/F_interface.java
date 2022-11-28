@@ -43,7 +43,7 @@ public class F_interface {
         }
     }
 
-    public void abrirGerirStock(ActionEvent event) throws Exception{
+    public void abrirGerirStock(ActionEvent event) throws Exception {
         try {
             Stage window = (Stage) Stock.getScene().getWindow();
             window.close();

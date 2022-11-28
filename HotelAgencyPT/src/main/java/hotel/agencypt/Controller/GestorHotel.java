@@ -82,6 +82,18 @@ public class GestorHotel {
         }
     }
 
+
+    @FXML
+    protected void abrirCriaReserva() {
+        try {
+            Stage window = (Stage) button.getScene().getWindow();
+            window.close();
+            Singleton.open("F_Reserva", "Hotel >> Gestor de Hotel >> Ver registros de um cartão");
+        } catch (Exception e) {
+            System.out.println("Erro ao fechar/abrir o stage.");
+        }
+    }
+
     @FXML
     public void voltarAtras(ActionEvent actionEvent) {
         try {

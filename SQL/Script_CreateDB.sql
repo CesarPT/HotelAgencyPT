@@ -2,21 +2,21 @@ use [2022_E_LP3_G2]
 go
 
 Create Table Utilizador(
-	iduser int PRIMARY KEY,
+	iduser int PRIMARY KEY IDENTITY,
 	nomeuser varchar(50),
-	password varchar(20),
+	password text,
 	tipouser char
 );
 GO
 
 Create Table Cliente(
-	idcliente int PRIMARY KEY,
+	idcliente int PRIMARY KEY IDENTITY,
 	iduser int FOREIGN KEY REFERENCES Utilizador(iduser)
 );
 GO
 
 Create Table Feedback(
-	idfeedback int PRIMARY KEY,
+	idfeedback int PRIMARY KEY IDENTITY,
 	idcliente int FOREIGN KEY REFERENCES Cliente(idcliente),
 	descricao varchar(500),
 	tipofeedback char --(s = sugestao, r = reclamacao)
@@ -24,34 +24,35 @@ Create Table Feedback(
 GO
 
 Create Table Gestor(
-	idgestor int PRIMARY KEY,
+	idgestor int PRIMARY KEY IDENTITY,
 	iduser int FOREIGN KEY REFERENCES Utilizador(iduser)
 );
 GO
 
 Create Table Cartao(
-	numcartao int PRIMARY KEY,
+	numcartao int PRIMARY KEY IDENTITY,
 	datacriacao date,
 	dataexp date
 );
 GO
 
 Create Table Funcionario(
-	idfuncionario int PRIMARY KEY,
+	idfuncionario int PRIMARY KEY IDENTITY,
 	iduser int FOREIGN KEY REFERENCES Utilizador(iduser)
 );
 GO
 
 Create Table RegEntrada(
-	idregisto int PRIMARY KEY,
+	idregisto int PRIMARY KEY IDENTITY,
 	local varchar(50),
 	data date,
+	hora text,
 	numcartao int FOREIGN KEY REFERENCES Cartao(numcartao)
 );
 GO
 
 Create Table Quarto(
-	idquarto int PRIMARY KEY,
+	idquarto int PRIMARY KEY IDENTITY,
 	descricao varchar(200),
 	piso tinyint,
 	preco smallmoney
@@ -59,14 +60,14 @@ Create Table Quarto(
 GO
 
 Create Table Servico(
-	idservico int PRIMARY KEY,
+	idservico int PRIMARY KEY IDENTITY,
 	descricao varchar (20),
 	preco smallmoney
 );
 GO
 
 Create Table Reserva(
-	idreserva int PRIMARY KEY,
+	idreserva int PRIMARY KEY IDENTITY,
 	idcliente int FOREIGN KEY REFERENCES Cliente(idcliente),
 	idquarto int FOREIGN KEY REFERENCES Quarto(idquarto),
 	idservico int FOREIGN KEY REFERENCES Servico(idservico),
@@ -85,28 +86,28 @@ Create Table CartaoServico(
 GO
 
 Create Table Item(
-	iditem int PRIMARY KEY,
+	iditem int PRIMARY KEY IDENTITY,
 	nomeitem varchar(50),
 	estado varchar(10)
 );
 GO
 
 Create Table Stock(
-	iditem int PRIMARY KEY,
+	iditem int PRIMARY KEY IDENTITY,
 	quantidade int,
 	FOREIGN KEY (iditem) REFERENCES Item(iditem)
 );
 GO
 
 Create Table Entrega(
-	identrega int PRIMARY KEY,
+	identrega int PRIMARY KEY IDENTITY,
 	iditem int FOREIGN KEY REFERENCES Item(iditem),
 	quantidade int
 );
 GO
 
 Create Table Fornecedor(
-	idfornecedor int PRIMARY KEY,
+	idfornecedor int PRIMARY KEY IDENTITY,
 	nomefornecedor varchar(50),
 	email varchar(50),
 	telemovel numeric(9),
@@ -115,7 +116,7 @@ Create Table Fornecedor(
 GO
 
 Create Table FicheiroXML(
-	idficheiro int PRIMARY KEY,
+	idficheiro int PRIMARY KEY IDENTITY,
 	descricao varchar(50)
 );
 GO

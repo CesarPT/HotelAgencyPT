@@ -1,95 +1,107 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.*?>
 <?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Line?>
-<?import javafx.scene.text.Font?>
-
-<AnchorPane prefHeight="485.0" prefWidth="711.0" style="-fx-background-color: #ECECE7;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hotel.agencypt.Controller.RegisterController">
+<?import javafx.scene.text.*?>
+<AnchorPane prefHeight="485.0" prefWidth="711.0" style="-fx-background-color: #ECECE7;"
+            xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="hotel.agencypt.Controller.RegisterController">
     <children>
         <AnchorPane layoutY="1.0" prefHeight="425.0" prefWidth="257.0">
             <children>
                 <ImageView fitHeight="496.0" fitWidth="299.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../../Imagens/Register.png" />
+                        <Image url="@../../Imagens/Register.png"/>
                     </image>
                 </ImageView>
-            <Line endY="-62.0" layoutX="299.0" layoutY="155.0" startY="328.0" strokeWidth="2.0" />
+                <Line endY="-62.0" layoutX="299.0" layoutY="155.0" startY="328.0" strokeWidth="2.0"/>
             </children>
         </AnchorPane>
-        <AnchorPane layoutX="294.0" layoutY="-1.0" prefHeight="95.0" prefWidth="422.0" style="-fx-background-color: #BDA880;">
+        <AnchorPane layoutX="294.0" layoutY="-1.0" prefHeight="95.0" prefWidth="422.0"
+                    style="-fx-background-color: #BDA880;">
             <children>
-                <ImageView fx:id="verifyImageView" fitHeight="42.0" fitWidth="69.0" layoutX="39.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fx:id="verifyImageView" fitHeight="42.0" fitWidth="69.0" layoutX="39.0" layoutY="20.0"
+                           pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../../Imagens/ResgistorIcon.png" />
+                        <Image url="@../../Imagens/ResgistorIcon.png"/>
                     </image>
                 </ImageView>
                 <Label layoutX="126.0" layoutY="28.0" text="Registro de utilizador">
                     <font>
-                        <Font size="18.0" />
+                        <Font size="18.0"/>
                     </font>
                 </Label>
-                <Button fx:id="LoginButton" layoutX="320.0" layoutY="26.0" mnemonicParsing="false" onAction="#switchToLogin" prefHeight="27.0" prefWidth="88.0" style="-fx-background-radius: 20;" text="Login">
+                <Button fx:id="LoginButton" layoutX="320.0" layoutY="26.0" mnemonicParsing="false"
+                        onAction="#switchToLogin" prefHeight="27.0" prefWidth="88.0" style="-fx-background-radius: 20;"
+                        text="Login">
                     <font>
-                        <Font size="15.0" />
+                        <Font size="15.0"/>
                     </font>
                     <cursor>
-                        <Cursor fx:constant="HAND" />
+                        <Cursor fx:constant="HAND"/>
                     </cursor>
                 </Button>
-                <Label fx:id="registrationMessageLabel" alignment="CENTER" layoutX="43.0" layoutY="69.0" prefHeight="25.0" prefWidth="336.0">
+                <Label fx:id="registrationMessageLabel" alignment="CENTER" layoutX="43.0" layoutY="69.0"
+                       prefHeight="25.0" prefWidth="336.0">
                     <font>
-                        <Font size="13.0" />
+                        <Font size="13.0"/>
                     </font>
                 </Label>
             </children>
         </AnchorPane>
         <Label layoutX="358.0" layoutY="110.0" text="Nome de utilizador:">
             <font>
-                <Font size="14.0" />
+                <Font size="14.0"/>
             </font>
         </Label>
-        <TextField fx:id="usernameTextField" layoutX="358.0" layoutY="135.0" prefHeight="25.0" prefWidth="336.0" promptText="Nome de utilizador" />
+        <TextField fx:id="usernameTextField" layoutX="358.0" layoutY="135.0" prefHeight="25.0" prefWidth="336.0"
+                   promptText="Nome de utilizador"/>
         <Label layoutX="358.0" layoutY="185.0" text="Palavra-passe:">
             <font>
-                <Font size="14.0" />
+                <Font size="14.0"/>
             </font>
         </Label>
-        <PasswordField fx:id="setPasswordField" layoutX="358.0" layoutY="210.0" prefHeight="25.0" prefWidth="336.0" promptText="Palavra-passe" />
+        <PasswordField fx:id="setPasswordField" layoutX="358.0" layoutY="210.0" prefHeight="25.0" prefWidth="336.0"
+                       promptText="Palavra-passe"/>
         <Label layoutX="358.0" layoutY="262.0" text="Confirmação da palavra-passe:">
             <font>
-                <Font size="14.0" />
+                <Font size="14.0"/>
             </font>
         </Label>
-        <PasswordField fx:id="confirmPasswordField" layoutX="358.0" layoutY="289.0" prefHeight="25.0" prefWidth="336.0" promptText="Confirmação da palavra-passe" />
-        <Label fx:id="confirmPasswordLabel" alignment="CENTER" layoutX="555.0" layoutY="263.0" prefHeight="19.0" prefWidth="161.0" textFill="RED">
+        <PasswordField fx:id="confirmPasswordField" layoutX="358.0" layoutY="289.0" prefHeight="25.0" prefWidth="336.0"
+                       promptText="Confirmação da palavra-passe"/>
+        <Label fx:id="confirmPasswordLabel" alignment="CENTER" layoutX="555.0" layoutY="263.0" prefHeight="19.0"
+               prefWidth="161.0" textFill="RED">
             <font>
-                <Font size="13.0" />
+                <Font size="13.0"/>
             </font>
         </Label>
-        <Button fx:id="registerButton" layoutX="358.0" layoutY="392.0" mnemonicParsing="false" onAction="#registerButtonOnAction" prefHeight="25.0" prefWidth="336.0" style="-fx-background-color: #BDA880; -fx-border-color: black;" text="Registar">
+        <Button fx:id="registerButton" layoutX="358.0" layoutY="392.0" mnemonicParsing="false"
+                onAction="#registerButtonOnAction" prefHeight="25.0" prefWidth="336.0"
+                style="-fx-background-color: #BDA880; -fx-border-color: black;" text="Registar">
             <font>
-                <Font size="13.0" />
+                <Font size="13.0"/>
             </font>
         </Button>
-        <Button fx:id="closeButton" layoutX="358.0" layoutY="432.0" mnemonicParsing="false" onAction="#cancelButtonOnAction" prefHeight="27.0" prefWidth="336.0" style="-fx-background-color: #BDA880; -fx-border-color: black;" text="Fechar">
+        <Button fx:id="closeButton" layoutX="358.0" layoutY="432.0" mnemonicParsing="false"
+                onAction="#cancelButtonOnAction" prefHeight="27.0" prefWidth="336.0"
+                style="-fx-background-color: #BDA880; -fx-border-color: black;" text="Fechar">
             <font>
-                <Font size="13.0" />
+                <Font size="13.0"/>
             </font>
         </Button>
-        <ComboBox fx:id="permissionComboBox" layoutX="358.0" layoutY="341.0" prefHeight="25.0" prefWidth="336.0" visibleRowCount="3" />
-        <Label fx:id="VerifyUserLabel" alignment="CENTER" layoutX="489.0" layoutY="111.0" prefHeight="19.0" prefWidth="200.0" textFill="RED">
+        <ComboBox fx:id="permissionComboBox" layoutX="358.0" layoutY="341.0" prefHeight="25.0" prefWidth="336.0"
+                  visibleRowCount="3"/>
+        <Label fx:id="VerifyUserLabel" alignment="CENTER" layoutX="489.0" layoutY="111.0" prefHeight="19.0"
+               prefWidth="200.0" textFill="RED">
             <font>
-                <Font size="13.0" />
+                <Font size="13.0"/>
             </font>
         </Label>
-      <Line endX="321.0" layoutX="394.0" layoutY="94.0" startX="-94.0" strokeWidth="2.0" />
+        <Line endX="321.0" layoutX="394.0" layoutY="94.0" startX="-94.0" strokeWidth="2.0"/>
     </children>
 </AnchorPane>

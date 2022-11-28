@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.*?>
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
-      prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1"
+      prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="hotel.agencypt.Controller.Cliente">
     <children>
         <Button fx:id="creatReserva" layoutX="87.0" layoutY="96.0" mnemonicParsing="false"
@@ -78,7 +78,7 @@
                 <Font size="14.0"/>
             </font>
         </Button>
-        <Button layoutX="461.0" layoutY="133.0" mnemonicParsing="false" text="Entrar em outros">
+        <Button layoutX="462.0" layoutY="133.0" mnemonicParsing="false" text="Entrar em outros">
             <font>
                 <Font size="14.0"/>
             </font>
@@ -89,5 +89,11 @@
                 <Font size="14.0"/>
             </font>
         </Label>
+        <Label layoutX="503.0" layoutY="111.0" text="Entrar:">
+            <font>
+                <Font size="14.0"/>
+            </font>
+        </Label>
+        <ChoiceBox fx:id="opcoesEntrada" layoutX="463.0" layoutY="133.0" prefHeight="30.0" prefWidth="120.0"/>
     </children>
 </Pane>

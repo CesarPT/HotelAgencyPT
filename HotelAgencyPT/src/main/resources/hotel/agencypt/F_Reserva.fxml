@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
+<AnchorPane prefHeight="348.0" prefWidth="772.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="hotel.agencypt.Controller.F_Reserva">
+    <children>
+        <Text layoutX="72.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cliente">
+            <font>
+                <Font size="18.0"/>
+            </font>
+        </Text>
+
+        <ComboBox fx:id="cboxTquarto" layoutX="87.0" layoutY="227.0" onAction="#onEsTquarto" prefWidth="150.0"
+                  promptText="escolher tipo quarto" visibleRowCount="3"/>
+        <ListView fx:id="listServesco" layoutX="361.0" layoutY="85.0" prefHeight="219.0" prefWidth="142.0"/>
+        <ListView fx:id="listServtodos" layoutX="570.0" layoutY="75.0" prefHeight="219.0" prefWidth="161.0"/>
+        <Text layoutX="596.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Todos os serviços">
+            <font>
+                <Font size="14.0"/>
+            </font>
+        </Text>
+        <Text layoutX="372.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Serviços escolhidos">
+            <font>
+                <Font size="14.0"/>
+            </font>
+        </Text>
+        <Button layoutX="515.0" layoutY="144.0" mnemonicParsing="false" onAction="#onRemover" prefHeight="25.0"
+                prefWidth="39.0" text="--&gt;">
+            <font>
+                <Font size="14.0"/>
+            </font>
+        </Button>
+        <Button layoutX="515.0" layoutY="191.0" mnemonicParsing="false" onAction="#onAdicionar" text="&lt;--">
+            <font>
+                <Font size="14.0"/>
+            </font>
+        </Button>
+        <Button layoutX="681.0" layoutY="320.0" mnemonicParsing="false" onAction="#onCriaReserva" text="Criar">
+            <font>
+                <Font size="14.0"/>
+            </font>
+        </Button>
+        <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#voltarAtras"
+                prefHeight="385.0" prefWidth="49.0" style="-fx-background-color: #ccffff; -fx-border-color: gray;">
+            <graphic>
+                <ImageView fitHeight="38.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../Imagens/voltar.png"/>
+                    </image>
+                </ImageView>
+            </graphic>
+            <cursor>
+                <Cursor fx:constant="HAND"/>
+            </cursor>
+        </Button>
+        <Label fx:id="labelAviso" layoutX="228.0" layoutY="365.0">
+            <font>
+                <Font size="14.0"/>
+            </font>
+        </Label>
+        <Label fx:id="dataIFLabel" layoutX="96.0" layoutY="102.0" text="Data inicio(aaaa/mm/dd)"/>
+        <Label fx:id="dataILabel1" layoutX="103.0" layoutY="151.0" text="Data fim(aaaa/mm/dd)"/>
+        <ComboBox fx:id="cboxquarto1" layoutX="87.0" layoutY="260.0" prefWidth="150.0" promptText="escolher o quarto"
+                  visibleRowCount="3"/>
+        <DatePicker fx:id="datePickerI" layoutX="76.0" layoutY="119.0" onAction="#getDateI"/>
+        <DatePicker fx:id="datePickerF" layoutX="76.0" layoutY="172.0" onAction="#getDateF"/>
+    </children>
+</AnchorPane>
