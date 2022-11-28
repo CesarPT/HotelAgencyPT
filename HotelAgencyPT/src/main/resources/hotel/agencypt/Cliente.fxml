@@ -7,13 +7,12 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.*?>
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
-      prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
+      prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="hotel.agencypt.Controller.Cliente">
     <children>
-        <Button fx:id="creatReserva" layoutX="87.0" layoutY="96.0" mnemonicParsing="false"
-                onAction="#abrirCLienteReserva" text="Criar reserva(abre popup)"/>
         <ListView fx:id="listReserva" layoutX="87.0" layoutY="133.0" prefHeight="257.0" prefWidth="238.0"/>
-        <Button layoutX="249.0" layoutY="96.0" mnemonicParsing="false" text="Ver reserva"/>
+        <Button layoutX="86.0" layoutY="96.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="238.0"
+                text="Ver reserva"/>
         <Button layoutX="355.0" layoutY="96.0" mnemonicParsing="false" text="Criar Reclamação"/>
         <Label fx:id="teste" layoutX="104.0" layoutY="62.0"/>
         <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#voltarAtras"
