@@ -33,6 +33,16 @@ public class F_interface {
         Singleton.open("Login", "Hotel >> Login");
     }
 
+    public void abrirCriarReserva(ActionEvent event) throws Exception {
+        try {
+            Stage window = (Stage) RoomServices.getScene().getWindow();
+            window.close();
+            Singleton.open("F_Reserva", "Hotel >> Funcionario >> Criar reserva");
+        } catch (Exception e) {
+            System.out.println("Erro ao fechar/abrir o stage.");
+        }
+    }
+
     public void abrirConfigQuarto(ActionEvent event) throws Exception {
         try {
             Stage window = (Stage) RoomServices.getScene().getWindow();
