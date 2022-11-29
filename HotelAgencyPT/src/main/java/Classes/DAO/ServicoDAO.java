@@ -59,7 +59,7 @@ public class ServicoDAO {
 
 
     public static List<Servico> findServicoEsc(String descricao) {
-        String sql = "SELECT idservico from Servico where descricao=" + descricao;
+        String sql = "SELECT idservico from Servico where descricao='" + descricao+"'";
 
         PreparedStatement stmt = null;
         ResultSet rs = null;

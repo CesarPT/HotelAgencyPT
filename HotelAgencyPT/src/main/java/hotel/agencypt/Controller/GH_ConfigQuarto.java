@@ -203,14 +203,18 @@ public class GH_ConfigQuarto implements Initializable {
     }
 
     public void verDescricao(ActionEvent Event) {
+        quartoEscolhido = comboBoxQuartoID.getSelectionModel().getSelectedItem()
+                .replaceAll("[a-zA-Z]", "")
+                .replace(":", "")
+                .replace(" ", "");
+
         Controller.getInstance().setIdquarto(Integer.parseInt(quartoEscolhido));
+
         arrayDescricaoQuarto = qDAO.findDescricaoQuarto();
         for (Quarto q : arrayDescricaoQuarto) {
             textAlterarDescricao.setText(q.getDescricaoQuarto());
         }
 
     }
-
-
 
 }

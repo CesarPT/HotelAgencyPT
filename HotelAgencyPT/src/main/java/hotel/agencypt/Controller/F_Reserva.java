@@ -1,7 +1,6 @@
 package hotel.agencypt.Controller;
 
 //Bibliotecas
-
 import Classes.DAO.QuartoDAO;
 import Classes.DAO.ReservaDAO;
 import Classes.DAO.ServicoDAO;
@@ -30,8 +29,6 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.stream.Stream;
 
-import static Classes.DAO.ReservaDAO.findReserva;
-import static Classes.DAO.ReservaServicoDAO.criaReservaServico;
 import static Classes.DAO.ServicoDAO.findServicoEsc;
 
 public class F_Reserva implements Initializable {
@@ -40,7 +37,6 @@ public class F_Reserva implements Initializable {
 
     @FXML
     private TextField textPrecoServicos;
-    private TextField outracoisa=null;
     @FXML
     private TextField textPrecoQuarto;
     @FXML
@@ -81,10 +77,8 @@ public class F_Reserva implements Initializable {
     List<Servico> arrayServico = new ArrayList<>();
 
 
-    ServicoDAO servicoDAO = new ServicoDAO();
-    QuartoDAO quartoDAO = new QuartoDAO();
-
-
+    ServicoDAO servicoDAO=new ServicoDAO();
+    QuartoDAO quartoDAO=new QuartoDAO();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -190,31 +184,35 @@ public class F_Reserva implements Initializable {
     }
 
     Date datai;
-    Date myDateI;
+
     @FXML
     public void getDateI(ActionEvent event) {
+        ZoneId defaultZoneId = ZoneId.systemDefault();
 
         try {
-            myDateI = Date.valueOf(datePickerI.getValue());
-            dataILabel.setText(myDateI.toString());
-
+            LocalDate myDate = datePickerI.getValue();
+            dataILabel.setText(myDate.toString());
+            datai = (Date) Date.from(myDate.atStartOfDay(defaultZoneId).toInstant());
         } catch (Exception e) {
             System.out.println(e);
         }
     }
 
     Date dataf;
-    Date myDateF;
+
     @FXML
     public void getDateF(ActionEvent event) {
+        ZoneId defaultZoneId = ZoneId.systemDefault();
 
         try {
-            myDateF = Date.valueOf(datePickerI.getValue());
-            dataILabel.setText(myDateF.toString());
+            LocalDate myDate = datePickerF.getValue();
+            dataFLabel.setText(myDate.toString());
 
+            dataf = (Date) Date.from(myDate.atStartOfDay(defaultZoneId).toInstant());
         } catch (Exception e) {
             System.out.println(e);
         }
+
     }
 
     List<Quarto> arrayPrimQuarto = new ArrayList<>();
@@ -224,28 +222,40 @@ public class F_Reserva implements Initializable {
     @FXML
     public void onEsTquarto() {
         escolhaTquarto = (String) cboxTquarto.getValue();
-        if (escolhaTquarto == "Individual") {
+
+        if (Objects.equals(escolhaTquarto, "Individual")) {
             arrayPrimQuarto = quartoDAO.findQuartoIndividual();
+            cboxQuarto.getSelectionModel().clearSelection();
+            cboxQuarto.getItems().clear();
+
             for (Quarto q : arrayPrimQuarto) {
-                System.out.println(q.getIdQuarto());
-                idQuartoesc = q.getIdQuarto();
+                cboxQuarto.getItems().add(
+                        "Numero: " + q.getIdQuarto()
+                );
             }
-        } else if (escolhaTquarto == "Duplo") {
-            quartoDAO.findQuartoDuplo();
+        } else if (Objects.equals(escolhaTquarto, "Duplo")) {
+            arrayPrimQuarto = quartoDAO.findQuartoDuplo();
+            cboxQuarto.getSelectionModel().clearSelection();
+            cboxQuarto.getItems().clear();
+
             for (Quarto q : arrayPrimQuarto) {
-                System.out.println(q.getIdQuarto());
-                idQuartoesc = q.getIdQuarto();
+                cboxQuarto.getItems().add(
+                        "Numero: " + q.getIdQuarto()
+                );
             }
-        } else if (escolhaTquarto == "Familiar") {
-            quartoDAO.findQuartoFamiliar();
+        } else if (Objects.equals(escolhaTquarto, "Familiar")) {
+            arrayPrimQuarto =  quartoDAO.findQuartoFamiliar();
+            cboxQuarto.getSelectionModel().clearSelection();
+            cboxQuarto.getItems().clear();
+
             for (Quarto q : arrayPrimQuarto) {
-                System.out.println(q.getIdQuarto());
-                idQuartoesc = q.getIdQuarto();
+                cboxQuarto.getItems().add(
+                        "Numero: " + q.getIdQuarto()
+                );
             }
         }
-    }
 
-    Reserva reserva = new Reserva();
+    }
 
     public void atualizarPrecos(ActionEvent event) {
         if (datePickerI.getValue() == null || datePickerF.getValue() == null) {
@@ -298,7 +308,7 @@ public class F_Reserva implements Initializable {
     }
 
     @FXML
-    public void onCriaReserva(ActionEvent event) {
+    public void onCriaReserva() {
         if (datePickerI.getValue() == null || datePickerF.getValue() == null) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Aviso");
@@ -317,72 +327,43 @@ public class F_Reserva implements Initializable {
             alert.setHeaderText("Sem seleção");
             alert.setContentText("Selecione um tipo de quarto e um quarto disponível.");
             alert.showAndWait();
-        } else if (!listServesco.getItems().toString().contains("Base")) {
+        } else if (!listServesco.getItems().toString().contains("Base")){
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Aviso");
             alert.setHeaderText("Sem o serviço Base");
             alert.setContentText("A reserva tem que ter o serviço: base que está incluida em todos os quartos.");
             alert.showAndWait();
         } else {
+            ReservaDAO reservaDAO = new ReservaDAO();
+            Reserva reserva = new Reserva();
 
             //testestar dps colocar os valores inseridos
             reserva.setIdcliente(1);
-            reserva.setIdquarto(idQuartoesc);
+            reserva.setIdquarto(1);
             reserva.setNumcartao(1);
             reserva.setDataI(datai);
             reserva.setDataF(dataf);
 
-            ReservaDAO.criaReserva(reserva);
-            RelacionaResServ();
+            reservaDAO.criaReserva(reserva);
+
+            RelacionaResServ(reserva.getIdreserva());
         }
         //reserva.setIdservico(1);
+
     }
-
-
-
 
     String escdescricao;
     List<Servico> idservico;
-
-    public void RelacionaResServ(int idreserva) {
+    public void RelacionaResServ(int idreserva){
 
         escdescricao = listServesco.getItems().toString()
                 .replace("[", "")
                 .replace("]", "")
-                .replace(" ", "")
+                .replace( " ", "")
                 .replace(".", "")
                 .replaceAll("[0-9]", "");
 
-        idservico = findServicoEsc(escdescricao);
-    }
-
-
-    int ultimaReserv;
-    List<Reserva> arrayUltimaReserva = new ArrayList<>();
-    String descservico;
-
-    public void RelacionaResServ(){
-        arrayUltimaReserva = ReservaDAO.findUltReserva();
-        for (Reserva r : arrayUltimaReserva) {
-            ultimaReserv = r.getIdreserva();
-        }
-        System.out.println(ultimaReserv);
-
-
-        //------------------------------------------------------
-
-        descservico = listServesco.getItems().toString()
-                .replace("[", "")
-                .replace("]", "")
-                .replace(" ", "")
-                .replaceAll("[0-9]", "");
-
-        System.out.println(descservico);
-        //Soma o que está antes da virgula e depois da virgula
-        //outracoisa.setText(String.valueOf(descservico.split(",")));
-
-       // criaReservaServico(ultimaReserv);
-
+        idservico=findServicoEsc(escdescricao);
     }
 
 
@@ -392,15 +373,11 @@ public class F_Reserva implements Initializable {
      * @param actionEvent
      */
     @FXML
-    public void voltarAtras (ActionEvent actionEvent){
+    public void voltarAtras(ActionEvent actionEvent) {
         try {
             Singleton.open("funcionariointerface", "Hotel >> Funcionario");
         } catch (Exception e) {
             System.out.println("Erro ao voltar atrás.");
         }
     }
-
-    public void onIdCliente(ActionEvent event) {
-    }
 }
-
