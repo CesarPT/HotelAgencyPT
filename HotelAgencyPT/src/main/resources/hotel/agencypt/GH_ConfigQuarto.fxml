@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="501.0" prefWidth="686.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hotel.agencypt.Controller.GH_ConfigQuarto">
+<AnchorPane prefHeight="501.0" prefWidth="686.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hotel.agencypt.Controller.GH_ConfigQuarto">
     <children>
         <Pane layoutX="42.0" layoutY="52.0" prefHeight="458.0" prefWidth="644.0" style="-fx-background-color: white;">
             <children>
@@ -66,12 +66,12 @@
                         <Font size="16.0" />
                     </font>
                 </Label>
-                <TextArea layoutX="21.0" layoutY="339.0" prefHeight="113.0" prefWidth="551.0" text="Escreva o texto aqui e clique no  ✅  para alterar.&#10;">
+                <TextArea fx:id="textAlterarDescricao" layoutX="21.0" layoutY="339.0" prefHeight="113.0" prefWidth="551.0" text="Escreva o texto aqui e clique no  ✅  para alterar.&#10;">
                     <font>
                         <Font size="16.0" />
                     </font>
                 </TextArea>
-                <Button fx:id="verificarDescricao" disable="true" layoutX="579.0" layoutY="339.0" mnemonicParsing="false" prefHeight="113.0" prefWidth="44.0">
+                <Button fx:id="verificarDescricao" disable="true" layoutX="579.0" layoutY="339.0" mnemonicParsing="false" onAction="#verificarAlterarDescricao" prefHeight="113.0" prefWidth="44.0">
                     <font>
                         <Font size="16.0" />
                     </font>
@@ -92,7 +92,7 @@
                         </ImageView>
                     </graphic>
                 </Button>
-                <Button fx:id="verDescricaoID" disable="true" layoutX="170.0" layoutY="297.0" mnemonicParsing="false" text="Ver descrição">
+                <Button fx:id="verDescricaoID" disable="true" layoutX="170.0" layoutY="297.0" mnemonicParsing="false" onAction="#verDescricao" text="Ver descrição">
                     <font>
                         <Font size="13.0" />
                     </font>

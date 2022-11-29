@@ -20,10 +20,12 @@ import javafx.scene.control.*;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.Date;
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.stream.Stream;
 
@@ -38,6 +40,12 @@ public class F_Reserva implements Initializable {
     private TextField textPrecoServicos;
     private TextField outracoisa=null;
     @FXML
+    private TextField textPrecoQuarto;
+    @FXML
+    private TextField textPrecoTotal;
+    @FXML
+    private TextField textNoites;
+    @FXML
     public DatePicker datePickerI = new DatePicker();
     @FXML
     public DatePicker datePickerF = new DatePicker();
@@ -50,6 +58,9 @@ public class F_Reserva implements Initializable {
     @FXML
     public ComboBox cboxTquarto;
     @FXML
+    public ComboBox cboxQuarto;
+
+    @FXML
     ObservableList<String> listTquarto = FXCollections.observableArrayList("Individual", "Duplo", "Familiar");
     @FXML
     private ListView<String> listServtodos;
@@ -61,15 +72,21 @@ public class F_Reserva implements Initializable {
     String servicoselce;
     String escolhaTquarto;
     String preco;
+    String idQuarto;
 
     Integer index = -1;
 
     List<Servico> arrayServico = new ArrayList<>();
 
 
+<<<<<<< HEAD
     ServicoDAO servicoDAO = new ServicoDAO();
     QuartoDAO quartoDAO = new QuartoDAO();
 
+=======
+    ServicoDAO servicoDAO=new ServicoDAO();
+    QuartoDAO quartoDAO=new QuartoDAO();
+>>>>>>> e113624d6fc9c634c46e31f1beb4fbac7927ffdc
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -127,8 +144,8 @@ public class F_Reserva implements Initializable {
                     .replace(" ", "")
                     .replaceAll("[a-zA-Z]", "");
             //Soma o que está antes da virgula e depois da virgula
-            textPrecoServicos.setText(Stream.of(preco.split(","))
-                    .mapToDouble(Double::parseDouble).sum() + " €");
+            textPrecoServicos.setText(String.valueOf(Stream.of(preco.split(","))
+                    .mapToDouble(Double::parseDouble).sum()));
 
             listServtodos.getItems().remove(servicoselct);
         }
@@ -159,7 +176,7 @@ public class F_Reserva implements Initializable {
              */
             //Resolver erro do empty String quando não tem nada na listview:
             if (listServesco.getItems().isEmpty()) {
-                textPrecoServicos.setText("0 €");
+                textPrecoServicos.setText("0");
             } else {
                 preco = listServesco.getItems().toString()
                         .replace("[", "")
@@ -168,12 +185,11 @@ public class F_Reserva implements Initializable {
                         .replaceAll("[a-zA-Z]", "");
                 System.out.println(preco);
                 //Soma o que está antes da virgula e depois da virgula
-                textPrecoServicos.setText(Stream.of(preco.split(","))
-                        .mapToDouble(Double::parseDouble).sum() + " €");
+                textPrecoServicos.setText(String.valueOf(Stream.of(preco.split(","))
+                        .mapToDouble(Double::parseDouble).sum()));
             }
         }
     }
-
 
     Date datai;
     Date myDateI;
@@ -206,12 +222,15 @@ public class F_Reserva implements Initializable {
         } catch (Exception e) {
             System.out.println(e);
         }
+
     }
 
     List<Quarto> arrayPrimQuarto = new ArrayList<>();
+    List<Quarto> arrayPrecoQuarto = new ArrayList<>();
     int idQuartoesc;
 
     @FXML
+<<<<<<< HEAD
 
     public void onEsTquarto() {
         escolhaTquarto = (String) cboxTquarto.getValue();
@@ -232,10 +251,94 @@ public class F_Reserva implements Initializable {
             for (Quarto q : arrayPrimQuarto) {
                 System.out.println(q.getIdQuarto());
                 idQuartoesc = q.getIdQuarto();
+=======
+    public void onEsTquarto() {
+        escolhaTquarto = (String) cboxTquarto.getValue();
+
+        if (Objects.equals(escolhaTquarto, "Individual")) {
+            arrayPrimQuarto = quartoDAO.findQuartoIndividual();
+            cboxQuarto.getSelectionModel().clearSelection();
+            cboxQuarto.getItems().clear();
+
+            for (Quarto q : arrayPrimQuarto) {
+                cboxQuarto.getItems().add(
+                       "Numero: " + q.getIdQuarto()
+                );
+            }
+        } else if (Objects.equals(escolhaTquarto, "Duplo")) {
+            arrayPrimQuarto = quartoDAO.findQuartoDuplo();
+            cboxQuarto.getSelectionModel().clearSelection();
+            cboxQuarto.getItems().clear();
+
+            for (Quarto q : arrayPrimQuarto) {
+                cboxQuarto.getItems().add(
+                        "Numero: " + q.getIdQuarto()
+                );
+            }
+        } else if (Objects.equals(escolhaTquarto, "Familiar")) {
+            arrayPrimQuarto =  quartoDAO.findQuartoFamiliar();
+            cboxQuarto.getSelectionModel().clearSelection();
+            cboxQuarto.getItems().clear();
+
+            for (Quarto q : arrayPrimQuarto) {
+                cboxQuarto.getItems().add(
+                        "Numero: " + q.getIdQuarto()
+                );
+>>>>>>> e113624d6fc9c634c46e31f1beb4fbac7927ffdc
             }
         }
     }
     Reserva reserva = new Reserva();
+
+    public void atualizarPrecos(ActionEvent event) {
+        if (datePickerI.getValue() == null || datePickerF.getValue() == null) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Aviso");
+            alert.setHeaderText("Sem seleção");
+            alert.setContentText("Selecione uma data de inicio e fim.");
+            alert.showAndWait();
+        } else if (datePickerF.getValue().compareTo(datePickerI.getValue()) < 0) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Aviso");
+            alert.setHeaderText("Datas inválidas");
+            alert.setContentText("A data de fim deve ser maior que a data de inicio.");
+            alert.showAndWait();
+        } else if (cboxTquarto.getSelectionModel().isEmpty() || cboxQuarto.getSelectionModel().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Aviso");
+            alert.setHeaderText("Sem seleção");
+            alert.setContentText("Selecione um tipo de quarto e um quarto disponível.");
+            alert.showAndWait();
+        } else if (!listServesco.getItems().toString().contains("Base")) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Aviso");
+            alert.setHeaderText("Sem o serviço Base");
+            alert.setContentText("A reserva tem que ter o serviço: base que está incluida em todos os quartos.");
+            alert.showAndWait();
+        } else {
+            idQuarto = (String) cboxQuarto.getSelectionModel().getSelectedItem().toString()
+                    .replaceAll("[a-zA-Z]", "")
+                    .replaceAll(":", "")
+                    .replaceAll(" ", "");
+
+            //Preço do quarto, noites e Preço total
+            Controller.getInstance().setIdquarto(Integer.parseInt(idQuarto));
+            arrayPrecoQuarto = quartoDAO.findPreco();
+            for (Quarto q : arrayPrecoQuarto) {
+                textPrecoQuarto.setText(String.valueOf(q.getPreco()));
+            }
+            Duration diff = Duration.between(datePickerF.getValue().atStartOfDay(), datePickerI.getValue().atStartOfDay());
+            long diffDays = diff.toDays();
+            textNoites.setText(String.valueOf(diffDays).replace("-", ""));
+
+            //SOMAR TUDO
+            int noites = Integer.parseInt(textNoites.getText());
+            float precoQuarto = Float.parseFloat(textPrecoQuarto.getText());
+            float precoServico = Float.parseFloat(textPrecoServicos.getText());
+            float precoTotal = precoQuarto * noites + precoServico;
+            textPrecoTotal.setText(String.valueOf(precoTotal));
+        }
+    }
 
     @FXML
     public void onCriaReserva(ActionEvent event) {
@@ -251,8 +354,21 @@ public class F_Reserva implements Initializable {
             alert.setHeaderText("Datas inválidas");
             alert.setContentText("A data de fim deve ser maior que a data de inicio.");
             alert.showAndWait();
+        } else if (cboxTquarto.getSelectionModel().isEmpty() || cboxQuarto.getSelectionModel().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Aviso");
+            alert.setHeaderText("Sem seleção");
+            alert.setContentText("Selecione um tipo de quarto e um quarto disponível.");
+            alert.showAndWait();
+        } else if (!listServesco.getItems().toString().contains("Base")){
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Aviso");
+            alert.setHeaderText("Sem o serviço Base");
+            alert.setContentText("A reserva tem que ter o serviço: base que está incluida em todos os quartos.");
+            alert.showAndWait();
         } else {
 
+<<<<<<< HEAD
 
             //testestar dps colocar os valores inseridos
             reserva.setIdcliente(1);
@@ -270,6 +386,37 @@ public class F_Reserva implements Initializable {
         }
         //reserva.setIdservico(1);
     }
+=======
+     //testestar dps colocar os valores inseridos
+     reserva.setIdcliente(1);
+     reserva.setIdquarto(idQuartoesc);
+     reserva.setNumcartao(1);
+     reserva.setDataI(datai);
+     reserva.setDataF(dataf);
+
+     reservaDAO.criaReserva(reserva);
+
+            RelacionaResServ(reserva.getIdreserva());
+        }
+        //reserva.setIdservico(1);
+
+    }
+
+    String escdescricao;
+    List<Servico> idservico;
+    public void RelacionaResServ(int idreserva){
+
+        escdescricao = listServesco.getItems().toString()
+                .replace("[", "")
+                .replace("]", "")
+                .replace( " ", "")
+                .replace(".", "")
+                .replaceAll("[0-9]", "");
+
+        idservico=findServicoEsc(escdescricao);
+        }
+
+>>>>>>> e113624d6fc9c634c46e31f1beb4fbac7927ffdc
 
 
     int ultimaReserv;

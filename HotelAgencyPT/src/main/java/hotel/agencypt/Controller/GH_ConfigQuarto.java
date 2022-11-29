@@ -31,11 +31,17 @@ public class GH_ConfigQuarto implements Initializable {
     @FXML
     private Button verificarDescricao;
     @FXML
+    private TextArea textAlterarDescricao;
+    @FXML
     private TextArea textPreco;
     @FXML
     private TextArea textAlterarPreco;
+
+    String quartoEscolhido;
     QuartoDAO qDAO = new QuartoDAO();
     List<Quarto> arrayQuartos = new ArrayList<>();
+
+    List<Quarto> arrayDescricaoQuarto = new ArrayList<>();
     List<Quarto> arrayPreco = new ArrayList<>();
 
     /**
@@ -92,7 +98,7 @@ public class GH_ConfigQuarto implements Initializable {
     public void verificarQuarto(ActionEvent event) {
         //Envia para o controlador a seleção de quarto
         //Pega só no número na combobox
-        String quartoEscolhido = comboBoxQuartoID.getValue()
+        quartoEscolhido = comboBoxQuartoID.getValue()
                 .replaceAll("[a-zA-Z]", "")
                 .replace(":", "")
                 .replace(" ", "");
@@ -153,6 +159,41 @@ public class GH_ConfigQuarto implements Initializable {
             );
             alert.showAndWait();
         }
+    }
+
+    public void verificarAlterarDescricao() {
+        //Verifica se o texto tem mais de 200 carateres
+        if (textAlterarDescricao.getText().length()<=200) {
+            QuartoDAO daoQuarto = new QuartoDAO();
+            Quarto quarto = new Quarto();
+
+            //Update: Alterar descricao na base de dados
+            quarto.setDescricao(textAlterarDescricao.getText());
+            daoQuarto.updateDescricao(quarto);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Informação");
+            alert.setHeaderText(null);
+            alert.setContentText("Atualizou com sucesso.");
+            alert.showAndWait();
+            //Atualiza o preço
+            verificarQuarto(new ActionEvent());
+            //Se não emite aviso
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Aviso");
+            alert.setHeaderText("Texto inválido");
+            alert.setContentText("Apenas é possível inserir uma descrição até 200 carateres");
+            alert.showAndWait();
+        }
+    }
+
+    public void verDescricao(ActionEvent Event){
+        Controller.getInstance().setIdquarto(Integer.parseInt(quartoEscolhido));
+        arrayDescricaoQuarto = qDAO.findDescricaoQuarto();
+        for (Quarto q : arrayDescricaoQuarto) {
+            textAlterarDescricao.setText(q.getDescricaoQuarto());
+        }
+
     }
 
     /**

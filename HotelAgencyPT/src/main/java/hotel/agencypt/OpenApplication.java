@@ -1,5 +1,6 @@
 package hotel.agencypt;
 
+import hotel.agencypt.Controller.Controller;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,7 +16,6 @@ public class OpenApplication extends Application {
         try {
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Login.fxml")));
             stage.initStyle(StageStyle.UNDECORATED);
-
             stage.setScene(new Scene(root, 520, 400));//Login
             //stage.setScene(new Scene(root, 765, 480));//Register
             stage.show();

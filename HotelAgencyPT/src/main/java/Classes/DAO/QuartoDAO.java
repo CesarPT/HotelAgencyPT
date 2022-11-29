@@ -4,6 +4,10 @@ package Classes.DAO;
 
 import Classes.Quarto;
 import hotel.agencypt.Controller.Controller;
+<<<<<<< HEAD
+=======
+import Classes.Reserva;
+>>>>>>> e113624d6fc9c634c46e31f1beb4fbac7927ffdc
 import DataBase.ConnectionDB;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -68,8 +72,11 @@ public class QuartoDAO {
     public List<Quarto> findPreco() {
         String sql = "SELECT preco\n" +
                 "FROM Quarto\n" +
+<<<<<<< HEAD
                 "WHERE piso=" + Controller.getInstance().getPiso() +
                //" AND descricao='" + Controller.getInstance().getDescricaoQuarto() + "'"+
+=======
+>>>>>>> e113624d6fc9c634c46e31f1beb4fbac7927ffdc
                 "WHERE idquarto=" + Controller.getInstance().getIdQuarto();
 
         PreparedStatement stmt = null;
@@ -116,13 +123,65 @@ public class QuartoDAO {
             ConnectionDB.closeConnection(con, stmt);
         }
     }
+<<<<<<< HEAD
+=======
+
+    public boolean updateDescricao(Quarto quarto) {
+        String sql = "UPDATE Quarto SET descricaoQuarto = ?" +
+                " WHERE idquarto=" + Controller.getInstance().getIdQuarto();
+        PreparedStatement stmt = null;
+
+        try {
+            stmt = con.prepareStatement(sql);
+            stmt.setString(1, quarto.getDescricao());
+            stmt.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            System.err.println("[ERRO]: updateDescricaoQuarto " + e.getMessage());
+            return false;
+        } finally {
+            ConnectionDB.closeConnection(con, stmt);
+        }
+    }
+
+    public List<Quarto> findDescricaoQuarto() {
+        String sql = "select descricaoQuarto " +
+                "from Quarto " +
+                "where idquarto=" + Controller.getInstance().getIdQuarto();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        List<Quarto> listDescricaoQuarto = new ArrayList<>();
+        try {
+            con = ConnectionDB.establishConnection();
+            stmt = con.prepareStatement(sql);
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                Quarto quarto = new Quarto();
+                quarto.setDescricaoQuarto(rs.getString("descricaoQuarto"));
+                listDescricaoQuarto.add(quarto);
+            }
+        } catch (SQLException e) {
+            System.err.println("[ERRO]: DescricaoQuarto " + e.getMessage());
+        } finally {
+            ConnectionDB.closeConnection(con, stmt, rs);
+        }
+        return listDescricaoQuarto;
+    }
+
+
+>>>>>>> e113624d6fc9c634c46e31f1beb4fbac7927ffdc
     public  List<Quarto> findQuartoIndividual() {
         String sql = "select TOP 1 percent idquarto " +
                 "from Quarto " +
                 "where descricao='Individual'" +
                 "and estado='Disponivel' " +
                 "ORDER by idquarto;";
+<<<<<<< HEAD
 
+=======
+>>>>>>> e113624d6fc9c634c46e31f1beb4fbac7927ffdc
 
         PreparedStatement stmt = null;
         ResultSet rs = null;
