@@ -1,13 +1,22 @@
 package hotel.agencypt.Controller;
 
 
+import Classes.DAO.ReservaDAO;
+import Classes.Quarto;
+import Classes.Reserva;
 import DataBase.ConnectionDB;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.sql.Connection;
+import java.util.ArrayList;
+import java.util.List;
+
+import static Classes.DAO.ReservaDAO.findReserva;
 
 public class F_interface {
     @FXML
@@ -61,5 +70,30 @@ public class F_interface {
         } catch (Exception e) {
             System.out.println("Erro ao fechar/abrir o stage.");
         }
+    }
+
+
+    int ultimaReserv;
+    List<Reserva> arrayUltimaReserva = new ArrayList<>();
+    String descservico;
+    private ListView<String> listServesco;
+    private TextField outracoisa;
+
+    @FXML
+    public void onteste(){
+        arrayUltimaReserva = ReservaDAO.findUltReserva();
+        for (Reserva r : arrayUltimaReserva) {
+            ultimaReserv = r.getIdreserva();
+        }
+
+        System.out.println(ultimaReserv);
+        descservico = listServesco.getItems().toString()
+                .replace("[", "")
+                .replace("]", "")
+                .replace(" ", "")
+                .replaceAll("[0-9]", "");
+        System.out.println(descservico);
+        //Soma o que está antes da virgula e depois da virgula
+        outracoisa.setText(String.valueOf(descservico.split(",")));
     }
 }

@@ -57,6 +57,39 @@ public class ReservaDAO {
         return listreserva;
     }
 
+    /**
+     * Método para pesquisar a ultima reserva criada para associar com
+     */
+    public static List<Reserva> findUltReserva() {
+        String sql = "select TOP 1 percent idreserva " +
+                "from Reserva " +
+                "order by  idreserva desc;";
+
+
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        List<Reserva> listreserva = new ArrayList<>();
+
+        try {
+            con = ConnectionDB.establishConnection();
+            stmt = con.prepareStatement(sql);
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                Reserva reserva = new Reserva();
+                reserva.setIdreserva(rs.getInt("idreserva"));
+                listreserva.add(reserva);
+            }
+
+        } catch (SQLException e) {
+            System.err.println("[ERRO]: findReserva " + e.getMessage());
+        } finally {
+            ConnectionDB.closeConnection(con, stmt, rs);
+        }
+        return listreserva;
+    }
+
 
     public static boolean criaReserva(Reserva reserva) {
         String sql = "INSERT INTO Reserva (idcliente,idquarto,numcartao,datai,dataf) Values(?,?,?,?,?)";
@@ -67,9 +100,10 @@ public class ReservaDAO {
             stmt = con.prepareStatement(sql);
             stmt.setInt(1, reserva.getIdcliente());
             stmt.setInt(2, reserva.getIdquarto());
-            stmt.setInt(4, reserva.getNumcartao());
-            stmt.setDate(5, (Date) reserva.getDataI());
-            stmt.setDate(6, (Date) reserva.getDataF());
+            stmt.setInt(3, reserva.getNumcartao());
+
+            stmt.setDate(4, (Date) reserva.getDataI());
+            stmt.setDate(5, (Date) reserva.getDataF());
             stmt.executeUpdate();
             return true;
         } catch (SQLException e) {
