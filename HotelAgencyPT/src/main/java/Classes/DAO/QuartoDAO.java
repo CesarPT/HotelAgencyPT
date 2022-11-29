@@ -116,6 +116,51 @@ public class QuartoDAO {
         }
     }
 
+    public boolean updateDescricao(Quarto quarto) {
+        String sql = "UPDATE Quarto SET descricaoQuarto = ?" +
+                " WHERE idquarto=" + Controller.getInstance().getIdQuarto();
+        PreparedStatement stmt = null;
+
+        try {
+            stmt = con.prepareStatement(sql);
+            stmt.setString(1, quarto.getDescricao());
+            stmt.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            System.err.println("[ERRO]: updateDescricaoQuarto " + e.getMessage());
+            return false;
+        } finally {
+            ConnectionDB.closeConnection(con, stmt);
+        }
+    }
+
+    public List<Quarto> findDescricaoQuarto() {
+        String sql = "select descricaoQuarto " +
+                "from Quarto " +
+                "where idquarto=" + Controller.getInstance().getIdQuarto();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        List<Quarto> listDescricaoQuarto = new ArrayList<>();
+        try {
+            con = ConnectionDB.establishConnection();
+            stmt = con.prepareStatement(sql);
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                Quarto quarto = new Quarto();
+                quarto.setDescricaoQuarto(rs.getString("descricaoQuarto"));
+                listDescricaoQuarto.add(quarto);
+            }
+        } catch (SQLException e) {
+            System.err.println("[ERRO]: DescricaoQuarto " + e.getMessage());
+        } finally {
+            ConnectionDB.closeConnection(con, stmt, rs);
+        }
+        return listDescricaoQuarto;
+    }
+
+
     public  List<Quarto> findQuartoIndividual() {
         String sql = "select TOP 1 percent idquarto " +
                 "from Quarto " +
