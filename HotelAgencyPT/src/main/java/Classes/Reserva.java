@@ -10,7 +10,6 @@ public class Reserva {
     private int idreserva;
     private int idcliente;
     private int idquarto;
-    private int idservico;
     private int numcartao;
     private Date datai;
     private Date dataf;
@@ -20,16 +19,14 @@ public class Reserva {
      * @param idreserva
      * @param idcliente
      * @param idquarto
-     * @param idservico
-     * @param numcartao
+«     * @param numcartao
      * @param datai
      * @param dataf
      */
-    public Reserva(int idreserva, int idcliente, int idquarto, int idservico, int numcartao, Date datai, Date dataf) {
+    public Reserva(int idreserva, int idcliente, int idquarto,int numcartao, Date datai, Date dataf) {
         this.idreserva = idreserva;
         this.idcliente = idcliente;
         this.idquarto = idquarto;
-        this.idservico = idservico;
         this.numcartao = numcartao;
         this.datai = datai;
         this.dataf = dataf;
@@ -55,9 +52,6 @@ public class Reserva {
         return idquarto;
     }
 
-    public int getIdservico() {
-        return idservico;
-    }
 
     public int getNumcartao() {
         return numcartao;
@@ -82,10 +76,6 @@ public class Reserva {
 
     public void setIdquarto(int idquarto) {
         this.idquarto = idquarto;
-    }
-
-    public void setIdservico(int idservico) {
-        this.idservico = idservico;
     }
 
     public void setNumcartao(int numcartao) {

@@ -1,8 +1,10 @@
 package hotel.agencypt.Controller;
 
 //Bibliotecas
+import Classes.DAO.QuartoDAO;
 import Classes.DAO.ReservaDAO;
 import Classes.DAO.ServicoDAO;
+import Classes.Quarto;
 import Classes.Reserva;
 import Classes.Servico;
 import DataBase.ConnectionDB;
@@ -23,6 +25,8 @@ import java.sql.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.stream.Stream;
+
+import static Classes.DAO.ServicoDAO.findServicoEsc;
 
 public class F_Reserva implements Initializable {
 
@@ -61,7 +65,7 @@ public class F_Reserva implements Initializable {
 
 
     ServicoDAO servicoDAO=new ServicoDAO();
-
+    QuartoDAO quartoDAO=new QuartoDAO();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -198,17 +202,24 @@ public class F_Reserva implements Initializable {
         }
     }
 
+    List<Quarto> arrayPrimQuarto = new ArrayList<>();
+    int idQuartoesc;
 
     @FXML
     public void onEsTquarto(){
         escolhaTquarto= (String) cboxTquarto.getValue();
         if(escolhaTquarto=="Individual"){
-            
+            arrayPrimQuarto = quartoDAO.findQuartoIndividual();
+            for (Quarto q : arrayPrimQuarto) {
+                System.out.println(q.getIdQuarto());
+                idQuartoesc=q.getIdQuarto();
+            }
         } else if (escolhaTquarto=="Duplo") {
-            
-        } else {
-
+            quartoDAO.findQuartoDuplo();
+        } else if(escolhaTquarto=="Familiar"){
+            quartoDAO.findQuartoFamiliar();
         }
+
     }
 
     @FXML
@@ -231,15 +242,32 @@ public class F_Reserva implements Initializable {
 
      //testestar dps colocar os valores inseridos
      reserva.setIdcliente(1);
-     reserva.setIdquarto(1);
-     reserva.setIdservico(1);
+     reserva.setIdquarto(idQuartoesc);
      reserva.setNumcartao(1);
      reserva.setDataI(datai);
      reserva.setDataF(dataf);
 
      reservaDAO.criaReserva(reserva);
+
+            RelacionaResServ(reserva.getIdreserva());
         }
- }
+        //reserva.setIdservico(1);
+
+    }
+
+    String escdescricao;
+    List<Servico> idservico;
+    public void RelacionaResServ(int idreserva){
+
+        escdescricao = listServesco.getItems().toString()
+                .replace("[", "")
+                .replace("]", "")
+                .replace( " ", "")
+                .replace(".", "")
+                .replaceAll("[0-9]", "");
+
+        idservico=findServicoEsc(escdescricao);
+    }
 
     /**
      * Método para voltar atrás

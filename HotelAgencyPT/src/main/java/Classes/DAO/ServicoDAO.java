@@ -59,4 +59,33 @@ public class ServicoDAO {
         return listservico;
     }
 
+
+    public static List<Servico> findServicoEsc(String descricao) {
+        String sql = "SELECT idservico from Servico where descricao="+descricao;
+
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        List<Servico> listservico = new ArrayList<>();
+
+        try {
+            con = ConnectionDB.establishConnection();
+            stmt = con.prepareStatement(sql);
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                Servico servico = new Servico();
+                servico.setIdServico(rs.getInt("idservico"));
+
+                listservico.add(servico);
+            }
+
+        } catch (SQLException e) {
+            System.err.println("[ERRO]: findServico " + e.getMessage());
+        } finally {
+            ConnectionDB.closeConnection(con, stmt, rs);
+        }
+        return listservico;
+    }
+
 }

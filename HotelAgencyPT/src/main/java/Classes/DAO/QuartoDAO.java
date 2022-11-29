@@ -1,18 +1,11 @@
 package Classes.DAO;
 
-<<<<<<< HEAD
 //Bibliotecas
 import DataBase.ConnectionDB;
 import java.sql.Connection;
 import Classes.Quarto;
 import hotel.agencypt.Controller.Controller;
-=======
 import Classes.Reserva;
-import DataBase.ConnectionDB;
-import hotel.agencypt.Controller.Controller;
-
-import java.sql.Connection;
->>>>>>> feature/BDCriaReserva
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -23,7 +16,7 @@ import java.util.List;
  *  Classe pública com todos os métodos/atributos necessários.
  */
 public class QuartoDAO {
-    private Connection con;
+    private static Connection con;
 
     /**
      * Ligar à base de dados
@@ -41,7 +34,6 @@ public class QuartoDAO {
                 "FROM Quarto\n" +
                 "WHERE piso='" + Controller.getInstance().getPiso() + "'";
 
-<<<<<<< HEAD
         PreparedStatement stmt = null;
         ResultSet rs = null;
 
@@ -74,7 +66,8 @@ public class QuartoDAO {
     public List<Quarto> findPreco() {
         String sql = "SELECT preco\n" +
                 "FROM Quarto\n" +
-                "WHERE piso=" + Controller.getInstance().getPiso() + " AND descricao='" + Controller.getInstance().getDescricaoQuarto() + "'";
+                "WHERE piso=" + Controller.getInstance().getPiso() +
+                " AND descricao='" + Controller.getInstance().getDescricaoQuarto() + "'";
 
         PreparedStatement stmt = null;
         ResultSet rs = null;
@@ -122,16 +115,17 @@ public class QuartoDAO {
             ConnectionDB.closeConnection(con,stmt);
         }
     }
-=======
-    public static List<Reserva> findQuartoIndividual() {
-        String sql = " SELECT LEFT(descricao, charindex(' ', descricao) - 1) from Quarto where ";
->>>>>>> feature/BDCriaReserva
-
+    public  List<Quarto> findQuartoIndividual() {
+        String sql = "select TOP 1 percent idquarto " +
+                "from Quarto " +
+                "where descricao='Individual'" +
+                "and estado='Disponivel' " +
+                "ORDER by idquarto;";
 
         PreparedStatement stmt = null;
         ResultSet rs = null;
 
-        List<Reserva> listreserva = new ArrayList<>();
+        List<Quarto> listquarto = new ArrayList<>();
 
         try {
             con = ConnectionDB.establishConnection();
@@ -139,16 +133,75 @@ public class QuartoDAO {
             rs = stmt.executeQuery();
 
             while (rs.next()) {
-                Reserva reserva = new Reserva();
-                reserva.setIdreserva(rs.getInt("idQuarto"));
-                listreserva.add(reserva);
+                Quarto quarto = new Quarto();
+                quarto.setIdQuarto(rs.getInt("idquarto"));
+                listquarto.add(quarto);
             }
-
         } catch (SQLException e) {
             System.err.println("[ERRO]: findReserva " + e.getMessage());
         } finally {
             ConnectionDB.closeConnection(con, stmt, rs);
         }
-        return listreserva;
+        return listquarto;
     }
+
+    public  List<Quarto> findQuartoDuplo() {
+        String sql = "select TOP 1 percent idquarto " +
+                "from Quarto " +
+                "where descricao='Duplo'" +
+                "and estado='Disponivel' " +
+                "ORDER by idquarto;";
+
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        List<Quarto> listquarto = new ArrayList<>();
+
+        try {
+            con = ConnectionDB.establishConnection();
+            stmt = con.prepareStatement(sql);
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                Quarto quarto = new Quarto();
+                quarto.setIdQuarto(rs.getInt("idquarto"));
+                listquarto.add(quarto);
+            }
+        } catch (SQLException e) {
+            System.err.println("[ERRO]: findReserva " + e.getMessage());
+        } finally {
+            ConnectionDB.closeConnection(con, stmt, rs);
+        }
+        return listquarto;
+    }
+    public  List<Quarto> findQuartoFamiliar() {
+        String sql = "select TOP 1 percent idquarto " +
+                "from Quarto " +
+                "where descricao='Familiar'" +
+                "and estado='Disponivel' " +
+                "ORDER by idquarto;";
+
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        List<Quarto> listquarto = new ArrayList<>();
+
+        try {
+            con = ConnectionDB.establishConnection();
+            stmt = con.prepareStatement(sql);
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                Quarto quarto = new Quarto();
+                quarto.setIdQuarto(rs.getInt("idquarto"));
+                listquarto.add(quarto);
+            }
+        } catch (SQLException e) {
+            System.err.println("[ERRO]: findReserva " + e.getMessage());
+        } finally {
+            ConnectionDB.closeConnection(con, stmt, rs);
+        }
+        return listquarto;
+    }
+
 }
