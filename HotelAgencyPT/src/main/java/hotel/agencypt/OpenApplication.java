@@ -13,13 +13,13 @@ import java.util.Objects;
 public class OpenApplication extends Application {
     public void start(Stage stage) {
         try {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Login.fxml")));
-        stage.initStyle(StageStyle.UNDECORATED);
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Login.fxml")));
+            stage.initStyle(StageStyle.UNDECORATED);
 
-        stage.setScene(new Scene(root, 520, 400));//Login
-        //stage.setScene(new Scene(root, 765, 480));//Register
-        stage.show();
-        } catch (IOException e){
+            stage.setScene(new Scene(root, 520, 400));//Login
+            //stage.setScene(new Scene(root, 765, 480));//Register
+            stage.show();
+        } catch (IOException e) {
             System.out.println("[ERRO] : " + e.getMessage());
         }
     }

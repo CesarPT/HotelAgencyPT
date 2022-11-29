@@ -1,11 +1,18 @@
 package Classes.DAO;
 
 //Bibliotecas
-import DataBase.ConnectionDB;
-import java.sql.Connection;
+
 import Classes.Quarto;
+<<<<<<< HEAD
 import hotel.agencypt.Controller.Controller;
 import Classes.Reserva;
+=======
+import Classes.Reserva;
+import DataBase.ConnectionDB;
+import hotel.agencypt.Controller.Controller;
+
+import java.sql.Connection;
+>>>>>>> 00a529ea38159c2e53c1b814fa6d9a9ffdcd3cd3
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -13,7 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *  Classe pública com todos os métodos/atributos necessários.
+ * Classe pública com todos os métodos/atributos necessários.
  */
 public class QuartoDAO {
     private static Connection con;
@@ -27,10 +34,11 @@ public class QuartoDAO {
 
     /**
      * Método para pesquisar a descrição de quartos do piso escolhido
+     *
      * @return lista
      */
     public List<Quarto> findQuarto() {
-        String sql = "SELECT descricao\n" +
+        String sql = "SELECT idquarto, descricao\n" +
                 "FROM Quarto\n" +
                 "WHERE piso='" + Controller.getInstance().getPiso() + "'";
 
@@ -46,6 +54,7 @@ public class QuartoDAO {
 
             while (rs.next()) {
                 Quarto quarto = new Quarto();
+                quarto.setIdQuarto(rs.getInt("idquarto"));
                 quarto.setDescricao(rs.getString("descricao"));
                 listQuarto.add(quarto);
             }
@@ -66,8 +75,12 @@ public class QuartoDAO {
     public List<Quarto> findPreco() {
         String sql = "SELECT preco\n" +
                 "FROM Quarto\n" +
+<<<<<<< HEAD
                 "WHERE piso=" + Controller.getInstance().getPiso() +
                 " AND descricao='" + Controller.getInstance().getDescricaoQuarto() + "'";
+=======
+                "WHERE idquarto=" + Controller.getInstance().getIdQuarto();
+>>>>>>> 00a529ea38159c2e53c1b814fa6d9a9ffdcd3cd3
 
         PreparedStatement stmt = null;
         ResultSet rs = null;
@@ -94,33 +107,38 @@ public class QuartoDAO {
     }
 
     /**
-     *
      * @return true or false
      */
-    public boolean updatePreco(Quarto quarto){
+    public boolean updatePreco(Quarto quarto) {
         String sql = "UPDATE Quarto SET preco = ?" +
-                " WHERE descricao='"+Controller.getInstance().getDescricaoQuarto()+"' AND" +
-                " piso="+Controller.getInstance().getPiso();
+                " WHERE idquarto=" + Controller.getInstance().getIdQuarto();
         PreparedStatement stmt = null;
 
         try {
             stmt = con.prepareStatement(sql);
-            stmt.setFloat(1,quarto.getPreco());
+            stmt.setFloat(1, quarto.getPreco());
             stmt.executeUpdate();
             return true;
         } catch (SQLException e) {
             System.err.println("[ERRO]: updatePreco " + e.getMessage());
             return false;
-        }finally {
-            ConnectionDB.closeConnection(con,stmt);
+        } finally {
+            ConnectionDB.closeConnection(con, stmt);
         }
     }
+<<<<<<< HEAD
     public  List<Quarto> findQuartoIndividual() {
         String sql = "select TOP 1 percent idquarto " +
                 "from Quarto " +
                 "where descricao='Individual'" +
                 "and estado='Disponivel' " +
                 "ORDER by idquarto;";
+=======
+
+    public List<Reserva> findQuartoIndividual() {
+        String sql = " SELECT LEFT(descricao, charindex(' ', descricao) - 1) from Quarto where ";
+
+>>>>>>> 00a529ea38159c2e53c1b814fa6d9a9ffdcd3cd3
 
         PreparedStatement stmt = null;
         ResultSet rs = null;

@@ -12,13 +12,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.paint.Color;
-import javafx.stage.Stage;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -98,7 +94,7 @@ public class Cliente {
         arrayRegEntrada = reDAO.findRegEntradaQuarto();
         for (RegEntrada r : arrayRegEntrada) {
             listRegEntrada.getItems().add(
-                   "Reserva " + r.getIdreserva() + " | " + r.getLocal() + " | " + r.getData() + " | " + r.getHora()
+                    "Reserva " + r.getIdreserva() + " | " + r.getLocal() + " | " + r.getData() + " | " + r.getHora()
             );
         }
         listRegEntrada.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
@@ -132,11 +128,11 @@ public class Cliente {
         initialize();
     }
 
-    public void getopEntrada(ActionEvent event){
+    public void getopEntrada(ActionEvent event) {
         String opEntrada = opcoesEntrada.getValue();
 
         //Se a opcao selecionada na ChoiceBox for Restaurante
-        if (opcoesEntrada.getSelectionModel().getSelectedItem() == "Restaurante"){
+        if (opcoesEntrada.getSelectionModel().getSelectedItem() == "Restaurante") {
             RegEntradaDAO daoRegEntrada = new RegEntradaDAO();
             RegEntrada regentrada = new RegEntrada();
 

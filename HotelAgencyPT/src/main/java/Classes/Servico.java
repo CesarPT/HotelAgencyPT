@@ -11,10 +11,10 @@ public class Servico {
      * @param idServico
      * @param descricao
      */
-    public Servico(int idServico, String descricao,float preco) {
+    public Servico(int idServico, String descricao, float preco) {
         this.idServico = idServico;
         this.descricao = descricao;
-        this.preco=preco;
+        this.preco = preco;
     }
 
     /**

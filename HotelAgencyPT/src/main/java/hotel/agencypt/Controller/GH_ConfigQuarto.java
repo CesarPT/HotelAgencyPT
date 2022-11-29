@@ -1,19 +1,16 @@
 package hotel.agencypt.Controller;
 
-import Classes.Cartao;
 import Classes.DAO.QuartoDAO;
-import Classes.DAO.RegEntradaDAO;
 import Classes.Quarto;
-import Classes.RegEntrada;
-import Classes.Reserva;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextArea;
 
 import java.net.URL;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -28,8 +25,6 @@ public class GH_ConfigQuarto implements Initializable {
     @FXML
     private ComboBox<String> comboBoxQuartoID;
     @FXML
-    private Button verificarQuartoID;
-    @FXML
     private Button verificarPrecoID;
     @FXML
     private Button verDescricaoID;
@@ -42,17 +37,16 @@ public class GH_ConfigQuarto implements Initializable {
     QuartoDAO qDAO = new QuartoDAO();
     List<Quarto> arrayQuartos = new ArrayList<>();
     List<Quarto> arrayPreco = new ArrayList<>();
+
     /**
      * Insere valores nas listviews
-     * @param location
-     * The location used to resolve relative paths for the root object, or
-     * {@code null} if the location is not known.
      *
-     * @param resources
-     * The resources used to localize the root object, or {@code null} if
-     * the root object was not localized.
+     * @param location  The location used to resolve relative paths for the root object, or
+     *                  {@code null} if the location is not known.
+     * @param resources The resources used to localize the root object, or {@code null} if
+     *                  the root object was not localized.
      */
-    public void initialize(URL location, ResourceBundle resources){
+    public void initialize(URL location, ResourceBundle resources) {
         //Limpar tudo e inserir valores na combobox
         comboBoxPisoID.getSelectionModel().clearSelection();
         comboBoxPisoID.getItems().clear();
@@ -63,12 +57,7 @@ public class GH_ConfigQuarto implements Initializable {
         );
     }
 
-    /**
-     * Verifica se selecionou o piso, se selecionou
-     * limpa e coloca os quartos na ComboBox
-     * se não, emite um aviso
-     */
-    public void verificarPiso(){
+    public void verificarPiso(ActionEvent event) {
         if (Objects.equals(comboBoxPisoID.getSelectionModel().getSelectedItem(), "Piso 1")) {
             Controller.getInstance().setPiso(1);
             //Limpar combobox
@@ -78,13 +67,12 @@ public class GH_ConfigQuarto implements Initializable {
             arrayQuartos = qDAO.findQuarto();
             for (Quarto q : arrayQuartos) {
                 comboBoxQuartoID.getItems().add(
-                        q.getDescricao()
+                        "Num Quarto: " + q.getIdQuarto() + " Descricao: " + q.getDescricao()
                 );
             }
-            //Ativar combobox e botão
+            //Ativar combobox
             comboBoxQuartoID.setDisable(false);
-            verificarQuartoID.setDisable(false);
-        } else if (Objects.equals(comboBoxPisoID.getSelectionModel().getSelectedItem(), "Piso 2")){
+        } else if (Objects.equals(comboBoxPisoID.getSelectionModel().getSelectedItem(), "Piso 2")) {
             Controller.getInstance().setPiso(2);
             //Limpar combobox
             comboBoxQuartoID.getSelectionModel().clearSelection();
@@ -93,29 +81,26 @@ public class GH_ConfigQuarto implements Initializable {
             arrayQuartos = qDAO.findQuarto();
             for (Quarto q : arrayQuartos) {
                 comboBoxQuartoID.getItems().add(
-                        q.getDescricao()
+                        "Num Quarto: " + q.getIdQuarto() + " Descricao: " + q.getDescricao()
                 );
             }
-            //Ativar combobox e botão
+            //Ativar combobox
             comboBoxQuartoID.setDisable(false);
-            verificarQuartoID.setDisable(false);
-
-        } else {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Aviso");
-            alert.setHeaderText("Sem seleção");
-            alert.setContentText("Selecione primeiro um piso.");
-            alert.showAndWait();
         }
     }
 
-    public void atualizar(){
+    public void verificarQuarto(ActionEvent event) {
         //Envia para o controlador a seleção de quarto
-        String quartoEscolhido = comboBoxQuartoID.getValue();
-        Controller.getInstance().setDescricaoQuarto(quartoEscolhido);
+        //Pega só no número na combobox
+        String quartoEscolhido = comboBoxQuartoID.getValue()
+                .replaceAll("[a-zA-Z]", "")
+                .replace(":", "")
+                .replace(" ", "");
+        System.out.println(quartoEscolhido);
+        Controller.getInstance().setIdquarto(Integer.parseInt(quartoEscolhido));
         //Se não selecionou um quarto
         int index = comboBoxQuartoID.getSelectionModel().getSelectedIndex();
-        if (index == -1){
+        if (index == -1) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Aviso");
             alert.setHeaderText("Sem seleção");
@@ -136,7 +121,7 @@ public class GH_ConfigQuarto implements Initializable {
         }
     }
 
-    public void verificarAlterarPreco(){
+    public void verificarAlterarPreco() {
         //Se o preço que inseriu é igual ao match de:
         //Qualquer dígito de 0 a 9 com 3 digitos no máximo
         //Com casas decimais de 1 minimo e 2 máximo
@@ -153,7 +138,9 @@ public class GH_ConfigQuarto implements Initializable {
             alert.setHeaderText(null);
             alert.setContentText("Atualizou com sucesso.");
             alert.showAndWait();
-        //Se não emite aviso
+            //Atualiza o preço
+            verificarQuarto(new ActionEvent());
+            //Se não emite aviso
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Aviso");

@@ -1,7 +1,6 @@
 package Classes;
 
 import java.util.Date;
-import java.time.LocalDate;
 
 /**
  * Classe pública com todas os métodos usadas na aplicação
@@ -13,6 +12,7 @@ public class Reserva {
     private int numcartao;
     private Date datai;
     private Date dataf;
+
     /**
      * Construtor completo
      *

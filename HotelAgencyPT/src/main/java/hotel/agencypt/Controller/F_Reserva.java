@@ -1,7 +1,11 @@
 package hotel.agencypt.Controller;
 
 //Bibliotecas
+<<<<<<< HEAD
 import Classes.DAO.QuartoDAO;
+=======
+
+>>>>>>> 00a529ea38159c2e53c1b814fa6d9a9ffdcd3cd3
 import Classes.DAO.ReservaDAO;
 import Classes.DAO.ServicoDAO;
 import Classes.Quarto;
@@ -16,12 +20,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.Date;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
-import java.sql.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.stream.Stream;
@@ -35,13 +40,13 @@ public class F_Reserva implements Initializable {
     @FXML
     private TextField textPrecoServicos;
     @FXML
-    public DatePicker datePickerI=new DatePicker();
+    public DatePicker datePickerI = new DatePicker();
     @FXML
-    public DatePicker datePickerF=new DatePicker();
+    public DatePicker datePickerF = new DatePicker();
     @FXML
-    public Label dataILabel=new Label();
+    public Label dataILabel = new Label();
     @FXML
-    public Label dataFLabel=new Label();
+    public Label dataFLabel = new Label();
     @FXML
     public Label labelAviso;
     @FXML
@@ -64,8 +69,13 @@ public class F_Reserva implements Initializable {
     List<Servico> arrayServico = new ArrayList<>();
 
 
+<<<<<<< HEAD
     ServicoDAO servicoDAO=new ServicoDAO();
     QuartoDAO quartoDAO=new QuartoDAO();
+=======
+    ServicoDAO servicoDAO = new ServicoDAO();
+
+>>>>>>> 00a529ea38159c2e53c1b814fa6d9a9ffdcd3cd3
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -76,7 +86,7 @@ public class F_Reserva implements Initializable {
         for (Servico s : arrayServico) {
             System.out.println(s.getDescricao());
             listServtodos.getItems().add(
-                  s.getDescricao()+" "+s.getPreco()
+                    s.getDescricao() + " " + s.getPreco()
             );
         }
         listServtodos.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
@@ -99,9 +109,9 @@ public class F_Reserva implements Initializable {
     /**
      * Adicionar item da lista selecionada para a outra lista
      */
-    public void onAdicionar () {
+    public void onAdicionar() {
         index = listServtodos.getSelectionModel().getSelectedIndex();
-        if (index == -1){
+        if (index == -1) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Aviso");
             alert.setHeaderText("Sem seleção");
@@ -154,50 +164,50 @@ public class F_Reserva implements Initializable {
              * Resultado final: 15.0,valor_seguinte,...
              */
             //Resolver erro do empty String quando não tem nada na listview:
-                if (listServesco.getItems().isEmpty()){
-                    textPrecoServicos.setText("0 €");
-                } else {
-                    preco = listServesco.getItems().toString()
-                            .replace("[", "")
-                            .replace("]", "")
-                            .replace(" ", "")
-                            .replaceAll("[a-zA-Z]", "");
-                    System.out.println(preco);
-                    //Soma o que está antes da virgula e depois da virgula
-                    textPrecoServicos.setText(Stream.of(preco.split(","))
-                            .mapToDouble(Double::parseDouble).sum() + " €");
-                }
+            if (listServesco.getItems().isEmpty()) {
+                textPrecoServicos.setText("0 €");
+            } else {
+                preco = listServesco.getItems().toString()
+                        .replace("[", "")
+                        .replace("]", "")
+                        .replace(" ", "")
+                        .replaceAll("[a-zA-Z]", "");
+                System.out.println(preco);
+                //Soma o que está antes da virgula e depois da virgula
+                textPrecoServicos.setText(Stream.of(preco.split(","))
+                        .mapToDouble(Double::parseDouble).sum() + " €");
+            }
         }
     }
 
 
     Date datai;
+
     @FXML
-    public void getDateI(ActionEvent event){
+    public void getDateI(ActionEvent event) {
         ZoneId defaultZoneId = ZoneId.systemDefault();
 
         try {
             LocalDate myDate = datePickerI.getValue();
             dataILabel.setText(myDate.toString());
-            datai= (Date) Date.from(myDate.atStartOfDay(defaultZoneId).toInstant());
-        }
-        catch(Exception e) {
+            datai = (Date) Date.from(myDate.atStartOfDay(defaultZoneId).toInstant());
+        } catch (Exception e) {
             System.out.println(e);
         }
     }
 
     Date dataf;
+
     @FXML
-    public void getDateF(ActionEvent event){
+    public void getDateF(ActionEvent event) {
         ZoneId defaultZoneId = ZoneId.systemDefault();
 
         try {
             LocalDate myDate = datePickerF.getValue();
             dataFLabel.setText(myDate.toString());
 
-            dataf= (Date) Date.from(myDate.atStartOfDay(defaultZoneId).toInstant());
-        }
-        catch(Exception e) {
+            dataf = (Date) Date.from(myDate.atStartOfDay(defaultZoneId).toInstant());
+        } catch (Exception e) {
             System.out.println(e);
         }
     }
@@ -206,6 +216,7 @@ public class F_Reserva implements Initializable {
     int idQuartoesc;
 
     @FXML
+<<<<<<< HEAD
     public void onEsTquarto(){
         escolhaTquarto= (String) cboxTquarto.getValue();
         if(escolhaTquarto=="Individual"){
@@ -218,28 +229,39 @@ public class F_Reserva implements Initializable {
             quartoDAO.findQuartoDuplo();
         } else if(escolhaTquarto=="Familiar"){
             quartoDAO.findQuartoFamiliar();
+=======
+    public void onEsTquarto() {
+        escolhaTquarto = (String) cboxTquarto.getValue();
+        if (escolhaTquarto == "Individual") {
+
+        } else if (escolhaTquarto == "Duplo") {
+
+        } else {
+
+>>>>>>> 00a529ea38159c2e53c1b814fa6d9a9ffdcd3cd3
         }
 
     }
 
     @FXML
- public void onCriaReserva(){
-        if (datePickerI.getValue() == null || datePickerF.getValue() == null){
+    public void onCriaReserva() {
+        if (datePickerI.getValue() == null || datePickerF.getValue() == null) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Aviso");
             alert.setHeaderText("Sem seleção");
             alert.setContentText("Selecione uma data de inicio e fim.");
             alert.showAndWait();
-        } else if (datePickerF.getValue().compareTo(datePickerI.getValue())<0) {
+        } else if (datePickerF.getValue().compareTo(datePickerI.getValue()) < 0) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Aviso");
             alert.setHeaderText("Datas inválidas");
             alert.setContentText("A data de fim deve ser maior que a data de inicio.");
             alert.showAndWait();
         } else {
-     ReservaDAO reservaDAO=new ReservaDAO();
-     Reserva reserva=new Reserva();
+            ReservaDAO reservaDAO = new ReservaDAO();
+            Reserva reserva = new Reserva();
 
+<<<<<<< HEAD
      //testestar dps colocar os valores inseridos
      reserva.setIdcliente(1);
      reserva.setIdquarto(idQuartoesc);
@@ -267,16 +289,29 @@ public class F_Reserva implements Initializable {
                 .replaceAll("[0-9]", "");
 
         idservico=findServicoEsc(escdescricao);
+=======
+            //testestar dps colocar os valores inseridos
+            reserva.setIdcliente(1);
+            reserva.setIdquarto(1);
+            reserva.setIdservico(1);
+            reserva.setNumcartao(1);
+            reserva.setDataI(datai);
+            reserva.setDataF(dataf);
+
+            reservaDAO.criaReserva(reserva);
+        }
+>>>>>>> 00a529ea38159c2e53c1b814fa6d9a9ffdcd3cd3
     }
 
     /**
      * Método para voltar atrás
+     *
      * @param actionEvent
      */
     @FXML
     public void voltarAtras(ActionEvent actionEvent) {
         try {
-            Singleton.open("Cliente", "Hotel >> Cliente");
+            Singleton.open("funcionariointerface", "Hotel >> Funcionario");
         } catch (Exception e) {
             System.out.println("Erro ao voltar atrás.");
         }

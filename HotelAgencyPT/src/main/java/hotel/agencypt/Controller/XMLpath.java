@@ -1,13 +1,12 @@
 package hotel.agencypt.Controller;
 
 import org.w3c.dom.Document;
-
 import org.w3c.dom.NodeList;
 
-import javax.xml.xpath.XPathConstants;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.xpath.XPath;
+import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathFactory;
 import java.io.File;
@@ -16,7 +15,7 @@ import java.nio.file.Paths;
 
 public class XMLpath {
 
-    public static void Lexml()throws Exception  {
+    public static void Lexml() throws Exception {
 
         Path path = Paths.get("..\\HotelAgencyPT\\src\\main\\java\\hotel\\agencypt\\ProductHero.xml");
 
@@ -31,8 +30,6 @@ public class XMLpath {
 
         XPathFactory xpathfactory = XPathFactory.newInstance();
         XPath xpath = xpathfactory.newXPath();
-
-
 
 
         //print do XML na consola
@@ -186,7 +183,7 @@ public class XMLpath {
 
 
         //Tax percent
-        XPathExpression exprtaxp= xpath.compile("//Line//TaxAdjustment//TaxPercent/text()");
+        XPathExpression exprtaxp = xpath.compile("//Line//TaxAdjustment//TaxPercent/text()");
         Object resulttaxp = exprtaxp.evaluate(document, XPathConstants.NODESET);
         NodeList nodestaxp = (NodeList) resulttaxp;
         for (int i = 0; i < nodestaxp.getLength(); i++) {
@@ -194,7 +191,7 @@ public class XMLpath {
         }
 
         //Tax Amount
-        XPathExpression exprtaxa= xpath.compile("//Line//TaxAdjustment//TaxAmount/CurrencyValue/text()");
+        XPathExpression exprtaxa = xpath.compile("//Line//TaxAdjustment//TaxAmount/CurrencyValue/text()");
         Object resulttaxa = exprtaxa.evaluate(document, XPathConstants.NODESET);
         NodeList nodestaxa = (NodeList) resulttaxa;
         for (int i = 0; i < nodestaxa.getLength(); i++) {
@@ -202,7 +199,7 @@ public class XMLpath {
         }
 
         //Tax Locationm
-        XPathExpression exprtaxl= xpath.compile("//Line//TaxAdjustment//TaxLocation/text()");
+        XPathExpression exprtaxl = xpath.compile("//Line//TaxAdjustment//TaxLocation/text()");
         Object resulttaxl = exprtaxl.evaluate(document, XPathConstants.NODESET);
         NodeList nodestaxl = (NodeList) resulttaxl;
         for (int i = 0; i < nodestaxl.getLength(); i++) {
@@ -210,7 +207,7 @@ public class XMLpath {
         }
 
         //LineBaseAmount
-        XPathExpression exprlba= xpath.compile("//Line//LineBaseAmount//CurrencyValue/text()");
+        XPathExpression exprlba = xpath.compile("//Line//LineBaseAmount//CurrencyValue/text()");
         Object resultlba = exprlba.evaluate(document, XPathConstants.NODESET);
         NodeList nodeslba = (NodeList) resultlba;
         for (int i = 0; i < nodeslba.getLength(); i++) {

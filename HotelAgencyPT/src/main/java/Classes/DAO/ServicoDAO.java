@@ -1,9 +1,7 @@
 package Classes.DAO;
 
-import Classes.Reserva;
 import Classes.Servico;
 import DataBase.ConnectionDB;
-import hotel.agencypt.Controller.Controller;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

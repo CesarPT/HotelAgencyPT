@@ -166,12 +166,5 @@ public class LoginController implements Initializable {
             e.getCause();
         }
     }
-
-    public void SwitchToRegister(ActionEvent event) throws Exception {
-        Stage stage = (Stage) RegisterButton.getScene().getWindow();
-        stage.close();
-        Singleton.open("Register", "Hotel >> Register");
-
-    }
 }
 

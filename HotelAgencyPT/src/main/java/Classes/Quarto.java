@@ -7,12 +7,13 @@ public class Quarto {
 
     /**
      * Construtor completo
+     *
      * @param idQuarto
      * @param piso
      * @param descricao
      * @param preco
      */
-    public Quarto(int idQuarto, int piso, String descricao, float preco){
+    public Quarto(int idQuarto, int piso, String descricao, float preco) {
         this.idQuarto = idQuarto;
         this.piso = piso;
         this.descricao = descricao;
@@ -28,6 +29,7 @@ public class Quarto {
 
     /**
      * Devolve:
+     *
      * @return Id do quarto
      */
     public int getIdQuarto() {
@@ -36,6 +38,7 @@ public class Quarto {
 
     /**
      * Devolve:
+     *
      * @return piso
      */
     public int getPiso() {
@@ -44,6 +47,7 @@ public class Quarto {
 
     /**
      * Devolve:
+     *
      * @return descricao
      */
     public String getDescricao() {
@@ -52,6 +56,7 @@ public class Quarto {
 
     /**
      * Devolve:
+     *
      * @return preco
      */
     public float getPreco() {
@@ -60,6 +65,7 @@ public class Quarto {
 
     /**
      * Muda o valor:
+     *
      * @param idQuarto set
      */
     public void setIdQuarto(int idQuarto) {
@@ -68,6 +74,7 @@ public class Quarto {
 
     /**
      * Muda o valor:
+     *
      * @param descricao set
      */
     public void setDescricao(String descricao) {
@@ -76,6 +83,7 @@ public class Quarto {
 
     /**
      * Muda o valor:
+     *
      * @param piso set
      */
     public void setPiso(int piso) {
@@ -84,6 +92,7 @@ public class Quarto {
 
     /**
      * Muda o valor:
+     *
      * @param preco set
      */
     public void setPreco(float preco) {
