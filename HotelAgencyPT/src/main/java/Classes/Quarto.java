@@ -101,7 +101,9 @@ public class Quarto {
         this.preco = preco;
     }
 
-    public void setDescricaoQuarto(String descricaoQuarto) {this.descricaoQuarto = descricaoQuarto; }
+    public void setDescricaoQuarto(String descricaoQuarto) {
+        this.descricaoQuarto = descricaoQuarto;
+    }
 
     public String getDescricaoQuarto() {
         return descricaoQuarto;

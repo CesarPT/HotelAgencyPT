@@ -3,8 +3,19 @@ package Classes.DAO;
 //Bibliotecas
 
 import Classes.Quarto;
+<<<<<<< HEAD
 
 import Classes.Reserva;
+=======
+<<<<<<< HEAD
+=======
+import hotel.agencypt.Controller.Controller;
+<<<<<<< HEAD
+=======
+import Classes.Reserva;
+>>>>>>> e113624d6fc9c634c46e31f1beb4fbac7927ffdc
+>>>>>>> bde372c71f2c9056a4e1798ecaf15a7c8e40e5f3
+>>>>>>> c03e79e7ea4dc8a13bec98555f3fbc168cf59dac
 import DataBase.ConnectionDB;
 import hotel.agencypt.Controller.Controller;
 
@@ -163,7 +174,15 @@ public class QuartoDAO {
     }
 
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+    public List<Quarto> findQuartoIndividual() {
+=======
+>>>>>>> e113624d6fc9c634c46e31f1beb4fbac7927ffdc
+>>>>>>> c03e79e7ea4dc8a13bec98555f3fbc168cf59dac
     public  List<Quarto> findQuartoIndividual() {
+>>>>>>> bde372c71f2c9056a4e1798ecaf15a7c8e40e5f3
         String sql = "select TOP 1 percent idquarto " +
                 "from Quarto " +
                 "where descricao='Individual'" +
@@ -193,7 +212,7 @@ public class QuartoDAO {
         return listquarto;
     }
 
-    public  List<Quarto> findQuartoDuplo() {
+    public List<Quarto> findQuartoDuplo() {
         String sql = "select TOP 1 percent idquarto " +
                 "from Quarto " +
                 "where descricao='Duplo'" +
@@ -222,7 +241,8 @@ public class QuartoDAO {
         }
         return listquarto;
     }
-    public  List<Quarto> findQuartoFamiliar() {
+
+    public List<Quarto> findQuartoFamiliar() {
         String sql = "select TOP 1 percent idquarto " +
                 "from Quarto " +
                 "where descricao='Familiar'" +
