@@ -189,6 +189,7 @@ public class F_Reserva implements Initializable {
         } catch (Exception e) {
             System.out.println(e);
         }
+
     }
 
     Date dataf;
@@ -205,6 +206,7 @@ public class F_Reserva implements Initializable {
         } catch (Exception e) {
             System.out.println(e);
         }
+
     }
 
     List<Quarto> arrayPrimQuarto = new ArrayList<>();
@@ -260,6 +262,18 @@ public class F_Reserva implements Initializable {
             alert.setTitle("Aviso");
             alert.setHeaderText("Datas inválidas");
             alert.setContentText("A data de fim deve ser maior que a data de inicio.");
+            alert.showAndWait();
+        } else if (cboxTquarto.getSelectionModel().isEmpty() || cboxQuarto.getSelectionModel().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Aviso");
+            alert.setHeaderText("Sem seleção");
+            alert.setContentText("Selecione um tipo de quarto e um quarto disponível.");
+            alert.showAndWait();
+        } else if (!listServesco.getItems().toString().contains("Base")){
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Aviso");
+            alert.setHeaderText("Sem o serviço Base");
+            alert.setContentText("A reserva tem que ter o serviço: base que está incluida em todos os quartos.");
             alert.showAndWait();
         } else {
             ReservaDAO reservaDAO = new ReservaDAO();

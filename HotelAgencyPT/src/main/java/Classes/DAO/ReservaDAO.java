@@ -59,7 +59,7 @@ public class ReservaDAO {
 
 
     public static boolean criaReserva(Reserva reserva) {
-        String sql = "INSERT INTO Reserva (idcliente,idquarto,numcartao,datai,dataf) Values(?,?,?,?,?)";
+        String sql = "INSERT INTO Reserva (idcliente,idquarto, numcartao,datai,dataf) Values (?,?,?,?,?)";
         PreparedStatement stmt = null;
 
         try {
@@ -67,13 +67,13 @@ public class ReservaDAO {
             stmt = con.prepareStatement(sql);
             stmt.setInt(1, reserva.getIdcliente());
             stmt.setInt(2, reserva.getIdquarto());
-            stmt.setInt(4, reserva.getNumcartao());
-            stmt.setDate(5, (Date) reserva.getDataI());
-            stmt.setDate(6, (Date) reserva.getDataF());
+            stmt.setInt(3, reserva.getNumcartao());
+            stmt.setDate(4, (Date) reserva.getDataI());
+            stmt.setDate(5, (Date) reserva.getDataF());
             stmt.executeUpdate();
             return true;
         } catch (SQLException e) {
-            System.err.println("[ERRO]: insertReserva " + e.getMessage());
+            System.err.println("[ERRO]: criarReserva " + e.getMessage());
             return false;
         } finally {
             ConnectionDB.closeConnection(con, stmt);
