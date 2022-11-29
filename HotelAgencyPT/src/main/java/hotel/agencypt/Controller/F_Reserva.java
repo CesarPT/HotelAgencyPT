@@ -1,11 +1,7 @@
 package hotel.agencypt.Controller;
 
 //Bibliotecas
-<<<<<<< HEAD
 import Classes.DAO.QuartoDAO;
-=======
-
->>>>>>> 00a529ea38159c2e53c1b814fa6d9a9ffdcd3cd3
 import Classes.DAO.ReservaDAO;
 import Classes.DAO.ServicoDAO;
 import Classes.Quarto;
@@ -28,6 +24,7 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.stream.Stream;
 
@@ -52,6 +49,9 @@ public class F_Reserva implements Initializable {
     @FXML
     public ComboBox cboxTquarto;
     @FXML
+    public ComboBox cboxQuarto;
+
+    @FXML
     ObservableList<String> listTquarto = FXCollections.observableArrayList("Individual", "Duplo", "Familiar");
     @FXML
     private ListView<String> listServtodos;
@@ -69,13 +69,8 @@ public class F_Reserva implements Initializable {
     List<Servico> arrayServico = new ArrayList<>();
 
 
-<<<<<<< HEAD
     ServicoDAO servicoDAO=new ServicoDAO();
     QuartoDAO quartoDAO=new QuartoDAO();
-=======
-    ServicoDAO servicoDAO = new ServicoDAO();
-
->>>>>>> 00a529ea38159c2e53c1b814fa6d9a9ffdcd3cd3
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -216,31 +211,40 @@ public class F_Reserva implements Initializable {
     int idQuartoesc;
 
     @FXML
-<<<<<<< HEAD
-    public void onEsTquarto(){
-        escolhaTquarto= (String) cboxTquarto.getValue();
-        if(escolhaTquarto=="Individual"){
-            arrayPrimQuarto = quartoDAO.findQuartoIndividual();
-            for (Quarto q : arrayPrimQuarto) {
-                System.out.println(q.getIdQuarto());
-                idQuartoesc=q.getIdQuarto();
-            }
-        } else if (escolhaTquarto=="Duplo") {
-            quartoDAO.findQuartoDuplo();
-        } else if(escolhaTquarto=="Familiar"){
-            quartoDAO.findQuartoFamiliar();
-=======
     public void onEsTquarto() {
         escolhaTquarto = (String) cboxTquarto.getValue();
-        if (escolhaTquarto == "Individual") {
 
-        } else if (escolhaTquarto == "Duplo") {
+        if (Objects.equals(escolhaTquarto, "Individual")) {
+            arrayPrimQuarto = quartoDAO.findQuartoIndividual();
+            cboxQuarto.getSelectionModel().clearSelection();
+            cboxQuarto.getItems().clear();
 
-        } else {
+            for (Quarto q : arrayPrimQuarto) {
+                cboxQuarto.getItems().add(
+                       "Numero: " + q.getIdQuarto()
+                );
+            }
+        } else if (Objects.equals(escolhaTquarto, "Duplo")) {
+            quartoDAO.findQuartoDuplo();
+            cboxQuarto.getSelectionModel().clearSelection();
+            cboxQuarto.getItems().clear();
 
->>>>>>> 00a529ea38159c2e53c1b814fa6d9a9ffdcd3cd3
+            for (Quarto q : arrayPrimQuarto) {
+                cboxQuarto.getItems().add(
+                        "Numero: " + q.getIdQuarto()
+                );
+            }
+        } else if (Objects.equals(escolhaTquarto, "Familiar")) {
+            quartoDAO.findQuartoFamiliar();
+            cboxQuarto.getSelectionModel().clearSelection();
+            cboxQuarto.getItems().clear();
+
+            for (Quarto q : arrayPrimQuarto) {
+                cboxQuarto.getItems().add(
+                        "Numero: " + q.getIdQuarto()
+                );
+            }
         }
-
     }
 
     @FXML
@@ -261,7 +265,6 @@ public class F_Reserva implements Initializable {
             ReservaDAO reservaDAO = new ReservaDAO();
             Reserva reserva = new Reserva();
 
-<<<<<<< HEAD
      //testestar dps colocar os valores inseridos
      reserva.setIdcliente(1);
      reserva.setIdquarto(idQuartoesc);
@@ -289,19 +292,7 @@ public class F_Reserva implements Initializable {
                 .replaceAll("[0-9]", "");
 
         idservico=findServicoEsc(escdescricao);
-=======
-            //testestar dps colocar os valores inseridos
-            reserva.setIdcliente(1);
-            reserva.setIdquarto(1);
-            reserva.setIdservico(1);
-            reserva.setNumcartao(1);
-            reserva.setDataI(datai);
-            reserva.setDataF(dataf);
-
-            reservaDAO.criaReserva(reserva);
         }
->>>>>>> 00a529ea38159c2e53c1b814fa6d9a9ffdcd3cd3
-    }
 
     /**
      * Método para voltar atrás

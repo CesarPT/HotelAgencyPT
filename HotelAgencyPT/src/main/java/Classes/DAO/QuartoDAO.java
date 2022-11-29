@@ -3,16 +3,10 @@ package Classes.DAO;
 //Bibliotecas
 
 import Classes.Quarto;
-<<<<<<< HEAD
 import hotel.agencypt.Controller.Controller;
-import Classes.Reserva;
-=======
 import Classes.Reserva;
 import DataBase.ConnectionDB;
-import hotel.agencypt.Controller.Controller;
-
 import java.sql.Connection;
->>>>>>> 00a529ea38159c2e53c1b814fa6d9a9ffdcd3cd3
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -75,12 +69,7 @@ public class QuartoDAO {
     public List<Quarto> findPreco() {
         String sql = "SELECT preco\n" +
                 "FROM Quarto\n" +
-<<<<<<< HEAD
-                "WHERE piso=" + Controller.getInstance().getPiso() +
-                " AND descricao='" + Controller.getInstance().getDescricaoQuarto() + "'";
-=======
                 "WHERE idquarto=" + Controller.getInstance().getIdQuarto();
->>>>>>> 00a529ea38159c2e53c1b814fa6d9a9ffdcd3cd3
 
         PreparedStatement stmt = null;
         ResultSet rs = null;
@@ -126,19 +115,13 @@ public class QuartoDAO {
             ConnectionDB.closeConnection(con, stmt);
         }
     }
-<<<<<<< HEAD
+
     public  List<Quarto> findQuartoIndividual() {
         String sql = "select TOP 1 percent idquarto " +
                 "from Quarto " +
                 "where descricao='Individual'" +
                 "and estado='Disponivel' " +
                 "ORDER by idquarto;";
-=======
-
-    public List<Reserva> findQuartoIndividual() {
-        String sql = " SELECT LEFT(descricao, charindex(' ', descricao) - 1) from Quarto where ";
-
->>>>>>> 00a529ea38159c2e53c1b814fa6d9a9ffdcd3cd3
 
         PreparedStatement stmt = null;
         ResultSet rs = null;
