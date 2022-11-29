@@ -3,6 +3,14 @@ package Classes.DAO;
 //Bibliotecas
 
 import Classes.Quarto;
+<<<<<<< HEAD
+=======
+import hotel.agencypt.Controller.Controller;
+<<<<<<< HEAD
+=======
+import Classes.Reserva;
+>>>>>>> e113624d6fc9c634c46e31f1beb4fbac7927ffdc
+>>>>>>> bde372c71f2c9056a4e1798ecaf15a7c8e40e5f3
 import DataBase.ConnectionDB;
 import hotel.agencypt.Controller.Controller;
 
@@ -69,6 +77,11 @@ public class QuartoDAO {
     public List<Quarto> findPreco() {
         String sql = "SELECT preco\n" +
                 "FROM Quarto\n" +
+<<<<<<< HEAD
+                "WHERE piso=" + Controller.getInstance().getPiso() +
+               //" AND descricao='" + Controller.getInstance().getDescricaoQuarto() + "'"+
+=======
+>>>>>>> e113624d6fc9c634c46e31f1beb4fbac7927ffdc
                 "WHERE idquarto=" + Controller.getInstance().getIdQuarto();
 
         PreparedStatement stmt = null;
@@ -115,6 +128,8 @@ public class QuartoDAO {
             ConnectionDB.closeConnection(con, stmt);
         }
     }
+<<<<<<< HEAD
+=======
 
     public boolean updateDescricao(Quarto quarto) {
         String sql = "UPDATE Quarto SET descricaoQuarto = ?" +
@@ -161,12 +176,21 @@ public class QuartoDAO {
     }
 
 
+<<<<<<< HEAD
     public List<Quarto> findQuartoIndividual() {
+=======
+>>>>>>> e113624d6fc9c634c46e31f1beb4fbac7927ffdc
+    public  List<Quarto> findQuartoIndividual() {
+>>>>>>> bde372c71f2c9056a4e1798ecaf15a7c8e40e5f3
         String sql = "select TOP 1 percent idquarto " +
                 "from Quarto " +
                 "where descricao='Individual'" +
                 "and estado='Disponivel' " +
                 "ORDER by idquarto;";
+<<<<<<< HEAD
+
+=======
+>>>>>>> e113624d6fc9c634c46e31f1beb4fbac7927ffdc
 
         PreparedStatement stmt = null;
         ResultSet rs = null;
