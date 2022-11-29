@@ -31,6 +31,7 @@ import java.util.stream.Stream;
 
 import static Classes.DAO.ReservaDAO.findReserva;
 import static Classes.DAO.ReservaServicoDAO.criaReservaServico;
+import static Classes.DAO.ServicoDAO.findServicoEsc;
 
 public class F_Reserva implements Initializable {
 
@@ -79,14 +80,9 @@ public class F_Reserva implements Initializable {
     List<Servico> arrayServico = new ArrayList<>();
 
 
-<<<<<<< HEAD
     ServicoDAO servicoDAO = new ServicoDAO();
     QuartoDAO quartoDAO = new QuartoDAO();
 
-=======
-    ServicoDAO servicoDAO=new ServicoDAO();
-    QuartoDAO quartoDAO=new QuartoDAO();
->>>>>>> e113624d6fc9c634c46e31f1beb4fbac7927ffdc
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -195,13 +191,10 @@ public class F_Reserva implements Initializable {
     Date myDateI;
     @FXML
     public void getDateI(ActionEvent event) {
-        ZoneId defaultZoneId = ZoneId.systemDefault();
 
         try {
             myDateI = Date.valueOf(datePickerI.getValue());
-            System.out.println("myDate: "+myDateI);
             dataILabel.setText(myDateI.toString());
-
 
         } catch (Exception e) {
             System.out.println(e);
@@ -212,17 +205,14 @@ public class F_Reserva implements Initializable {
     Date myDateF;
     @FXML
     public void getDateF(ActionEvent event) {
-        ZoneId defaultZoneId = ZoneId.systemDefault();
 
         try {
             myDateF = Date.valueOf(datePickerI.getValue());
-            System.out.println("myDate: "+myDateF);
             dataILabel.setText(myDateF.toString());
 
         } catch (Exception e) {
             System.out.println(e);
         }
-
     }
 
     List<Quarto> arrayPrimQuarto = new ArrayList<>();
@@ -230,8 +220,6 @@ public class F_Reserva implements Initializable {
     int idQuartoesc;
 
     @FXML
-<<<<<<< HEAD
-
     public void onEsTquarto() {
         escolhaTquarto = (String) cboxTquarto.getValue();
         if (escolhaTquarto == "Individual") {
@@ -251,40 +239,6 @@ public class F_Reserva implements Initializable {
             for (Quarto q : arrayPrimQuarto) {
                 System.out.println(q.getIdQuarto());
                 idQuartoesc = q.getIdQuarto();
-=======
-    public void onEsTquarto() {
-        escolhaTquarto = (String) cboxTquarto.getValue();
-
-        if (Objects.equals(escolhaTquarto, "Individual")) {
-            arrayPrimQuarto = quartoDAO.findQuartoIndividual();
-            cboxQuarto.getSelectionModel().clearSelection();
-            cboxQuarto.getItems().clear();
-
-            for (Quarto q : arrayPrimQuarto) {
-                cboxQuarto.getItems().add(
-                       "Numero: " + q.getIdQuarto()
-                );
-            }
-        } else if (Objects.equals(escolhaTquarto, "Duplo")) {
-            arrayPrimQuarto = quartoDAO.findQuartoDuplo();
-            cboxQuarto.getSelectionModel().clearSelection();
-            cboxQuarto.getItems().clear();
-
-            for (Quarto q : arrayPrimQuarto) {
-                cboxQuarto.getItems().add(
-                        "Numero: " + q.getIdQuarto()
-                );
-            }
-        } else if (Objects.equals(escolhaTquarto, "Familiar")) {
-            arrayPrimQuarto =  quartoDAO.findQuartoFamiliar();
-            cboxQuarto.getSelectionModel().clearSelection();
-            cboxQuarto.getItems().clear();
-
-            for (Quarto q : arrayPrimQuarto) {
-                cboxQuarto.getItems().add(
-                        "Numero: " + q.getIdQuarto()
-                );
->>>>>>> e113624d6fc9c634c46e31f1beb4fbac7927ffdc
             }
         }
     }
@@ -368,8 +322,6 @@ public class F_Reserva implements Initializable {
             alert.showAndWait();
         } else {
 
-<<<<<<< HEAD
-
             //testestar dps colocar os valores inseridos
             reserva.setIdcliente(1);
             reserva.setIdquarto(1);//idQuartoesc
@@ -386,21 +338,6 @@ public class F_Reserva implements Initializable {
         }
         //reserva.setIdservico(1);
     }
-=======
-     //testestar dps colocar os valores inseridos
-     reserva.setIdcliente(1);
-     reserva.setIdquarto(idQuartoesc);
-     reserva.setNumcartao(1);
-     reserva.setDataI(datai);
-     reserva.setDataF(dataf);
-
-     reservaDAO.criaReserva(reserva);
-
-            RelacionaResServ(reserva.getIdreserva());
-        }
-        //reserva.setIdservico(1);
-
-    }
 
     String escdescricao;
     List<Servico> idservico;
@@ -415,8 +352,6 @@ public class F_Reserva implements Initializable {
 
         idservico=findServicoEsc(escdescricao);
         }
-
->>>>>>> e113624d6fc9c634c46e31f1beb4fbac7927ffdc
 
 
     int ultimaReserv;
@@ -438,7 +373,6 @@ public class F_Reserva implements Initializable {
                 .replace("]", "")
                 .replace(" ", "")
                 .replaceAll("[0-9]", "");
-
 
         System.out.println(descservico);
         //Soma o que está antes da virgula e depois da virgula
