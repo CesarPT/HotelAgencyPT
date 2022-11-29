@@ -1,6 +1,7 @@
 package hotel.agencypt.Controller;
 
 //Bibliotecas
+
 import Classes.DAO.QuartoDAO;
 import Classes.DAO.ReservaDAO;
 import Classes.DAO.ServicoDAO;
@@ -69,8 +70,8 @@ public class F_Reserva implements Initializable {
     List<Servico> arrayServico = new ArrayList<>();
 
 
-    ServicoDAO servicoDAO=new ServicoDAO();
-    QuartoDAO quartoDAO=new QuartoDAO();
+    ServicoDAO servicoDAO = new ServicoDAO();
+    QuartoDAO quartoDAO = new QuartoDAO();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -223,7 +224,7 @@ public class F_Reserva implements Initializable {
 
             for (Quarto q : arrayPrimQuarto) {
                 cboxQuarto.getItems().add(
-                       "Numero: " + q.getIdQuarto()
+                        "Numero: " + q.getIdQuarto()
                 );
             }
         } else if (Objects.equals(escolhaTquarto, "Duplo")) {
@@ -269,7 +270,7 @@ public class F_Reserva implements Initializable {
             alert.setHeaderText("Sem seleção");
             alert.setContentText("Selecione um tipo de quarto e um quarto disponível.");
             alert.showAndWait();
-        } else if (!listServesco.getItems().toString().contains("Base")){
+        } else if (!listServesco.getItems().toString().contains("Base")) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Aviso");
             alert.setHeaderText("Sem o serviço Base");
@@ -279,14 +280,14 @@ public class F_Reserva implements Initializable {
             ReservaDAO reservaDAO = new ReservaDAO();
             Reserva reserva = new Reserva();
 
-     //testestar dps colocar os valores inseridos
-     reserva.setIdcliente(1);
-     reserva.setIdquarto(idQuartoesc);
-     reserva.setNumcartao(1);
-     reserva.setDataI(datai);
-     reserva.setDataF(dataf);
+            //testestar dps colocar os valores inseridos
+            reserva.setIdcliente(1);
+            reserva.setIdquarto(idQuartoesc);
+            reserva.setNumcartao(1);
+            reserva.setDataI(datai);
+            reserva.setDataF(dataf);
 
-     reservaDAO.criaReserva(reserva);
+            reservaDAO.criaReserva(reserva);
 
             RelacionaResServ(reserva.getIdreserva());
         }
@@ -296,17 +297,18 @@ public class F_Reserva implements Initializable {
 
     String escdescricao;
     List<Servico> idservico;
-    public void RelacionaResServ(int idreserva){
+
+    public void RelacionaResServ(int idreserva) {
 
         escdescricao = listServesco.getItems().toString()
                 .replace("[", "")
                 .replace("]", "")
-                .replace( " ", "")
+                .replace(" ", "")
                 .replace(".", "")
                 .replaceAll("[0-9]", "");
 
-        idservico=findServicoEsc(escdescricao);
-        }
+        idservico = findServicoEsc(escdescricao);
+    }
 
     /**
      * Método para voltar atrás
