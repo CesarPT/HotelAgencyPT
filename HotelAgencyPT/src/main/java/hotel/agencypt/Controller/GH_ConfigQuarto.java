@@ -163,7 +163,7 @@ public class GH_ConfigQuarto implements Initializable {
 
     public void verificarAlterarDescricao() {
         //Verifica se o texto tem mais de 200 carateres
-        if (textAlterarDescricao.getText().length() <= 200) {
+        if (textAlterarDescricao.getText().length()<=200) {
             QuartoDAO daoQuarto = new QuartoDAO();
             Quarto quarto = new Quarto();
 
@@ -187,7 +187,7 @@ public class GH_ConfigQuarto implements Initializable {
         }
     }
 
-    public void verDescricao(ActionEvent Event) {
+    public void verDescricao(ActionEvent Event){
         Controller.getInstance().setIdquarto(Integer.parseInt(quartoEscolhido));
         arrayDescricaoQuarto = qDAO.findDescricaoQuarto();
         for (Quarto q : arrayDescricaoQuarto) {

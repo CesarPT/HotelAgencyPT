@@ -1,7 +1,6 @@
 package hotel.agencypt.Controller;
 
 //Bibliotecas
-
 import Classes.DAO.QuartoDAO;
 import Classes.DAO.ReservaDAO;
 import Classes.DAO.ServicoDAO;
@@ -81,6 +80,7 @@ public class F_Reserva implements Initializable {
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     ServicoDAO servicoDAO = new ServicoDAO();
     QuartoDAO quartoDAO = new QuartoDAO();
 =======
@@ -93,6 +93,10 @@ public class F_Reserva implements Initializable {
     QuartoDAO quartoDAO=new QuartoDAO();
 >>>>>>> e113624d6fc9c634c46e31f1beb4fbac7927ffdc
 >>>>>>> bde372c71f2c9056a4e1798ecaf15a7c8e40e5f3
+=======
+    ServicoDAO servicoDAO=new ServicoDAO();
+    QuartoDAO quartoDAO=new QuartoDAO();
+>>>>>>> parent of 0166441 (cleanup)
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -268,7 +272,7 @@ public class F_Reserva implements Initializable {
 
             for (Quarto q : arrayPrimQuarto) {
                 cboxQuarto.getItems().add(
-                        "Numero: " + q.getIdQuarto()
+                       "Numero: " + q.getIdQuarto()
                 );
             }
         } else if (Objects.equals(escolhaTquarto, "Duplo")) {
@@ -290,7 +294,6 @@ public class F_Reserva implements Initializable {
                 cboxQuarto.getItems().add(
                         "Numero: " + q.getIdQuarto()
                 );
->>>>>>> e113624d6fc9c634c46e31f1beb4fbac7927ffdc
             }
         }
     }
@@ -315,7 +318,7 @@ public class F_Reserva implements Initializable {
             alert.setHeaderText("Sem seleção");
             alert.setContentText("Selecione um tipo de quarto e um quarto disponível.");
             alert.showAndWait();
-        } else if (!listServesco.getItems().toString().contains("Base")) {
+        } else if (!listServesco.getItems().toString().contains("Base")){
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Aviso");
             alert.setHeaderText("Sem o serviço Base");
@@ -327,6 +330,7 @@ public class F_Reserva implements Initializable {
                     .replaceAll(":", "")
                     .replaceAll(" ", "");
 
+<<<<<<< HEAD
             //Preço do quarto, noites e Preço total
             Controller.getInstance().setIdquarto(Integer.parseInt(idQuarto));
             arrayPrecoQuarto = quartoDAO.findPreco();
@@ -401,15 +405,20 @@ public class F_Reserva implements Initializable {
         //reserva.setIdservico(1);
     }
 =======
+=======
+>>>>>>> parent of 0166441 (cleanup)
      //testestar dps colocar os valores inseridos
      reserva.setIdcliente(1);
      reserva.setIdquarto(idQuartoesc);
      reserva.setNumcartao(1);
      reserva.setDataI(datai);
      reserva.setDataF(dataf);
+<<<<<<< HEAD
 >>>>>>> bde372c71f2c9056a4e1798ecaf15a7c8e40e5f3
+=======
+>>>>>>> parent of 0166441 (cleanup)
 
-            reservaDAO.criaReserva(reserva);
+     reservaDAO.criaReserva(reserva);
 
             RelacionaResServ(reserva.getIdreserva());
         }
@@ -419,18 +428,17 @@ public class F_Reserva implements Initializable {
 
     String escdescricao;
     List<Servico> idservico;
-
-    public void RelacionaResServ(int idreserva) {
+    public void RelacionaResServ(int idreserva){
 
         escdescricao = listServesco.getItems().toString()
                 .replace("[", "")
                 .replace("]", "")
-                .replace(" ", "")
+                .replace( " ", "")
                 .replace(".", "")
                 .replaceAll("[0-9]", "");
 
-        idservico = findServicoEsc(escdescricao);
-    }
+        idservico=findServicoEsc(escdescricao);
+        }
 
 >>>>>>> e113624d6fc9c634c46e31f1beb4fbac7927ffdc
 

@@ -20,11 +20,12 @@ public class Reserva {
      *
      * @param idreserva
      * @param idcliente
-     * @param idquarto  «     * @param numcartao
+     * @param idquarto
+«     * @param numcartao
      * @param datai
      * @param dataf
      */
-    public Reserva(int idreserva, int idcliente, int idquarto, int idservico, int numcartao, Date datai, Date dataf) {
+    public Reserva(int idreserva, int idcliente, int idquarto,int idservico, int numcartao, Date datai, Date dataf) {
         this.idreserva = idreserva;
         this.idcliente = idcliente;
         this.idquarto = idquarto;
