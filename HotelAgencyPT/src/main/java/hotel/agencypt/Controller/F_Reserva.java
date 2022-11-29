@@ -83,19 +83,8 @@ public class F_Reserva implements Initializable {
 
     ServicoDAO servicoDAO = new ServicoDAO();
     QuartoDAO quartoDAO = new QuartoDAO();
-=======
-<<<<<<< HEAD
-    ServicoDAO servicoDAO = new ServicoDAO();
-    QuartoDAO quartoDAO = new QuartoDAO();
 
-<<<<<<< HEAD
-=======
-=======
-    ServicoDAO servicoDAO=new ServicoDAO();
-    QuartoDAO quartoDAO=new QuartoDAO();
->>>>>>> e113624d6fc9c634c46e31f1beb4fbac7927ffdc
->>>>>>> bde372c71f2c9056a4e1798ecaf15a7c8e40e5f3
->>>>>>> c03e79e7ea4dc8a13bec98555f3fbc168cf59dac
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -252,46 +241,10 @@ public class F_Reserva implements Initializable {
             for (Quarto q : arrayPrimQuarto) {
                 System.out.println(q.getIdQuarto());
                 idQuartoesc = q.getIdQuarto();
-<<<<<<< HEAD
-=======
-=======
-    public void onEsTquarto() {
-        escolhaTquarto = (String) cboxTquarto.getValue();
-
-        if (Objects.equals(escolhaTquarto, "Individual")) {
-            arrayPrimQuarto = quartoDAO.findQuartoIndividual();
-            cboxQuarto.getSelectionModel().clearSelection();
-            cboxQuarto.getItems().clear();
-
-            for (Quarto q : arrayPrimQuarto) {
-                cboxQuarto.getItems().add(
-                        "Numero: " + q.getIdQuarto()
-                );
-            }
-        } else if (Objects.equals(escolhaTquarto, "Duplo")) {
-            arrayPrimQuarto = quartoDAO.findQuartoDuplo();
-            cboxQuarto.getSelectionModel().clearSelection();
-            cboxQuarto.getItems().clear();
-
-            for (Quarto q : arrayPrimQuarto) {
-                cboxQuarto.getItems().add(
-                        "Numero: " + q.getIdQuarto()
-                );
-            }
-        } else if (Objects.equals(escolhaTquarto, "Familiar")) {
-            arrayPrimQuarto =  quartoDAO.findQuartoFamiliar();
-            cboxQuarto.getSelectionModel().clearSelection();
-            cboxQuarto.getItems().clear();
-
-            for (Quarto q : arrayPrimQuarto) {
-                cboxQuarto.getItems().add(
-                        "Numero: " + q.getIdQuarto()
-                );
->>>>>>> e113624d6fc9c634c46e31f1beb4fbac7927ffdc
->>>>>>> c03e79e7ea4dc8a13bec98555f3fbc168cf59dac
             }
         }
     }
+
     Reserva reserva = new Reserva();
 
     public void atualizarPrecos(ActionEvent event) {
@@ -372,28 +325,11 @@ public class F_Reserva implements Initializable {
             alert.showAndWait();
         } else {
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
             //testestar dps colocar os valores inseridos
             reserva.setIdcliente(1);
             reserva.setIdquarto(idQuartoesc);
             reserva.setNumcartao(1);
             reserva.setDataI(datai);
-            reserva.setDataF(dataf);
-=======
-<<<<<<< HEAD
-
->>>>>>> c03e79e7ea4dc8a13bec98555f3fbc168cf59dac
-            //testestar dps colocar os valores inseridos
-            reserva.setIdcliente(1);
-            reserva.setIdquarto(1);//idQuartoesc
-            reserva.setNumcartao(1);
-
-            System.out.println(datai);
-            System.out.println(dataf);
-
-            reserva.setDataI(myDateI);
             reserva.setDataF(dataf);
 
             ReservaDAO.criaReserva(reserva);
@@ -401,25 +337,9 @@ public class F_Reserva implements Initializable {
         }
         //reserva.setIdservico(1);
     }
-<<<<<<< HEAD
-=======
-=======
-     //testestar dps colocar os valores inseridos
-     reserva.setIdcliente(1);
-     reserva.setIdquarto(idQuartoesc);
-     reserva.setNumcartao(1);
-     reserva.setDataI(datai);
-     reserva.setDataF(dataf);
->>>>>>> bde372c71f2c9056a4e1798ecaf15a7c8e40e5f3
 
-            reservaDAO.criaReserva(reserva);
 
-            RelacionaResServ(reserva.getIdreserva());
-        }
-        //reserva.setIdservico(1);
 
-    }
->>>>>>> c03e79e7ea4dc8a13bec98555f3fbc168cf59dac
 
     String escdescricao;
     List<Servico> idservico;
