@@ -1,11 +1,8 @@
 package hotel.agencypt.Controller;
 
 //Bibliotecas
-<<<<<<< HEAD
 
 import Classes.Cliente;
-=======
->>>>>>> c92219c5717eab0603a2bc2fb85b33922f69398d
 import Classes.DAO.QuartoDAO;
 import Classes.DAO.ClienteDAO;
 import Classes.DAO.ReservaDAO;
@@ -79,17 +76,9 @@ public class F_Reserva implements Initializable {
     String idQuarto;
     Integer index = -1;
     List<Servico> arrayServico = new ArrayList<>();
-<<<<<<< HEAD
     ServicoDAO servicoDAO = new ServicoDAO();
     QuartoDAO quartoDAO = new QuartoDAO();
 
-
-=======
-
-
-    ServicoDAO servicoDAO=new ServicoDAO();
-    QuartoDAO quartoDAO=new QuartoDAO();
->>>>>>> c92219c5717eab0603a2bc2fb85b33922f69398d
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -194,12 +183,8 @@ public class F_Reserva implements Initializable {
         }
     }
 
-<<<<<<< HEAD
     Date myDateI;
-=======
     Date datai;
-
->>>>>>> c92219c5717eab0603a2bc2fb85b33922f69398d
     @FXML
     public void getDateI(ActionEvent event) {
         ZoneId defaultZoneId = ZoneId.systemDefault();
@@ -213,12 +198,9 @@ public class F_Reserva implements Initializable {
         }
     }
 
-<<<<<<< HEAD
     Date myDateF;
-=======
     Date dataf;
 
->>>>>>> c92219c5717eab0603a2bc2fb85b33922f69398d
     @FXML
     public void getDateF(ActionEvent event) {
         ZoneId defaultZoneId = ZoneId.systemDefault();
@@ -273,8 +255,9 @@ public class F_Reserva implements Initializable {
                 );
             }
         }
+    }
 
-<<<<<<< HEAD
+
 
 String idCliente;
     int idClientV;
@@ -282,6 +265,7 @@ String idCliente;
 TextField idClienteInsere;
 List<Cliente> arrayCliente=new ArrayList<>();
 ClienteDAO clienteDAO=new ClienteDAO();
+
 @FXML
 public void onidClienteInsere(){
     idCliente=idClienteInsere.getText();
@@ -297,9 +281,7 @@ public void onidClienteInsere(){
 }
 
 
-=======
-    }
->>>>>>> c92219c5717eab0603a2bc2fb85b33922f69398d
+
 
     public void atualizarPrecos(ActionEvent event) {
         if (datePickerI.getValue() == null || datePickerF.getValue() == null) {
@@ -351,42 +333,12 @@ public void onidClienteInsere(){
         }
     }
 
-
+    ReservaDAO reservaDAO;
     Reserva reserva = new Reserva();
     @FXML
-<<<<<<< HEAD
     public void onCriaReserva(ActionEvent event) {
-        /*
-=======
-    public void onCriaReserva() {
->>>>>>> c92219c5717eab0603a2bc2fb85b33922f69398d
-        if (datePickerI.getValue() == null || datePickerF.getValue() == null) {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Aviso");
-            alert.setHeaderText("Sem seleção");
-            alert.setContentText("Selecione uma data de inicio e fim.");
-            alert.showAndWait();
-        } else if (datePickerF.getValue().compareTo(datePickerI.getValue()) < 0) {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Aviso");
-            alert.setHeaderText("Datas inválidas");
-            alert.setContentText("A data de fim deve ser maior que a data de inicio.");
-            alert.showAndWait();
-        } else if (cboxTquarto.getSelectionModel().isEmpty() || cboxQuarto.getSelectionModel().isEmpty()) {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Aviso");
-            alert.setHeaderText("Sem seleção");
-            alert.setContentText("Selecione um tipo de quarto e um quarto disponível.");
-            alert.showAndWait();
-        } else if (!listServesco.getItems().toString().contains("Base")){
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Aviso");
-            alert.setHeaderText("Sem o serviço Base");
-            alert.setContentText("A reserva tem que ter o serviço: base que está incluida em todos os quartos.");
-            alert.showAndWait();
-        } else {
-<<<<<<< HEAD
-        */
+
+
 
             //testestar dps colocar os valores inseridos
             reserva.setIdcliente(Integer.parseInt(idCliente));
@@ -394,24 +346,13 @@ public void onidClienteInsere(){
             reserva.setNumcartao(idClientV);
             reserva.setDataI(myDateI);
             reserva.setDataF(myDateF);
-=======
-            ReservaDAO reservaDAO = new ReservaDAO();
-            Reserva reserva = new Reserva();
 
-            //testestar dps colocar os valores inseridos
-            reserva.setIdcliente(1);
-            reserva.setIdquarto(1);
-            reserva.setNumcartao(1);
-            reserva.setDataI(datai);
-            reserva.setDataF(dataf);
->>>>>>> c92219c5717eab0603a2bc2fb85b33922f69398d
+        reservaDAO.criaReserva(reserva);
 
-            reservaDAO.criaReserva(reserva);
-
-            RelacionaResServ(reserva.getIdreserva());
+            RelacionaResServ();
         }
         //reserva.setIdservico(1);
-<<<<<<< HEAD
+
 
 
 
@@ -441,24 +382,9 @@ public void onidClienteInsere(){
 
        // criaReservaServico(ultimaReserv);
 
-=======
-
     }
 
-    String escdescricao;
-    List<Servico> idservico;
-    public void RelacionaResServ(int idreserva){
 
-        escdescricao = listServesco.getItems().toString()
-                .replace("[", "")
-                .replace("]", "")
-                .replace( " ", "")
-                .replace(".", "")
-                .replaceAll("[0-9]", "");
-
-        idservico=findServicoEsc(escdescricao);
->>>>>>> c92219c5717eab0603a2bc2fb85b33922f69398d
-    }
 
 
     /**
@@ -474,7 +400,6 @@ public void onidClienteInsere(){
             System.out.println("Erro ao voltar atrás.");
         }
     }
-<<<<<<< HEAD
 
     public void onIdCliente(ActionEvent event) {
     }
@@ -482,6 +407,5 @@ public void onidClienteInsere(){
 
 }
 
-=======
-}
->>>>>>> c92219c5717eab0603a2bc2fb85b33922f69398d
+
+
