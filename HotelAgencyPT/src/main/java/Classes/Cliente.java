@@ -14,6 +14,10 @@ public class Cliente {
         this.idCliente = idCliente;
     }
 
+    public Cliente() {
+
+    }
+
     /**
      * Devolve:
      *

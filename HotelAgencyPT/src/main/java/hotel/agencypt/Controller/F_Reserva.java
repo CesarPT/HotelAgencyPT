@@ -2,7 +2,9 @@ package hotel.agencypt.Controller;
 
 //Bibliotecas
 
+import Classes.Cliente;
 import Classes.DAO.QuartoDAO;
+import Classes.DAO.ClienteDAO;
 import Classes.DAO.ReservaDAO;
 import Classes.DAO.ServicoDAO;
 import Classes.Quarto;
@@ -75,12 +77,8 @@ public class F_Reserva implements Initializable {
     String escolhaTquarto;
     String preco;
     String idQuarto;
-
     Integer index = -1;
-
     List<Servico> arrayServico = new ArrayList<>();
-
-
     ServicoDAO servicoDAO = new ServicoDAO();
     QuartoDAO quartoDAO = new QuartoDAO();
 
@@ -189,7 +187,6 @@ public class F_Reserva implements Initializable {
         }
     }
 
-    Date datai;
     Date myDateI;
     @FXML
     public void getDateI(ActionEvent event) {
@@ -203,7 +200,6 @@ public class F_Reserva implements Initializable {
         }
     }
 
-    Date dataf;
     Date myDateF;
     @FXML
     public void getDateF(ActionEvent event) {
@@ -245,7 +241,28 @@ public class F_Reserva implements Initializable {
         }
     }
 
-    Reserva reserva = new Reserva();
+
+String idCliente;
+    int idClientV;
+@FXML
+TextField idClienteInsere;
+List<Cliente> arrayCliente=new ArrayList<>();
+ClienteDAO clienteDAO=new ClienteDAO();
+@FXML
+public void onidClienteInsere(){
+    idCliente=idClienteInsere.getText();
+
+    //System.out.println(idCliente);
+    //System.out.println(Integer.parseInt(idCliente));
+    arrayCliente = clienteDAO.findClienteCid(Integer.parseInt(idCliente));
+    for (Cliente c : arrayCliente) {
+        System.out.println(c.getIdCliente());
+        idClientV =c.getIdCliente();
+    }
+
+}
+
+
 
     public void atualizarPrecos(ActionEvent event) {
         if (datePickerI.getValue() == null || datePickerF.getValue() == null) {
@@ -297,8 +314,11 @@ public class F_Reserva implements Initializable {
         }
     }
 
+
+    Reserva reserva = new Reserva();
     @FXML
     public void onCriaReserva(ActionEvent event) {
+        /*
         if (datePickerI.getValue() == null || datePickerF.getValue() == null) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Aviso");
@@ -324,37 +344,20 @@ public class F_Reserva implements Initializable {
             alert.setContentText("A reserva tem que ter o serviço: base que está incluida em todos os quartos.");
             alert.showAndWait();
         } else {
+        */
 
             //testestar dps colocar os valores inseridos
-            reserva.setIdcliente(1);
+            reserva.setIdcliente(Integer.parseInt(idCliente));
             reserva.setIdquarto(idQuartoesc);
-            reserva.setNumcartao(1);
-            reserva.setDataI(datai);
-            reserva.setDataF(dataf);
+            reserva.setNumcartao(idClientV);
+            reserva.setDataI(myDateI);
+            reserva.setDataF(myDateF);
 
             ReservaDAO.criaReserva(reserva);
             RelacionaResServ();
         }
         //reserva.setIdservico(1);
-    }
 
-
-
-
-    String escdescricao;
-    List<Servico> idservico;
-
-    public void RelacionaResServ(int idreserva) {
-
-        escdescricao = listServesco.getItems().toString()
-                .replace("[", "")
-                .replace("]", "")
-                .replace(" ", "")
-                .replace(".", "")
-                .replaceAll("[0-9]", "");
-
-        idservico = findServicoEsc(escdescricao);
-    }
 
 
     int ultimaReserv;
@@ -402,5 +405,7 @@ public class F_Reserva implements Initializable {
 
     public void onIdCliente(ActionEvent event) {
     }
+
+
 }
 
