@@ -226,34 +226,13 @@ public class F_Reserva implements Initializable {
 
         if (Objects.equals(escolhaTquarto, "Individual")) {
             arrayPrimQuarto = quartoDAO.findQuartoIndividual();
-            cboxQuarto.getSelectionModel().clearSelection();
-            cboxQuarto.getItems().clear();
 
-            for (Quarto q : arrayPrimQuarto) {
-                cboxQuarto.getItems().add(
-                        "Numero: " + q.getIdQuarto()
-                );
-            }
         } else if (Objects.equals(escolhaTquarto, "Duplo")) {
             arrayPrimQuarto = quartoDAO.findQuartoDuplo();
-            cboxQuarto.getSelectionModel().clearSelection();
-            cboxQuarto.getItems().clear();
 
-            for (Quarto q : arrayPrimQuarto) {
-                cboxQuarto.getItems().add(
-                        "Numero: " + q.getIdQuarto()
-                );
-            }
         } else if (Objects.equals(escolhaTquarto, "Familiar")) {
             arrayPrimQuarto =  quartoDAO.findQuartoFamiliar();
-            cboxQuarto.getSelectionModel().clearSelection();
-            cboxQuarto.getItems().clear();
 
-            for (Quarto q : arrayPrimQuarto) {
-                cboxQuarto.getItems().add(
-                        "Numero: " + q.getIdQuarto()
-                );
-            }
         }
     }
 
@@ -339,7 +318,7 @@ public void onidClienteInsere(){
     public void onCriaReserva(ActionEvent event) {
 
 
-
+/*
             //testestar dps colocar os valores inseridos
             reserva.setIdcliente(Integer.parseInt(idCliente));
             reserva.setIdquarto(idQuartoesc);
@@ -348,6 +327,8 @@ public void onidClienteInsere(){
             reserva.setDataF(myDateF);
 
         reservaDAO.criaReserva(reserva);
+*/
+
 
             RelacionaResServ();
         }
@@ -361,7 +342,10 @@ public void onidClienteInsere(){
     String descservico;
 
     public void RelacionaResServ(){
+
+        //List tipo reserva com o valor da ultima reserva encontrada
         arrayUltimaReserva = ReservaDAO.findUltReserva();
+
         for (Reserva r : arrayUltimaReserva) {
             ultimaReserv = r.getIdreserva();
         }
