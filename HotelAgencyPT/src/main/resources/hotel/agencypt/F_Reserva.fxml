@@ -133,5 +133,6 @@
          </font>
       </Button>
       <TextField fx:id="idClienteInsere" layoutX="102.0" layoutY="225.0" onAction="#onidClienteInsere" promptText="id cliente" />
+      <Label layoutX="56.0" layoutY="229.0" text="id Cliente" />
     </children>
 </AnchorPane>

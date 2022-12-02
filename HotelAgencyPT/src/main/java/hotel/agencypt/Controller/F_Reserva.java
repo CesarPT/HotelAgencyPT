@@ -321,12 +321,12 @@ public void onidClienteInsere(){
     @FXML
     public void onCriaReserva(ActionEvent event) {
 
-
+        onEsTquarto();
 
             //testestar dps colocar os valores inseridos
             reserva.setIdcliente(idClientV);
             reserva.setIdquarto(idQuartoesc);
-            reserva.setNumcartao(idClientV);
+            reserva.setNumcartao(1);
             reserva.setDataI(myDateI);
             reserva.setDataF(myDateF);
 
