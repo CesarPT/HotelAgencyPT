@@ -106,7 +106,6 @@
                 <Font size="14.0" />
             </font>
         </TextField>
-      <TextField layoutX="100.0" layoutY="224.0" onAction="#onIdCliente" />
 
       <Label layoutX="205.0" layoutY="272.0" text="Preço do quarto:">
          <font>
@@ -133,6 +132,7 @@
             <Font size="13.0" />
          </font>
       </Button>
-      <TextField fx:id="idClienteInsere" layoutX="102.0" layoutY="258.0" onAction="#onidClienteInsere" promptText="id cliente" />
+      <TextField fx:id="idClienteInsere" layoutX="102.0" layoutY="225.0" onAction="#onidClienteInsere" promptText="id cliente" />
+      <Label layoutX="56.0" layoutY="229.0" text="id Cliente" />
     </children>
 </AnchorPane>

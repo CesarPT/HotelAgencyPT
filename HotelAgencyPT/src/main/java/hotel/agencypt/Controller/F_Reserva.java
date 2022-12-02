@@ -32,6 +32,7 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.stream.Stream;
 
+import static Classes.DAO.ReservaServicoDAO.criaReservaServico;
 import static Classes.DAO.ServicoDAO.findServicoEsc;
 
 public class F_Reserva implements Initializable {
@@ -78,6 +79,7 @@ public class F_Reserva implements Initializable {
     List<Servico> arrayServico = new ArrayList<>();
     ServicoDAO servicoDAO = new ServicoDAO();
     QuartoDAO quartoDAO = new QuartoDAO();
+    ArrayList<String> listaqq=new ArrayList<>();
 
 
     @Override
@@ -103,6 +105,8 @@ public class F_Reserva implements Initializable {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
                 servicoselce = listServesco.getSelectionModel().getSelectedItem();
+
+
             }
         });
         //drop box dos tipos de quartos
@@ -317,29 +321,29 @@ public void onidClienteInsere(){
     @FXML
     public void onCriaReserva(ActionEvent event) {
 
+        onEsTquarto();
 
-/*
             //testestar dps colocar os valores inseridos
-            reserva.setIdcliente(Integer.parseInt(idCliente));
+            reserva.setIdcliente(idClientV);
             reserva.setIdquarto(idQuartoesc);
-            reserva.setNumcartao(idClientV);
+            reserva.setNumcartao(1);
             reserva.setDataI(myDateI);
             reserva.setDataF(myDateF);
 
         reservaDAO.criaReserva(reserva);
-*/
+
 
 
             RelacionaResServ();
         }
-        //reserva.setIdservico(1);
-
 
 
 
     int ultimaReserv;
     List<Reserva> arrayUltimaReserva = new ArrayList<>();
+    int relacionaservico;
     String descservico;
+
 
     public void RelacionaResServ(){
 
@@ -351,21 +355,33 @@ public void onidClienteInsere(){
         }
         System.out.println(ultimaReserv);
 
-
         //------------------------------------------------------
 
         descservico = listServesco.getItems().toString()
                 .replace("[", "")
                 .replace("]", "")
                 .replace(" ", "")
+                .replace(".", "")
                 .replaceAll("[0-9]", "");
 
-        System.out.println(descservico);
-        //Soma o que está antes da virgula e depois da virgula
-        //outracoisa.setText(String.valueOf(descservico.split(",")));
+        //-------------------------------
+        String[] bdservico=descservico.split(",");
 
-       // criaReservaServico(ultimaReserv);
+        for(int i=0;i<bdservico.length;i++){
+            System.out.println(bdservico[i]);
 
+            arrayServico= findServicoEsc(bdservico[i]);
+
+
+            for (Servico s : arrayServico) {
+                relacionaservico = s.getIdServico();
+
+                criaReservaServico(ultimaReserv,relacionaservico);
+
+            }
+
+
+        }
     }
 
 

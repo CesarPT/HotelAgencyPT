@@ -19,15 +19,15 @@ public class ReservaServicoDAO {
     }
 
 
-    public static boolean criaReservaServico(int idreserva ) {
-        String sql = "INSERT INTO Reserva (idreserva,idservico) Values(?,?)";
+    public static boolean criaReservaServico(int idreserva,int idservico ) {
+        String sql = "INSERT INTO ReservaServico (idreserva,idservico) Values(?,?)";
         PreparedStatement stmt = null;
 
         try {
             con = ConnectionDB.establishConnection();
             stmt = con.prepareStatement(sql);
             stmt.setInt(1,idreserva);
-            //stmt.setInt(2, reservaservico.getIdservico());
+            stmt.setInt(2,idservico);
 
             stmt.executeUpdate();
             return true;
