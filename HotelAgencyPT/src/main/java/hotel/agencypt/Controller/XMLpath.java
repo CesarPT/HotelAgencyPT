@@ -1,5 +1,6 @@
 package hotel.agencypt.Controller;
 
+import Classes.Fornecedor;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 
@@ -12,6 +13,10 @@ import javax.xml.xpath.XPathFactory;
 import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 public class XMLpath {
 
@@ -33,21 +38,34 @@ public class XMLpath {
 
 
         //print do XML na consola
-        //ON=OrderNUmber
-        //DY=Date-year
-        //DM
-        //DD
-        //SP
         //---------------------HEADER----------------------------------
+        String on="";
+        Date data;
+        SimpleDateFormat originalFormat = new SimpleDateFormat("yyyyMMdd");
+        String datanc="";
+        String dy = "";
+        String dm = "";
+        String dd = "";
+        String pi;
+        String emp;
+        String rua="";
+        String np;
+        String ct;
+        String pc;
+        String con;
 
-
+        Entrega entrega=new Entrega();
         //OrderNUmber
         XPathExpression expron = xpath.compile("//Header//OrderNumber/text()");
         Object resulton = expron.evaluate(document, XPathConstants.NODESET);
         NodeList nodeon = (NodeList) resulton;
         for (int i = 0; i < nodeon.getLength(); i++) {
             System.out.println(nodeon.item(i).getNodeValue());
+            on=nodeon.item(i).getNodeValue();
+
+            entrega.setOrderNumber(Integer.parseInt(on));
         }
+
 
         //DATE
         XPathExpression exprdy = xpath.compile("//Header//OrderDate/Date/Year/text()");
@@ -55,6 +73,7 @@ public class XMLpath {
         NodeList nodesdy = (NodeList) resultdy;
         for (int i = 0; i < nodesdy.getLength(); i++) {
             System.out.println(nodesdy.item(i).getNodeValue());
+            dy= (nodesdy.item(i).getNodeValue());
         }
 
         XPathExpression exprdm = xpath.compile("//Header//OrderDate/Date/Month/text()");
@@ -62,6 +81,7 @@ public class XMLpath {
         NodeList nodesdm = (NodeList) resultdm;
         for (int i = 0; i < nodesdm.getLength(); i++) {
             System.out.println(nodesdm.item(i).getNodeValue());
+            dm= (nodesdm.item(i).getNodeValue());
         }
 
         XPathExpression exprdd = xpath.compile("//Header//OrderDate/Date/Day/text()");
@@ -69,6 +89,10 @@ public class XMLpath {
         NodeList nodesdd = (NodeList) resultdd;
         for (int i = 0; i < nodesdd.getLength(); i++) {
             System.out.println(nodesdd.item(i).getNodeValue());
+            dd= (nodesdd.item(i).getNodeValue());
+            data=originalFormat.parse(datanc);
+
+            entrega.setData_entrega(data);
         }
 
         //Suplier party
@@ -77,43 +101,68 @@ public class XMLpath {
         NodeList nodessp = (NodeList) resultsp;
         for (int i = 0; i < nodessp.getLength(); i++) {
             System.out.println(nodessp.item(i).getNodeValue());
+            pi=(nodessp.item(i).getNodeValue());
+            entrega.setParty_identifier(pi);
         }
+
+
         XPathExpression exprna = xpath.compile("//Header//SupplierParty/NameAddress/Name/text()");
         Object resultna = exprna.evaluate(document, XPathConstants.NODESET);
         NodeList nodesna = (NodeList) resultna;
         for (int i = 0; i < nodesna.getLength(); i++) {
             System.out.println(nodesna.item(i).getNodeValue());
+
+            emp=(nodesna.item(i).getNodeValue());
+            entrega.setEmpresa(emp);
         }
+
         XPathExpression exprad1 = xpath.compile("//Header//SupplierParty/NameAddress/Address1/text()");
         Object resultad1 = exprad1.evaluate(document, XPathConstants.NODESET);
         NodeList nodesad1 = (NodeList) resultad1;
         for (int i = 0; i < nodesad1.getLength(); i++) {
             System.out.println(nodesad1.item(i).getNodeValue());
+
+            rua=(nodesad1.item(i).getNodeValue());
+            entrega.setRua(rua);
         }
         XPathExpression exprad2 = xpath.compile("//Header//SupplierParty/NameAddress/Address2/text()");
         Object resultad2 = exprad2.evaluate(document, XPathConstants.NODESET);
         NodeList nodesad2 = (NodeList) resultad2;
         for (int i = 0; i < nodesad2.getLength(); i++) {
             System.out.println(nodesad2.item(i).getNodeValue());
+
+            np=(nodesad2.item(i).getNodeValue());
+            entrega.setN_porta(np);
         }
         XPathExpression exprct = xpath.compile("//Header//SupplierParty/NameAddress/City/text()");
         Object resultct = exprct.evaluate(document, XPathConstants.NODESET);
         NodeList nodesct = (NodeList) resultct;
         for (int i = 0; i < nodesct.getLength(); i++) {
             System.out.println(nodesct.item(i).getNodeValue());
+
+            ct=(nodesct.item(i).getNodeValue());
+            entrega.setCidade(ct);
         }
-        XPathExpression exprps = xpath.compile("//Header//SupplierParty/NameAddress/PostalCode/text()");
-        Object resultps = exprps.evaluate(document, XPathConstants.NODESET);
-        NodeList nodesps = (NodeList) resultps;
-        for (int i = 0; i < nodesps.getLength(); i++) {
-            System.out.println(nodesps.item(i).getNodeValue());
+        XPathExpression exprpc = xpath.compile("//Header//SupplierParty/NameAddress/PostalCode/text()");
+        Object resultpc = exprpc.evaluate(document, XPathConstants.NODESET);
+        NodeList nodespc = (NodeList) resultpc;
+        for (int i = 0; i < nodespc.getLength(); i++) {
+            System.out.println(nodespc.item(i).getNodeValue());
+            pc=(nodespc.item(i).getNodeValue());
+            entrega.setCp(pc);
         }
+
         XPathExpression exprcon = xpath.compile("//Header//SupplierParty/NameAddress/Country/text()");
         Object resultcon = exprcon.evaluate(document, XPathConstants.NODESET);
         NodeList nodescon = (NodeList) resultcon;
         for (int i = 0; i < nodescon.getLength(); i++) {
             System.out.println(nodescon.item(i).getNodeValue());
+
+            con=(nodescon.item(i).getNodeValue());
+            entrega.setPais(con);
         }
+
+
 
 
 
