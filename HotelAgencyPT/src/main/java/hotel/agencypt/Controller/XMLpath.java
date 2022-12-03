@@ -39,6 +39,8 @@ public class XMLpath {
         //DD
         //SP
         //---------------------HEADER----------------------------------
+
+
         //OrderNUmber
         XPathExpression expron = xpath.compile("//Header//OrderNumber/text()");
         Object resulton = expron.evaluate(document, XPathConstants.NODESET);
@@ -112,6 +114,8 @@ public class XMLpath {
         for (int i = 0; i < nodescon.getLength(); i++) {
             System.out.println(nodescon.item(i).getNodeValue());
         }
+
+
 
         //lINE
         //product

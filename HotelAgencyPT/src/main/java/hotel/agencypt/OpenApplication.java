@@ -10,6 +10,8 @@ import javafx.stage.StageStyle;
 import java.io.IOException;
 import java.util.Objects;
 
+import static hotel.agencypt.Controller.XMLpath.Lexml;
+
 public class OpenApplication extends Application {
     public void start(Stage stage) {
         try {
@@ -25,8 +27,8 @@ public class OpenApplication extends Application {
 
     public static void main(String[] args) throws Exception {
         //metodo para ler e dar print na consola o xml
-        //Lexml();
-        launch();
+        Lexml();
+        //launch();
 
     }
 
