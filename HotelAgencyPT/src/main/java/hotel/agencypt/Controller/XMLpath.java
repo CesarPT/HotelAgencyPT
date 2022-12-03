@@ -22,7 +22,7 @@ public class XMLpath {
 
     public static void Lexml() throws Exception {
 
-        Path path = Paths.get("..\\HotelAgencyPT\\src\\main\\java\\hotel\\agencypt\\ProductHero.xml");
+        Path path = Paths.get("../HotelAgencyPT/src/main/java/hotel/agencypt/ProductHero.xml");
 
         //documento builder para o XML
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
