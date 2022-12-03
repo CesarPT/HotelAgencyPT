@@ -1,131 +1,138 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.*?>
 <?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.text.Font?>
-
-<AnchorPane prefHeight="501.0" prefWidth="686.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hotel.agencypt.Controller.GH_ConfigQuarto">
+<?import javafx.scene.text.*?>
+<AnchorPane prefHeight="501.0" prefWidth="686.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="hotel.agencypt.Controller.GH_ConfigQuarto">
     <children>
         <Pane layoutX="42.0" layoutY="52.0" prefHeight="458.0" prefWidth="644.0" style="-fx-background-color: white;">
             <children>
-                <ImageView fitHeight="463.0" fitWidth="653.0" layoutX="-9.0" layoutY="1.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
+                <ImageView fitHeight="463.0" fitWidth="653.0" layoutX="-9.0" layoutY="1.0"
+                           nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../../Imagens/hotel.png" />
+                        <Image url="@../../Imagens/hotel.png"/>
                     </image>
                 </ImageView>
-                <Pane layoutX="304.0" layoutY="260.0" prefHeight="53.0" prefWidth="273.0" style="-fx-background-color: lightblue;">
+                <Pane layoutX="304.0" layoutY="271.0" prefHeight="53.0" prefWidth="273.0"
+                      style="-fx-background-color: lightblue; -fx-background-radius: 10;">
                     <children>
-                        <TextArea layoutX="145.0" layoutY="8.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="37.0" prefWidth="118.0" text="€">
+                        <Label alignment="CENTER" layoutX="11.0" layoutY="8.0" prefHeight="37.0" prefWidth="132.0"
+                               style="-fx-background-color: yellow;" text="Alterar preço:">
                             <font>
-                                <Font size="16.0" />
-                            </font>
-                        </TextArea>
-                        <Label alignment="CENTER" layoutX="11.0" layoutY="8.0" prefHeight="37.0" prefWidth="132.0" style="-fx-background-color: yellow;" text="Alterar preço:">
-                            <font>
-                                <Font size="16.0" />
+                                <Font size="16.0"/>
                             </font>
                         </Label>
+                        <Label layoutX="252.0" layoutY="13.0" prefHeight="27.0" prefWidth="14.0" text="€">
+                            <font>
+                                <Font size="18.0"/>
+                            </font>
+                        </Label>
+                        <TextArea fx:id="textAlterarPreco" editable="false" layoutX="149.0" layoutY="8.0"
+                                  minHeight="-Infinity" minWidth="-Infinity" prefHeight="37.0" prefWidth="95.0"
+                                  text="-">
+                            <font>
+                                <Font size="16.0"/>
+                            </font>
+                        </TextArea>
                     </children>
                 </Pane>
                 <Label layoutX="21.0" layoutY="14.0" text="Selecione um piso:" textFill="WHITE">
                     <font>
-                        <Font size="16.0" />
+                        <Font size="16.0"/>
                     </font>
                 </Label>
-                <ComboBox layoutX="180.0" layoutY="14.0" prefHeight="25.0" prefWidth="170.0" promptText="Selecione um piso" />
+                <ComboBox fx:id="comboBoxPisoID" layoutX="180.0" layoutY="14.0" onAction="#verificarPiso"
+                          prefHeight="25.0" prefWidth="170.0" promptText="Selecione um piso"/>
                 <Label layoutX="21.0" layoutY="74.0" text="Selecione um quarto:" textFill="WHITE">
                     <font>
-                        <Font size="16.0" />
+                        <Font size="16.0"/>
                     </font>
                 </Label>
-                <ComboBox layoutX="180.0" layoutY="74.0" prefHeight="25.0" prefWidth="170.0" promptText="Selecione um quarto" />
-                <Button layoutX="374.0" layoutY="27.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="208.0" text="OK" />
-                <Label alignment="CENTER" layoutX="304.0" layoutY="172.0" prefHeight="37.0" prefWidth="132.0" style="-fx-background-color: lightblue;" text="Preço do Quarto:">
+                <ComboBox fx:id="comboBoxQuartoID" disable="true" layoutX="180.0" layoutY="74.0"
+                          onAction="#verificarQuarto" prefHeight="25.0" prefWidth="216.0"
+                          promptText="Selecione um quarto"/>
+                <Label alignment="CENTER" layoutX="303.0" layoutY="222.0" prefHeight="37.0" prefWidth="132.0"
+                       style="-fx-background-color: lightblue; -fx-background-radius: 10;" text="Preço do Quarto:">
                     <font>
-                        <Font size="16.0" />
+                        <Font size="16.0"/>
                     </font>
                 </Label>
-                <TextArea editable="false" layoutX="454.0" layoutY="172.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="37.0" prefWidth="118.0" text="€">
+                <TextArea fx:id="textPreco" editable="false" layoutX="453.0" layoutY="222.0" minHeight="-Infinity"
+                          minWidth="-Infinity" prefHeight="37.0" prefWidth="95.0" text="-">
                     <font>
-                        <Font size="16.0" />
+                        <Font size="16.0"/>
                     </font>
                 </TextArea>
-                <Label alignment="CENTER" layoutX="21.0" layoutY="291.0" prefHeight="37.0" prefWidth="132.0" style="-fx-background-color: yellow;" text="Alterar descrição:">
+                <Label alignment="CENTER" layoutX="21.0" layoutY="291.0" prefHeight="37.0" prefWidth="132.0"
+                       style="-fx-background-color: yellow;" text="Alterar descrição:">
                     <font>
-                        <Font size="16.0" />
+                        <Font size="16.0"/>
                     </font>
                 </Label>
-                <TextArea layoutX="21.0" layoutY="339.0" prefHeight="113.0" prefWidth="551.0" text="Escreva o texto aqui e clique no  ✅  para alterar.&#10;">
+                <TextArea fx:id="textAlterarDescricao" layoutX="21.0" layoutY="339.0" prefHeight="113.0"
+                          prefWidth="551.0" text="Escreva o texto aqui e clique no  ✅  para alterar.&#10;">
                     <font>
-                        <Font size="16.0" />
+                        <Font size="16.0"/>
                     </font>
                 </TextArea>
-                <Button layoutX="579.0" layoutY="339.0" mnemonicParsing="false" prefHeight="113.0" prefWidth="44.0">
+                <Button fx:id="verificarDescricao" disable="true" layoutX="579.0" layoutY="339.0"
+                        mnemonicParsing="false" onAction="#verificarAlterarDescricao" prefHeight="113.0"
+                        prefWidth="44.0">
                     <font>
-                        <Font size="16.0" />
+                        <Font size="16.0"/>
                     </font>
                     <graphic>
                         <ImageView fitHeight="28.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../../Imagens/certo.png" />
+                                <Image url="@../../Imagens/certo.png"/>
                             </image>
                         </ImageView>
                     </graphic>
                 </Button>
-                <Label alignment="CENTER" layoutX="304.0" layoutY="219.0" prefHeight="37.0" prefWidth="132.0" style="-fx-background-color: lightblue;" text="Nº Quarto:">
-                    <font>
-                        <Font size="16.0" />
-                    </font>
-                </Label>
-                <TextArea editable="false" layoutX="454.0" layoutY="219.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="37.0" prefWidth="51.0">
-                    <font>
-                        <Font size="16.0" />
-                    </font>
-                </TextArea>
-                <Button layoutX="582.0" layoutY="268.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="28.0">
+                <Button fx:id="verificarPrecoID" disable="true" layoutX="582.0" layoutY="271.0" mnemonicParsing="false"
+                        onAction="#verificarAlterarPreco" prefHeight="53.0" prefWidth="44.0">
                     <graphic>
                         <ImageView fitHeight="28.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../../Imagens/certo.png" />
+                                <Image url="@../../Imagens/certo.png"/>
                             </image>
                         </ImageView>
                     </graphic>
                 </Button>
-                <Label layoutX="374.0" layoutY="75.0" text="Estado:">
+                <Button fx:id="verDescricaoID" disable="true" layoutX="170.0" layoutY="297.0" mnemonicParsing="false"
+                        onAction="#verDescricao" text="Ver descrição">
                     <font>
-                        <Font size="16.0" />
+                        <Font size="13.0"/>
+                    </font>
+                </Button>
+                <Label layoutX="554.0" layoutY="228.0" prefHeight="27.0" prefWidth="14.0" text="€">
+                    <font>
+                        <Font size="18.0"/>
                     </font>
                 </Label>
-                <Label layoutX="440.0" layoutY="75.0" text="Quarto ocupado" textFill="RED">
-                    <font>
-                        <Font size="16.0" />
-                    </font>
-                </Label>
-            <Button layoutX="170.0" layoutY="297.0" mnemonicParsing="false" text="Ver descrição" />
             </children>
         </Pane>
         <Label layoutX="526.0" layoutY="14.0" text="Configurar Quarto">
             <font>
-                <Font size="18.0" />
+                <Font size="18.0"/>
             </font>
         </Label>
-        <Button layoutY="-1.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#voltarAtras" prefHeight="510.0" prefWidth="48.0" style="-fx-background-color: #ccffff; -fx-border-color: gray;">
+        <Button layoutY="-1.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false"
+                onAction="#voltarAtras" prefHeight="510.0" prefWidth="48.0"
+                style="-fx-background-color: #ccffff; -fx-border-color: gray;">
             <graphic>
                 <ImageView fitHeight="38.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../../Imagens/voltar.png" />
+                        <Image url="@../../Imagens/voltar.png"/>
                     </image>
                 </ImageView>
             </graphic>
             <cursor>
-                <Cursor fx:constant="HAND" />
+                <Cursor fx:constant="HAND"/>
             </cursor>
         </Button>
     </children>

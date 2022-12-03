@@ -28,7 +28,7 @@ public class RegEntradaDAO {
      * Método para pesquisar o cartão com o username
      */
     public List<RegEntrada> findRegEntradaQuarto() {
-        String sql = "SELECT RegEntrada.numcartao, RegEntrada.data, RegEntrada.local\n" +
+        String sql = "SELECT RegEntrada.numcartao, Reserva.idcliente, Reserva.idreserva, RegEntrada.local, RegEntrada.data, RegEntrada.hora\n" +
                 "FROM RegEntrada\n" +
                 "INNER JOIN Cartao\n" +
                 "ON Cartao.numcartao = RegEntrada.numcartao\n" +
@@ -53,8 +53,11 @@ public class RegEntradaDAO {
             while (rs.next()) {
                 RegEntrada regentrada = new RegEntrada();
                 regentrada.setNumcartao(rs.getInt("numcartao"));
-                regentrada.setData(rs.getString("data"));
+                regentrada.setIdcliente(rs.getInt("idcliente"));
+                regentrada.setIdreserva(rs.getInt("idreserva"));
                 regentrada.setLocal(rs.getString("local"));
+                regentrada.setData(rs.getString("data"));
+                regentrada.setHora(rs.getString("hora"));
                 listRegEntrada.add(regentrada);
             }
 
@@ -73,13 +76,14 @@ public class RegEntradaDAO {
      * @return
      */
     public boolean insertRegEntrada(RegEntrada regentrada) {
-        String sql = "INSERT INTO RegEntrada (local, data, numcartao) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO RegEntrada (numcartao, local, data, hora) VALUES (?, ?, ?, ?)";
         PreparedStatement stmt = null;
         try {
             stmt = con.prepareStatement(sql);
-            stmt.setString(1, regentrada.getLocal());
-            stmt.setString(2, regentrada.getData());
-            stmt.setInt(3, regentrada.getNumcartao());
+            stmt.setInt(1, regentrada.getNumcartao());
+            stmt.setString(2, regentrada.getLocal());
+            stmt.setString(3, regentrada.getData());
+            stmt.setString(4, regentrada.getHora());
             stmt.executeUpdate();
             return true;
         } catch (SQLException e) {

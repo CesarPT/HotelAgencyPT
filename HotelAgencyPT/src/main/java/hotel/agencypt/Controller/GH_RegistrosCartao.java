@@ -36,9 +36,17 @@ public class GH_RegistrosCartao implements Initializable {
     @FXML
     private TableColumn<RegEntrada, Integer> NumColumn;
     @FXML
+    private TableColumn<RegEntrada, Integer> NumClienteColumn;
+    @FXML
+    private TableColumn<RegEntrada, Integer> NumReservaColumn;
+    @FXML
+    private TableColumn<RegEntrada, Integer> NumQuartoColumn;
+    @FXML
     private TableColumn<RegEntrada, String> LocalColumn;
     @FXML
     private TableColumn<RegEntrada, String> DataColumn;
+    @FXML
+    private TableColumn<RegEntrada, String> HoraColumn;
     @FXML
     private TextField textNum;
     ObservableList<RegEntrada> obsRegEntrada = FXCollections.observableArrayList();
@@ -53,16 +61,16 @@ public class GH_RegistrosCartao implements Initializable {
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        String sql = "SELECT RegEntrada.numcartao, RegEntrada.data, RegEntrada.local\n" +
-                "FROM RegEntrada\n" +
-                "INNER JOIN Cartao\n" +
-                "ON Cartao.numcartao = RegEntrada.numcartao\n" +
-                "INNER JOIN Reserva\n" +
-                "ON Reserva.numcartao = Cartao.numcartao\n" +
-                "INNER JOIN Cliente\n" +
-                "ON Cliente.idcliente = Reserva.idcliente\n" +
-                "INNER JOIN Utilizador\n" +
-                "ON Utilizador.iduser = Cliente.iduser";
+        String sql = "SELECT RegEntrada.numcartao, Reserva.idcliente, Reserva.idreserva, Reserva.idquarto, RegEntrada.local, RegEntrada.data, RegEntrada.hora\n" +
+                "                                FROM RegEntrada\n" +
+                "                                INNER JOIN Cartao\n" +
+                "                                ON Cartao.numcartao = RegEntrada.numcartao\n" +
+                "                                INNER JOIN Reserva\n" +
+                "                                ON Reserva.numcartao = Cartao.numcartao\n" +
+                "                                INNER JOIN Cliente\n" +
+                "                                ON Cliente.idcliente = Reserva.idcliente\n" +
+                "                                INNER JOIN Utilizador\n" +
+                "                                ON Utilizador.iduser = Cliente.iduser";
 
         PreparedStatement stmt = null;
         ResultSet rs = null;
@@ -75,14 +83,22 @@ public class GH_RegistrosCartao implements Initializable {
 
             while (rs.next()) {
                 Integer numcartao = rs.getInt("numcartao");
+                Integer idcliente = rs.getInt("idcliente");
+                Integer idreserva = rs.getInt("idreserva");
+                Integer idquarto = rs.getInt("idquarto");
                 String local = rs.getString("local");
                 String data = rs.getString("data");
-                obsRegEntrada.add(new RegEntrada(numcartao, local, data));
+                String hora = rs.getString("hora");
+                obsRegEntrada.add(new RegEntrada(numcartao, idcliente, idreserva, idquarto, local, data, hora));
             }
             //Colocar os valores nas colunas da TableView
             NumColumn.setCellValueFactory(new PropertyValueFactory<>("numcartao"));
-            LocalColumn.setCellValueFactory(new PropertyValueFactory<>("data"));
-            DataColumn.setCellValueFactory(new PropertyValueFactory<>("local"));
+            NumClienteColumn.setCellValueFactory(new PropertyValueFactory<>("idcliente"));
+            NumReservaColumn.setCellValueFactory(new PropertyValueFactory<>("idreserva"));
+            NumQuartoColumn.setCellValueFactory(new PropertyValueFactory<>("idquarto"));
+            LocalColumn.setCellValueFactory(new PropertyValueFactory<>("local"));
+            DataColumn.setCellValueFactory(new PropertyValueFactory<>("data"));
+            HoraColumn.setCellValueFactory(new PropertyValueFactory<>("hora"));
             TableViewRegistros.setItems(obsRegEntrada);
 
             //Barra de pesquisa

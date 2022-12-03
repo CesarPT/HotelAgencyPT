@@ -4,116 +4,145 @@ package Classes;
  * Classe pública com todas os métodos usadas na aplicação
  */
 public class Fornecedor {
-    private int id_fornecedor;
-    private String nome_fornecedor;
-    private String email;
-    private int telemovel;
-    private String morada;
+    private int id;
+    private String rua;
+    private String n_porta;
+    private String cidade;
+    private String  cp;
+    private String  pais;
 
     /**
      * Construtor completo
      *
-     * @param id_fornecedor
-     * @param nome_fornecedor
-     * @param email
-     * @param telemovel
-     * @param morada
+     * @param id
+     * @param rua
+     * @param n_porta
+     * @param cidade
+     * @param cp
+     * @param pais
      */
-    public Fornecedor(int id_fornecedor, String nome_fornecedor, String email, int telemovel, String morada) {
-        this.id_fornecedor = id_fornecedor;
-        this.nome_fornecedor = nome_fornecedor;
-        this.email = email;
-        this.telemovel = telemovel;
-        this.morada = morada;
+    public Fornecedor(int id, String rua,String n_porta,String cidade, String  cp,String  pais) {
+        this.id = id;
+        this.rua = rua;
+        this.n_porta = n_porta;
+        this.cidade = cidade;
+        this.cp = cp;
+        this.pais = pais;
+    }
+    /**
+     * Construtor vazio
+     */
+    public Fornecedor() {
+
+    }
+
+
+    /**
+     * Muda o valor:
+     *
+     * @param id set
+     */
+    public void setId(int id) {
+        this.id = id;
     }
 
     /**
      * Recebe:
      *
-     * @return id_fornecedor
+     * @return id_ph
      */
-    public int getId_fornecedor() {
-        return id_fornecedor;
+    public int getId() {
+        return id;
+    }
+
+    /**
+     * Muda o valor:
+     *
+     * @param rua set
+     */
+    public void setRua(String rua) {
+        this.rua = rua;
     }
 
     /**
      * Recebe:
      *
-     * @return nome_fornecedor
+     * @return rua
      */
-    public String getNome_fornecedor() {
-        return nome_fornecedor;
+    public String getRua() {
+        return rua;
+    }
+
+
+    /**
+     * Muda o valor:
+     *
+     * @param n_porta set
+     */
+    public void setN_porta(String n_porta) {
+        this.n_porta = n_porta;
     }
 
     /**
      * Recebe:
      *
-     * @return email
+     * @return n_porta
      */
-    public String getEmail() {
-        return email;
+    public String getN_porta() {
+        return n_porta;
+    }
+
+    /**
+     * Muda o valor:
+     *
+     * @param cidade set
+     */
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
     }
 
     /**
      * Recebe:
      *
-     * @return telemovel
+     * @return cidade
      */
-    public int getTelemovel() {
-        return telemovel;
+    public String getCidade() {
+        return cidade;
+    }
+
+    /**
+     * Muda o valor:
+     *
+     * @param pais set
+     */
+    public void setPais(String pais) {
+        this.pais = pais;
     }
 
     /**
      * Recebe:
      *
-     * @return morada
+     * @return pais
      */
-    public String getMorada() {
-        return morada;
+    public String getPais() {
+        return pais;
     }
 
     /**
      * Muda o valor:
      *
-     * @param id_fornecedor set
+     * @param cp set
      */
-    public void setId_fornecedor(int id_fornecedor) {
-        this.id_fornecedor = id_fornecedor;
+    public void setCp(String cp) {
+        this.cp = cp;
     }
 
     /**
-     * Muda o valor:
+     * Recebe:
      *
-     * @param nome_fornecedor set
+     * @return cp
      */
-    public void setNome_fornecedor(String nome_fornecedor) {
-        this.nome_fornecedor = nome_fornecedor;
-    }
-
-    /**
-     * Muda o valor:
-     *
-     * @param email set
-     */
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    /**
-     * Muda o valor:
-     *
-     * @param telemovel set
-     */
-    public void setTelemovel(int telemovel) {
-        this.telemovel = telemovel;
-    }
-
-    /**
-     * Muda o valor:
-     *
-     * @param morada set
-     */
-    public void setMorada(String morada) {
-        this.morada = morada;
+    public String getCp() {
+        return cp;
     }
 }

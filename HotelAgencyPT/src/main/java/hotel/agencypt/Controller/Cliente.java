@@ -12,11 +12,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.paint.Color;
-import javafx.stage.Stage;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class Cliente {
@@ -72,6 +73,7 @@ public class Cliente {
 
         //Limpar tudo e Adicionar reservas com o username
         listReserva.getItems().clear();
+        arrayReserva.clear();
         arrayReserva = rDAO.findReserva();
         for (Reserva r : arrayReserva) {
             listReserva.getItems().add(
@@ -88,10 +90,11 @@ public class Cliente {
 
         //Limpar tudo e Adicionar registros de entrada
         listRegEntrada.getItems().clear();
+        arrayRegEntrada.clear();
         arrayRegEntrada = reDAO.findRegEntradaQuarto();
         for (RegEntrada r : arrayRegEntrada) {
             listRegEntrada.getItems().add(
-                    "Entrada: " + r.getLocal() + " | " + r.getData()
+                    "Reserva " + r.getIdreserva() + " | " + r.getLocal() + " | " + r.getData() + " | " + r.getHora()
             );
         }
         listRegEntrada.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
@@ -101,122 +104,142 @@ public class Cliente {
             }
         });
 
-
     }
 
 
     //Adicionar RegEntrada de quarto na base de dados
     @FXML
     public void registroEntradaQuarto(ActionEvent actionEvent) {
-        RegEntradaDAO daoRegEntrada = new RegEntradaDAO();
-        RegEntrada regentrada = new RegEntrada();
+        if (listReserva.getSelectionModel().getSelectedItem() == null){
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Aviso");
+            alert.setHeaderText("Sem seleção");
+            alert.setContentText("Selecione uma reserva da lista.");
+            alert.showAndWait();
+        } else {
+            RegEntradaDAO daoRegEntrada = new RegEntradaDAO();
+            RegEntrada regentrada = new RegEntrada();
 
-        //Receber a data e hora atual do Computador
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-        LocalDateTime now = LocalDateTime.now();
+            //Receber a data e hora atual do Computador
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+            LocalDateTime data = LocalDateTime.now();
 
-        //Adiciona numcartao, local e data
-        regentrada.setLocal("Quarto");
-        regentrada.setData(dtf.format(now));
-         regentrada.setNumcartao(Integer.parseInt(numcartao.getText()));
-        daoRegEntrada.insertRegEntrada(regentrada);
+            //Adiciona numcartao, local, data e hora
+            regentrada.setNumcartao(Integer.parseInt(numcartao.getText()));
+            regentrada.setLocal("Quarto");
+            regentrada.setData(dtf.format(data));
+            regentrada.setHora(new SimpleDateFormat("HH:mm:ss").format(Calendar.getInstance().getTime()));
+            daoRegEntrada.insertRegEntrada(regentrada);
 
-        //Atualizar listviews
-        initialize();
+            //Atualizar listviews
+            initialize();
+        }
     }
 
-    public void getopEntrada(ActionEvent event){
+    public void getopEntrada(ActionEvent event) {
         String opEntrada = opcoesEntrada.getValue();
+        if (listReserva.getSelectionModel().getSelectedItem() == null) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Aviso");
+            alert.setHeaderText("Sem seleção");
+            alert.setContentText("Selecione uma reserva da lista.");
+            alert.showAndWait();
+        }else {
+            //Se a opcao selecionada na ChoiceBox for Restaurante
+            if (opcoesEntrada.getSelectionModel().getSelectedItem() == "Restaurante") {
+                RegEntradaDAO daoRegEntrada = new RegEntradaDAO();
+                RegEntrada regentrada = new RegEntrada();
 
-        //Se a opcao selecionada na ChoiceBox for Restaurante
-        if (opcoesEntrada.getSelectionModel().getSelectedItem() == "Restaurante"){
-            RegEntradaDAO daoRegEntrada = new RegEntradaDAO();
-            RegEntrada regentrada = new RegEntrada();
+                //Receber a data e hora atual do Computador
+                DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+                LocalDateTime data = LocalDateTime.now();
 
-            //Receber a data e hora atual do Computador
-            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-            LocalDateTime now = LocalDateTime.now();
+                //Adiciona numcartao, local, data e hora
+                regentrada.setNumcartao(Integer.parseInt(numcartao.getText()));
+                regentrada.setLocal("Restaurante");
+                regentrada.setData(dtf.format(data));
+                regentrada.setHora(new SimpleDateFormat("HH:mm:ss").format(Calendar.getInstance().getTime()));
+                daoRegEntrada.insertRegEntrada(regentrada);
 
-            //Adiciona numcartao, local e data
-            regentrada.setLocal("Restaurante");
-            regentrada.setData(dtf.format(now));
-            regentrada.setNumcartao(Integer.parseInt(numcartao.getText()));
-            daoRegEntrada.insertRegEntrada(regentrada);
+                //Atualizar listviews
+                initialize();
 
-            //Atualizar listviews
-            initialize();
+                //Se a opcao selecionada na ChoiceBox for Piscina Privada
+            } else if (opcoesEntrada.getSelectionModel().getSelectedItem() == "Piscina Privada") {
+                RegEntradaDAO daoRegEntrada = new RegEntradaDAO();
+                RegEntrada regentrada = new RegEntrada();
 
-            //Se a opcao selecionada na ChoiceBox for Piscina Privada
-        } else if (opcoesEntrada.getSelectionModel().getSelectedItem() == "Piscina Privada") {
-            RegEntradaDAO daoRegEntrada = new RegEntradaDAO();
-            RegEntrada regentrada = new RegEntrada();
+                //Receber a data e hora atual do Computador
+                DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+                LocalDateTime data = LocalDateTime.now();
 
-            //Receber a data e hora atual do Computador
-            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-            LocalDateTime now = LocalDateTime.now();
+                //Adiciona numcartao, local, data e hora
+                regentrada.setNumcartao(Integer.parseInt(numcartao.getText()));
+                regentrada.setLocal("Piscina privada");
+                regentrada.setData(dtf.format(data));
+                regentrada.setHora(new SimpleDateFormat("HH:mm:ss").format(Calendar.getInstance().getTime()));
+                daoRegEntrada.insertRegEntrada(regentrada);
 
-            //Adiciona numcartao, local e data
-            regentrada.setLocal("Piscina Privada");
-            regentrada.setData(dtf.format(now));
-            regentrada.setNumcartao(Integer.parseInt(numcartao.getText()));
-            daoRegEntrada.insertRegEntrada(regentrada);
+                //Atualizar listviews
+                initialize();
 
-            //Atualizar listviews
-            initialize();
+                //Se a opcao selecionada na ChoiceBox for Spá
+            } else if (opcoesEntrada.getSelectionModel().getSelectedItem() == "Spá") {
+                RegEntradaDAO daoRegEntrada = new RegEntradaDAO();
+                RegEntrada regentrada = new RegEntrada();
 
-            //Se a opcao selecionada na ChoiceBox for Spá
-        } else if (opcoesEntrada.getSelectionModel().getSelectedItem() == "Spá") {
-            RegEntradaDAO daoRegEntrada = new RegEntradaDAO();
-            RegEntrada regentrada = new RegEntrada();
+                //Receber a data e hora atual do Computador
+                DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+                LocalDateTime data = LocalDateTime.now();
 
-            //Receber a data e hora atual do Computador
-            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-            LocalDateTime now = LocalDateTime.now();
+                //Adiciona numcartao, local, data e hora
+                regentrada.setNumcartao(Integer.parseInt(numcartao.getText()));
+                regentrada.setLocal("Spá");
+                regentrada.setData(dtf.format(data));
+                regentrada.setHora(new SimpleDateFormat("HH:mm:ss").format(Calendar.getInstance().getTime()));
+                daoRegEntrada.insertRegEntrada(regentrada);
 
-            //Adiciona numcartao, local e data
-            regentrada.setLocal("Spá");
-            regentrada.setData(dtf.format(now));
-            regentrada.setNumcartao(Integer.parseInt(numcartao.getText()));
-            daoRegEntrada.insertRegEntrada(regentrada);
+                //Atualizar listviews
+                initialize();
 
-            //Atualizar listviews
-            initialize();
+                //Se a opcao selecionada na ChoiceBox for Sala de Conferência
+            } else if (opcoesEntrada.getSelectionModel().getSelectedItem() == "Sala de Conferência") {
+                RegEntradaDAO daoRegEntrada = new RegEntradaDAO();
+                RegEntrada regentrada = new RegEntrada();
 
-            //Se a opcao selecionada na ChoiceBox for Sala de Conferência
-        } else if (opcoesEntrada.getSelectionModel().getSelectedItem() == "Sala de Conferência") {
-            RegEntradaDAO daoRegEntrada = new RegEntradaDAO();
-            RegEntrada regentrada = new RegEntrada();
+                //Receber a data e hora atual do Computador
+                DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+                LocalDateTime data = LocalDateTime.now();
 
-            //Receber a data e hora atual do Computador
-            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-            LocalDateTime now = LocalDateTime.now();
+                //Adiciona numcartao, local, data e hora
+                regentrada.setNumcartao(Integer.parseInt(numcartao.getText()));
+                regentrada.setLocal("Sala de Conferência");
+                regentrada.setData(dtf.format(data));
+                regentrada.setHora(new SimpleDateFormat("HH:mm:ss").format(Calendar.getInstance().getTime()));
+                daoRegEntrada.insertRegEntrada(regentrada);
 
-            //Adiciona numcartao, local e data
-            regentrada.setLocal("Sala de Conferência");
-            regentrada.setData(dtf.format(now));
-            regentrada.setNumcartao(Integer.parseInt(numcartao.getText()));
-            daoRegEntrada.insertRegEntrada(regentrada);
+                //Atualizar listviews
+                initialize();
 
-            //Atualizar listviews
-            initialize();
+                //Se a opcao selecionada na ChoiceBox for Evento Cultural
+            } else if (opcoesEntrada.getSelectionModel().getSelectedItem() == "Evento Cultural") {
+                RegEntradaDAO daoRegEntrada = new RegEntradaDAO();
+                RegEntrada regentrada = new RegEntrada();
 
-            //Se a opcao selecionada na ChoiceBox for Evento Cultural
-        } else if (opcoesEntrada.getSelectionModel().getSelectedItem() == "Evento Cultural") {
-            RegEntradaDAO daoRegEntrada = new RegEntradaDAO();
-            RegEntrada regentrada = new RegEntrada();
+                //Receber a data e hora atual do Computador
+                DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+                LocalDateTime data = LocalDateTime.now();
 
-            //Receber a data e hora atual do Computador
-            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-            LocalDateTime now = LocalDateTime.now();
+                //Adiciona numcartao, local, data e hora
+                regentrada.setNumcartao(Integer.parseInt(numcartao.getText()));
+                regentrada.setLocal("Evento Cultural");
+                regentrada.setData(dtf.format(data));
+                regentrada.setHora(new SimpleDateFormat("HH:mm:ss").format(Calendar.getInstance().getTime()));
+                daoRegEntrada.insertRegEntrada(regentrada);
 
-            //Adiciona numcartao, local e data
-            regentrada.setLocal("Evento Cultural");
-            regentrada.setData(dtf.format(now));
-            regentrada.setNumcartao(Integer.parseInt(numcartao.getText()));
-            daoRegEntrada.insertRegEntrada(regentrada);
-
-            //Atualizar listviews
-            initialize();
+                //Atualizar listviews
+                initialize();
+            }
         }
     }
 
@@ -239,18 +262,5 @@ public class Cliente {
 
     }
 
-    /**
-     * Método que abre um Scene para criar uma reserva
-     */
-    public void abrirCLienteReserva() {
-        try {
-            Stage window = (Stage) creatReserva.getScene().getWindow();
-            window.close();
-            Singleton.open("C_Reserva", "Hotel >> Cliente >> Criar uma reserva");
-
-        } catch (Exception e) {
-            System.out.println("Erro ao fechar/abrir o scene.");
-        }
-    }
 
 }

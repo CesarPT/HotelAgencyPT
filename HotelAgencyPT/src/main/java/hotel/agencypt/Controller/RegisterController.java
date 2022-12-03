@@ -5,7 +5,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
@@ -20,8 +19,6 @@ import java.util.ResourceBundle;
 
 public class RegisterController implements Initializable {
 
-    @FXML
-    private ImageView verifyImageView;
     @FXML
     private Button closeButton;
     @FXML
@@ -183,10 +180,10 @@ public class RegisterController implements Initializable {
 
             if (rs.next()) {
                 registrationMessageLabel.setText("O utilizador foi registrado com sucesso!");
-                registrationMessageLabel.setTextFill(Color.BLACK);
+                //registrationMessageLabel.setTextFill(Color.GREEN);
             } else {
                 registrationMessageLabel.setText("O utilizador não foi registrado!");
-                registrationMessageLabel.setTextFill(Color.RED);
+                //registrationMessageLabel.setTextFill(Color.RED);
             }
 
         } catch (Exception e) {

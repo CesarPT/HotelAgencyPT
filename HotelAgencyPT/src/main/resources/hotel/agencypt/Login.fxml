@@ -54,9 +54,6 @@
                 </Label>
                 <PasswordField fx:id="enterPasswordField" layoutX="90.0" layoutY="140.0" prefHeight="25.0"
                                prefWidth="175.0" promptText="Password"/>
-                <Button fx:id="RegisterButton" layoutX="159.0" layoutY="361.0" mnemonicParsing="false"
-                        onAction="#SwitchToRegister" prefHeight="25.0" prefWidth="101.0"
-                        style="-fx-background-color: #BDA880;" text="Registrar"/>
             </children>
         </AnchorPane>
     </right>
