@@ -28,10 +28,11 @@ public class Entrega {
      * @param cp
      * @param pais
      */
-    public Entrega(String orderNumber,Date data_entrega, String party_identifier,String rua,String n_porta,String cidade, String  cp,String  pais) {
+    public Entrega(String orderNumber,Date data_entrega, String party_identifier,String empresa,String rua,String n_porta,String cidade, String  cp,String  pais) {
         this.orderNumber = orderNumber;
         this.data_entrega = data_entrega;
         this.party_identifier = party_identifier;
+        this.empresa = empresa;
         this.rua = rua;
         this.n_porta = n_porta;
         this.cidade = cidade;

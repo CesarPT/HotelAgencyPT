@@ -48,7 +48,9 @@ public class XMLpath {
         Date data;
         SimpleDateFormat originalFormat = new SimpleDateFormat("yyyyMMdd");
         String datanc = "";
+        //Data
         String dy = "";
+
         String dm = "";
         String dd = "";
         String pi;
@@ -183,12 +185,13 @@ public class XMLpath {
 
 
             //peso
-            int[] iq = new int[10];
+            String[] iq = new String[10];
             XPathExpression expriq = xpath.compile("//Line//InformationalQuantity//Value[@UOM='Kilogram']/text()");
             Object resultiq = expriq.evaluate(document, XPathConstants.NODESET);
             NodeList nodesiq = (NodeList) resultiq;
             for (int i = 0; i < nodesiq.getLength(); i++) {
-                iq[i] = Integer.parseInt((nodesiq.item(i).getNodeValue()));
+                iq[i] = nodesiq.item(i).getNodeValue();
+                System.out.println(iq[i]);
             }
 
 
@@ -222,24 +225,24 @@ public class XMLpath {
                 System.out.println(tax[i]);
             }
 
-            //CurrencyValue
-            double[] cv = new double[10];
+            //CurrencyValue (preço sem taxa)
+            Float[] cv = new Float[10];
             XPathExpression exprcv = xpath.compile("//Line//MonetaryAdjustment//MonetaryAdjustmentStartAmount/CurrencyValue/text()");
             Object resultcv = exprcv.evaluate(document, XPathConstants.NODESET);
             NodeList nodescv = (NodeList) resultcv;
             for (int i = 0; i < nodescv.getLength(); i++) {
-                cv[i] = Double.parseDouble((nodescv.item(i).getNodeValue()));
+                cv[i] = Float.parseFloat((nodescv.item(i).getNodeValue()));
                 System.out.println(cv[i]);
             }
 
 
             //Tax percent
-            double[] taxp = new double[10];
+            float[] taxp = new float[10];
             XPathExpression exprtaxp = xpath.compile("//Line//TaxAdjustment//TaxPercent/text()");
             Object resulttaxp = exprtaxp.evaluate(document, XPathConstants.NODESET);
             NodeList nodestaxp = (NodeList) resulttaxp;
             for (int i = 0; i < nodestaxp.getLength(); i++) {
-                taxp[i] = Double.parseDouble((nodestaxp.item(i).getNodeValue()));
+                taxp[i] = Float.parseFloat((nodestaxp.item(i).getNodeValue()));
                 System.out.println(taxp[i]);
             }
 
@@ -264,24 +267,34 @@ public class XMLpath {
             }
 
             //LineBaseAmount
-            String[] lba = new String[10];
+            Float[] lba = new Float[10];
             XPathExpression exprlba = xpath.compile("//Line//LineBaseAmount//CurrencyValue/text()");
             Object resultlba = exprlba.evaluate(document, XPathConstants.NODESET);
             NodeList nodeslba = (NodeList) resultlba;
             for (int i = 0; i < nodeslba.getLength(); i++) {
-                lba[i] = (nodeslba.item(i).getNodeValue());
+                lba[i] = Float.valueOf(nodeslba.item(i).getNodeValue());
                 System.out.println(lba[i]);
             }
 
+        //Converter para string e inserir na BD
+        int quantprod;
+        String idprod;
+        String descprod;
+        String tipo_qtd;
+        float preco;
+        float vat;
+        float preco_total;
 
-    String idprod;
-    String descprod;
-    int quantprod;
         for(int i = 0; i < nodeslba.getLength(); i++){
                 idprod=pind[i];
                 descprod= pd[i];
                 quantprod= qt[i];
-                StockDAO.insertNewStock(idprod,descprod,quantprod);
+                tipo_qtd = iq[i];
+                preco = cv[i];
+                vat = taxp[i];
+                preco_total = lba[i];
+
+               StockDAO.insertNewStock(idprod,descprod,tipo_qtd, quantprod, preco, vat, preco_total);
         }
         stockDAO.closebd();
     }

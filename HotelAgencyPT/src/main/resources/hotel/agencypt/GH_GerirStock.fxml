@@ -11,20 +11,22 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="516.0" prefWidth="786.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hotel.agencypt.Controller.GH_GerirStock">
+<AnchorPane prefHeight="510.0" prefWidth="898.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hotel.agencypt.Controller.GH_GerirStock">
     <children>
-        <Pane layoutX="43.0" layoutY="59.0" prefHeight="456.0" prefWidth="767.0" style="-fx-background-color: gray;" />
-        <ImageView fitHeight="889.0" fitWidth="853.0" layoutX="-3.0" layoutY="-325.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../../Imagens/stock/caixa.png" />
-            </image>
-        </ImageView>
-        <Label layoutX="606.0" layoutY="23.0" text="Gerir Stock">
+        <Pane layoutX="43.0" layoutY="59.0" prefHeight="450.0" prefWidth="857.0" style="-fx-background-color: gray;">
+         <children>
+            <Label layoutX="14.0" layoutY="183.0" text="Entregas:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children></Pane>
+        <Label layoutX="791.0" layoutY="23.0" text="Gerir Stock">
             <font>
                 <Font size="18.0" />
             </font>
         </Label>
-        <Button layoutX="-4.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#voltarAtras" prefHeight="564.0" prefWidth="48.0" style="-fx-background-color: #ccffff; -fx-border-color: gray;">
+        <Button layoutX="-4.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#voltarAtras" prefHeight="510.0" prefWidth="48.0" style="-fx-background-color: #ccffff; -fx-border-color: gray;">
             <graphic>
                 <ImageView fitHeight="211.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
                     <image>
@@ -36,17 +38,34 @@
                 <Cursor fx:constant="HAND" />
             </cursor>
         </Button>
-      <TableView layoutX="46.0" layoutY="59.0" prefHeight="447.0" prefWidth="767.0" style="-fx-background-color: transparent;">
+      <TableView fx:id="TableViewStock" layoutX="43.0" layoutY="59.0" prefHeight="168.0" prefWidth="720.0" style="-fx-background-color: transparent;">
         <columns>
-          <TableColumn prefWidth="87.0" text="ID Produto" />
-          <TableColumn prefWidth="199.0" text="Descrição" />
-            <TableColumn prefWidth="78.0" text="Tipo de Qtd" />
-            <TableColumn prefWidth="56.0" text="Qtd" />
-            <TableColumn prefWidth="78.0" text="Preço (€)" />
-            <TableColumn prefWidth="67.0" text="IVA (%)" />
-            <TableColumn prefWidth="101.0" text="Preço Total (€)" />
-            <TableColumn prefWidth="101.0" text="Qtd em Stock" />
+          <TableColumn fx:id="TableColumnIDP" prefWidth="87.0" text="ID Produto" />
+          <TableColumn fx:id="TableColumDescricao" prefWidth="249.0" text="Descrição" />
+            <TableColumn fx:id="TableColumnQtd" prefWidth="68.0" text="Qtd" />
+            <TableColumn fx:id="TableColumnTipoQtd" prefWidth="81.0" text="Quilos (kg)" />
+            <TableColumn fx:id="TableColumnPreco" prefWidth="83.0" text="Preço (€)" />
+            <TableColumn fx:id="TableColumnVAT" prefWidth="59.0" text="VAT (%)" />
+            <TableColumn fx:id="TableColumnPrecoTotal" prefWidth="89.0" text="Preço Total (€)" />
         </columns>
+      </TableView>
+      <Label layoutX="58.0" layoutY="23.0" text="Entrada de Stock:">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TableView fx:id="TableViewEntregas" layoutX="43.0" layoutY="283.0" prefHeight="213.0" prefWidth="857.0" style="-fx-background-color: transparent;">
+         <columns>
+            <TableColumn fx:id="ColumnNumOrdem" prefWidth="87.0" text="Nº Ordem" />
+            <TableColumn fx:id="ColumnData" prefWidth="109.0" text="Data de entrega" />
+            <TableColumn fx:id="ColumnId" prefWidth="134.0" text="Identificador" />
+            <TableColumn fx:id="ColumnEmpresa" prefWidth="133.0" text="Empresa" />
+            <TableColumn fx:id="ColumnRua" prefWidth="98.0" text="Rua" />
+            <TableColumn fx:id="ColumnPorta" minWidth="4.0" prefWidth="66.0" text="Nº Porta" />
+            <TableColumn fx:id="ColumnCidade" prefWidth="90.0" text="Cidade" />
+            <TableColumn fx:id="ColumnCP" prefWidth="57.0" text="CP" />
+            <TableColumn fx:id="ColumnPais" prefWidth="77.0" text="País" />
+         </columns>
       </TableView>
     </children>
 </AnchorPane>
