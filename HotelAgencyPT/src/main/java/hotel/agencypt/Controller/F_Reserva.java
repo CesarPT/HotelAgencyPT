@@ -354,14 +354,8 @@ public void onidClienteInsere(){
         } else {
             onEsTquarto();
 
-<<<<<<< HEAD
-        onEsTquarto();
-
         if(idClientV!=0 || myDateI!=null ||myDateI!=null) {
-            //testestar dps colocar os valores inseridos
-=======
             //Criar a reserva
->>>>>>> 4234a89d374f33b4d75a5c3ed8b03b17cd03a810
             reserva.setIdcliente(idClientV);
             reserva.setIdquarto(idQuartoesc);
             reserva.setNumcartao(1);
@@ -369,12 +363,8 @@ public void onidClienteInsere(){
             reserva.setDataF(myDateF);
 
             reservaDAO.criaReserva(reserva);
-<<<<<<< HEAD
 
-
-=======
             //Relação de tabela
->>>>>>> 4234a89d374f33b4d75a5c3ed8b03b17cd03a810
             RelacionaResServ();
         }
     }
