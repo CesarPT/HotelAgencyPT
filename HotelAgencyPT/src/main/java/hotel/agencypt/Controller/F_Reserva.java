@@ -222,7 +222,7 @@ public class F_Reserva implements Initializable {
 
     List<Quarto> arrayPrimQuarto = new ArrayList<>();
     List<Quarto> arrayPrecoQuarto = new ArrayList<>();
-    int idQuartoesc;
+    int idQuartoesc=0;
 
     @FXML
     public void onEsTquarto() {
@@ -243,7 +243,7 @@ public class F_Reserva implements Initializable {
 
 
 String idCliente;
-    int idClientV;
+    int idClientV=0;
 @FXML
 TextField idClienteInsere;
 List<Cliente> arrayCliente=new ArrayList<>();
@@ -323,6 +323,7 @@ public void onidClienteInsere(){
 
         onEsTquarto();
 
+        if(idClientV!=0 || myDateI!=null ||myDateI!=null) {
             //testestar dps colocar os valores inseridos
             reserva.setIdcliente(idClientV);
             reserva.setIdquarto(idQuartoesc);
@@ -330,12 +331,12 @@ public void onidClienteInsere(){
             reserva.setDataI(myDateI);
             reserva.setDataF(myDateF);
 
-        reservaDAO.criaReserva(reserva);
-
+            reservaDAO.criaReserva(reserva);
 
 
             RelacionaResServ();
         }
+    }
 
 
 

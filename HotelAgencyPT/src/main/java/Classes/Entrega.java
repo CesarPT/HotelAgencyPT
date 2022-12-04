@@ -1,77 +1,185 @@
 package Classes;
 
-/**
- * Classe pública com todas os métodos usadas na aplicação
- */
+import java.util.Date;
+
 public class Entrega {
-    private int id_entrega;
-    private int id_item;
-    private int quantidade;
+    /**
+     * Classe pública com todas os métodos usadas na aplicação
+     */
+    private String orderNumber;
+    private Date data_entrega;
+    private String party_identifier;
+    private String empresa;
+    private String  rua;
+    private String  n_porta;
+    private String  cidade;
+    private String  cp;
+    private String  pais;
+
+
 
     /**
      * Construtor completo
      *
-     * @param id_entrega
-     * @param id_item
-     * @param quantidade
+     * @param orderNumber
+     * @param rua
+     * @param n_porta
+     * @param cidade
+     * @param cp
+     * @param pais
      */
-    public Entrega(int id_entrega, int id_item, int quantidade) {
-        this.id_entrega = id_entrega;
-        this.id_item = id_item;
-        this.quantidade = quantidade;
+    public Entrega(String orderNumber,Date data_entrega, String party_identifier,String rua,String n_porta,String cidade, String  cp,String  pais) {
+        this.orderNumber = orderNumber;
+        this.data_entrega = data_entrega;
+        this.party_identifier = party_identifier;
+        this.rua = rua;
+        this.n_porta = n_porta;
+        this.cidade = cidade;
+        this.cp = cp;
+        this.pais = pais;
+    }
+    /**
+     * Construtor vazio
+     */
+    public Entrega() {}
+
+
+    /**
+     * Muda o valor:
+     *
+     * @param orderNumber set
+     */
+    public void setOrderNumber(String orderNumber) {
+        this.orderNumber = orderNumber;
     }
 
     /**
      * Recebe:
      *
-     * @return id_entrega
+     * @return id_ph
      */
-    public int getId_entrega() {
-        return id_entrega;
+    public String getOrderNumber() {
+        return orderNumber;
+    }
+
+    /**
+     * Muda o valor:
+     *
+     * @param data_entrega set
+     */
+    public void setData_entrega(Date data_entrega) {
+        this.data_entrega = data_entrega;
     }
 
     /**
      * Recebe:
      *
-     * @return id_item
+     * @return data_entrega
      */
-    public int getId_item() {
-        return id_item;
+    public Date getData_entrega() {
+        return data_entrega;
+    }
+
+    public String getParty_identifier() {
+        return party_identifier;
+    }
+
+    public void setParty_identifier(String party_identifier) {
+        this.party_identifier = party_identifier;
+    }
+
+    public String getEmpresa() {
+        return empresa;
+    }
+
+    public void setEmpresa(String empresa) {
+        this.empresa = empresa;
+    }
+
+    /**
+     * Muda o valor:
+     *
+     * @param rua set
+     */
+    public void setRua(String rua) {
+        this.rua = rua;
     }
 
     /**
      * Recebe:
      *
-     * @return quantidade
+     * @return rua
      */
-    public int getQuantidade() {
-        return quantidade;
+    public String getRua() {
+        return rua;
+    }
+
+
+    /**
+     * Muda o valor:
+     *
+     * @param n_porta set
+     */
+    public void setN_porta(String n_porta) {
+        this.n_porta = n_porta;
+    }
+
+    /**
+     * Recebe:
+     *
+     * @return n_porta
+     */
+    public String getN_porta() {
+        return n_porta;
     }
 
     /**
      * Muda o valor:
      *
-     * @param id_entrega set
+     * @param cidade set
      */
-    public void setId_entrega(int id_entrega) {
-        this.id_entrega = id_entrega;
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
     }
+
+    /**
+     * Recebe:
+     *
+     * @return cidade
+     */
+    public String getCidade() {return cidade;    }
 
     /**
      * Muda o valor:
      *
-     * @param id_item set
+     * @param pais set
      */
-    public void setId_item(int id_item) {
-        this.id_item = id_item;
+    public void setPais(String pais) {
+        this.pais = pais;
     }
+
+    /**
+     * Recebe:
+     *
+     * @return pais
+     */
+    public String getPais() {return pais;   }
 
     /**
      * Muda o valor:
      *
-     * @param quantidade set
+     * @param cp set
      */
-    public void setQuantidade(int quantidade) {
-        this.quantidade = quantidade;
+    public void setCp(String cp) {
+        this.cp = cp;
     }
+
+    /**
+     * Recebe:
+     *
+     * @return cp
+     */
+    public String getCp() {return cp;}
 }
+
+

@@ -92,26 +92,36 @@ Create Table Item(
 );
 GO
 
-Create Table Stock(
-	iditem int PRIMARY KEY IDENTITY,
-	quantidade int,
-	FOREIGN KEY (iditem) REFERENCES Item(iditem)
+create Table Stock(
+product_identifier nvarchar(50),
+product_description nvarchar(50),
+quantidade int,
+Primary key(product_identifier)
 );
 GO
 
-Create Table Entrega(
-	identrega int PRIMARY KEY IDENTITY,
-	iditem int FOREIGN KEY REFERENCES Item(iditem),
-	quantidade int
+create Table Entrega(
+orderNumber Nvarchar(15),
+data_entrega Date,
+party_identifier Nvarchar(15),
+empresa nvarchar(25),
+rua nvarchar,
+n_porta nvarchar(20),
+cidade nvarchar(25),
+cp nvarchar(10),
+pais nvarchar(20)
+Primary key (orderNumber)
 );
 GO
 
-Create Table Fornecedor(
-	idfornecedor int PRIMARY KEY IDENTITY,
-	nomefornecedor varchar(50),
-	email varchar(50),
-	telemovel numeric(9),
-	morada varchar(50)
+Create Table Fornecedor( 
+id_ph int not NUll,
+rua nvarchar(50),
+n_porta nvarchar(15),
+cidade nvarchar (25),
+cp nvarchar(10),
+pais nvarchar(15)
+PRIMARY KEY (id_ph)
 );
 GO
 
