@@ -1,10 +1,17 @@
 package hotel.agencypt.Controller;
 
 
+import Classes.DAO.ReservaDAO;
+import Classes.Reserva;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class F_interface {
     @FXML
@@ -17,6 +24,7 @@ public class F_interface {
     private Button Stock;
     @FXML
     private Button CheckIn;
+
 
     /**
      * Abre a janela para fazer o registo de um novo cliente.
@@ -97,5 +105,30 @@ public class F_interface {
         Stage window = (Stage) CheckIn.getScene().getWindow();
         window.close();
         Singleton.open("Check_In", "Hotel >> Funcionario >> Check In");
+    }
+
+    int ultimaReserv;
+    List<Reserva> arrayUltimaReserva = new ArrayList<>();
+    String descservico;
+    private ListView<String> listServesco;
+    private TextField outracoisa;
+
+
+    @FXML
+    public void onteste() {
+        arrayUltimaReserva = ReservaDAO.findUltReserva();
+        for (Reserva r : arrayUltimaReserva) {
+            ultimaReserv = r.getIdreserva();
+        }
+
+        System.out.println(ultimaReserv);
+        descservico = listServesco.getItems().toString()
+                .replace("[", "")
+                .replace("]", "")
+                .replace(" ", "")
+                .replaceAll("[0-9]", "");
+        System.out.println(descservico);
+        //Soma o que está antes da virgula e depois da virgula
+        outracoisa.setText(String.valueOf(descservico.split(",")));
     }
 }

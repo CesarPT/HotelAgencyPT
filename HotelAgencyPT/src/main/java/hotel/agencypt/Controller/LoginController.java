@@ -149,19 +149,19 @@ public class LoginController implements Initializable {
 
                     Stage window = (Stage) loginButton.getScene().getWindow();
                     window.close();
-                    Singleton.open("GestorHotel", "Hotel >> Gestor de Hotel");
+                    Singleton.open("GestorHotel", "Username: " + Controller.getInstance().getUsername() + " | Hotel >> Gestor de Hotel");
                 }
                 if (Objects.equals(rs.getString("tipouser"), "F")) {
 
                     Stage window = (Stage) loginButton.getScene().getWindow();
                     window.close();
-                    Singleton.open("funcionariointerface", "Hotel >> Funcionário");
+                    Singleton.open("funcionariointerface", "Username: " + Controller.getInstance().getUsername() + " | Hotel >> Funcionário");
                 }
                 if (Objects.equals(rs.getString("tipouser"), "C")) {
 
                     Stage window = (Stage) loginButton.getScene().getWindow();
                     window.close();
-                    Singleton.open("Cliente", "Hotel >> Cliente");
+                    Singleton.open("Cliente", "Username: " + Controller.getInstance().getUsername() + " | Hotel >> Cliente");
                 }
             }
         } catch (Exception e) {

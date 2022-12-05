@@ -7,6 +7,7 @@
 <AnchorPane prefHeight="460.0" prefWidth="568.0" style="-fx-background-color: #BDA880;"
             xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="hotel.agencypt.Controller.F_interface">
+
     <children>
         <Pane layoutX="48.0" layoutY="141.0" prefHeight="88.0" prefWidth="140.0"
               style="-fx-background-color: white; -fx-background-radius: 20;">

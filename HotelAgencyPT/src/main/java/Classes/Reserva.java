@@ -19,9 +19,7 @@ public class Reserva {
      *
      * @param idreserva
      * @param idcliente
-     * @param idquarto
-     * @param idservico
-     * @param numcartao
+     * @param idquarto  «     * @param numcartao
      * @param datai
      * @param dataf
      */
@@ -55,12 +53,13 @@ public class Reserva {
         return idquarto;
     }
 
-    public int getIdservico() {
-        return idservico;
-    }
 
     public int getNumcartao() {
         return numcartao;
+    }
+
+    public int getIdservico() {
+        return idservico;
     }
 
     public Date getDataI() {

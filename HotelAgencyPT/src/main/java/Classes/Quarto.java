@@ -4,6 +4,7 @@ public class Quarto {
     int idQuarto, piso;
     String descricao;
     float preco;
+    String descricaoQuarto;
 
     /**
      * Construtor completo
@@ -13,11 +14,12 @@ public class Quarto {
      * @param descricao
      * @param preco
      */
-    public Quarto(int idQuarto, int piso, String descricao, float preco) {
+    public Quarto(int idQuarto, int piso, String descricao, float preco, String descricaoQuarto) {
         this.idQuarto = idQuarto;
         this.piso = piso;
         this.descricao = descricao;
         this.preco = preco;
+        this.descricaoQuarto = descricaoQuarto;
     }
 
     /**
@@ -98,4 +100,13 @@ public class Quarto {
     public void setPreco(float preco) {
         this.preco = preco;
     }
+
+    public void setDescricaoQuarto(String descricaoQuarto) {
+        this.descricaoQuarto = descricaoQuarto;
+    }
+
+    public String getDescricaoQuarto() {
+        return descricaoQuarto;
+    }
+
 }

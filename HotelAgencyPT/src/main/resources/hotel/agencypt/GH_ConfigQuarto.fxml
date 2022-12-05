@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.*?>
-<AnchorPane prefHeight="501.0" prefWidth="686.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1"
+<AnchorPane prefHeight="501.0" prefWidth="686.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="hotel.agencypt.Controller.GH_ConfigQuarto">
     <children>
         <Pane layoutX="42.0" layoutY="52.0" prefHeight="458.0" prefWidth="644.0" style="-fx-background-color: white;">
@@ -45,15 +45,16 @@
                         <Font size="16.0"/>
                     </font>
                 </Label>
-                <ComboBox fx:id="comboBoxPisoID" layoutX="180.0" layoutY="14.0" prefHeight="25.0" prefWidth="170.0"
-                          promptText="Selecione um piso"/>
+                <ComboBox fx:id="comboBoxPisoID" layoutX="180.0" layoutY="14.0" onAction="#verificarPiso"
+                          prefHeight="25.0" prefWidth="170.0" promptText="Selecione um piso"/>
                 <Label layoutX="21.0" layoutY="74.0" text="Selecione um quarto:" textFill="WHITE">
                     <font>
                         <Font size="16.0"/>
                     </font>
                 </Label>
-                <ComboBox fx:id="comboBoxQuartoID" disable="true" layoutX="180.0" layoutY="74.0" prefHeight="25.0"
-                          prefWidth="170.0" promptText="Selecione um quarto"/>
+                <ComboBox fx:id="comboBoxQuartoID" disable="true" layoutX="180.0" layoutY="74.0"
+                          onAction="#verificarQuarto" prefHeight="25.0" prefWidth="216.0"
+                          promptText="Selecione um quarto"/>
                 <Label alignment="CENTER" layoutX="303.0" layoutY="222.0" prefHeight="37.0" prefWidth="132.0"
                        style="-fx-background-color: lightblue; -fx-background-radius: 10;" text="Preço do Quarto:">
                     <font>
@@ -72,14 +73,15 @@
                         <Font size="16.0"/>
                     </font>
                 </Label>
-                <TextArea layoutX="21.0" layoutY="339.0" prefHeight="113.0" prefWidth="551.0"
-                          text="Escreva o texto aqui e clique no  ✅  para alterar.&#10;">
+                <TextArea fx:id="textAlterarDescricao" layoutX="21.0" layoutY="339.0" prefHeight="113.0"
+                          prefWidth="551.0" text="Escreva o texto aqui e clique no  ✅  para alterar.&#10;">
                     <font>
                         <Font size="16.0"/>
                     </font>
                 </TextArea>
                 <Button fx:id="verificarDescricao" disable="true" layoutX="579.0" layoutY="339.0"
-                        mnemonicParsing="false" prefHeight="113.0" prefWidth="44.0">
+                        mnemonicParsing="false" onAction="#verificarAlterarDescricao" prefHeight="113.0"
+                        prefWidth="44.0">
                     <font>
                         <Font size="16.0"/>
                     </font>
@@ -101,29 +103,12 @@
                         </ImageView>
                     </graphic>
                 </Button>
-                <Label layoutX="404.0" layoutY="75.0" text="Estado:">
-                    <font>
-                        <Font size="16.0"/>
-                    </font>
-                </Label>
                 <Button fx:id="verDescricaoID" disable="true" layoutX="170.0" layoutY="297.0" mnemonicParsing="false"
-                        text="Ver descrição">
+                        onAction="#verDescricao" text="Ver descrição">
                     <font>
                         <Font size="13.0"/>
                     </font>
                 </Button>
-                <Button layoutX="354.0" layoutY="13.0" mnemonicParsing="false" onAction="#verificarPiso"
-                        prefHeight="25.0" prefWidth="44.0">
-                    <graphic>
-                        <ImageView fitHeight="19.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../../Imagens/certo.png"/>
-                            </image>
-                        </ImageView>
-                    </graphic>
-                </Button>
-                <Button fx:id="verificarQuartoID" disable="true" layoutX="470.0" layoutY="74.0" mnemonicParsing="false"
-                        onAction="#atualizar" prefHeight="25.0" prefWidth="84.0" text="Atualizar"/>
                 <Label layoutX="554.0" layoutY="228.0" prefHeight="27.0" prefWidth="14.0" text="€">
                     <font>
                         <Font size="18.0"/>

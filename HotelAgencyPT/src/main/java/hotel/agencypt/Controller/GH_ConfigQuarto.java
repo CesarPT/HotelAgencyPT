@@ -20,12 +20,16 @@ import java.util.ResourceBundle;
  * Classe pública do controlador GH_ConfigQuarto.fxml
  */
 public class GH_ConfigQuarto implements Initializable {
+
+    String quartoEscolhido;
+
+    List<Quarto> arrayDescricaoQuarto = new ArrayList<>();
+    @FXML
+    private TextArea textAlterarDescricao;
     @FXML
     private ComboBox<String> comboBoxPisoID;
     @FXML
     private ComboBox<String> comboBoxQuartoID;
-    @FXML
-    private Button verificarQuartoID;
     @FXML
     private Button verificarPrecoID;
     @FXML
@@ -49,6 +53,7 @@ public class GH_ConfigQuarto implements Initializable {
      *                  the root object was not localized.
      */
     public void initialize(URL location, ResourceBundle resources) {
+
         //Limpar tudo e inserir valores na combobox
         comboBoxPisoID.getSelectionModel().clearSelection();
         comboBoxPisoID.getItems().clear();
@@ -59,12 +64,7 @@ public class GH_ConfigQuarto implements Initializable {
         );
     }
 
-    /**
-     * Verifica se selecionou o piso, se selecionou
-     * limpa e coloca os quartos na ComboBox
-     * se não, emite um aviso
-     */
-    public void verificarPiso() {
+    public void verificarPiso(ActionEvent event) {
         if (Objects.equals(comboBoxPisoID.getSelectionModel().getSelectedItem(), "Piso 1")) {
             Controller.getInstance().setPiso(1);
             //Limpar combobox
@@ -74,12 +74,11 @@ public class GH_ConfigQuarto implements Initializable {
             arrayQuartos = qDAO.findQuarto();
             for (Quarto q : arrayQuartos) {
                 comboBoxQuartoID.getItems().add(
-                        q.getDescricao()
+                        "Num Quarto: " + q.getIdQuarto() + " Descricao: " + q.getDescricao()
                 );
             }
-            //Ativar combobox e botão
+            //Ativar combobox
             comboBoxQuartoID.setDisable(false);
-            verificarQuartoID.setDisable(false);
         } else if (Objects.equals(comboBoxPisoID.getSelectionModel().getSelectedItem(), "Piso 2")) {
             Controller.getInstance().setPiso(2);
             //Limpar combobox
@@ -89,26 +88,23 @@ public class GH_ConfigQuarto implements Initializable {
             arrayQuartos = qDAO.findQuarto();
             for (Quarto q : arrayQuartos) {
                 comboBoxQuartoID.getItems().add(
-                        q.getDescricao()
+                        "Num Quarto: " + q.getIdQuarto() + " Descricao: " + q.getDescricao()
                 );
             }
-            //Ativar combobox e botão
+            //Ativar combobox
             comboBoxQuartoID.setDisable(false);
-            verificarQuartoID.setDisable(false);
-
-        } else {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Aviso");
-            alert.setHeaderText("Sem seleção");
-            alert.setContentText("Selecione primeiro um piso.");
-            alert.showAndWait();
         }
     }
 
-    public void atualizar() {
+    public void verificarQuarto(ActionEvent event) {
         //Envia para o controlador a seleção de quarto
-        String quartoEscolhido = comboBoxQuartoID.getValue();
-        Controller.getInstance().setDescricaoQuarto(quartoEscolhido);
+        //Pega só no número na combobox
+        String quartoEscolhido = comboBoxQuartoID.getValue()
+                .replaceAll("[a-zA-Z]", "")
+                .replace(":", "")
+                .replace(" ", "");
+        System.out.println(quartoEscolhido);
+        Controller.getInstance().setIdquarto(Integer.parseInt(quartoEscolhido));
         //Se não selecionou um quarto
         int index = comboBoxQuartoID.getSelectionModel().getSelectedIndex();
         if (index == -1) {
@@ -149,6 +145,8 @@ public class GH_ConfigQuarto implements Initializable {
             alert.setHeaderText(null);
             alert.setContentText("Atualizou com sucesso.");
             alert.showAndWait();
+            //Atualiza o preço
+            verificarQuarto(new ActionEvent());
             //Se não emite aviso
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -177,4 +175,46 @@ public class GH_ConfigQuarto implements Initializable {
             System.out.println("Erro ao voltar atrás.");
         }
     }
+
+    public void verificarAlterarDescricao() {
+        //Verifica se o texto tem mais de 200 carateres
+        if (textAlterarDescricao.getText().length() <= 200) {
+            QuartoDAO daoQuarto = new QuartoDAO();
+            Quarto quarto = new Quarto();
+
+            //Update: Alterar descricao na base de dados
+            quarto.setDescricao(textAlterarDescricao.getText());
+            daoQuarto.updateDescricao(quarto);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Informação");
+            alert.setHeaderText(null);
+            alert.setContentText("Atualizou com sucesso.");
+            alert.showAndWait();
+            //Atualiza o preço
+            verificarQuarto(new ActionEvent());
+            //Se não emite aviso
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Aviso");
+            alert.setHeaderText("Texto inválido");
+            alert.setContentText("Apenas é possível inserir uma descrição até 200 carateres");
+            alert.showAndWait();
+        }
+    }
+
+    public void verDescricao(ActionEvent Event) {
+        quartoEscolhido = comboBoxQuartoID.getSelectionModel().getSelectedItem()
+                .replaceAll("[a-zA-Z]", "")
+                .replace(":", "")
+                .replace(" ", "");
+
+        Controller.getInstance().setIdquarto(Integer.parseInt(quartoEscolhido));
+
+        arrayDescricaoQuarto = qDAO.findDescricaoQuarto();
+        for (Quarto q : arrayDescricaoQuarto) {
+            textAlterarDescricao.setText(q.getDescricaoQuarto());
+        }
+
+    }
+
 }
