@@ -194,9 +194,10 @@ public class F_Reserva implements Initializable {
 
         try {
             LocalDate myDate = datePickerI.getValue();
-            dataILabel.setText(myDate.toString());
-            datai = (Date) Date.from(myDate.atStartOfDay(defaultZoneId).toInstant());
-            
+            myDateI = Date.valueOf(datePickerI.getValue());
+            dataILabel.setText(myDateI.toString());
+            datai= Date.valueOf(dataILabel.getText());
+
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -211,8 +212,9 @@ public class F_Reserva implements Initializable {
 
         try {
             LocalDate myDate = datePickerF.getValue();
-            dataFLabel.setText(myDate.toString());
-            dataf = (Date) Date.from(myDate.atStartOfDay(defaultZoneId).toInstant());
+            myDateF = Date.valueOf(datePickerF.getValue());
+            dataFLabel.setText(myDateF.toString());
+            dataf= Date.valueOf(dataFLabel.getText());
 
 
         } catch (Exception e) {
@@ -231,9 +233,7 @@ public class F_Reserva implements Initializable {
 
         if (Objects.equals(escolhaTquarto, "Individual")) {
             arrayPrimQuarto = quartoDAO.findQuartoIndividual();
-
             for (Quarto q : arrayPrimQuarto) {
-                System.out.println(q.getDescricao());
                 idQuartoesc = q.getIdQuarto();
             }
 
@@ -242,7 +242,6 @@ public class F_Reserva implements Initializable {
             arrayPrimQuarto = quartoDAO.findQuartoDuplo();
 
             for (Quarto q : arrayPrimQuarto) {
-                System.out.println(q.getDescricao());
                 idQuartoesc = q.getIdQuarto();
             }
 
@@ -251,8 +250,8 @@ public class F_Reserva implements Initializable {
             arrayPrimQuarto = quartoDAO.findQuartoFamiliar();
 
             for (Quarto q : arrayPrimQuarto) {
-                System.out.println(q.getDescricao());
                 idQuartoesc = q.getIdQuarto();
+                System.out.println(idQuartoesc);
             }
         }
     }
@@ -370,14 +369,15 @@ public class F_Reserva implements Initializable {
             alert.showAndWait();
         } else {
             onEsTquarto();
+            onidClienteInsere();
 
             if (idClientV != 0 || myDateI != null || myDateF != null) {
                 //Criar a reserva
                 reserva.setIdcliente(idClientV);
                 reserva.setIdquarto(idQuartoesc);
                 reserva.setNumcartao(1);
-                reserva.setDataI(myDateI);
-                reserva.setDataF(myDateF);
+                reserva.setDataI(datai);
+                reserva.setDataF(dataf);
 
                 reservaDAO.criaReserva(reserva);
 
