@@ -220,6 +220,7 @@ public class F_Reserva implements Initializable {
     }
 
     List<Quarto> arrayPrimQuarto = new ArrayList<>();
+    String primQuarto;
     List<Quarto> arrayPrecoQuarto = new ArrayList<>();
     int idQuartoesc = 0;
 
@@ -229,12 +230,21 @@ public class F_Reserva implements Initializable {
 
         if (Objects.equals(escolhaTquarto, "Individual")) {
             arrayPrimQuarto = quartoDAO.findQuartoIndividual();
+            for (Quarto q : arrayPrimQuarto) {
+                idQuartoesc = q.getIdQuarto();
+            }
 
         } else if (Objects.equals(escolhaTquarto, "Duplo")) {
             arrayPrimQuarto = quartoDAO.findQuartoDuplo();
+            for (Quarto q : arrayPrimQuarto) {
+                idQuartoesc = q.getIdQuarto();
+            }
 
         } else if (Objects.equals(escolhaTquarto, "Familiar")) {
             arrayPrimQuarto = quartoDAO.findQuartoFamiliar();
+            for (Quarto q : arrayPrimQuarto) {
+                idQuartoesc = q.getIdQuarto();
+            }
 
         }
     }
@@ -246,20 +256,6 @@ public class F_Reserva implements Initializable {
     TextField idClienteInsere;
     List<Cliente> arrayCliente = new ArrayList<>();
     ClienteDAO clienteDAO = new ClienteDAO();
-
-    @FXML
-    public void onidClienteInsere() {
-        idCliente = idClienteInsere.getText();
-
-        //System.out.println(idCliente);
-        //System.out.println(Integer.parseInt(idCliente));
-        arrayCliente = clienteDAO.findClienteCid(Integer.parseInt(idCliente));
-        for (Cliente c : arrayCliente) {
-            System.out.println(c.getIdCliente());
-            idClientV = c.getIdCliente();
-        }
-
-    }
 
 
     public void atualizarPrecos(ActionEvent event) {
@@ -352,8 +348,16 @@ public class F_Reserva implements Initializable {
             alert.showAndWait();
         } else {
             onEsTquarto();
+            idCliente = idClienteInsere.getText();
 
-            if (idClientV != 0 || myDateI != null || myDateI != null) {
+            //System.out.println(idCliente);
+            //System.out.println(Integer.parseInt(idCliente));
+            arrayCliente = clienteDAO.findClienteCid(Integer.parseInt(idCliente));
+            for (Cliente c : arrayCliente) {
+                System.out.println(c.getIdCliente());
+                idClientV = c.getIdCliente();
+            }
+
                 //Criar a reserva
                 reserva.setIdcliente(idClientV);
                 reserva.setIdquarto(idQuartoesc);
@@ -365,7 +369,6 @@ public class F_Reserva implements Initializable {
 
                 //Relação de tabela
                 RelacionaResServ();
-            }
         }
 
     }
