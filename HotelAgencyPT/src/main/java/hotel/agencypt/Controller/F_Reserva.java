@@ -224,6 +224,7 @@ public class F_Reserva implements Initializable {
     }
 
     List<Quarto> arrayPrimQuarto = new ArrayList<>();
+    String primQuarto;
     List<Quarto> arrayPrecoQuarto = new ArrayList<>();
     int idQuartoesc = 0;
 
@@ -233,6 +234,13 @@ public class F_Reserva implements Initializable {
 
         if (Objects.equals(escolhaTquarto, "Individual")) {
             arrayPrimQuarto = quartoDAO.findQuartoIndividual();
+<<<<<<< HEAD
+=======
+            for (Quarto q : arrayPrimQuarto) {
+                idQuartoesc = q.getIdQuarto();
+            }
+
+>>>>>>> ff0be6e5ce22be5e425b1f6b34de06e505f5adb5
             for (Quarto q : arrayPrimQuarto) {
                 idQuartoesc = q.getIdQuarto();
             }
@@ -240,6 +248,9 @@ public class F_Reserva implements Initializable {
 
         } else if (Objects.equals(escolhaTquarto, "Duplo")) {
             arrayPrimQuarto = quartoDAO.findQuartoDuplo();
+            for (Quarto q : arrayPrimQuarto) {
+                idQuartoesc = q.getIdQuarto();
+            }
 
             for (Quarto q : arrayPrimQuarto) {
                 idQuartoesc = q.getIdQuarto();
@@ -248,6 +259,9 @@ public class F_Reserva implements Initializable {
 
         } else if (Objects.equals(escolhaTquarto, "Familiar")) {
             arrayPrimQuarto = quartoDAO.findQuartoFamiliar();
+            for (Quarto q : arrayPrimQuarto) {
+                idQuartoesc = q.getIdQuarto();
+            }
 
             for (Quarto q : arrayPrimQuarto) {
                 idQuartoesc = q.getIdQuarto();
@@ -263,20 +277,6 @@ public class F_Reserva implements Initializable {
     TextField idClienteInsere;
     List<Cliente> arrayCliente = new ArrayList<>();
     ClienteDAO clienteDAO = new ClienteDAO();
-
-    @FXML
-    public void onidClienteInsere() {
-        idCliente = idClienteInsere.getText();
-
-        //System.out.println(idCliente);
-        //System.out.println(Integer.parseInt(idCliente));
-        arrayCliente = clienteDAO.findClienteCid(Integer.parseInt(idCliente));
-        for (Cliente c : arrayCliente) {
-            System.out.println(c.getIdCliente());
-            idClientV = c.getIdCliente();
-        }
-
-    }
 
 
     public void atualizarPrecos(ActionEvent event) {
@@ -369,7 +369,19 @@ public class F_Reserva implements Initializable {
             alert.showAndWait();
         } else {
             onEsTquarto();
+<<<<<<< HEAD
             onidClienteInsere();
+=======
+            idCliente = idClienteInsere.getText();
+
+            //System.out.println(idCliente);
+            //System.out.println(Integer.parseInt(idCliente));
+            arrayCliente = clienteDAO.findClienteCid(Integer.parseInt(idCliente));
+            for (Cliente c : arrayCliente) {
+                System.out.println(c.getIdCliente());
+                idClientV = c.getIdCliente();
+            }
+>>>>>>> ff0be6e5ce22be5e425b1f6b34de06e505f5adb5
 
             if (idClientV != 0 || myDateI != null || myDateF != null) {
                 //Criar a reserva
@@ -384,73 +396,72 @@ public class F_Reserva implements Initializable {
                 //Relação de tabela
                 RelacionaResServ();
             }
+            }
         }
 
-    }
+
+        int ultimaReserv;
+        List<Reserva> arrayUltimaReserva = new ArrayList<>();
+        int relacionaservico;
+        String descservico;
 
 
-    int ultimaReserv;
-    List<Reserva> arrayUltimaReserva = new ArrayList<>();
-    int relacionaservico;
-    String descservico;
+        public void RelacionaResServ () {
+
+            //List tipo reserva com o valor da ultima reserva encontrada
+            arrayUltimaReserva = ReservaDAO.findUltReserva();
+
+            for (Reserva r : arrayUltimaReserva) {
+                ultimaReserv = r.getIdreserva();
+            }
+            System.out.println(ultimaReserv);
+
+            //------------------------------------------------------
+
+            descservico = listServesco.getItems().toString()
+                    .replace("[", "")
+                    .replace("]", "")
+                    .replace(" ", "")
+                    .replace(".", "")
+                    .replaceAll("[0-9]", "");
+
+            //-------------------------------
+            String[] bdservico = descservico.split(",");
+
+            for (int i = 0; i < bdservico.length; i++) {
+                System.out.println(bdservico[i]);
+
+                arrayServico = findServicoEsc(bdservico[i]);
 
 
-    public void RelacionaResServ() {
+                for (Servico s : arrayServico) {
+                    relacionaservico = s.getIdServico();
 
-        //List tipo reserva com o valor da ultima reserva encontrada
-        arrayUltimaReserva = ReservaDAO.findUltReserva();
+                    criaReservaServico(ultimaReserv, relacionaservico);
 
-        for (Reserva r : arrayUltimaReserva) {
-            ultimaReserv = r.getIdreserva();
-        }
-        System.out.println(ultimaReserv);
+                }
 
-        //------------------------------------------------------
-
-        descservico = listServesco.getItems().toString()
-                .replace("[", "")
-                .replace("]", "")
-                .replace(" ", "")
-                .replace(".", "")
-                .replaceAll("[0-9]", "");
-
-        //-------------------------------
-        String[] bdservico = descservico.split(",");
-
-        for (int i = 0; i < bdservico.length; i++) {
-            System.out.println(bdservico[i]);
-
-            arrayServico = findServicoEsc(bdservico[i]);
-
-
-            for (Servico s : arrayServico) {
-                relacionaservico = s.getIdServico();
-
-                criaReservaServico(ultimaReserv, relacionaservico);
 
             }
-
-
         }
-    }
 
 
-    /**
-     * Método para voltar atrás
-     *
-     * @param actionEvent
-     */
-    @FXML
-    public void voltarAtras(ActionEvent actionEvent) {
-        try {
-            Singleton.open("funcionariointerface", "Hotel >> Funcionario");
-        } catch (Exception e) {
-            System.out.println("Erro ao voltar atrás.");
+        /**
+         * Método para voltar atrás
+         *
+         * @param actionEvent
+         */
+        @FXML
+        public void voltarAtras (ActionEvent actionEvent){
+            try {
+                Singleton.open("funcionariointerface", "Hotel >> Funcionario");
+            } catch (Exception e) {
+                System.out.println("Erro ao voltar atrás.");
+            }
         }
-    }
 
-    public void onIdCliente(ActionEvent event) {
-    }
+        public void onIdCliente (ActionEvent event){
+        }
 
 
 }
