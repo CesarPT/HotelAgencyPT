@@ -29,8 +29,6 @@ public class LoginController implements Initializable {
     @FXML
     private Button cancelButton;
     @FXML
-    private Button RegisterButton;
-    @FXML
     private Label loginMessageLabel;
     @FXML
     private ImageView lockImageView;
@@ -40,7 +38,12 @@ public class LoginController implements Initializable {
     private PasswordField enterPasswordField;
 
     /**
-     * Inicialização do controlador
+     * Inicialização do controlador.
+     *
+     * @param url            The location used to resolve relative paths for the root object, or
+     *                       {@code null} if the location is not known.
+     * @param resourceBundle The resources used to localize the root object, or {@code null} if
+     *                       the root object was not localized.
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -50,7 +53,7 @@ public class LoginController implements Initializable {
     }
 
     /**
-     * Login através do butão
+     * Verifica se os campos estão vazios.
      *
      * @param event Ação do evento
      */
@@ -63,7 +66,7 @@ public class LoginController implements Initializable {
     }
 
     /**
-     * Fecha a aba login através do butão cancel
+     * Fecha a janela do login através do butão cancel.
      *
      * @param event Ação do evento
      */
@@ -73,7 +76,7 @@ public class LoginController implements Initializable {
     }
 
     /**
-     * Validação do login para verificar se existe na base de dados
+     * Faz encriptação e faz a validação do login para verificar se existe na base de dados.
      */
     public void validateLogin() {
         Connection con = ConnectionDB.establishConnection();
@@ -132,7 +135,7 @@ public class LoginController implements Initializable {
     }
 
     /**
-     * Validação das permissões
+     * Valida as permissões e abre a aba dessa mesma.
      */
     public void validatePerms(Connection con) {
         String verifyPerm = ("SELECT tipouser FROM Utilizador WHERE nomeuser ='" + usernameTextField.getText() + "'");
