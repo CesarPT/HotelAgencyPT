@@ -89,7 +89,7 @@ public class F_interface {
         try {
             Stage window = (Stage) Stock.getScene().getWindow();
             window.close();
-            Singleton.open("GH_GerirStock", "Hotel >> Funcionario >> Gerir Stock");
+            Singleton.open("F_GerirStock", "Hotel >> Funcionario >> Gerir Stock");
         } catch (Exception e) {
             System.out.println("Erro ao fechar/abrir o stage.");
         }
