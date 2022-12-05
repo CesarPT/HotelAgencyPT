@@ -196,6 +196,7 @@ public class F_Reserva implements Initializable {
             LocalDate myDate = datePickerI.getValue();
             dataILabel.setText(myDate.toString());
             datai = (Date) Date.from(myDate.atStartOfDay(defaultZoneId).toInstant());
+            
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -211,8 +212,9 @@ public class F_Reserva implements Initializable {
         try {
             LocalDate myDate = datePickerF.getValue();
             dataFLabel.setText(myDate.toString());
-
             dataf = (Date) Date.from(myDate.atStartOfDay(defaultZoneId).toInstant());
+
+
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -234,11 +236,23 @@ public class F_Reserva implements Initializable {
                 idQuartoesc = q.getIdQuarto();
             }
 
+            for (Quarto q : arrayPrimQuarto) {
+                System.out.println(q.getDescricao());
+                idQuartoesc = q.getIdQuarto();
+            }
+
+
         } else if (Objects.equals(escolhaTquarto, "Duplo")) {
             arrayPrimQuarto = quartoDAO.findQuartoDuplo();
             for (Quarto q : arrayPrimQuarto) {
                 idQuartoesc = q.getIdQuarto();
             }
+
+            for (Quarto q : arrayPrimQuarto) {
+                System.out.println(q.getDescricao());
+                idQuartoesc = q.getIdQuarto();
+            }
+
 
         } else if (Objects.equals(escolhaTquarto, "Familiar")) {
             arrayPrimQuarto = quartoDAO.findQuartoFamiliar();
@@ -246,6 +260,10 @@ public class F_Reserva implements Initializable {
                 idQuartoesc = q.getIdQuarto();
             }
 
+            for (Quarto q : arrayPrimQuarto) {
+                System.out.println(q.getDescricao());
+                idQuartoesc = q.getIdQuarto();
+            }
         }
     }
 
@@ -358,6 +376,10 @@ public class F_Reserva implements Initializable {
                 idClientV = c.getIdCliente();
             }
 
+<<<<<<< HEAD
+=======
+            if (idClientV != 0 || myDateI != null || myDateF != null) {
+>>>>>>> 099eb1ac26f2e296dc998b65d343cd397141b5d1
                 //Criar a reserva
                 reserva.setIdcliente(idClientV);
                 reserva.setIdquarto(idQuartoesc);
