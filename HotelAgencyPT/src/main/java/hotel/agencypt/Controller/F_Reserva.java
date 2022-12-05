@@ -196,6 +196,7 @@ public class F_Reserva implements Initializable {
             LocalDate myDate = datePickerI.getValue();
             dataILabel.setText(myDate.toString());
             datai = (Date) Date.from(myDate.atStartOfDay(defaultZoneId).toInstant());
+            
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -211,8 +212,9 @@ public class F_Reserva implements Initializable {
         try {
             LocalDate myDate = datePickerF.getValue();
             dataFLabel.setText(myDate.toString());
-
             dataf = (Date) Date.from(myDate.atStartOfDay(defaultZoneId).toInstant());
+
+
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -230,12 +232,28 @@ public class F_Reserva implements Initializable {
         if (Objects.equals(escolhaTquarto, "Individual")) {
             arrayPrimQuarto = quartoDAO.findQuartoIndividual();
 
+            for (Quarto q : arrayPrimQuarto) {
+                System.out.println(q.getDescricao());
+                idQuartoesc = q.getIdQuarto();
+            }
+
+
         } else if (Objects.equals(escolhaTquarto, "Duplo")) {
             arrayPrimQuarto = quartoDAO.findQuartoDuplo();
+
+            for (Quarto q : arrayPrimQuarto) {
+                System.out.println(q.getDescricao());
+                idQuartoesc = q.getIdQuarto();
+            }
+
 
         } else if (Objects.equals(escolhaTquarto, "Familiar")) {
             arrayPrimQuarto = quartoDAO.findQuartoFamiliar();
 
+            for (Quarto q : arrayPrimQuarto) {
+                System.out.println(q.getDescricao());
+                idQuartoesc = q.getIdQuarto();
+            }
         }
     }
 
@@ -353,7 +371,7 @@ public class F_Reserva implements Initializable {
         } else {
             onEsTquarto();
 
-            if (idClientV != 0 || myDateI != null || myDateI != null) {
+            if (idClientV != 0 || myDateI != null || myDateF != null) {
                 //Criar a reserva
                 reserva.setIdcliente(idClientV);
                 reserva.setIdquarto(idQuartoesc);
