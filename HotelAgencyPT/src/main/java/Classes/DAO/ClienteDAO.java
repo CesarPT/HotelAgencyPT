@@ -24,7 +24,7 @@ public class ClienteDAO {
     public List<Cliente> findClienteCid(int idcliente) {
         String sql = "SELECT idcliente\n" +
                 "FROM Cliente\n" +
-                "WHERE idcliente='" + idcliente+ "'";
+                "WHERE idcliente='" + idcliente + "'";
 
         PreparedStatement stmt = null;
         ResultSet rs = null;

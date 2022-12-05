@@ -24,7 +24,7 @@ import java.util.ResourceBundle;
 /**
  * Classe pública do controlador GH_GerirStock.fxml
  */
-public class GH_GerirStock implements Initializable {
+public class F_GerirStock implements Initializable {
     private Connection con;
     @FXML
     protected Button button;
@@ -167,7 +167,7 @@ public class GH_GerirStock implements Initializable {
     @FXML
     public void voltarAtras(ActionEvent actionEvent) {
         try {
-            Singleton.open("GestorHotel", "Hotel >> Gestor de Hotel");
+            Singleton.open("funcionariointerface", "Hotel >> Funcionário");
         } catch (Exception e) {
             System.out.println("Erro ao voltar atrás.");
         }

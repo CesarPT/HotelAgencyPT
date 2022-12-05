@@ -1,6 +1,5 @@
 package Classes.DAO;
 
-import Classes.ReservaServico;
 import DataBase.ConnectionDB;
 
 import java.sql.Connection;
@@ -19,15 +18,15 @@ public class ReservaServicoDAO {
     }
 
 
-    public static boolean criaReservaServico(int idreserva,int idservico ) {
+    public static boolean criaReservaServico(int idreserva, int idservico) {
         String sql = "INSERT INTO ReservaServico (idreserva,idservico) Values(?,?)";
         PreparedStatement stmt = null;
 
         try {
             con = ConnectionDB.establishConnection();
             stmt = con.prepareStatement(sql);
-            stmt.setInt(1,idreserva);
-            stmt.setInt(2,idservico);
+            stmt.setInt(1, idreserva);
+            stmt.setInt(2, idservico);
 
             stmt.executeUpdate();
             return true;

@@ -23,7 +23,7 @@ public class GH_ConfigQuarto implements Initializable {
 
     String quartoEscolhido;
 
-    List<Quarto> arrayDescricaoQuarto =new ArrayList<>();
+    List<Quarto> arrayDescricaoQuarto = new ArrayList<>();
     @FXML
     private TextArea textAlterarDescricao;
     @FXML

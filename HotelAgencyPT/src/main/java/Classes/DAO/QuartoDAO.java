@@ -3,9 +3,9 @@ package Classes.DAO;
 //Bibliotecas
 
 import Classes.Quarto;
-import Classes.Reserva;
-import hotel.agencypt.Controller.Controller;
 import DataBase.ConnectionDB;
+import hotel.agencypt.Controller.Controller;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -161,7 +161,7 @@ public class QuartoDAO {
     }
 
 
-    public  List<Quarto> findQuartoIndividual() {
+    public List<Quarto> findQuartoIndividual() {
         String sql = "select TOP 1 percent idquarto " +
                 "from Quarto " +
                 "where descricao='Individual'" +

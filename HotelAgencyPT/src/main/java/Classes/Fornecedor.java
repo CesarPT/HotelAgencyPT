@@ -8,8 +8,8 @@ public class Fornecedor {
     private String rua;
     private String n_porta;
     private String cidade;
-    private String  cp;
-    private String  pais;
+    private String cp;
+    private String pais;
 
     /**
      * Construtor completo
@@ -21,7 +21,7 @@ public class Fornecedor {
      * @param cp
      * @param pais
      */
-    public Fornecedor(int id, String rua,String n_porta,String cidade, String  cp,String  pais) {
+    public Fornecedor(int id, String rua, String n_porta, String cidade, String cp, String pais) {
         this.id = id;
         this.rua = rua;
         this.n_porta = n_porta;
@@ -29,6 +29,7 @@ public class Fornecedor {
         this.cp = cp;
         this.pais = pais;
     }
+
     /**
      * Construtor vazio
      */

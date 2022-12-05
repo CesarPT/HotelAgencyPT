@@ -12,6 +12,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
@@ -110,7 +111,7 @@ public class Cliente {
     //Adicionar RegEntrada de quarto na base de dados
     @FXML
     public void registroEntradaQuarto(ActionEvent actionEvent) {
-        if (listReserva.getSelectionModel().getSelectedItem() == null){
+        if (listReserva.getSelectionModel().getSelectedItem() == null) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Aviso");
             alert.setHeaderText("Sem seleção");
@@ -144,7 +145,7 @@ public class Cliente {
             alert.setHeaderText("Sem seleção");
             alert.setContentText("Selecione uma reserva da lista.");
             alert.showAndWait();
-        }else {
+        } else {
             //Se a opcao selecionada na ChoiceBox for Restaurante
             if (opcoesEntrada.getSelectionModel().getSelectedItem() == "Restaurante") {
                 RegEntradaDAO daoRegEntrada = new RegEntradaDAO();
@@ -243,6 +244,19 @@ public class Cliente {
         }
     }
 
+    /**
+     * Abre o C_CriarFeedback.fxml
+     */
+    public void abrirCriarFeedback() {
+        try {
+            Stage window = (Stage) listReserva.getScene().getWindow();
+            window.close();
+            Singleton.open("C_CriarFeedback", "Hotel >> Cliente >> Criar feedback");
+
+        } catch (Exception e) {
+            System.out.println("Erro ao abrir/fechar o scene");
+        }
+    }
 
     /**
      * Método para voltar atrás

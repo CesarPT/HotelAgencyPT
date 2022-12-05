@@ -3,8 +3,8 @@ package hotel.agencypt.Controller;
 //Bibliotecas
 
 import Classes.Cliente;
-import Classes.DAO.QuartoDAO;
 import Classes.DAO.ClienteDAO;
+import Classes.DAO.QuartoDAO;
 import Classes.DAO.ReservaDAO;
 import Classes.DAO.ServicoDAO;
 import Classes.Quarto;
@@ -59,8 +59,6 @@ public class F_Reserva implements Initializable {
     public Label labelAviso;
     @FXML
     public ComboBox cboxTquarto;
-    @FXML
-    public ComboBox cboxQuarto;
 
     @FXML
     ObservableList<String> listTquarto = FXCollections.observableArrayList("Individual", "Duplo", "Familiar");
@@ -79,7 +77,7 @@ public class F_Reserva implements Initializable {
     List<Servico> arrayServico = new ArrayList<>();
     ServicoDAO servicoDAO = new ServicoDAO();
     QuartoDAO quartoDAO = new QuartoDAO();
-    ArrayList<String> listaqq=new ArrayList<>();
+    ArrayList<String> listaqq = new ArrayList<>();
 
 
     @Override
@@ -189,6 +187,7 @@ public class F_Reserva implements Initializable {
 
     Date myDateI;
     Date datai;
+
     @FXML
     public void getDateI(ActionEvent event) {
         ZoneId defaultZoneId = ZoneId.systemDefault();
@@ -222,7 +221,7 @@ public class F_Reserva implements Initializable {
 
     List<Quarto> arrayPrimQuarto = new ArrayList<>();
     List<Quarto> arrayPrecoQuarto = new ArrayList<>();
-    int idQuartoesc;
+    int idQuartoesc = 0;
 
     @FXML
     public void onEsTquarto() {
@@ -235,35 +234,32 @@ public class F_Reserva implements Initializable {
             arrayPrimQuarto = quartoDAO.findQuartoDuplo();
 
         } else if (Objects.equals(escolhaTquarto, "Familiar")) {
-            arrayPrimQuarto =  quartoDAO.findQuartoFamiliar();
+            arrayPrimQuarto = quartoDAO.findQuartoFamiliar();
 
         }
     }
 
 
+    String idCliente;
+    int idClientV = 0;
+    @FXML
+    TextField idClienteInsere;
+    List<Cliente> arrayCliente = new ArrayList<>();
+    ClienteDAO clienteDAO = new ClienteDAO();
 
-String idCliente;
-    int idClientV;
-@FXML
-TextField idClienteInsere;
-List<Cliente> arrayCliente=new ArrayList<>();
-ClienteDAO clienteDAO=new ClienteDAO();
+    @FXML
+    public void onidClienteInsere() {
+        idCliente = idClienteInsere.getText();
 
-@FXML
-public void onidClienteInsere(){
-    idCliente=idClienteInsere.getText();
+        //System.out.println(idCliente);
+        //System.out.println(Integer.parseInt(idCliente));
+        arrayCliente = clienteDAO.findClienteCid(Integer.parseInt(idCliente));
+        for (Cliente c : arrayCliente) {
+            System.out.println(c.getIdCliente());
+            idClientV = c.getIdCliente();
+        }
 
-    //System.out.println(idCliente);
-    //System.out.println(Integer.parseInt(idCliente));
-    arrayCliente = clienteDAO.findClienteCid(Integer.parseInt(idCliente));
-    for (Cliente c : arrayCliente) {
-        System.out.println(c.getIdCliente());
-        idClientV =c.getIdCliente();
     }
-
-}
-
-
 
 
     public void atualizarPrecos(ActionEvent event) {
@@ -279,11 +275,17 @@ public void onidClienteInsere(){
             alert.setHeaderText("Datas inválidas");
             alert.setContentText("A data de fim deve ser maior que a data de inicio.");
             alert.showAndWait();
-        } else if (cboxTquarto.getSelectionModel().isEmpty() || cboxQuarto.getSelectionModel().isEmpty()) {
+        } else if (cboxTquarto.getSelectionModel().isEmpty() || idClienteInsere.getText().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Aviso");
             alert.setHeaderText("Sem seleção");
             alert.setContentText("Selecione um tipo de quarto e um quarto disponível.");
+            alert.showAndWait();
+        } else if (!idClienteInsere.getText().matches("^[1-500]*$")) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Aviso");
+            alert.setHeaderText("Texto inválido: id cliente");
+            alert.setContentText("Escreva o seu número de cliente.");
             alert.showAndWait();
         } else if (!listServesco.getItems().toString().contains("Base")) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -292,10 +294,7 @@ public void onidClienteInsere(){
             alert.setContentText("A reserva tem que ter o serviço: base que está incluida em todos os quartos.");
             alert.showAndWait();
         } else {
-            idQuarto = (String) cboxQuarto.getSelectionModel().getSelectedItem().toString()
-                    .replaceAll("[a-zA-Z]", "")
-                    .replaceAll(":", "")
-                    .replaceAll(" ", "");
+            idQuarto = idClienteInsere.getText();
 
             //Preço do quarto, noites e Preço total
             Controller.getInstance().setIdquarto(Integer.parseInt(idQuarto));
@@ -318,25 +317,58 @@ public void onidClienteInsere(){
 
     ReservaDAO reservaDAO;
     Reserva reserva = new Reserva();
+
     @FXML
     public void onCriaReserva(ActionEvent event) {
+        if (datePickerI.getValue() == null || datePickerF.getValue() == null) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Aviso");
+            alert.setHeaderText("Sem seleção");
+            alert.setContentText("Selecione uma data de inicio e fim.");
+            alert.showAndWait();
+        } else if (datePickerF.getValue().compareTo(datePickerI.getValue()) < 0) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Aviso");
+            alert.setHeaderText("Datas inválidas");
+            alert.setContentText("A data de fim deve ser maior que a data de inicio.");
+            alert.showAndWait();
+        } else if (cboxTquarto.getSelectionModel().isEmpty() || idClienteInsere.getText().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Aviso");
+            alert.setHeaderText("Sem seleção");
+            alert.setContentText("Selecione um tipo de quarto e um quarto disponível.");
+            alert.showAndWait();
+        } else if (!idClienteInsere.getText().matches("^[1-500]*$")) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Aviso");
+            alert.setHeaderText("Texto inválido: id cliente");
+            alert.setContentText("Escreva o seu número de cliente.");
+            alert.showAndWait();
+        } else if (!listServesco.getItems().toString().contains("Base")) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Aviso");
+            alert.setHeaderText("Sem o serviço Base");
+            alert.setContentText("A reserva tem que ter o serviço: base que está incluida em todos os quartos.");
+            alert.showAndWait();
+        } else {
+            onEsTquarto();
 
-        onEsTquarto();
+            if (idClientV != 0 || myDateI != null || myDateI != null) {
+                //Criar a reserva
+                reserva.setIdcliente(idClientV);
+                reserva.setIdquarto(idQuartoesc);
+                reserva.setNumcartao(1);
+                reserva.setDataI(myDateI);
+                reserva.setDataF(myDateF);
 
-            //testestar dps colocar os valores inseridos
-            reserva.setIdcliente(idClientV);
-            reserva.setIdquarto(idQuartoesc);
-            reserva.setNumcartao(1);
-            reserva.setDataI(myDateI);
-            reserva.setDataF(myDateF);
+                reservaDAO.criaReserva(reserva);
 
-        reservaDAO.criaReserva(reserva);
-
-
-
-            RelacionaResServ();
+                //Relação de tabela
+                RelacionaResServ();
+            }
         }
 
+    }
 
 
     int ultimaReserv;
@@ -345,7 +377,7 @@ public void onidClienteInsere(){
     String descservico;
 
 
-    public void RelacionaResServ(){
+    public void RelacionaResServ() {
 
         //List tipo reserva com o valor da ultima reserva encontrada
         arrayUltimaReserva = ReservaDAO.findUltReserva();
@@ -365,26 +397,24 @@ public void onidClienteInsere(){
                 .replaceAll("[0-9]", "");
 
         //-------------------------------
-        String[] bdservico=descservico.split(",");
+        String[] bdservico = descservico.split(",");
 
-        for(int i=0;i<bdservico.length;i++){
+        for (int i = 0; i < bdservico.length; i++) {
             System.out.println(bdservico[i]);
 
-            arrayServico= findServicoEsc(bdservico[i]);
+            arrayServico = findServicoEsc(bdservico[i]);
 
 
             for (Servico s : arrayServico) {
                 relacionaservico = s.getIdServico();
 
-                criaReservaServico(ultimaReserv,relacionaservico);
+                criaReservaServico(ultimaReserv, relacionaservico);
 
             }
 
 
         }
     }
-
-
 
 
     /**
