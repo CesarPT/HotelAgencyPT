@@ -1,10 +1,7 @@
 package Classes.DAO;
 
-<<<<<<< HEAD
 import Classes.Reserva;
 import Classes.ReservaServico;
-=======
->>>>>>> 36f27188d0f501ca315d4f7433e53cc391a98a6f
 import DataBase.ConnectionDB;
 
 import java.sql.Connection;

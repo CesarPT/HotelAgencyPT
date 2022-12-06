@@ -22,7 +22,6 @@ import javafx.scene.control.*;
 
 import java.net.URL;
 import java.sql.Connection;
-package hotel.agencypt.Controller;
 
 //Bibliotecas
 
@@ -453,24 +452,7 @@ public class F_Reserva implements Initializable {
 
             }
         }
-
-
-<<<<<<< HEAD
         //------------------------------------------------------
-
-        descservico = listServesco.getItems().toString()
-                .replace("[", "")
-                .replace("]", "")
-                .replace(" ", "")
-                .replaceAll("[0-9]", "");
-
-        System.out.println(descservico);
-        //Soma o que está antes da virgula e depois da virgula
-        //outracoisa.setText(String.valueOf(descservico.split(",")));
-
-        // criaReservaServico(ultimaReserv);
-
-    }
 
 
     /**
@@ -479,29 +461,16 @@ public class F_Reserva implements Initializable {
      * @param actionEvent
      */
     @FXML
-    public void voltarAtras (ActionEvent actionEvent){
+    public void voltarAtras (ActionEvent actionEvent) {
         try {
             Singleton.open("funcionariointerface", "Hotel >> Funcionario");
         } catch (Exception e) {
             System.out.println("Erro ao voltar atrás.");
-=======
-        /**
-         * Método para voltar atrás
-         *
-         * @param actionEvent
-         */
-        @FXML
-        public void voltarAtras (ActionEvent actionEvent){
-            try {
-                Singleton.open("funcionariointerface", "Hotel >> Funcionario");
-            } catch (Exception e) {
-                System.out.println("Erro ao voltar atrás.");
-            }
->>>>>>> 36f27188d0f501ca315d4f7433e53cc391a98a6f
         }
+    }
 
-        public void onIdCliente (ActionEvent event){
-        }
+            public void onIdCliente (ActionEvent event){
+            }
 
 
 }

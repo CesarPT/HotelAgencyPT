@@ -3,10 +3,7 @@ package Classes.DAO;
 //Bibliotecas
 
 import Classes.Quarto;
-<<<<<<< HEAD
 import hotel.agencypt.Controller.Controller;
-=======
->>>>>>> 36f27188d0f501ca315d4f7433e53cc391a98a6f
 import DataBase.ConnectionDB;
 import hotel.agencypt.Controller.Controller;
 
