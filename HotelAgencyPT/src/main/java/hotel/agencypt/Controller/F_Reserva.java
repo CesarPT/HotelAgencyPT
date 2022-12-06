@@ -1,6 +1,29 @@
 package hotel.agencypt.Controller;
 
 //Bibliotecas
+
+import Classes.DAO.QuartoDAO;
+import Classes.DAO.ReservaDAO;
+import Classes.DAO.ServicoDAO;
+import Classes.Quarto;
+import Classes.Reserva;
+import Classes.Servico;
+import DataBase.ConnectionDB;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.*;
+
+import java.net.URL;
+import java.sql.Connection;
+package hotel.agencypt.Controller;
+
+//Bibliotecas
+
 import Classes.DAO.QuartoDAO;
 import Classes.DAO.ReservaDAO;
 import Classes.DAO.ServicoDAO;
@@ -31,6 +54,7 @@ import java.util.stream.Stream;
 
 import static Classes.DAO.ReservaDAO.findReserva;
 import static Classes.DAO.ReservaServicoDAO.criaReservaServico;
+import static Classes.DAO.ServicoDAO.findServicoEsc;
 
 public class F_Reserva implements Initializable {
 
@@ -79,24 +103,10 @@ public class F_Reserva implements Initializable {
     List<Servico> arrayServico = new ArrayList<>();
 
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-    ServicoDAO servicoDAO = new ServicoDAO();
-    QuartoDAO quartoDAO = new QuartoDAO();
-=======
-<<<<<<< HEAD
     ServicoDAO servicoDAO = new ServicoDAO();
     QuartoDAO quartoDAO = new QuartoDAO();
 
-=======
-    ServicoDAO servicoDAO=new ServicoDAO();
-    QuartoDAO quartoDAO=new QuartoDAO();
->>>>>>> e113624d6fc9c634c46e31f1beb4fbac7927ffdc
->>>>>>> bde372c71f2c9056a4e1798ecaf15a7c8e40e5f3
-=======
-    ServicoDAO servicoDAO=new ServicoDAO();
-    QuartoDAO quartoDAO=new QuartoDAO();
->>>>>>> parent of 0166441 (cleanup)
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -205,13 +215,10 @@ public class F_Reserva implements Initializable {
     Date myDateI;
     @FXML
     public void getDateI(ActionEvent event) {
-        ZoneId defaultZoneId = ZoneId.systemDefault();
 
         try {
             myDateI = Date.valueOf(datePickerI.getValue());
-            System.out.println("myDate: "+myDateI);
             dataILabel.setText(myDateI.toString());
-
 
         } catch (Exception e) {
             System.out.println(e);
@@ -222,17 +229,14 @@ public class F_Reserva implements Initializable {
     Date myDateF;
     @FXML
     public void getDateF(ActionEvent event) {
-        ZoneId defaultZoneId = ZoneId.systemDefault();
 
         try {
             myDateF = Date.valueOf(datePickerI.getValue());
-            System.out.println("myDate: "+myDateF);
             dataILabel.setText(myDateF.toString());
 
         } catch (Exception e) {
             System.out.println(e);
         }
-
     }
 
     List<Quarto> arrayPrimQuarto = new ArrayList<>();
@@ -240,8 +244,6 @@ public class F_Reserva implements Initializable {
     int idQuartoesc;
 
     @FXML
-<<<<<<< HEAD
-
     public void onEsTquarto() {
         escolhaTquarto = (String) cboxTquarto.getValue();
         if (escolhaTquarto == "Individual") {
@@ -261,42 +263,10 @@ public class F_Reserva implements Initializable {
             for (Quarto q : arrayPrimQuarto) {
                 System.out.println(q.getIdQuarto());
                 idQuartoesc = q.getIdQuarto();
-=======
-    public void onEsTquarto() {
-        escolhaTquarto = (String) cboxTquarto.getValue();
-
-        if (Objects.equals(escolhaTquarto, "Individual")) {
-            arrayPrimQuarto = quartoDAO.findQuartoIndividual();
-            cboxQuarto.getSelectionModel().clearSelection();
-            cboxQuarto.getItems().clear();
-
-            for (Quarto q : arrayPrimQuarto) {
-                cboxQuarto.getItems().add(
-                       "Numero: " + q.getIdQuarto()
-                );
-            }
-        } else if (Objects.equals(escolhaTquarto, "Duplo")) {
-            arrayPrimQuarto = quartoDAO.findQuartoDuplo();
-            cboxQuarto.getSelectionModel().clearSelection();
-            cboxQuarto.getItems().clear();
-
-            for (Quarto q : arrayPrimQuarto) {
-                cboxQuarto.getItems().add(
-                        "Numero: " + q.getIdQuarto()
-                );
-            }
-        } else if (Objects.equals(escolhaTquarto, "Familiar")) {
-            arrayPrimQuarto =  quartoDAO.findQuartoFamiliar();
-            cboxQuarto.getSelectionModel().clearSelection();
-            cboxQuarto.getItems().clear();
-
-            for (Quarto q : arrayPrimQuarto) {
-                cboxQuarto.getItems().add(
-                        "Numero: " + q.getIdQuarto()
-                );
             }
         }
     }
+
     Reserva reserva = new Reserva();
 
     public void atualizarPrecos(ActionEvent event) {
@@ -318,7 +288,7 @@ public class F_Reserva implements Initializable {
             alert.setHeaderText("Sem seleção");
             alert.setContentText("Selecione um tipo de quarto e um quarto disponível.");
             alert.showAndWait();
-        } else if (!listServesco.getItems().toString().contains("Base")){
+        } else if (!listServesco.getItems().toString().contains("Base")) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Aviso");
             alert.setHeaderText("Sem o serviço Base");
@@ -330,7 +300,6 @@ public class F_Reserva implements Initializable {
                     .replaceAll(":", "")
                     .replaceAll(" ", "");
 
-<<<<<<< HEAD
             //Preço do quarto, noites e Preço total
             Controller.getInstance().setIdquarto(Integer.parseInt(idQuarto));
             arrayPrecoQuarto = quartoDAO.findPreco();
@@ -378,25 +347,11 @@ public class F_Reserva implements Initializable {
             alert.showAndWait();
         } else {
 
-<<<<<<< HEAD
             //testestar dps colocar os valores inseridos
             reserva.setIdcliente(1);
             reserva.setIdquarto(idQuartoesc);
             reserva.setNumcartao(1);
             reserva.setDataI(datai);
-            reserva.setDataF(dataf);
-=======
-<<<<<<< HEAD
-
-            //testestar dps colocar os valores inseridos
-            reserva.setIdcliente(1);
-            reserva.setIdquarto(1);//idQuartoesc
-            reserva.setNumcartao(1);
-
-            System.out.println(datai);
-            System.out.println(dataf);
-
-            reserva.setDataI(myDateI);
             reserva.setDataF(dataf);
 
             ReservaDAO.criaReserva(reserva);
@@ -404,43 +359,24 @@ public class F_Reserva implements Initializable {
         }
         //reserva.setIdservico(1);
     }
-=======
-=======
->>>>>>> parent of 0166441 (cleanup)
-     //testestar dps colocar os valores inseridos
-     reserva.setIdcliente(1);
-     reserva.setIdquarto(idQuartoesc);
-     reserva.setNumcartao(1);
-     reserva.setDataI(datai);
-     reserva.setDataF(dataf);
-<<<<<<< HEAD
->>>>>>> bde372c71f2c9056a4e1798ecaf15a7c8e40e5f3
-=======
->>>>>>> parent of 0166441 (cleanup)
 
-     reservaDAO.criaReserva(reserva);
 
-            RelacionaResServ(reserva.getIdreserva());
-        }
-        //reserva.setIdservico(1);
 
-    }
 
     String escdescricao;
     List<Servico> idservico;
-    public void RelacionaResServ(int idreserva){
+
+    public void RelacionaResServ(int idreserva) {
 
         escdescricao = listServesco.getItems().toString()
                 .replace("[", "")
                 .replace("]", "")
-                .replace( " ", "")
+                .replace(" ", "")
                 .replace(".", "")
                 .replaceAll("[0-9]", "");
 
-        idservico=findServicoEsc(escdescricao);
-        }
-
->>>>>>> e113624d6fc9c634c46e31f1beb4fbac7927ffdc
+        idservico = findServicoEsc(escdescricao);
+    }
 
 
     int ultimaReserv;
@@ -463,12 +399,11 @@ public class F_Reserva implements Initializable {
                 .replace(" ", "")
                 .replaceAll("[0-9]", "");
 
-
         System.out.println(descservico);
         //Soma o que está antes da virgula e depois da virgula
         //outracoisa.setText(String.valueOf(descservico.split(",")));
 
-       // criaReservaServico(ultimaReserv);
+        // criaReservaServico(ultimaReserv);
 
     }
 

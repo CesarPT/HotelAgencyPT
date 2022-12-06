@@ -101,10 +101,8 @@ public class ReservaDAO {
             stmt.setInt(1, reserva.getIdcliente());
             stmt.setInt(2, reserva.getIdquarto());
             stmt.setInt(3, reserva.getNumcartao());
-<<<<<<< HEAD
 
-=======
->>>>>>> e113624d6fc9c634c46e31f1beb4fbac7927ffdc
+
             stmt.setDate(4, (Date) reserva.getDataI());
             stmt.setDate(5, (Date) reserva.getDataF());
             stmt.executeUpdate();

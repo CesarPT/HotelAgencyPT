@@ -20,6 +20,12 @@ import java.util.ResourceBundle;
  * Classe pública do controlador GH_ConfigQuarto.fxml
  */
 public class GH_ConfigQuarto implements Initializable {
+
+    String quartoEscolhido;
+
+    List<Quarto> arrayDescricaoQuarto =new ArrayList<>();
+    @FXML
+    private TextArea textAlterarDescricao;
     @FXML
     private ComboBox<String> comboBoxPisoID;
     @FXML
@@ -31,17 +37,11 @@ public class GH_ConfigQuarto implements Initializable {
     @FXML
     private Button verificarDescricao;
     @FXML
-    private TextArea textAlterarDescricao;
-    @FXML
     private TextArea textPreco;
     @FXML
     private TextArea textAlterarPreco;
-
-    String quartoEscolhido;
     QuartoDAO qDAO = new QuartoDAO();
     List<Quarto> arrayQuartos = new ArrayList<>();
-
-    List<Quarto> arrayDescricaoQuarto = new ArrayList<>();
     List<Quarto> arrayPreco = new ArrayList<>();
 
     /**
@@ -53,6 +53,7 @@ public class GH_ConfigQuarto implements Initializable {
      *                  the root object was not localized.
      */
     public void initialize(URL location, ResourceBundle resources) {
+
         //Limpar tudo e inserir valores na combobox
         comboBoxPisoID.getSelectionModel().clearSelection();
         comboBoxPisoID.getItems().clear();
@@ -98,7 +99,7 @@ public class GH_ConfigQuarto implements Initializable {
     public void verificarQuarto(ActionEvent event) {
         //Envia para o controlador a seleção de quarto
         //Pega só no número na combobox
-        quartoEscolhido = comboBoxQuartoID.getValue()
+        String quartoEscolhido = comboBoxQuartoID.getValue()
                 .replaceAll("[a-zA-Z]", "")
                 .replace(":", "")
                 .replace(" ", "");
@@ -161,9 +162,23 @@ public class GH_ConfigQuarto implements Initializable {
         }
     }
 
+    /**
+     * Volta atrás para a View GestorHotel.fxml
+     *
+     * @param actionEvent
+     */
+    @FXML
+    public void voltarAtras(ActionEvent actionEvent) {
+        try {
+            Singleton.open("GestorHotel", "Hotel >> Gestor de Hotel");
+        } catch (Exception e) {
+            System.out.println("Erro ao voltar atrás.");
+        }
+    }
+
     public void verificarAlterarDescricao() {
         //Verifica se o texto tem mais de 200 carateres
-        if (textAlterarDescricao.getText().length()<=200) {
+        if (textAlterarDescricao.getText().length() <= 200) {
             QuartoDAO daoQuarto = new QuartoDAO();
             Quarto quarto = new Quarto();
 
@@ -187,7 +202,7 @@ public class GH_ConfigQuarto implements Initializable {
         }
     }
 
-    public void verDescricao(ActionEvent Event){
+    public void verDescricao(ActionEvent Event) {
         Controller.getInstance().setIdquarto(Integer.parseInt(quartoEscolhido));
         arrayDescricaoQuarto = qDAO.findDescricaoQuarto();
         for (Quarto q : arrayDescricaoQuarto) {
@@ -196,17 +211,6 @@ public class GH_ConfigQuarto implements Initializable {
 
     }
 
-    /**
-     * Volta atrás para a View GestorHotel.fxml
-     *
-     * @param actionEvent
-     */
-    @FXML
-    public void voltarAtras(ActionEvent actionEvent) {
-        try {
-            Singleton.open("GestorHotel", "Hotel >> Gestor de Hotel");
-        } catch (Exception e) {
-            System.out.println("Erro ao voltar atrás.");
-        }
-    }
+
+
 }
