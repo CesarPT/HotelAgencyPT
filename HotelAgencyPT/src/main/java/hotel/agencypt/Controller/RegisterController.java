@@ -1,5 +1,6 @@
 package hotel.agencypt.Controller;
 
+import Classes.Utilizador;
 import DataBase.ConnectionDB;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -44,6 +45,7 @@ public class RegisterController implements Initializable {
      * Inicia a scene com o conteúdo desta classe.
      */
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        permissionComboBox.getItems().setAll("Cliente", "Funcionario", "Gestor");
     }
 
     /**
@@ -67,22 +69,21 @@ public class RegisterController implements Initializable {
      *
      * @param event Ação do evento
      */
-    public void registerButtonOnAction(ActionEvent event) {
+    public void registerButtonOnAction(ActionEvent event){
         verifyPass();
         verifyUser();
         if (setPasswordField.getText().isBlank() == false && usernameTextField.getText().isBlank() == false) {
             registrationMessageLabel.setText("");
-            registrationMessageLabel.setTextFill(Color.BLACK);
             if (verifyPass() == true && verifyUser() == true) {
                 registerUser();
+
+
             }
         } else {
             registrationMessageLabel.setTextFill(Color.RED);
             registrationMessageLabel.setText("Preencha os campos abaixo!");
 
         }
-
-
     }
 
     /**
@@ -135,8 +136,7 @@ public class RegisterController implements Initializable {
     /**
      * Faz a encriptação da password e regista o utilizador na base de dados
      */
-    public void registerUser() {
-        permissionComboBox.getItems().setAll("Cliente", "Funcionario", "Gestor");
+    public void registerUser(){
 
         char tipouser;
         String username = usernameTextField.getText();
@@ -184,24 +184,29 @@ public class RegisterController implements Initializable {
         String insertValues = username + "' , '" + encrypt + "' , '" + tipouser + "')";
         String insertToRegister = insertFields + insertValues;
 
+
         try {
             PreparedStatement stmt = con.prepareStatement(insertToRegister);
             ResultSet rs = stmt.executeQuery();
 
             if (rs.next()) {
-                registrationMessageLabel.setText("O utilizador foi registrado com sucesso!");
-                //registrationMessageLabel.setTextFill(Color.GREEN);
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Sucesso!");
+                alert.setHeaderText("O utilizador foi registrado com sucesso!");
+                alert.showAndWait();
             } else {
-                registrationMessageLabel.setText("O utilizador não foi registrado!");
-                //registrationMessageLabel.setTextFill(Color.RED);
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("ERRO!");
+                alert.setHeaderText("O utilizador não foi registrado!");
+                alert.showAndWait();
             }
-
         } catch (Exception e) {
             e.getCause();
         }
     }
 
-    /**
+
+        /**
      * Botão para mudar para a aba do login
      *
      * @param event Ação do evento

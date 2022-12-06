@@ -31,8 +31,6 @@ GO
 
 Create Table Cartao(
 	numcartao int PRIMARY KEY IDENTITY,
-	datacriacao date,
-	dataexp date
 );
 GO
 
@@ -55,7 +53,8 @@ Create Table Quarto(
 	idquarto int PRIMARY KEY IDENTITY,
 	descricao varchar(200),
 	piso tinyint,
-	preco smallmoney
+	preco smallmoney,
+	numcartao int FOREIGN KEY REFERENCES Cartao(numcartao)
 );
 GO
 

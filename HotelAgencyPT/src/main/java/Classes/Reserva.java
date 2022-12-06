@@ -70,7 +70,6 @@ public class Reserva {
         return dataf;
     }
 
-
     public void setIdreserva(int idreserva) {
         this.idreserva = idreserva;
     }
@@ -98,5 +97,4 @@ public class Reserva {
     public void setDataF(Date dataf) {
         this.dataf = dataf;
     }
-
 }
