@@ -27,7 +27,7 @@
             <ProductDescription>Toalha de banho 400g cinza</ProductDescription>
         </Product>
         <Quantity QuantityType="Count">
-            <Value UOM="Box">50</Value>
+            <Value UOM="Unit">50</Value>
         </Quantity>
         <InformationalQuantity QuantityType="NetWeight">
             <Value UOM="Kilogram">200</Value>

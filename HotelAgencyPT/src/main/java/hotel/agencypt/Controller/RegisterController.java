@@ -41,30 +41,29 @@ public class RegisterController implements Initializable {
     Connection con = ConnectionDB.establishConnection();
 
     /**
-     * Inicia a scene com o conteúdo desta classe
-     *
-     * @param url            The location used to resolve relative paths for the root object, or
-     *                       {@code null} if the location is not known.
-     * @param resourceBundle The resources used to localize the root object, or {@code null} if
-     *                       the root object was not localized.
+     * Inicia a scene com o conteúdo desta classe.
      */
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        permissionComboBox.getItems().setAll("Cliente", "Funcionario", "Gestor");
     }
 
     /**
-     * Botão para fechar a aba register
+     * Botão para fechar a janela register.
      *
      * @param event Ação do evento
      * @throws Exception Verificação das exceções
      */
     public void cancelButtonOnAction(ActionEvent event) {
-        Stage stage = (Stage) closeButton.getScene().getWindow();
-        stage.close();
+        try {
+            Stage stage = (Stage) closeButton.getScene().getWindow();
+            stage.close();
+            Singleton.open("funcionariointerface", "Hotel >> Funcionário");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /**
-     * Botão para fazer o registro
+     * Botão para fazer o registo.
      *
      * @param event Ação do evento
      */
@@ -86,6 +85,11 @@ public class RegisterController implements Initializable {
 
     }
 
+    /**
+     * Verificação se o username já existe!
+     *
+     * @return user
+     */
     public boolean verifyUser() {
         boolean vUser;
         String verifyUser = "SELECT count(1) FROM Utilizador WHERE nomeuser ='" + usernameTextField.getText() + "'";
@@ -111,6 +115,11 @@ public class RegisterController implements Initializable {
         return vUser;
     }
 
+    /**
+     * Verificação se as passwords coincidem
+     *
+     * @return password
+     */
     public boolean verifyPass() {
         boolean pass;
         if (setPasswordField.getText().equals(confirmPasswordField.getText())) {
@@ -124,9 +133,10 @@ public class RegisterController implements Initializable {
     }
 
     /**
-     * Registrar o utilizador na base de dados
+     * Faz a encriptação da password e regista o utilizador na base de dados
      */
     public void registerUser() {
+        permissionComboBox.getItems().setAll("Cliente", "Funcionario", "Gestor");
 
         char tipouser;
         String username = usernameTextField.getText();

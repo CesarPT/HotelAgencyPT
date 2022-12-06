@@ -2,9 +2,7 @@ package hotel.agencypt.Controller;
 
 
 import Classes.DAO.ReservaDAO;
-import Classes.Quarto;
 import Classes.Reserva;
-import DataBase.ConnectionDB;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -12,11 +10,8 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
-
-import static Classes.DAO.ReservaDAO.findReserva;
 
 public class F_interface {
     @FXML
@@ -27,22 +22,40 @@ public class F_interface {
     private Button RoomServices;
     @FXML
     private Button Stock;
+    @FXML
+    private Button CheckIn;
 
-    Connection con = ConnectionDB.establishConnection();
 
+    /**
+     * Abre a janela para fazer o registo de um novo cliente.
+     *
+     * @param event Ação do evento
+     * @throws Exception Verificação das exceções
+     */
     public void ClientRegister(ActionEvent event) throws Exception {
         Stage stage = (Stage) Registerbutton.getScene().getWindow();
         stage.close();
-        Singleton.open("Register", "Hotel >> Login");
+        Singleton.open("Register", "Hotel >> Register");
     }
 
+    /**
+     * Abre a janela para fazer o login.
+     *
+     * @param event Ação do evento
+     * @throws Exception Verificação das exceções
+     */
     public void switchToLogin(ActionEvent event) throws Exception {
         Stage stage = (Stage) LoginButton.getScene().getWindow();
         stage.close();
         Singleton.open("Login", "Hotel >> Login");
     }
 
-    public void abrirCriarReserva(ActionEvent event) throws Exception {
+    /**
+     * Abre a janela para criar uma reserva.
+     *
+     * @param event Ação do evento
+     */
+    public void abrirCriarReserva(ActionEvent event) {
         try {
             Stage window = (Stage) RoomServices.getScene().getWindow();
             window.close();
@@ -52,26 +65,47 @@ public class F_interface {
         }
     }
 
-    public void abrirConfigQuarto(ActionEvent event) throws Exception {
+    /**
+     * Abre a janela para fazer a configuração do quarto.
+     *
+     * @param event Ação do evento
+     */
+    public void abrirConfigQuarto(ActionEvent event) {
         try {
             Stage window = (Stage) RoomServices.getScene().getWindow();
             window.close();
-            Singleton.open("GH_ConfigQuarto", "Hotel >> Gestor de Hotel >> Configurar quarto");
+            Singleton.open("GH_ConfigQuarto", "Hotel >> Funcionario >> Configurar quarto");
         } catch (Exception e) {
             System.out.println("Erro ao fechar/abrir o stage.");
         }
     }
 
-    public void abrirGerirStock(ActionEvent event) throws Exception {
+    /**
+     * Abre a janela para gerir o stock do hotel.
+     *
+     * @param event Ação do evento
+     */
+    public void abrirGerirStock(ActionEvent event) {
         try {
             Stage window = (Stage) Stock.getScene().getWindow();
             window.close();
-            Singleton.open("GH_GerirStock", "Hotel >> Gestor de Hotel >> Gerir Stock");
+            Singleton.open("F_GerirStock", "Hotel >> Funcionario >> Gerir Stock");
         } catch (Exception e) {
             System.out.println("Erro ao fechar/abrir o stage.");
         }
     }
 
+    /**
+     * Abre a janela para fazer o Check-in.
+     *
+     * @param event Ação do evento
+     * @throws Exception Verificação das exceções
+     */
+    public void FazerCheckIn(ActionEvent event) throws Exception {
+        Stage window = (Stage) CheckIn.getScene().getWindow();
+        window.close();
+        Singleton.open("Check_In", "Hotel >> Funcionario >> Check In");
+    }
 
     int ultimaReserv;
     List<Reserva> arrayUltimaReserva = new ArrayList<>();
@@ -79,8 +113,9 @@ public class F_interface {
     private ListView<String> listServesco;
     private TextField outracoisa;
 
+
     @FXML
-    public void onteste(){
+    public void onteste() {
         arrayUltimaReserva = ReservaDAO.findUltReserva();
         for (Reserva r : arrayUltimaReserva) {
             ultimaReserv = r.getIdreserva();

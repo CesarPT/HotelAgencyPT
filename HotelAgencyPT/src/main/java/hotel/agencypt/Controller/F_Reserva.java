@@ -2,6 +2,8 @@ package hotel.agencypt.Controller;
 
 //Bibliotecas
 
+import Classes.Cliente;
+import Classes.DAO.ClienteDAO;
 import Classes.DAO.QuartoDAO;
 import Classes.DAO.ReservaDAO;
 import Classes.DAO.ServicoDAO;
@@ -52,7 +54,6 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.stream.Stream;
 
-import static Classes.DAO.ReservaDAO.findReserva;
 import static Classes.DAO.ReservaServicoDAO.criaReservaServico;
 import static Classes.DAO.ServicoDAO.findServicoEsc;
 
@@ -62,7 +63,6 @@ public class F_Reserva implements Initializable {
 
     @FXML
     private TextField textPrecoServicos;
-    private TextField outracoisa=null;
     @FXML
     private TextField textPrecoQuarto;
     @FXML
@@ -81,8 +81,6 @@ public class F_Reserva implements Initializable {
     public Label labelAviso;
     @FXML
     public ComboBox cboxTquarto;
-    @FXML
-    public ComboBox cboxQuarto;
 
     @FXML
     ObservableList<String> listTquarto = FXCollections.observableArrayList("Individual", "Duplo", "Familiar");
@@ -97,15 +95,11 @@ public class F_Reserva implements Initializable {
     String escolhaTquarto;
     String preco;
     String idQuarto;
-
     Integer index = -1;
-
     List<Servico> arrayServico = new ArrayList<>();
-
-
     ServicoDAO servicoDAO = new ServicoDAO();
     QuartoDAO quartoDAO = new QuartoDAO();
-
+    ArrayList<String> listaqq = new ArrayList<>();
 
 
     @Override
@@ -131,6 +125,8 @@ public class F_Reserva implements Initializable {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
                 servicoselce = listServesco.getSelectionModel().getSelectedItem();
+
+
             }
         });
         //drop box dos tipos de quartos
@@ -211,63 +207,83 @@ public class F_Reserva implements Initializable {
         }
     }
 
-    Date datai;
     Date myDateI;
+    Date datai;
+
     @FXML
     public void getDateI(ActionEvent event) {
+        ZoneId defaultZoneId = ZoneId.systemDefault();
 
         try {
+            LocalDate myDate = datePickerI.getValue();
             myDateI = Date.valueOf(datePickerI.getValue());
             dataILabel.setText(myDateI.toString());
+            datai= Date.valueOf(dataILabel.getText());
 
         } catch (Exception e) {
             System.out.println(e);
         }
     }
 
-    Date dataf;
     Date myDateF;
+    Date dataf;
+
     @FXML
     public void getDateF(ActionEvent event) {
+        ZoneId defaultZoneId = ZoneId.systemDefault();
 
         try {
-            myDateF = Date.valueOf(datePickerI.getValue());
-            dataILabel.setText(myDateF.toString());
+            LocalDate myDate = datePickerF.getValue();
+            myDateF = Date.valueOf(datePickerF.getValue());
+            dataFLabel.setText(myDateF.toString());
+            dataf= Date.valueOf(dataFLabel.getText());
+
 
         } catch (Exception e) {
             System.out.println(e);
         }
+
     }
 
     List<Quarto> arrayPrimQuarto = new ArrayList<>();
+    String primQuarto;
     List<Quarto> arrayPrecoQuarto = new ArrayList<>();
-    int idQuartoesc;
+    int idQuartoesc = 0;
 
     @FXML
     public void onEsTquarto() {
         escolhaTquarto = (String) cboxTquarto.getValue();
-        if (escolhaTquarto == "Individual") {
+
+        if (Objects.equals(escolhaTquarto, "Individual")) {
             arrayPrimQuarto = quartoDAO.findQuartoIndividual();
             for (Quarto q : arrayPrimQuarto) {
-                System.out.println(q.getIdQuarto());
                 idQuartoesc = q.getIdQuarto();
             }
-        } else if (escolhaTquarto == "Duplo") {
-            quartoDAO.findQuartoDuplo();
+
+
+        } else if (Objects.equals(escolhaTquarto, "Duplo")) {
+            arrayPrimQuarto = quartoDAO.findQuartoDuplo();
             for (Quarto q : arrayPrimQuarto) {
-                System.out.println(q.getIdQuarto());
                 idQuartoesc = q.getIdQuarto();
             }
-        } else if (escolhaTquarto == "Familiar") {
-            quartoDAO.findQuartoFamiliar();
+
+
+        } else if (Objects.equals(escolhaTquarto, "Familiar")) {
+            arrayPrimQuarto = quartoDAO.findQuartoFamiliar();
             for (Quarto q : arrayPrimQuarto) {
-                System.out.println(q.getIdQuarto());
                 idQuartoesc = q.getIdQuarto();
             }
         }
     }
 
-    Reserva reserva = new Reserva();
+
+    String idCliente;
+    int idClientV = 0;
+    @FXML
+    TextField idClienteInsere;
+    List<Cliente> arrayCliente = new ArrayList<>();
+    ClienteDAO clienteDAO = new ClienteDAO();
+
 
     public void atualizarPrecos(ActionEvent event) {
         if (datePickerI.getValue() == null || datePickerF.getValue() == null) {
@@ -282,11 +298,17 @@ public class F_Reserva implements Initializable {
             alert.setHeaderText("Datas inválidas");
             alert.setContentText("A data de fim deve ser maior que a data de inicio.");
             alert.showAndWait();
-        } else if (cboxTquarto.getSelectionModel().isEmpty() || cboxQuarto.getSelectionModel().isEmpty()) {
+        } else if (cboxTquarto.getSelectionModel().isEmpty() || idClienteInsere.getText().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Aviso");
             alert.setHeaderText("Sem seleção");
             alert.setContentText("Selecione um tipo de quarto e um quarto disponível.");
+            alert.showAndWait();
+        } else if (!idClienteInsere.getText().matches("^[1-500]*$")) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Aviso");
+            alert.setHeaderText("Texto inválido: id cliente");
+            alert.setContentText("Escreva o seu número de cliente.");
             alert.showAndWait();
         } else if (!listServesco.getItems().toString().contains("Base")) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -295,10 +317,7 @@ public class F_Reserva implements Initializable {
             alert.setContentText("A reserva tem que ter o serviço: base que está incluida em todos os quartos.");
             alert.showAndWait();
         } else {
-            idQuarto = (String) cboxQuarto.getSelectionModel().getSelectedItem().toString()
-                    .replaceAll("[a-zA-Z]", "")
-                    .replaceAll(":", "")
-                    .replaceAll(" ", "");
+            idQuarto = idClienteInsere.getText();
 
             //Preço do quarto, noites e Preço total
             Controller.getInstance().setIdquarto(Integer.parseInt(idQuarto));
@@ -320,6 +339,23 @@ public class F_Reserva implements Initializable {
     }
 
     @FXML
+    public void onidClienteInsere() {
+        idCliente = idClienteInsere.getText();
+
+        //System.out.println(idCliente);
+        //System.out.println(Integer.parseInt(idCliente));
+        arrayCliente = clienteDAO.findClienteCid(Integer.parseInt(idCliente));
+        for (Cliente c : arrayCliente) {
+            System.out.println(c.getIdCliente());
+            idClientV = c.getIdCliente();
+        }
+
+    }
+
+    ReservaDAO reservaDAO;
+    Reserva reserva = new Reserva();
+
+    @FXML
     public void onCriaReserva(ActionEvent event) {
         if (datePickerI.getValue() == null || datePickerF.getValue() == null) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -333,11 +369,17 @@ public class F_Reserva implements Initializable {
             alert.setHeaderText("Datas inválidas");
             alert.setContentText("A data de fim deve ser maior que a data de inicio.");
             alert.showAndWait();
-        } else if (cboxTquarto.getSelectionModel().isEmpty() || cboxQuarto.getSelectionModel().isEmpty()) {
+        } else if (cboxTquarto.getSelectionModel().isEmpty() || idClienteInsere.getText().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Aviso");
             alert.setHeaderText("Sem seleção");
             alert.setContentText("Selecione um tipo de quarto e um quarto disponível.");
+            alert.showAndWait();
+        } else if (!idClienteInsere.getText().matches("^[1-500]*$")) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Aviso");
+            alert.setHeaderText("Texto inválido: id cliente");
+            alert.setContentText("Escreva o seu número de cliente.");
             alert.showAndWait();
         } else if (!listServesco.getItems().toString().contains("Base")) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -346,51 +388,74 @@ public class F_Reserva implements Initializable {
             alert.setContentText("A reserva tem que ter o serviço: base que está incluida em todos os quartos.");
             alert.showAndWait();
         } else {
+            onEsTquarto();
+            onidClienteInsere();
 
-            //testestar dps colocar os valores inseridos
-            reserva.setIdcliente(1);
-            reserva.setIdquarto(idQuartoesc);
-            reserva.setNumcartao(1);
-            reserva.setDataI(datai);
-            reserva.setDataF(dataf);
 
-            ReservaDAO.criaReserva(reserva);
-            RelacionaResServ();
+            if (idClientV != 0 || myDateI != null || myDateF != null) {
+                //Criar a reserva
+                reserva.setIdcliente(idClientV);
+                reserva.setIdquarto(idQuartoesc);
+                reserva.setNumcartao(1);
+                reserva.setDataI(datai);
+                reserva.setDataF(dataf);
+
+                reservaDAO.criaReserva(reserva);
+
+                //Relação de tabela
+                RelacionaResServ();
+            }
+            }
         }
-        //reserva.setIdservico(1);
-    }
 
 
+        int ultimaReserv;
+        List<Reserva> arrayUltimaReserva = new ArrayList<>();
+        int relacionaservico;
+        String descservico;
 
 
-    String escdescricao;
-    List<Servico> idservico;
+        public void RelacionaResServ () {
 
-    public void RelacionaResServ(int idreserva) {
+            //List tipo reserva com o valor da ultima reserva encontrada
+            arrayUltimaReserva = ReservaDAO.findUltReserva();
 
-        escdescricao = listServesco.getItems().toString()
-                .replace("[", "")
-                .replace("]", "")
-                .replace(" ", "")
-                .replace(".", "")
-                .replaceAll("[0-9]", "");
+            for (Reserva r : arrayUltimaReserva) {
+                ultimaReserv = r.getIdreserva();
+            }
+            System.out.println(ultimaReserv);
 
-        idservico = findServicoEsc(escdescricao);
-    }
+            //------------------------------------------------------
+
+            descservico = listServesco.getItems().toString()
+                    .replace("[", "")
+                    .replace("]", "")
+                    .replace(" ", "")
+                    .replace(".", "")
+                    .replaceAll("[0-9]", "");
+
+            //-------------------------------
+            String[] bdservico = descservico.split(",");
+
+            for (int i = 0; i < bdservico.length; i++) {
+                System.out.println(bdservico[i]);
+
+                arrayServico = findServicoEsc(bdservico[i]);
 
 
-    int ultimaReserv;
-    List<Reserva> arrayUltimaReserva = new ArrayList<>();
-    String descservico;
+                for (Servico s : arrayServico) {
+                    relacionaservico = s.getIdServico();
 
-    public void RelacionaResServ(){
-        arrayUltimaReserva = ReservaDAO.findUltReserva();
-        for (Reserva r : arrayUltimaReserva) {
-            ultimaReserv = r.getIdreserva();
+                    criaReservaServico(ultimaReserv, relacionaservico);
+
+                }
+
+
+            }
         }
-        System.out.println(ultimaReserv);
 
 
+<<<<<<< HEAD
         //------------------------------------------------------
 
         descservico = listServesco.getItems().toString()
@@ -419,10 +484,27 @@ public class F_Reserva implements Initializable {
             Singleton.open("funcionariointerface", "Hotel >> Funcionario");
         } catch (Exception e) {
             System.out.println("Erro ao voltar atrás.");
+=======
+        /**
+         * Método para voltar atrás
+         *
+         * @param actionEvent
+         */
+        @FXML
+        public void voltarAtras (ActionEvent actionEvent){
+            try {
+                Singleton.open("funcionariointerface", "Hotel >> Funcionario");
+            } catch (Exception e) {
+                System.out.println("Erro ao voltar atrás.");
+            }
+>>>>>>> 36f27188d0f501ca315d4f7433e53cc391a98a6f
         }
-    }
 
-    public void onIdCliente(ActionEvent event) {
-    }
+        public void onIdCliente (ActionEvent event){
+        }
+
+
 }
+
+
 
