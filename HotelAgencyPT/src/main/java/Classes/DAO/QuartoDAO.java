@@ -3,6 +3,7 @@ package Classes.DAO;
 //Bibliotecas
 
 import Classes.Quarto;
+import hotel.agencypt.Controller.Controller;
 import DataBase.ConnectionDB;
 import hotel.agencypt.Controller.Controller;
 
@@ -69,6 +70,8 @@ public class QuartoDAO {
     public List<Quarto> findPreco() {
         String sql = "SELECT preco\n" +
                 "FROM Quarto\n" +
+                "WHERE piso=" + Controller.getInstance().getPiso() +
+               //" AND descricao='" + Controller.getInstance().getDescricaoQuarto() + "'"+
                 "WHERE idquarto=" + Controller.getInstance().getIdQuarto();
 
         PreparedStatement stmt = null;
@@ -191,7 +194,7 @@ public class QuartoDAO {
         return listquarto;
     }
 
-    public List<Quarto> findQuartoDuplo() {
+    public  List<Quarto> findQuartoDuplo() {
         String sql = "select TOP 1 percent idquarto " +
                 "from Quarto " +
                 "where descricao='Duplo'" +
@@ -220,8 +223,7 @@ public class QuartoDAO {
         }
         return listquarto;
     }
-
-    public List<Quarto> findQuartoFamiliar() {
+    public  List<Quarto> findQuartoFamiliar() {
         String sql = "select TOP 1 percent idquarto " +
                 "from Quarto " +
                 "where descricao='Familiar'" +

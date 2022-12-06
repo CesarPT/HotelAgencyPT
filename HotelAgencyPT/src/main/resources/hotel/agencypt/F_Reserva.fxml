@@ -100,29 +100,52 @@
                 <Font size="14.0" />
             </font>
         </TextField>
+<<<<<<< HEAD
+        <TextField fx:id="idCliente" layoutX="100.0" layoutY="224.0" onAction="#onIdCliente" />
+
+        <Label layoutX="205.0" layoutY="272.0" text="Preço do quarto:">
+=======
 
         <Label layoutX="134.0" layoutY="305.0" text="Preço do quarto:">
+>>>>>>> 36f27188d0f501ca315d4f7433e53cc391a98a6f
             <font>
                 <Font size="16.0" />
             </font>
         </Label>
+<<<<<<< HEAD
+        <TextField fx:id="textPrecoQuarto" editable="false" layoutX="340.0" layoutY="270.0" prefHeight="30.0" prefWidth="91.0" text="0">
+=======
         <TextField fx:id="textPrecoQuarto" editable="false" layoutX="269.0" layoutY="303.0" prefHeight="30.0" prefWidth="91.0" text="0">
+>>>>>>> 36f27188d0f501ca315d4f7433e53cc391a98a6f
             <font>
                 <Font size="14.0" />
             </font>
         </TextField>
+<<<<<<< HEAD
+        <Label layoutX="203.0" layoutY="305.0" text="Noites:">
+=======
         <Label layoutX="205.0" layoutY="272.0" text="Noites:">
+>>>>>>> 36f27188d0f501ca315d4f7433e53cc391a98a6f
             <font>
                 <Font size="16.0" />
             </font>
         </Label>
+<<<<<<< HEAD
+        <TextField fx:id="textNoites" editable="false" layoutX="266.0" layoutY="303.0" prefHeight="30.0" prefWidth="91.0">
+=======
         <TextField fx:id="textNoites" editable="false" layoutX="268.0" layoutY="270.0" prefHeight="30.0" prefWidth="91.0" style="-fx-background-color: gray;">
+>>>>>>> 36f27188d0f501ca315d4f7433e53cc391a98a6f
             <font>
                 <Font size="14.0" />
             </font>
         </TextField>
         <Button layoutX="390.0" layoutY="352.0" mnemonicParsing="false" onAction="#atualizarPrecos" text="Atualizar preços">
             <font>
+<<<<<<< HEAD
+                <Font size="13.0" />
+            </font>
+        </Button>
+=======
                 <Font size="16.0" />
             </font>
         </Button>
@@ -143,5 +166,6 @@
                 <Font size="16.0" />
             </font>
         </Label>
+>>>>>>> 36f27188d0f501ca315d4f7433e53cc391a98a6f
     </children>
 </AnchorPane>

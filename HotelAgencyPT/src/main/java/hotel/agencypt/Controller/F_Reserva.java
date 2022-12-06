@@ -22,6 +22,27 @@ import javafx.scene.control.*;
 
 import java.net.URL;
 import java.sql.Connection;
+
+//Bibliotecas
+
+import Classes.DAO.QuartoDAO;
+import Classes.DAO.ReservaDAO;
+import Classes.DAO.ServicoDAO;
+import Classes.Quarto;
+import Classes.Reserva;
+import Classes.Servico;
+import DataBase.ConnectionDB;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.*;
+
+import java.net.URL;
+import java.sql.Connection;
 import java.sql.Date;
 import java.time.Duration;
 import java.time.LocalDate;
@@ -431,24 +452,25 @@ public class F_Reserva implements Initializable {
 
             }
         }
+        //------------------------------------------------------
 
 
-        /**
-         * Método para voltar atrás
-         *
-         * @param actionEvent
-         */
-        @FXML
-        public void voltarAtras (ActionEvent actionEvent){
-            try {
-                Singleton.open("funcionariointerface", "Hotel >> Funcionario");
-            } catch (Exception e) {
-                System.out.println("Erro ao voltar atrás.");
+    /**
+     * Método para voltar atrás
+     *
+     * @param actionEvent
+     */
+    @FXML
+    public void voltarAtras (ActionEvent actionEvent) {
+        try {
+            Singleton.open("funcionariointerface", "Hotel >> Funcionario");
+        } catch (Exception e) {
+            System.out.println("Erro ao voltar atrás.");
+        }
+    }
+
+            public void onIdCliente (ActionEvent event){
             }
-        }
-
-        public void onIdCliente (ActionEvent event){
-        }
 
 
 }

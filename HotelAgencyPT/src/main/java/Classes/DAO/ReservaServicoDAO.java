@@ -1,8 +1,11 @@
 package Classes.DAO;
 
+import Classes.Reserva;
+import Classes.ReservaServico;
 import DataBase.ConnectionDB;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
