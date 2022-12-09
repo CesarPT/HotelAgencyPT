@@ -15,13 +15,13 @@ import java.util.List;
  * Classe pública que recebe dados da Base de Dados
  */
 public class CartaoDAO {
-    private Connection con;
+    private Connection con = ConnectionDB.establishConnection();
+    ;
 
     /**
      * Ligar à base de dados
      */
     public CartaoDAO() {
-        con = ConnectionDB.establishConnection();
     }
 
     /**
@@ -42,9 +42,7 @@ public class CartaoDAO {
         ResultSet rs = null;
 
         List<Cartao> listcartao = new ArrayList<>();
-
         try {
-            con = ConnectionDB.establishConnection();
             stmt = con.prepareStatement(sql);
             rs = stmt.executeQuery();
 

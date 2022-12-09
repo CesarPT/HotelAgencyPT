@@ -11,13 +11,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ClienteDAO {
-    private static Connection con;
+    private static Connection con = ConnectionDB.establishConnection();
 
     /**
      * Ligar à base de dados
      */
     public ClienteDAO() {
-        con = ConnectionDB.establishConnection();
     }
 
 
@@ -26,13 +25,13 @@ public class ClienteDAO {
                 "FROM Cliente\n" +
                 "WHERE idcliente='" + idcliente + "'";
 
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
 
         List<Cliente> listCliente = new ArrayList<>();
 
+
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
         try {
-            con = ConnectionDB.establishConnection();
             stmt = con.prepareStatement(sql);
             rs = stmt.executeQuery();
 

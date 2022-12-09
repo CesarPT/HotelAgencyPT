@@ -1,11 +1,11 @@
 package Classes;
 
-public class CheckIn{
+public class CheckIn {
 
 
-/**
- * Classe pública com todas os métodos usadas na aplicação
- */
+    /**
+     * Classe pública com todas os métodos usadas na aplicação
+     */
 
     private Integer idreserva;
     private Integer idcliente;
@@ -72,7 +72,7 @@ public class CheckIn{
         return datai;
     }
 
-    public String getDataf(){
+    public String getDataf() {
         return dataf;
     }
 
@@ -95,6 +95,7 @@ public class CheckIn{
     public void setNumcartao(Integer numcartao) {
         this.numcartao = numcartao;
     }
+
     public void setDatai(String datai) {
         this.datai = datai;
     }

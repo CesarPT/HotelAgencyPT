@@ -15,13 +15,13 @@ import java.util.List;
  * Classe pública que recebe dados da Base de Dados
  */
 public class RegEntradaDAO {
-    private Connection con;
+    private Connection con = ConnectionDB.establishConnection();
+    ;
 
     /**
      * Ligar à base de dados
      */
     public RegEntradaDAO() {
-        con = ConnectionDB.establishConnection();
     }
 
     /**
@@ -46,7 +46,6 @@ public class RegEntradaDAO {
         List<RegEntrada> listRegEntrada = new ArrayList<>();
 
         try {
-            con = ConnectionDB.establishConnection();
             stmt = con.prepareStatement(sql);
             rs = stmt.executeQuery();
 
@@ -115,7 +114,6 @@ public class RegEntradaDAO {
         List<RegEntrada> listRegEntrada = new ArrayList<>();
 
         try {
-            con = ConnectionDB.establishConnection();
             stmt = con.prepareStatement(sql);
             rs = stmt.executeQuery();
 

@@ -12,6 +12,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
@@ -243,6 +244,19 @@ public class Cliente {
         }
     }
 
+    /**
+     * Abre o C_CriarFeedback.fxml
+     */
+    public void abrirCriarFeedback() {
+        try {
+            Stage window = (Stage) listReserva.getScene().getWindow();
+            window.close();
+            Singleton.open("C_CriarFeedback", "Hotel >> Cliente >> Criar feedback");
+
+        } catch (Exception e) {
+            System.out.println("Erro ao abrir/fechar o scene");
+        }
+    }
 
     /**
      * Método para voltar atrás

@@ -10,7 +10,6 @@ import Classes.DAO.ServicoDAO;
 import Classes.Quarto;
 import Classes.Reserva;
 import Classes.Servico;
-import DataBase.ConnectionDB;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -21,7 +20,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 
 import java.net.URL;
-import java.sql.Connection;
 import java.sql.Date;
 import java.time.Duration;
 import java.time.LocalDate;
@@ -37,7 +35,6 @@ import static Classes.DAO.ServicoDAO.findServicoEsc;
 
 public class F_Reserva implements Initializable {
 
-    Connection con = ConnectionDB.establishConnection();
 
     @FXML
     private TextField textPrecoServicos;
@@ -194,8 +191,10 @@ public class F_Reserva implements Initializable {
 
         try {
             LocalDate myDate = datePickerI.getValue();
-            dataILabel.setText(myDate.toString());
-            datai = (Date) Date.from(myDate.atStartOfDay(defaultZoneId).toInstant());
+            myDateI = Date.valueOf(datePickerI.getValue());
+            dataILabel.setText(myDateI.toString());
+            datai = Date.valueOf(dataILabel.getText());
+
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -210,9 +209,11 @@ public class F_Reserva implements Initializable {
 
         try {
             LocalDate myDate = datePickerF.getValue();
-            dataFLabel.setText(myDate.toString());
+            myDateF = Date.valueOf(datePickerF.getValue());
+            dataFLabel.setText(myDateF.toString());
+            dataf = Date.valueOf(dataFLabel.getText());
 
-            dataf = (Date) Date.from(myDate.atStartOfDay(defaultZoneId).toInstant());
+
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -220,6 +221,7 @@ public class F_Reserva implements Initializable {
     }
 
     List<Quarto> arrayPrimQuarto = new ArrayList<>();
+    String primQuarto;
     List<Quarto> arrayPrecoQuarto = new ArrayList<>();
     int idQuartoesc = 0;
 
@@ -229,13 +231,23 @@ public class F_Reserva implements Initializable {
 
         if (Objects.equals(escolhaTquarto, "Individual")) {
             arrayPrimQuarto = quartoDAO.findQuartoIndividual();
+            for (Quarto q : arrayPrimQuarto) {
+                idQuartoesc = q.getIdQuarto();
+            }
+
 
         } else if (Objects.equals(escolhaTquarto, "Duplo")) {
             arrayPrimQuarto = quartoDAO.findQuartoDuplo();
+            for (Quarto q : arrayPrimQuarto) {
+                idQuartoesc = q.getIdQuarto();
+            }
+
 
         } else if (Objects.equals(escolhaTquarto, "Familiar")) {
             arrayPrimQuarto = quartoDAO.findQuartoFamiliar();
-
+            for (Quarto q : arrayPrimQuarto) {
+                idQuartoesc = q.getIdQuarto();
+            }
         }
     }
 
@@ -246,20 +258,6 @@ public class F_Reserva implements Initializable {
     TextField idClienteInsere;
     List<Cliente> arrayCliente = new ArrayList<>();
     ClienteDAO clienteDAO = new ClienteDAO();
-
-    @FXML
-    public void onidClienteInsere() {
-        idCliente = idClienteInsere.getText();
-
-        //System.out.println(idCliente);
-        //System.out.println(Integer.parseInt(idCliente));
-        arrayCliente = clienteDAO.findClienteCid(Integer.parseInt(idCliente));
-        for (Cliente c : arrayCliente) {
-            System.out.println(c.getIdCliente());
-            idClientV = c.getIdCliente();
-        }
-
-    }
 
 
     public void atualizarPrecos(ActionEvent event) {
@@ -315,6 +313,20 @@ public class F_Reserva implements Initializable {
         }
     }
 
+    @FXML
+    public void onidClienteInsere() {
+        idCliente = idClienteInsere.getText();
+
+        //System.out.println(idCliente);
+        //System.out.println(Integer.parseInt(idCliente));
+        arrayCliente = clienteDAO.findClienteCid(Integer.parseInt(idCliente));
+        for (Cliente c : arrayCliente) {
+            System.out.println(c.getIdCliente());
+            idClientV = c.getIdCliente();
+        }
+
+    }
+
     ReservaDAO reservaDAO;
     Reserva reserva = new Reserva();
 
@@ -352,14 +364,16 @@ public class F_Reserva implements Initializable {
             alert.showAndWait();
         } else {
             onEsTquarto();
+            onidClienteInsere();
 
-            if (idClientV != 0 || myDateI != null || myDateI != null) {
+
+            if (idClientV != 0 || myDateI != null || myDateF != null) {
                 //Criar a reserva
                 reserva.setIdcliente(idClientV);
                 reserva.setIdquarto(idQuartoesc);
                 reserva.setNumcartao(1);
-                reserva.setDataI(myDateI);
-                reserva.setDataF(myDateF);
+                reserva.setDataI(datai);
+                reserva.setDataF(dataf);
 
                 reservaDAO.criaReserva(reserva);
 
@@ -367,7 +381,6 @@ public class F_Reserva implements Initializable {
                 RelacionaResServ();
             }
         }
-
     }
 
 
@@ -415,6 +428,7 @@ public class F_Reserva implements Initializable {
 
         }
     }
+    //------------------------------------------------------
 
 
     /**

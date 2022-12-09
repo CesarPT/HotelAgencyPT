@@ -9,13 +9,13 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class EntregaDAO {
-    private static Connection con;
+    private static Connection con = ConnectionDB.establishConnection();
+    ;
 
     /**
      * Ligar à base de dados
      */
     public EntregaDAO() {
-        con = ConnectionDB.establishConnection();
     }
 
     public boolean insertEntradaInfo(Entrega entrega) {

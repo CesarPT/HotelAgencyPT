@@ -39,13 +39,11 @@ public class CheckInController {
 
     ObservableList<CheckIn> CheckInObservableList = FXCollections.observableArrayList();
 
-    Connection con = ConnectionDB.establishConnection();
-    private int id;
 
+    Connection con = ConnectionDB.establishConnection();
 
     public void Pesquisar(ActionEvent event) {
         if (!userTextField.getText().isBlank()) {
-            createClient();
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Aviso");
@@ -53,51 +51,6 @@ public class CheckInController {
             alert.showAndWait();
         }
     }
-
-    public void validateUser() {
-        String getIDUser = "SELECT iduser FROM Utilizador WHERE nomeuser = '" + userTextField.getText() + "' and tipouser = 'C'";
-        try {
-            PreparedStatement stm = con.prepareStatement(getIDUser);
-            ResultSet rs = stm.executeQuery();
-
-            if (rs.next()) {
-                id = rs.getInt("iduser");
-                //label.setText ("O cliente esta registado");
-            } else {
-                Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.setTitle("Atenção!");
-                alert.setHeaderText("O cliente não esta registado ou o tipo de utilizador não é cliente!");
-                alert.showAndWait();
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void createClient() {
-        validateUser();
-        String validar = "SELECT count(1) FROM Cliente WHERE iduser=" + id;
-        try {
-            PreparedStatement stmt = con.prepareStatement(validar);
-            ResultSet rs = stmt.executeQuery();
-
-            while (rs.next()) {
-                if (rs.getInt(1) == 1) {
-                    table();
-                } else {
-                    String create = "INSERT INTO Cliente(iduser) VALUES(" + id + ")";
-                    PreparedStatement stm1 = con.prepareStatement(create);
-                    ResultSet rs1 = stm1.executeQuery();
-                    if (rs1.next()) {
-                        table();
-                    }
-                }
-            }
-        } catch (Exception e) {
-            e.getCause();
-        }
-    }
-
 
     public void table() {
         String query = "Select idreserva, idquarto, datai, dataf from Reserva";

@@ -6,7 +6,7 @@ import javafx.fxml.FXML;
 /**
  * Classe pública do controlador GH_GerirFeedback.fxml
  */
-public class GH_GerirFeedback {
+public class C_CriarFeedback {
 
     /**
      * Volta atrás para a View GestorHotel.fxml
@@ -16,7 +16,7 @@ public class GH_GerirFeedback {
     @FXML
     public void voltarAtras(ActionEvent actionEvent) {
         try {
-            Singleton.open("GestorHotel", "Hotel >> Gestor de Hotel");
+            Singleton.open("Cliente", "Hotel >> Cliente");
         } catch (Exception e) {
             System.out.println("Erro ao voltar atrás.");
         }

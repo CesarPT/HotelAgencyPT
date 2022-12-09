@@ -8,13 +8,13 @@ import java.sql.SQLException;
 
 public class ReservaServicoDAO {
 
-    private static Connection con;
+    private static Connection con = ConnectionDB.establishConnection();
+    ;
 
     /**
      * Ligar à base de dados
      */
     public ReservaServicoDAO() {
-        con = ConnectionDB.establishConnection();
     }
 
 
@@ -23,7 +23,6 @@ public class ReservaServicoDAO {
         PreparedStatement stmt = null;
 
         try {
-            con = ConnectionDB.establishConnection();
             stmt = con.prepareStatement(sql);
             stmt.setInt(1, idreserva);
             stmt.setInt(2, idservico);
