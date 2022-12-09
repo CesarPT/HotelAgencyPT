@@ -251,8 +251,7 @@ public class Cliente {
         try {
             Stage window = (Stage) listReserva.getScene().getWindow();
             window.close();
-            Singleton.open("C_CriarFeedback", "Hotel >> Cliente >> Criar feedback");
-
+            Singleton.open("C_CriarFeedback", "User: " + Controller.getInstance().getUsername() + " | Hotel >> Criar Feedback");
         } catch (Exception e) {
             System.out.println("Erro ao abrir/fechar o scene");
         }
@@ -266,7 +265,7 @@ public class Cliente {
     @FXML
     public void voltarAtras(ActionEvent actionEvent) {
         try {
-            Singleton.open("Login", "Login");
+            Singleton.open("Login", "Hotel >> Login");
         } catch (Exception e) {
             System.out.println("Erro ao voltar atrás.");
         }
