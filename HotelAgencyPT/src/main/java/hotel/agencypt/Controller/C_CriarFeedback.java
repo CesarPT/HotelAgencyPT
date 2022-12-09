@@ -2,6 +2,10 @@ package hotel.agencypt.Controller;
 
 import Classes.Cliente;
 import Classes.DAO.ClienteDAO;
+import Classes.DAO.FeedbackDAO;
+import Classes.DAO.ReservaDAO;
+import Classes.Feedback;
+import Classes.Reserva;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -50,26 +54,49 @@ public class C_CriarFeedback implements Initializable {
             alert.setContentText("Crie uma descrição menor.");
             alert.showAndWait();
         } else {
+            //Criar reclamação na BD (Tabela: Feedback)
+            FeedbackDAO feedbackDAO = new FeedbackDAO();
+            Feedback feedback = new Feedback();
+            feedback.setId_cliente(Integer.parseInt(textIDCliente.getText()));
+            feedback.setDescricao(textReclamacao.getText());
+            feedback.setTipofeedback('R');
+            feedbackDAO.criarReclamacao(feedback);
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Reclamação adicionada");
+            alert.setContentText("Reclamação adicionada com sucesso. Obrigado :)");
+            alert.showAndWait();
         }
     }
     /**
      * Quando clica no + adiciona a sugestão
      */
     public void adicionarSugestao(){
-        if (textReclamacao.getText().length() < 30){
+        if (textSugestao.getText().length() < 30){
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Aviso");
             alert.setHeaderText("Sem descrição");
             alert.setContentText("Crie uma descrição maior.");
             alert.showAndWait();
-        } else if (textReclamacao.getText().length() > 500){
+        } else if (textSugestao.getText().length() > 500){
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Aviso");
             alert.setHeaderText("Descrição grande");
             alert.setContentText("Crie uma descrição menor.");
             alert.showAndWait();
         } else {
+            //Criar sugestão na BD (Tabela: Feedback)
+            FeedbackDAO feedbackDAO = new FeedbackDAO();
+            Feedback feedback = new Feedback();
+            feedback.setId_cliente(Integer.parseInt(textIDCliente.getText()));
+            feedback.setDescricao(textSugestao.getText());
+            feedback.setTipofeedback('S');
+            feedbackDAO.criarSugestao(feedback);
 
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Sugestão adicionada");
+            alert.setContentText("Sugestão adicionada com sucesso. Obrigado :)");
+            alert.showAndWait();
         }
     }
 
