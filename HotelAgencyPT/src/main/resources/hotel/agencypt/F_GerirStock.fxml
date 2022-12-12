@@ -1,73 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
-<AnchorPane prefHeight="510.0" prefWidth="898.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="hotel.agencypt.Controller.F_GerirStock">
+
+<AnchorPane prefHeight="510.0" prefWidth="898.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hotel.agencypt.Controller.F_GerirStock">
     <children>
-        <Pane layoutX="43.0" layoutY="59.0" prefHeight="450.0" prefWidth="857.0" style="-fx-background-color: gray;">
-            <children>
-                <Label layoutX="14.0" layoutY="183.0" text="Entregas:">
-                    <font>
-                        <Font size="18.0"/>
-                    </font>
-                </Label>
-            </children>
-        </Pane>
+      <Pane layoutX="44.0" layoutY="307.0" prefHeight="202.0" prefWidth="857.0" style="-fx-background-color: gray;" />
+          <Label layoutX="51.0" layoutY="242.0" text="Entregas:">
+              <font>
+                  <Font size="18.0" />
+              </font>
+          </Label>
+        <Pane layoutX="43.0" layoutY="59.0" prefHeight="179.0" prefWidth="857.0" style="-fx-background-color: gray;" />
         <Label layoutX="791.0" layoutY="23.0" text="Gerir Stock">
             <font>
-                <Font size="18.0"/>
+                <Font size="18.0" />
             </font>
         </Label>
-        <Button layoutX="-4.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false"
-                onAction="#voltarAtras" prefHeight="510.0" prefWidth="48.0"
-                style="-fx-background-color: #ccffff; -fx-border-color: gray;">
+        <Button layoutX="-4.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#voltarAtras" prefHeight="510.0" prefWidth="48.0" style="-fx-background-color: #ccffff; -fx-border-color: gray;">
             <graphic>
                 <ImageView fitHeight="211.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../../Imagens/voltar.png"/>
+                        <Image url="@../../Imagens/voltar.png" />
                     </image>
                 </ImageView>
             </graphic>
             <cursor>
-                <Cursor fx:constant="HAND"/>
+                <Cursor fx:constant="HAND" />
             </cursor>
         </Button>
-        <TableView fx:id="TableViewStock" layoutX="43.0" layoutY="59.0" prefHeight="168.0" prefWidth="720.0"
-                   style="-fx-background-color: transparent;">
+        <TableView fx:id="TableViewStock" layoutX="43.0" layoutY="59.0" prefHeight="168.0" prefWidth="720.0" style="-fx-background-color: transparent;">
             <columns>
-                <TableColumn fx:id="TableColumnIDP" prefWidth="87.0" text="ID Produto"/>
-                <TableColumn fx:id="TableColumDescricao" prefWidth="249.0" text="Descrição"/>
-                <TableColumn fx:id="TableColumnQtd" prefWidth="68.0" text="Qtd"/>
-                <TableColumn fx:id="TableColumnTipoQtd" prefWidth="81.0" text="Quilos (kg)"/>
-                <TableColumn fx:id="TableColumnPreco" prefWidth="83.0" text="Preço (€)"/>
-                <TableColumn fx:id="TableColumnVAT" prefWidth="59.0" text="VAT (%)"/>
-                <TableColumn fx:id="TableColumnPrecoTotal" prefWidth="89.0" text="Preço Total (€)"/>
+                <TableColumn fx:id="TableColumnIDP" prefWidth="87.0" text="ID Produto" />
+                <TableColumn fx:id="TableColumDescricao" prefWidth="249.0" text="Descrição" />
+                <TableColumn fx:id="TableColumnQtd" prefWidth="68.0" text="Qtd" />
+                <TableColumn fx:id="TableColumnTipoQtd" prefWidth="81.0" text="Quilos (kg)" />
+                <TableColumn fx:id="TableColumnPreco" prefWidth="83.0" text="Preço (€)" />
+                <TableColumn fx:id="TableColumnVAT" prefWidth="59.0" text="VAT (%)" />
+                <TableColumn fx:id="TableColumnPrecoTotal" prefWidth="89.0" text="Preço Total (€)" />
             </columns>
         </TableView>
-        <Label layoutX="58.0" layoutY="23.0" text="Entrada de Stock:">
+        <Label layoutX="58.0" layoutY="23.0" text="Stock em Armazem:">
             <font>
-                <Font size="18.0"/>
+                <Font size="18.0" />
             </font>
         </Label>
-        <TableView fx:id="TableViewEntregas" layoutX="43.0" layoutY="283.0" prefHeight="213.0" prefWidth="857.0"
-                   style="-fx-background-color: transparent;">
+        <TableView fx:id="TableViewEntregas" layoutX="43.0" layoutY="283.0" prefHeight="213.0" prefWidth="857.0" style="-fx-background-color: transparent;">
             <columns>
-                <TableColumn fx:id="ColumnNumOrdem" prefWidth="87.0" text="Nº Ordem"/>
-                <TableColumn fx:id="ColumnData" prefWidth="109.0" text="Data de entrega"/>
-                <TableColumn fx:id="ColumnId" prefWidth="134.0" text="Identificador"/>
-                <TableColumn fx:id="ColumnEmpresa" prefWidth="133.0" text="Empresa"/>
-                <TableColumn fx:id="ColumnRua" prefWidth="98.0" text="Rua"/>
-                <TableColumn fx:id="ColumnPorta" minWidth="4.0" prefWidth="66.0" text="Nº Porta"/>
-                <TableColumn fx:id="ColumnCidade" prefWidth="90.0" text="Cidade"/>
-                <TableColumn fx:id="ColumnCP" prefWidth="57.0" text="CP"/>
-                <TableColumn fx:id="ColumnPais" prefWidth="77.0" text="País"/>
+                <TableColumn fx:id="ColumnNumOrdem" prefWidth="87.0" text="Nº Ordem" />
+                <TableColumn fx:id="ColumnData" prefWidth="109.0" text="Data de entrega" />
+                <TableColumn fx:id="ColumnId" prefWidth="134.0" text="Identificador" />
+                <TableColumn fx:id="ColumnEmpresa" prefWidth="133.0" text="Empresa" />
+                <TableColumn fx:id="ColumnRua" prefWidth="98.0" text="Rua" />
+                <TableColumn fx:id="ColumnPorta" minWidth="4.0" prefWidth="66.0" text="Nº Porta" />
+                <TableColumn fx:id="ColumnCidade" prefWidth="90.0" text="Cidade" />
+                <TableColumn fx:id="ColumnCP" prefWidth="57.0" text="CP" />
+                <TableColumn fx:id="ColumnPais" prefWidth="77.0" text="País" />
             </columns>
         </TableView>
+      <Button layoutX="337.0" layoutY="16.0" mnemonicParsing="false" onAction="#abrirStockQuartos" text="Ver stock dos QUARTOS">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
     </children>
 </AnchorPane>

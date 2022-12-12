@@ -12,6 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.sql.Connection;
@@ -155,6 +156,16 @@ public class F_GerirStock implements Initializable {
         TableViewEntregas.setItems(obsEntregas);
 
 
+    }
+
+    public void abrirStockQuartos(){
+        try {
+            Stage window = (Stage) TableViewStock.getScene().getWindow();
+            window.close();
+            Singleton.open("StockQuartos", "User: " + Controller.getInstance().getUsername() + " | Hotel >> Stock de Quartos");
+        } catch (Exception e) {
+            System.out.println("Erro ao abrir/fechar o scene");
+        }
     }
 
     /**
