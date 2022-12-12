@@ -17,13 +17,13 @@ import java.util.List;
  * Classe pública com todos os métodos/atributos necessários.
  */
 public class QuartoDAO {
-    private static Connection con;
+    private static Connection con = ConnectionDB.establishConnection();
+    ;
 
     /**
      * Ligar à base de dados
      */
     public QuartoDAO() {
-        con = ConnectionDB.establishConnection();
     }
 
     /**
@@ -42,7 +42,6 @@ public class QuartoDAO {
         List<Quarto> listQuarto = new ArrayList<>();
 
         try {
-            con = ConnectionDB.establishConnection();
             stmt = con.prepareStatement(sql);
             rs = stmt.executeQuery();
 
@@ -69,6 +68,8 @@ public class QuartoDAO {
     public List<Quarto> findPreco() {
         String sql = "SELECT preco\n" +
                 "FROM Quarto\n" +
+                "WHERE piso=" + Controller.getInstance().getPiso() +
+                //" AND descricao='" + Controller.getInstance().getDescricaoQuarto() + "'"+
                 "WHERE idquarto=" + Controller.getInstance().getIdQuarto();
 
         PreparedStatement stmt = null;
@@ -77,7 +78,6 @@ public class QuartoDAO {
         List<Quarto> listPreco = new ArrayList<>();
 
         try {
-            con = ConnectionDB.establishConnection();
             stmt = con.prepareStatement(sql);
             rs = stmt.executeQuery();
 
@@ -143,7 +143,6 @@ public class QuartoDAO {
 
         List<Quarto> listDescricaoQuarto = new ArrayList<>();
         try {
-            con = ConnectionDB.establishConnection();
             stmt = con.prepareStatement(sql);
             rs = stmt.executeQuery();
 
@@ -174,7 +173,6 @@ public class QuartoDAO {
         List<Quarto> listquarto = new ArrayList<>();
 
         try {
-            con = ConnectionDB.establishConnection();
             stmt = con.prepareStatement(sql);
             rs = stmt.executeQuery();
 
@@ -204,7 +202,6 @@ public class QuartoDAO {
         List<Quarto> listquarto = new ArrayList<>();
 
         try {
-            con = ConnectionDB.establishConnection();
             stmt = con.prepareStatement(sql);
             rs = stmt.executeQuery();
 
@@ -234,7 +231,6 @@ public class QuartoDAO {
         List<Quarto> listquarto = new ArrayList<>();
 
         try {
-            con = ConnectionDB.establishConnection();
             stmt = con.prepareStatement(sql);
             rs = stmt.executeQuery();
 

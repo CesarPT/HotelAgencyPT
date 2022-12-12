@@ -2,7 +2,9 @@ package Classes.DAO;
 
 import Classes.Cliente;
 import DataBase.ConnectionDB;
+import hotel.agencypt.Controller.Controller;
 
+import javax.sound.sampled.Control;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,13 +13,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ClienteDAO {
-    private static Connection con;
+    private static Connection con = ConnectionDB.establishConnection();
 
     /**
      * Ligar à base de dados
      */
     public ClienteDAO() {
-        con = ConnectionDB.establishConnection();
     }
 
 
@@ -26,13 +27,13 @@ public class ClienteDAO {
                 "FROM Cliente\n" +
                 "WHERE idcliente='" + idcliente + "'";
 
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
 
         List<Cliente> listCliente = new ArrayList<>();
 
+
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
         try {
-            con = ConnectionDB.establishConnection();
             stmt = con.prepareStatement(sql);
             rs = stmt.executeQuery();
 
@@ -50,5 +51,36 @@ public class ClienteDAO {
         return listCliente;
     }
 
+
+    public List<Cliente> findIDCliente() {
+        String sql = "SELECT idcliente\n" +
+                "FROM Cliente\n" +
+                "INNER JOIN Utilizador\n" +
+                "ON Utilizador.iduser = Cliente.iduser\n" +
+                "WHERE Utilizador.nomeuser = +'" + Controller.getInstance().getUsername() + "'";
+
+
+        List<Cliente> listCliente = new ArrayList<>();
+
+
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        try {
+            stmt = con.prepareStatement(sql);
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                Cliente cliente = new Cliente();
+                cliente.setIdCliente(rs.getInt("idcliente"));
+                listCliente.add(cliente);
+            }
+
+        } catch (SQLException e) {
+            System.err.println("[ERRO]: findRegEntradaQuarto " + e.getMessage());
+        } finally {
+            ConnectionDB.closeConnection(con, stmt, rs);
+        }
+        return listCliente;
+    }
 
 }

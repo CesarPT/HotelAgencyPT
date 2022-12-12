@@ -25,7 +25,7 @@ import java.util.ResourceBundle;
  * Classe pública do controlador GH_GerirStock.fxml
  */
 public class F_GerirStock implements Initializable {
-    private Connection con;
+    private Connection con = ConnectionDB.establishConnection();
     @FXML
     protected Button button;
     @FXML
@@ -91,7 +91,6 @@ public class F_GerirStock implements Initializable {
 
         //Limpar tudo e Adicionar todas as entradas de stock
         try {
-            con = ConnectionDB.establishConnection();
             stmt = con.prepareStatement(sql);
             rs = stmt.executeQuery();
 
@@ -122,7 +121,6 @@ public class F_GerirStock implements Initializable {
         //TableView da Entrega
 
         try {
-            con = ConnectionDB.establishConnection();
             stmt = con.prepareStatement(sql2);
             rs = stmt.executeQuery();
 

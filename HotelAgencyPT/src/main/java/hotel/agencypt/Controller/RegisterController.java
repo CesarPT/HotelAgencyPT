@@ -1,6 +1,6 @@
 package hotel.agencypt.Controller;
 
-import DataBase.ConnectionDB;
+import Classes.DAO.RegisterDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -8,14 +8,12 @@ import javafx.scene.control.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+import javax.swing.*;
 import java.net.URL;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
+
+import static Classes.DAO.RegisterDAO.verifyUser;
+
 
 public class RegisterController implements Initializable {
 
@@ -38,12 +36,12 @@ public class RegisterController implements Initializable {
     @FXML
     private ComboBox permissionComboBox;
 
-    Connection con = ConnectionDB.establishConnection();
 
     /**
      * Inicia a scene com o conteúdo desta classe.
      */
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        permissionComboBox.getItems().setAll("Cliente", "Funcionario", "Gestor");
     }
 
     /**
@@ -68,12 +66,17 @@ public class RegisterController implements Initializable {
      * @param event Ação do evento
      */
     public void registerButtonOnAction(ActionEvent event) {
+        String user = usernameTextField.getText();
         verifyPass();
-        verifyUser();
+        boolean vUser = verifyUser(user);
+        if (vUser == false) {
+            VerifyUserLabel.setText("O nome já existe!");
+        } else {
+            VerifyUserLabel.setText("");
+        }
         if (setPasswordField.getText().isBlank() == false && usernameTextField.getText().isBlank() == false) {
             registrationMessageLabel.setText("");
-            registrationMessageLabel.setTextFill(Color.BLACK);
-            if (verifyPass() == true && verifyUser() == true) {
+            if (verifyPass() == true && verifyUser(user) == true) {
                 registerUser();
             }
         } else {
@@ -81,39 +84,8 @@ public class RegisterController implements Initializable {
             registrationMessageLabel.setText("Preencha os campos abaixo!");
 
         }
-
-
     }
 
-    /**
-     * Verificação se o username já existe!
-     *
-     * @return user
-     */
-    public boolean verifyUser() {
-        boolean vUser;
-        String verifyUser = "SELECT count(1) FROM Utilizador WHERE nomeuser ='" + usernameTextField.getText() + "'";
-        try {
-            PreparedStatement stmt = con.prepareStatement(verifyUser);
-            ResultSet rs = stmt.executeQuery();
-
-            while (rs.next()) {
-                if (rs.getInt(1) == 1) {
-                    VerifyUserLabel.setText("O nome já existe!");
-                } else {
-                    VerifyUserLabel.setText("");
-                }
-            }
-        } catch (SQLException e) {
-            e.getCause();
-        }
-        if (VerifyUserLabel.getText() == "O nome já existe!") {
-            vUser = false;
-        } else {
-            vUser = true;
-        }
-        return vUser;
-    }
 
     /**
      * Verificação se as passwords coincidem
@@ -136,7 +108,8 @@ public class RegisterController implements Initializable {
      * Faz a encriptação da password e regista o utilizador na base de dados
      */
     public void registerUser() {
-        permissionComboBox.getItems().setAll("Cliente", "Funcionario", "Gestor");
+        JFrame frame = new JFrame("Register");
+        frame.setTitle("Registo");
 
         char tipouser;
         String username = usernameTextField.getText();
@@ -149,57 +122,20 @@ public class RegisterController implements Initializable {
             tipouser = 'C';
         }
 
-
         //Encrpytação da password
         String encrypt = "";
         String password = setPasswordField.getText();
-
-        try {
-            /* MessageDigest instance for MD5. */
-            MessageDigest m = MessageDigest.getInstance("MD5");
-
-            /* Add plain-text password bytes to digest using MD5 update() method. */
-            m.update(password.getBytes());
-
-            /* Convert the hash value into bytes */
-            byte[] bytes = m.digest();
-
-            /* The bytes array has bytes in decimal form. Converting it into hexadecimal format. */
-            StringBuilder s = new StringBuilder();
-            for (int i = 0; i < bytes.length; i++) {
-                s.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
-            }
-
-            /* Complete hashed password in hexadecimal format */
-            encrypt = s.toString();
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
-        System.out.println("Plain-Text password: " + password);
-        System.out.println("encryptrdpassword:" + encrypt);
+        encrypt = encryption.encrypt(password, encrypt);
 
 
         //Inserção dos dados na base de dados
         String insertFields = "INSERT INTO Utilizador(nomeuser, password, tipouser) VALUES('";
         String insertValues = username + "' , '" + encrypt + "' , '" + tipouser + "')";
         String insertToRegister = insertFields + insertValues;
-
-        try {
-            PreparedStatement stmt = con.prepareStatement(insertToRegister);
-            ResultSet rs = stmt.executeQuery();
-
-            if (rs.next()) {
-                registrationMessageLabel.setText("O utilizador foi registrado com sucesso!");
-                //registrationMessageLabel.setTextFill(Color.GREEN);
-            } else {
-                registrationMessageLabel.setText("O utilizador não foi registrado!");
-                //registrationMessageLabel.setTextFill(Color.RED);
-            }
-
-        } catch (Exception e) {
-            e.getCause();
-        }
+        RegisterDAO.Register(tipouser, username, insertToRegister);
+        JOptionPane.showMessageDialog(frame, "Registado com sucesso!");
     }
+
 
     /**
      * Botão para mudar para a aba do login

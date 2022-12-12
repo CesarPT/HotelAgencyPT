@@ -10,7 +10,6 @@ import Classes.DAO.ServicoDAO;
 import Classes.Quarto;
 import Classes.Reserva;
 import Classes.Servico;
-import DataBase.ConnectionDB;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -21,7 +20,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 
 import java.net.URL;
-import java.sql.Connection;
 import java.sql.Date;
 import java.time.Duration;
 import java.time.LocalDate;
@@ -37,7 +35,6 @@ import static Classes.DAO.ServicoDAO.findServicoEsc;
 
 public class F_Reserva implements Initializable {
 
-    Connection con = ConnectionDB.establishConnection();
 
     @FXML
     private TextField textPrecoServicos;
@@ -196,7 +193,7 @@ public class F_Reserva implements Initializable {
             LocalDate myDate = datePickerI.getValue();
             myDateI = Date.valueOf(datePickerI.getValue());
             dataILabel.setText(myDateI.toString());
-            datai= Date.valueOf(dataILabel.getText());
+            datai = Date.valueOf(dataILabel.getText());
 
         } catch (Exception e) {
             System.out.println(e);
@@ -214,7 +211,7 @@ public class F_Reserva implements Initializable {
             LocalDate myDate = datePickerF.getValue();
             myDateF = Date.valueOf(datePickerF.getValue());
             dataFLabel.setText(myDateF.toString());
-            dataf= Date.valueOf(dataFLabel.getText());
+            dataf = Date.valueOf(dataFLabel.getText());
 
 
         } catch (Exception e) {
@@ -383,72 +380,73 @@ public class F_Reserva implements Initializable {
                 //Relação de tabela
                 RelacionaResServ();
             }
-            }
         }
+    }
 
 
-        int ultimaReserv;
-        List<Reserva> arrayUltimaReserva = new ArrayList<>();
-        int relacionaservico;
-        String descservico;
+    int ultimaReserv;
+    List<Reserva> arrayUltimaReserva = new ArrayList<>();
+    int relacionaservico;
+    String descservico;
 
 
-        public void RelacionaResServ () {
+    public void RelacionaResServ() {
 
-            //List tipo reserva com o valor da ultima reserva encontrada
-            arrayUltimaReserva = ReservaDAO.findUltReserva();
+        //List tipo reserva com o valor da ultima reserva encontrada
+        arrayUltimaReserva = ReservaDAO.findUltReserva();
 
-            for (Reserva r : arrayUltimaReserva) {
-                ultimaReserv = r.getIdreserva();
-            }
-            System.out.println(ultimaReserv);
+        for (Reserva r : arrayUltimaReserva) {
+            ultimaReserv = r.getIdreserva();
+        }
+        System.out.println(ultimaReserv);
 
-            //------------------------------------------------------
+        //------------------------------------------------------
 
-            descservico = listServesco.getItems().toString()
-                    .replace("[", "")
-                    .replace("]", "")
-                    .replace(" ", "")
-                    .replace(".", "")
-                    .replaceAll("[0-9]", "");
+        descservico = listServesco.getItems().toString()
+                .replace("[", "")
+                .replace("]", "")
+                .replace(" ", "")
+                .replace(".", "")
+                .replaceAll("[0-9]", "");
 
-            //-------------------------------
-            String[] bdservico = descservico.split(",");
+        //-------------------------------
+        String[] bdservico = descservico.split(",");
 
-            for (int i = 0; i < bdservico.length; i++) {
-                System.out.println(bdservico[i]);
+        for (int i = 0; i < bdservico.length; i++) {
+            System.out.println(bdservico[i]);
 
-                arrayServico = findServicoEsc(bdservico[i]);
+            arrayServico = findServicoEsc(bdservico[i]);
 
 
-                for (Servico s : arrayServico) {
-                    relacionaservico = s.getIdServico();
+            for (Servico s : arrayServico) {
+                relacionaservico = s.getIdServico();
 
-                    criaReservaServico(ultimaReserv, relacionaservico);
-
-                }
-
+                criaReservaServico(ultimaReserv, relacionaservico);
 
             }
-        }
 
 
-        /**
-         * Método para voltar atrás
-         *
-         * @param actionEvent
-         */
-        @FXML
-        public void voltarAtras (ActionEvent actionEvent){
-            try {
-                Singleton.open("funcionariointerface", "Hotel >> Funcionario");
-            } catch (Exception e) {
-                System.out.println("Erro ao voltar atrás.");
-            }
         }
+    }
+    //------------------------------------------------------
 
-        public void onIdCliente (ActionEvent event){
+
+    /**
+     * Método para voltar atrás
+     *
+     * @param actionEvent
+     */
+    @FXML
+    public void voltarAtras(ActionEvent actionEvent) {
+        try {
+            Singleton.open("funcionariointerface", "Hotel >> Funcionario");
+        } catch (Exception e) {
+            System.out.println("Erro ao voltar atrás.");
         }
+    }
+
+    public void onIdCliente(ActionEvent event) {
+    }
 
 
 }

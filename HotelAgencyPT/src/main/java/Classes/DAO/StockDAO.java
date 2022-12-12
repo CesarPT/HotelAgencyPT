@@ -7,13 +7,13 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class StockDAO {
-    private static Connection con;
+    private static Connection con = ConnectionDB.establishConnection();
+    ;
 
     /**
      * Ligar à base de dados
      */
     public StockDAO() {
-        con = ConnectionDB.establishConnection();
     }
 
     public void closebd() {
@@ -28,9 +28,8 @@ public class StockDAO {
 
         String sql = "INSERT INTO Stock (product_identifier,product_description, tipo_qtd, quantidade," +
                 "preco, vat, preco_total) VALUES (?, ?, ?, ?, ?, ?, ?)";
-        PreparedStatement stmt = null;
         try {
-            stmt = con.prepareStatement(sql);
+            PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setString(1, product_identifier);
             stmt.setString(2, product_description);
             stmt.setString(3, tipo_qtd);
@@ -47,6 +46,4 @@ public class StockDAO {
             return false;
         }
     }
-
-
 }

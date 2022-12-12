@@ -14,13 +14,13 @@ import java.util.List;
  * Classe pública que recebe dados da Base de Dados
  */
 public class ServicoDAO {
-    private static Connection con;
+    private static Connection con = ConnectionDB.establishConnection();
+    ;
 
     /**
      * Ligar à base de dados
      */
     public ServicoDAO() {
-        con = ConnectionDB.establishConnection();
     }
 
     /**
@@ -35,7 +35,6 @@ public class ServicoDAO {
         List<Servico> listservico = new ArrayList<>();
 
         try {
-            con = ConnectionDB.establishConnection();
             stmt = con.prepareStatement(sql);
             rs = stmt.executeQuery();
 
@@ -67,7 +66,6 @@ public class ServicoDAO {
         List<Servico> listservico = new ArrayList<>();
 
         try {
-            con = ConnectionDB.establishConnection();
             stmt = con.prepareStatement(sql);
             rs = stmt.executeQuery();
 
@@ -85,5 +83,4 @@ public class ServicoDAO {
         }
         return listservico;
     }
-
 }

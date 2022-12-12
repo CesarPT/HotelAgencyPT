@@ -12,13 +12,13 @@ import java.util.List;
  * Classe pública que recebe dados da Base de Dados
  */
 public class ReservaDAO {
-    private static Connection con;
+    private static Connection con = ConnectionDB.establishConnection();
+    ;
 
     /**
      * Ligar à base de dados
      */
     public ReservaDAO() {
-        con = ConnectionDB.establishConnection();
     }
 
     /**
@@ -39,7 +39,6 @@ public class ReservaDAO {
         List<Reserva> listreserva = new ArrayList<>();
 
         try {
-            con = ConnectionDB.establishConnection();
             stmt = con.prepareStatement(sql);
             rs = stmt.executeQuery();
 
@@ -72,7 +71,6 @@ public class ReservaDAO {
         List<Reserva> listreserva = new ArrayList<>();
 
         try {
-            con = ConnectionDB.establishConnection();
             stmt = con.prepareStatement(sql);
             rs = stmt.executeQuery();
 
@@ -96,7 +94,6 @@ public class ReservaDAO {
         PreparedStatement stmt = null;
 
         try {
-            con = ConnectionDB.establishConnection();
             stmt = con.prepareStatement(sql);
             stmt.setInt(1, reserva.getIdcliente());
             stmt.setInt(2, reserva.getIdquarto());

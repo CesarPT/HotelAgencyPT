@@ -27,7 +27,6 @@ public class OpenApplication extends Application {
         //metodo para ler e dar print na consola o xml
         //Lexml();
         launch();
-
     }
 
 }
