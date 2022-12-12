@@ -84,8 +84,7 @@ public class LoginController implements Initializable {
 
 
         // Verificação se existe na base dados
-        String verifyLogin = "SELECT count(1) FROM Utilizador WHERE nomeuser ='" + user + "' AND convert (varchar(MAX), password) = '" + encryptedpassword + "'";
-        boolean login = login(user, verifyLogin, window);
+        boolean login = login(user, window, encryptedpassword);
         if (login == true) {
             loginMessageLabel.setText("Login com sucesso!");
         } else {

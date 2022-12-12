@@ -17,7 +17,8 @@ public class LoginDAO {
 
     static Connection con = ConnectionDB.establishConnection();
 
-    public static boolean login(String user, String verifyLogin, Stage window) {
+    public static boolean login(String user, Stage window, String encryptedpassword) {
+        String verifyLogin = "SELECT count(1) FROM Utilizador WHERE nomeuser ='" + user + "' AND convert (varchar(MAX), password) = '" + encryptedpassword + "'";
         String verifyPerm = ("SELECT tipouser FROM Utilizador WHERE nomeuser ='" + user + "'");
         boolean log;
         try {
@@ -37,7 +38,6 @@ public class LoginDAO {
             throw new RuntimeException(e);
         }
         if (Objects.equals(correctOrIncorrect, "Login com sucesso!")) {
-            System.out.println(Controller.getInstance().getUsername());
             //Passa informações para a scene seguinte
             validatePerms(verifyPerm, window);
             log = true;

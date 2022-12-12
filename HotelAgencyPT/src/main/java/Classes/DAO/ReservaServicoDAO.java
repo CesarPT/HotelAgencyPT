@@ -9,21 +9,12 @@ import java.sql.SQLException;
 public class ReservaServicoDAO {
 
     private static Connection con = ConnectionDB.establishConnection();
-    ;
-
-    /**
-     * Ligar à base de dados
-     */
-    public ReservaServicoDAO() {
-    }
-
 
     public static boolean criaReservaServico(int idreserva, int idservico) {
         String sql = "INSERT INTO ReservaServico (idreserva,idservico) Values(?,?)";
-        PreparedStatement stmt = null;
 
         try {
-            stmt = con.prepareStatement(sql);
+            PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setInt(1, idreserva);
             stmt.setInt(2, idservico);
 
@@ -32,8 +23,6 @@ public class ReservaServicoDAO {
         } catch (SQLException e) {
             System.err.println("[ERRO]: insertReserva " + e.getMessage());
             return false;
-        } finally {
-            ConnectionDB.closeConnection(con, stmt);
         }
     }
 }

@@ -13,27 +13,16 @@ import java.util.List;
 public class ClienteDAO {
     private static Connection con = ConnectionDB.establishConnection();
 
-    /**
-     * Ligar à base de dados
-     */
-    public ClienteDAO() {
-    }
-
-
     public List<Cliente> findClienteCid(int idcliente) {
         String sql = "SELECT idcliente\n" +
                 "FROM Cliente\n" +
                 "WHERE idcliente='" + idcliente + "'";
 
-
         List<Cliente> listCliente = new ArrayList<>();
 
-
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
         try {
-            stmt = con.prepareStatement(sql);
-            rs = stmt.executeQuery();
+            PreparedStatement stmt = con.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
                 Cliente cliente = new Cliente();
@@ -43,8 +32,6 @@ public class ClienteDAO {
 
         } catch (SQLException e) {
             System.err.println("[ERRO]: findRegEntradaQuarto " + e.getMessage());
-        } finally {
-            ConnectionDB.closeConnection(con, stmt, rs);
         }
         return listCliente;
     }

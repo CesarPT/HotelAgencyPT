@@ -1,58 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Order>
-	<Header>
-		<OrderNumber>OC87651234</OrderNumber>
-		<OrderDate>
-			<Date>
-				<Year>2022</Year>
-				<Month>12</Month>
-				<Day>05</Day>
-			</Date>
-		</OrderDate>
-		<SupplierParty>
-			<PartyIdentifier>11PT920</PartyIdentifier>
-			<NameAddress>
-				<Name>ProductHero</Name>
-				<Address1>Rua da Alegria</Address1>
-				<Address2>nº1</Address2>
-				<City>Porto</City>
-				<PostalCode>4000-032</PostalCode>
-				<Country ISOCountryCode="PT">Portugal</Country>
-			</NameAddress>
-		</SupplierParty>
-	</Header>
-	<Line>
-		<LineNumber>1</LineNumber>
-		<Product>
-			<ProductIdentifier Agency="Supplier">XPO-756</ProductIdentifier>
-			<ProductDescription>Cama estofada 180x200 cinzenta</ProductDescription>
-		</Product>
-		<Quantity QuantityType="Count">
-			<Value UOM="Unit">100</Value>
-		</Quantity>
-		<InformationalQuantity QuantityType="NetWeight">
-			<Value UOM="Kilogram">2000</Value>
-		</InformationalQuantity>
-		<PricePerUnit>
-			<CurrencyValue CurrencyType="EUR">316.59</CurrencyValue>
-			<Value UOM="Unit">1</Value>
-		</PricePerUnit>
-		<MonetaryAdjustment AdjustmentType="Tax">
-			<MonetaryAdjustmentLine>1</MonetaryAdjustmentLine>
-			<MonetaryAdjustmentStartAmount>
-				<CurrencyValue CurrencyType="EUR">3165.90</CurrencyValue>
-			</MonetaryAdjustmentStartAmount>
-			<TaxAdjustment TaxType="VAT">
-				<TaxPercent>23</TaxPercent>
-				<TaxAmount>
-					<CurrencyValue CurrencyType="EUR">728.16</CurrencyValue>
-				</TaxAmount>
-				<TaxLocation>PT</TaxLocation>
-			</TaxAdjustment>
-		</MonetaryAdjustment>
-		<LineBaseAmount>
-			<CurrencyValue CurrencyType="EUR">3894.06</CurrencyValue>
-		</LineBaseAmount>
-	</Line>
+    <Header>
+        <OrderNumber>OC87651234</OrderNumber>
+        <OrderDate>
+            <Date>
+                <Year>2022</Year>
+                <Month>12</Month>
+                <Day>05</Day>
+            </Date>
+        </OrderDate>
+        <SupplierParty>
+            <PartyIdentifier>11PT920</PartyIdentifier>
+            <NameAddress>
+                <Name>ProductHero</Name>
+                <Address1>Rua da Alegria</Address1>
+                <Address2>nº1</Address2>
+                <City>Porto</City>
+                <PostalCode>4000-032</PostalCode>
+                <Country ISOCountryCode="PT">Portugal</Country>
+            </NameAddress>
+        </SupplierParty>
+    </Header>
+    <Line>
+        <LineNumber>1</LineNumber>
+        <Product>
+            <ProductIdentifier Agency="Supplier">XPO-756</ProductIdentifier>
+            <ProductDescription>Cama estofada 180x200 cinzenta</ProductDescription>
+        </Product>
+        <Quantity QuantityType="Count">
+            <Value UOM="Unit">100</Value>
+        </Quantity>
+        <InformationalQuantity QuantityType="NetWeight">
+            <Value UOM="Kilogram">2000</Value>
+        </InformationalQuantity>
+        <PricePerUnit>
+            <CurrencyValue CurrencyType="EUR">316.59</CurrencyValue>
+            <Value UOM="Unit">1</Value>
+        </PricePerUnit>
+        <MonetaryAdjustment AdjustmentType="Tax">
+            <MonetaryAdjustmentLine>1</MonetaryAdjustmentLine>
+            <MonetaryAdjustmentStartAmount>
+                <CurrencyValue CurrencyType="EUR">3165.90</CurrencyValue>
+            </MonetaryAdjustmentStartAmount>
+            <TaxAdjustment TaxType="VAT">
+                <TaxPercent>23</TaxPercent>
+                <TaxAmount>
+                    <CurrencyValue CurrencyType="EUR">728.16</CurrencyValue>
+                </TaxAmount>
+                <TaxLocation>PT</TaxLocation>
+            </TaxAdjustment>
+        </MonetaryAdjustment>
+        <LineBaseAmount>
+            <CurrencyValue CurrencyType="EUR">3894.06</CurrencyValue>
+        </LineBaseAmount>
+    </Line>
 </Order>
-<!-- new product -->
+        <!-- new product -->
