@@ -58,16 +58,19 @@ public class LoginDAO {
             while (rs.next()) {
 
                 if (Objects.equals(rs.getString("tipouser"), "G")) {
+                    Controller.getInstance().setTipo_user('G');
                     window.close();
                     Singleton.open("GestorHotel", "Username: " + Controller.getInstance().getUsername() + " | Hotel >> Gestor de Hotel");
                 }
 
                 if (Objects.equals(rs.getString("tipouser"), "F")) {
+                    Controller.getInstance().setTipo_user('F');
                     window.close();
                     Singleton.open("funcionariointerface", "Username: " + Controller.getInstance().getUsername() + " | Hotel >> Funcionário");
                 }
 
                 if (Objects.equals(rs.getString("tipouser"), "C")) {
+                    Controller.getInstance().setTipo_user('C');
                     window.close();
                     Singleton.open("Cliente", "Username: " + Controller.getInstance().getUsername() + " | Hotel >> Cliente");
                 }

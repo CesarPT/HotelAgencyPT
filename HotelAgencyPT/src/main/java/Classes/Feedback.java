@@ -7,6 +7,7 @@ public class Feedback {
     private int id_feedback;
     private String descricao;
     private int id_cliente;
+    private char tipofeedback;
 
     /**
      * Construtor completo
@@ -14,11 +15,21 @@ public class Feedback {
      * @param id_feedback
      * @param descricao
      * @param id_cliente
+     * @param tipofeedback
      */
-    public Feedback(int id_feedback, String descricao, int id_cliente) {
+    public Feedback(int id_feedback, String descricao, int id_cliente, char tipofeedback) {
         this.id_feedback = id_feedback;
         this.descricao = descricao;
         this.id_cliente = id_cliente;
+        this.tipofeedback = tipofeedback;
+    }
+
+    public Feedback() {
+    }
+
+    public Feedback(Integer idcliente, String descricao) {
+        this.id_cliente = idcliente;
+        this.descricao = descricao;
     }
 
     /**
@@ -49,6 +60,15 @@ public class Feedback {
     }
 
     /**
+     * Recebe
+     *
+     * @return tipofeedback
+     */
+    public char getTipofeedback() {
+        return tipofeedback;
+    }
+
+    /**
      * Muda o valor:
      *
      * @param id_feedback set
@@ -73,5 +93,14 @@ public class Feedback {
      */
     public void setId_cliente(int id_cliente) {
         this.id_cliente = id_cliente;
+    }
+
+    /**
+     * Muda o valor:
+     *
+     * @param tipofeedback set
+     */
+    public void setTipofeedback(char tipofeedback) {
+        this.tipofeedback = tipofeedback;
     }
 }

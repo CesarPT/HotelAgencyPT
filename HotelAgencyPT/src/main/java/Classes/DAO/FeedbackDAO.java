@@ -1,19 +1,18 @@
 package Classes.DAO;
 
 import Classes.Feedback;
-import Classes.Reserva;
 import DataBase.ConnectionDB;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class FeedbackDAO {
     private static Connection con = ConnectionDB.establishConnection();
-
+    
     /**
      * Criar uma reclamação
+     *
      * @param feedback
      * @return
      */
@@ -36,6 +35,7 @@ public class FeedbackDAO {
 
     /**
      * Criar uma sugestão
+     *
      * @param feedback
      * @return
      */

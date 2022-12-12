@@ -46,7 +46,6 @@ public class XMLpath {
         String datanc = "";
         //Data
         String dy = "";
-
         String dm = "";
         String dd = "";
         String pi;
