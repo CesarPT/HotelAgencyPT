@@ -93,6 +93,16 @@ public class F_interface {
         }
     }
 
+    public void abrirVerFicheiro(ActionEvent event) {
+        try {
+            Stage window = (Stage) RoomServices.getScene().getWindow();
+            window.close();
+            Singleton.open("F_VerFicheiro", "User: " + Controller.getInstance().getUsername() +" | Hotel >> Funcionario >> Ver ficheiro");
+        } catch (Exception e) {
+            System.out.println("Erro ao fechar/abrir o stage.");
+        }
+    }
+
     /**
      * Abre a janela para fazer o Check-in.
      *

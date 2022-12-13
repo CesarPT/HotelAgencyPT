@@ -10,8 +10,6 @@ import javafx.stage.StageStyle;
 import java.io.IOException;
 import java.util.Objects;
 
-import static hotel.agencypt.Controller.XMLpath.Lexml;
-
 public class OpenApplication extends Application {
     public void start(Stage stage) {
         try {
