@@ -8,13 +8,6 @@ import java.sql.SQLException;
 
 public class StockDAO {
     private static Connection con = ConnectionDB.establishConnection();
-    ;
-
-    /**
-     * Ligar à base de dados
-     */
-    public StockDAO() {
-    }
 
     public void closebd() {
         PreparedStatement stmt = null;

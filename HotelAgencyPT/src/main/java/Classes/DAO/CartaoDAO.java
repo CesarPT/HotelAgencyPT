@@ -16,13 +16,6 @@ import java.util.List;
  */
 public class CartaoDAO {
     private Connection con = ConnectionDB.establishConnection();
-    ;
-
-    /**
-     * Ligar à base de dados
-     */
-    public CartaoDAO() {
-    }
 
     /**
      * Método para pesquisar o cartão com o username
@@ -38,13 +31,10 @@ public class CartaoDAO {
                 "ON Utilizador.iduser = Cliente.iduser\n" +
                 "WHERE Utilizador.nomeuser=" + "'" + Controller.getInstance().getUsername() + "'";
 
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
-
         List<Cartao> listcartao = new ArrayList<>();
         try {
-            stmt = con.prepareStatement(sql);
-            rs = stmt.executeQuery();
+            PreparedStatement stmt = con.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
                 Cartao cartao = new Cartao();
@@ -56,8 +46,6 @@ public class CartaoDAO {
 
         } catch (SQLException e) {
             System.err.println("[ERRO]: findCartao " + e.getMessage());
-        } finally {
-            ConnectionDB.closeConnection(con, stmt, rs);
         }
         return listcartao;
     }

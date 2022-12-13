@@ -27,8 +27,6 @@ public class encryption {
                 NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
-        System.out.println("Plain-Text password: " + password);
-        System.out.println("encryptrdpassword:" + encryptedpassword);
         return encryptedpassword;
     }
 

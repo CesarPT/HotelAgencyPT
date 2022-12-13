@@ -13,13 +13,6 @@ import java.util.List;
  */
 public class ReservaDAO {
     private static Connection con = ConnectionDB.establishConnection();
-    ;
-
-    /**
-     * Ligar à base de dados
-     */
-    public ReservaDAO() {
-    }
 
     /**
      * Método para pesquisar reservas pelo username
@@ -33,14 +26,11 @@ public class ReservaDAO {
                 "ON Utilizador.iduser = Cliente.iduser\n" +
                 "WHERE Utilizador.nomeuser='" + Controller.getInstance().getUsername() + "'";
 
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
-
         List<Reserva> listreserva = new ArrayList<>();
 
         try {
-            stmt = con.prepareStatement(sql);
-            rs = stmt.executeQuery();
+            PreparedStatement stmt = con.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
                 Reserva reserva = new Reserva();
@@ -50,8 +40,6 @@ public class ReservaDAO {
 
         } catch (SQLException e) {
             System.err.println("[ERRO]: findReserva " + e.getMessage());
-        } finally {
-            ConnectionDB.closeConnection(con, stmt, rs);
         }
         return listreserva;
     }
@@ -64,15 +52,11 @@ public class ReservaDAO {
                 "from Reserva " +
                 "order by  idreserva desc;";
 
-
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
-
         List<Reserva> listreserva = new ArrayList<>();
 
         try {
-            stmt = con.prepareStatement(sql);
-            rs = stmt.executeQuery();
+            PreparedStatement stmt = con.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
                 Reserva reserva = new Reserva();
@@ -82,8 +66,6 @@ public class ReservaDAO {
 
         } catch (SQLException e) {
             System.err.println("[ERRO]: findReserva " + e.getMessage());
-        } finally {
-            ConnectionDB.closeConnection(con, stmt, rs);
         }
         return listreserva;
     }
@@ -91,10 +73,9 @@ public class ReservaDAO {
 
     public static boolean criaReserva(Reserva reserva) {
         String sql = "INSERT INTO Reserva (idcliente,idquarto, numcartao,datai,dataf) Values (?,?,?,?,?)";
-        PreparedStatement stmt = null;
 
         try {
-            stmt = con.prepareStatement(sql);
+            PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setInt(1, reserva.getIdcliente());
             stmt.setInt(2, reserva.getIdquarto());
             stmt.setInt(3, reserva.getNumcartao());
@@ -106,8 +87,6 @@ public class ReservaDAO {
         } catch (SQLException e) {
             System.err.println("[ERRO]: criarReserva " + e.getMessage());
             return false;
-        } finally {
-            ConnectionDB.closeConnection(con, stmt);
         }
     }
 }

@@ -60,9 +60,9 @@ public class GestorHotel {
     @FXML
     protected void abrirGerirStock() {
         try {
-                Stage window = (Stage) button.getScene().getWindow();
-                window.close();
-                Singleton.open("F_GerirStock", "User: " + Controller.getInstance().getUsername() + " | Hotel >> Gerir Stock");
+            Stage window = (Stage) button.getScene().getWindow();
+            window.close();
+            Singleton.open("F_GerirStock", "User: " + Controller.getInstance().getUsername() + " | Hotel >> Gerir Stock");
         } catch (Exception e) {
             System.out.println("Erro ao fechar/abrir o stage.");
         }

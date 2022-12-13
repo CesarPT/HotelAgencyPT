@@ -23,6 +23,7 @@ public class Feedback {
         this.id_cliente = id_cliente;
         this.tipofeedback = tipofeedback;
     }
+
     public Feedback() {
     }
 
@@ -60,6 +61,7 @@ public class Feedback {
 
     /**
      * Recebe
+     *
      * @return tipofeedback
      */
     public char getTipofeedback() {
@@ -95,6 +97,7 @@ public class Feedback {
 
     /**
      * Muda o valor:
+     *
      * @param tipofeedback set
      */
     public void setTipofeedback(char tipofeedback) {

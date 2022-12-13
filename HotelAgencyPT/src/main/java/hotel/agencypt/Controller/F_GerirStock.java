@@ -158,7 +158,7 @@ public class F_GerirStock implements Initializable {
 
     }
 
-    public void abrirStockQuartos(){
+    public void abrirStockQuartos() {
         try {
             Stage window = (Stage) TableViewStock.getScene().getWindow();
             window.close();

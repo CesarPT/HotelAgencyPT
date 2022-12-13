@@ -18,13 +18,6 @@ import java.util.List;
  */
 public class QuartoDAO {
     private static Connection con = ConnectionDB.establishConnection();
-    ;
-
-    /**
-     * Ligar à base de dados
-     */
-    public QuartoDAO() {
-    }
 
     /**
      * Método para pesquisar a descrição de quartos do piso escolhido
@@ -36,14 +29,11 @@ public class QuartoDAO {
                 "FROM Quarto\n" +
                 "WHERE piso='" + Controller.getInstance().getPiso() + "'";
 
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
-
         List<Quarto> listQuarto = new ArrayList<>();
 
         try {
-            stmt = con.prepareStatement(sql);
-            rs = stmt.executeQuery();
+            PreparedStatement stmt = con.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
                 Quarto quarto = new Quarto();
@@ -54,8 +44,6 @@ public class QuartoDAO {
 
         } catch (SQLException e) {
             System.err.println("[ERRO]: findRegEntradaQuarto " + e.getMessage());
-        } finally {
-            ConnectionDB.closeConnection(con, stmt, rs);
         }
         return listQuarto;
     }
@@ -72,14 +60,11 @@ public class QuartoDAO {
                 //" AND descricao='" + Controller.getInstance().getDescricaoQuarto() + "'"+
                 "WHERE idquarto=" + Controller.getInstance().getIdQuarto();
 
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
-
         List<Quarto> listPreco = new ArrayList<>();
 
         try {
-            stmt = con.prepareStatement(sql);
-            rs = stmt.executeQuery();
+            PreparedStatement stmt = con.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
                 Quarto quarto = new Quarto();
@@ -89,8 +74,6 @@ public class QuartoDAO {
 
         } catch (SQLException e) {
             System.err.println("[ERRO]: findPreco " + e.getMessage());
-        } finally {
-            ConnectionDB.closeConnection(con, stmt, rs);
         }
         return listPreco;
     }
@@ -101,36 +84,30 @@ public class QuartoDAO {
     public boolean updatePreco(Quarto quarto) {
         String sql = "UPDATE Quarto SET preco = ?" +
                 " WHERE idquarto=" + Controller.getInstance().getIdQuarto();
-        PreparedStatement stmt = null;
 
         try {
-            stmt = con.prepareStatement(sql);
+            PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setFloat(1, quarto.getPreco());
             stmt.executeUpdate();
             return true;
         } catch (SQLException e) {
             System.err.println("[ERRO]: updatePreco " + e.getMessage());
             return false;
-        } finally {
-            ConnectionDB.closeConnection(con, stmt);
         }
     }
 
     public boolean updateDescricao(Quarto quarto) {
         String sql = "UPDATE Quarto SET descricaoQuarto = ?" +
                 " WHERE idquarto=" + Controller.getInstance().getIdQuarto();
-        PreparedStatement stmt = null;
 
         try {
-            stmt = con.prepareStatement(sql);
+            PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setString(1, quarto.getDescricao());
             stmt.executeUpdate();
             return true;
         } catch (SQLException e) {
             System.err.println("[ERRO]: updateDescricaoQuarto " + e.getMessage());
             return false;
-        } finally {
-            ConnectionDB.closeConnection(con, stmt);
         }
     }
 
@@ -138,13 +115,12 @@ public class QuartoDAO {
         String sql = "select descricaoQuarto " +
                 "from Quarto " +
                 "where idquarto=" + Controller.getInstance().getIdQuarto();
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
+
 
         List<Quarto> listDescricaoQuarto = new ArrayList<>();
         try {
-            stmt = con.prepareStatement(sql);
-            rs = stmt.executeQuery();
+            PreparedStatement stmt = con.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
                 Quarto quarto = new Quarto();
@@ -153,8 +129,6 @@ public class QuartoDAO {
             }
         } catch (SQLException e) {
             System.err.println("[ERRO]: DescricaoQuarto " + e.getMessage());
-        } finally {
-            ConnectionDB.closeConnection(con, stmt, rs);
         }
         return listDescricaoQuarto;
     }
@@ -167,14 +141,11 @@ public class QuartoDAO {
                 "and estado='Disponivel' " +
                 "ORDER by idquarto;";
 
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
-
         List<Quarto> listquarto = new ArrayList<>();
 
         try {
-            stmt = con.prepareStatement(sql);
-            rs = stmt.executeQuery();
+            PreparedStatement stmt = con.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
                 Quarto quarto = new Quarto();
@@ -183,8 +154,6 @@ public class QuartoDAO {
             }
         } catch (SQLException e) {
             System.err.println("[ERRO]: findReserva " + e.getMessage());
-        } finally {
-            ConnectionDB.closeConnection(con, stmt, rs);
         }
         return listquarto;
     }
@@ -196,14 +165,11 @@ public class QuartoDAO {
                 "and estado='Disponivel' " +
                 "ORDER by idquarto;";
 
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
-
         List<Quarto> listquarto = new ArrayList<>();
 
         try {
-            stmt = con.prepareStatement(sql);
-            rs = stmt.executeQuery();
+            PreparedStatement stmt = con.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
                 Quarto quarto = new Quarto();
@@ -212,8 +178,6 @@ public class QuartoDAO {
             }
         } catch (SQLException e) {
             System.err.println("[ERRO]: findReserva " + e.getMessage());
-        } finally {
-            ConnectionDB.closeConnection(con, stmt, rs);
         }
         return listquarto;
     }
@@ -225,14 +189,11 @@ public class QuartoDAO {
                 "and estado='Disponivel' " +
                 "ORDER by idquarto;";
 
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
-
         List<Quarto> listquarto = new ArrayList<>();
 
         try {
-            stmt = con.prepareStatement(sql);
-            rs = stmt.executeQuery();
+            PreparedStatement stmt = con.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
                 Quarto quarto = new Quarto();
@@ -241,8 +202,6 @@ public class QuartoDAO {
             }
         } catch (SQLException e) {
             System.err.println("[ERRO]: findReserva " + e.getMessage());
-        } finally {
-            ConnectionDB.closeConnection(con, stmt, rs);
         }
         return listquarto;
     }
