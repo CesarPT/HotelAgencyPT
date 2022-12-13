@@ -1,24 +1,27 @@
 package Classes;
 
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class SearchFile {
-    public static List<String> SearchDB(){
+    public static List<String> SearchDB() {
         List<String> list = new ArrayList<String>();
-            try{
-            File file = new File("src/main/java/DataBase/BaseDados.txt");
+        try {
+            File file = new File(System.getProperty("user.dir") + "\\BaseDados.txt");
             Scanner br = new Scanner(file);
 
-            while (br.hasNextLine()){
-                list.add(br.nextLine());
+            while (br.hasNextLine()) {
+                String str = br.nextLine();
+                String[] array = str.split("-->");
+                list.add(array[1]);
             }
             br.close();
-            }catch (IOException e){
-                e.printStackTrace();
-            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return list;
     }
 }

@@ -2,9 +2,14 @@ package hotel.agencypt.Controller;
 
 //Bibliotecas
 
-import Classes.*;
 import Classes.Cliente;
-import Classes.DAO.*;
+import Classes.DAO.ClienteDAO;
+import Classes.DAO.QuartoDAO;
+import Classes.DAO.ReservaDAO;
+import Classes.DAO.ServicoDAO;
+import Classes.Quarto;
+import Classes.Reserva;
+import Classes.Servico;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -59,7 +64,7 @@ public class F_Reserva implements Initializable {
     @FXML
     private ListView<String> listServesco;
     @FXML
-    private ListView<String>listidClienteInsere;
+    private ListView<String> listidClienteInsere;
 
     //var para selecionar na Listview dos servicos
     String servicoselct;
@@ -101,7 +106,6 @@ public class F_Reserva implements Initializable {
                 servicoselce = listServesco.getSelectionModel().getSelectedItem();
             }
         });
-
 
 
         arrayCliente = ClienteDAO.findidCliente();
@@ -316,7 +320,7 @@ public class F_Reserva implements Initializable {
         }
     }
 
-    public void clientescolhido(){
+    public void clientescolhido() {
         listidClienteInsere.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
@@ -333,9 +337,6 @@ public class F_Reserva implements Initializable {
     public void onCriaReserva(ActionEvent event) {
 
 
-
-
-
         if (datePickerI.getValue() == null || datePickerF.getValue() == null) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Aviso");
@@ -348,7 +349,7 @@ public class F_Reserva implements Initializable {
             alert.setHeaderText("Datas inválidas");
             alert.setContentText("A data de fim deve ser maior que a data de inicio.");
             alert.showAndWait();
-        } else if (cboxTquarto.getSelectionModel().isEmpty() ) {
+        } else if (cboxTquarto.getSelectionModel().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Aviso");
             alert.setHeaderText("Sem seleção");
