@@ -280,6 +280,7 @@ public class XMLpath {
         float vat;
         float preco_total;
 
+boolean teste=false;
         for (int i = 0; i < nodeslba.getLength(); i++) {
             idprod = pind[i];
             descprod = pd[i];
@@ -289,10 +290,13 @@ public class XMLpath {
             vat = taxp[i];
             preco_total = lba[i];
 
-            StockDAO.insertNewStock(idprod, descprod, tipo_qtd, quantprod, preco, vat, preco_total);
+            teste=stockDAO.IFfindItem(idprod);
+
+            if(teste==true){
+                StockDAO.updateStock(idprod,quantprod);
+            }else {
+                StockDAO.insertNewStock(idprod, descprod, tipo_qtd, quantprod, preco, vat, preco_total);
+            }
         }
-        stockDAO.closebd();
     }
 }
-
-

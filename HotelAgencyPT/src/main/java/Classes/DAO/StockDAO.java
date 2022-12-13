@@ -1,25 +1,17 @@
 package Classes.DAO;
 
+import Classes.Stock;
 import DataBase.ConnectionDB;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class StockDAO {
     private static Connection con = ConnectionDB.establishConnection();
-    ;
-
-    /**
-     * Ligar à base de dados
-     */
-    public StockDAO() {
-    }
-
-    public void closebd() {
-        PreparedStatement stmt = null;
-        ConnectionDB.closeConnection(con, stmt);
-    }
 
     public static boolean insertNewStock(
             String product_identifier, String product_description, String tipo_qtd,
@@ -46,4 +38,42 @@ public class StockDAO {
             return false;
         }
     }
+
+
+    public static boolean IFfindItem(String id_prod) {
+        boolean verfica = true;
+
+        String sql = "SELECT product_identifier from Stock where product_identifier='" + id_prod + "'";
+
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        List<Stock> liststock = new ArrayList<>();
+
+        try {
+            stmt = con.prepareStatement(sql);
+            rs = stmt.executeQuery();
+        } catch (SQLException e) {
+            System.err.println("[ERRO]: findItem " + e.getMessage());
+
+            verfica=false;
+        }
+        return verfica;
+    }
+
+
+    public static boolean updateStock(
+            String product_identifier, int quantidade
+    ) {
+
+        String sql = "UPDATE Stock set quantidade = quantidade +" + quantidade + " where product_identifier ='" + product_identifier +"'";
+        try {
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            System.err.println("[ERRO]: updateStock " + e.getMessage());
+            return false;
+        }
+    }
+
 }

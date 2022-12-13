@@ -21,6 +21,33 @@ public class ClienteDAO {
     public ClienteDAO() {
     }
 
+    public static List<Cliente> findidCliente() {
+        String sql = "SELECT idcliente\n" +
+                "FROM Cliente";
+
+
+        List<Cliente> listCliente = new ArrayList<>();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        try {
+            stmt = con.prepareStatement(sql);
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                Cliente cliente = new Cliente();
+                cliente.setIdCliente(rs.getInt("idcliente"));
+                listCliente.add(cliente);
+            }
+
+        } catch (SQLException e) {
+            System.err.println("[ERRO]: findRegEntradaQuarto " + e.getMessage());
+        } finally {
+            ConnectionDB.closeConnection(con, stmt, rs);
+        }
+        return listCliente;
+    }
+
+
 
     public List<Cliente> findClienteCid(int idcliente) {
         String sql = "SELECT idcliente\n" +

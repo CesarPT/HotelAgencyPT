@@ -41,9 +41,7 @@ public class Cliente {
      *
      * @return idCliente
      */
-    public int getIdCliente() {
-        return idCliente;
-    }
+
 
     /**
      * Muda o valor:
@@ -52,5 +50,9 @@ public class Cliente {
      */
     public void setIdCliente(int idCliente) {
         this.idCliente = idCliente;
+    }
+
+    public int getIdCliente() {
+        return idCliente;
     }
 }
