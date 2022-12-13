@@ -12,14 +12,13 @@ import java.util.List;
 
 public class StockDAO {
     private static Connection con = ConnectionDB.establishConnection();
-<<<<<<< HEAD
-=======
 
+    /*
     public void closebd() {
         PreparedStatement stmt = null;
         ConnectionDB.closeConnection(con, stmt);
     }
->>>>>>> a7df0e6abf9c8f5d49f1c1ff777884b5518cb162
+     */
 
     public static boolean insertNewStock(
             String product_identifier, String product_description, String tipo_qtd,
