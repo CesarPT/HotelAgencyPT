@@ -1,9 +1,7 @@
 package hotel.agencypt.Controller;
 
 import Classes.DAO.QuartoStockDAO;
-import Classes.Quarto;
 import Classes.QuartoStock;
-import Classes.RegEntrada;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -11,15 +9,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.paint.Color;
-import javafx.util.Callback;
 
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class StockQuartos implements Initializable {
+public class F_StockQuartos implements Initializable {
     QuartoStockDAO qsDAO = new QuartoStockDAO();
     List<QuartoStock> arrayQuartoStock = new ArrayList<>();
     ObservableList<QuartoStock> obsQuartoStock = FXCollections.observableArrayList();
@@ -71,9 +67,9 @@ public class StockQuartos implements Initializable {
     public void voltarAtras(ActionEvent actionEvent) {
         try {
             if (Controller.getInstance().getTipo_user() == 'G') {
-                Singleton.open("GestorHotel", "Hotel >> Gestor de Hotel");
+                Singleton.open("GestorHotel", "User: " + Controller.getInstance().getUsername() + " | Hotel >> Gestor de Hotel");
             } else {
-                Singleton.open("funcionariointerface", "Hotel >> Funcionário");
+                Singleton.open("funcionariointerface", "User: " + Controller.getInstance().getUsername() + " | Hotel >> Funcionário");
             }
         } catch (Exception e) {
             System.out.println("Erro ao voltar atrás.");
