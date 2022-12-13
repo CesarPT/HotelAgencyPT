@@ -1,0 +1,3 @@
+jdbc:sqlserver://CTESPBD.DEI.ISEP.IPP.PT
+2022_E_LP3_G2
+LP3_bdG2

@@ -32,7 +32,6 @@ public class FeedbackDAO {
         }
     }
 
-
     /**
      * Criar uma sugestão
      *
