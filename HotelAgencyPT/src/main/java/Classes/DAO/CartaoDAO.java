@@ -39,8 +39,6 @@ public class CartaoDAO {
             while (rs.next()) {
                 Cartao cartao = new Cartao();
                 cartao.setNumcartao(rs.getInt("numcartao"));
-                cartao.setDatacriacao(rs.getDate("datacriacao"));
-                cartao.setDataexp(rs.getDate("dataexp"));
                 listcartao.add(cartao);
             }
 

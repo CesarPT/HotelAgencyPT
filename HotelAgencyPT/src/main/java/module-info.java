@@ -12,4 +12,6 @@ module hotel.agencypt {
     exports hotel.agencypt.Controller;
     exports Classes;
     opens hotel.agencypt.Controller to javafx.base, javafx.fxml;
+    exports DataBase;
+    opens DataBase to javafx.base;
 }
