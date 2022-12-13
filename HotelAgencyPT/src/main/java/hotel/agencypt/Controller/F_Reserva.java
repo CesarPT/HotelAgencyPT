@@ -40,6 +40,8 @@ public class F_Reserva implements Initializable {
     @FXML
     private TextField textNoites;
     @FXML
+    private TextField nomeCliente;
+    @FXML
     public DatePicker datePickerI = new DatePicker();
     @FXML
     public DatePicker datePickerF = new DatePicker();
@@ -69,8 +71,7 @@ public class F_Reserva implements Initializable {
     String idQuarto;
     Integer index = -1;
     List<Servico> arrayServico = new ArrayList<>();
-    List<Cliente> arrayCliente = new ArrayList<>();
-
+    List<Utilizador> arrayUtilizador = new ArrayList<>();
     ServicoDAO servicoDAO = new ServicoDAO();
     QuartoDAO quartoDAO = new QuartoDAO();
     ArrayList<String> listaqq = new ArrayList<>();
@@ -81,6 +82,9 @@ public class F_Reserva implements Initializable {
 
         cboxTquarto.setItems(listTquarto);
 
+        /**
+         * percorre todos os serviços da base de dados na tabela Serviços
+         */
         arrayServico = servicoDAO.findServico();
         for (Servico s : arrayServico) {
             System.out.println(s.getDescricao());
@@ -88,6 +92,10 @@ public class F_Reserva implements Initializable {
                     s.getDescricao() + " " + s.getPreco()
             );
         }
+
+        /**
+         * deixa selecionar
+         */
         listServtodos.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
@@ -102,17 +110,15 @@ public class F_Reserva implements Initializable {
             }
         });
 
-
-
-        arrayCliente = ClienteDAO.findidCliente();
-        for (Cliente c : arrayCliente) {
-            listServtodos.getItems().add(String.valueOf(c.getIdCliente()));
+        arrayUtilizador = UtilizadorDAO.findClientepReserva();
+        for (Utilizador u : arrayUtilizador) {
+            listidClienteInsere.getItems().add(String.valueOf(u.getNomeUtilizador()));
         }
 
         listidClienteInsere.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                idClient = Integer.parseInt(listidClienteInsere.getSelectionModel().getSelectedItem());
+                idCliente = listidClienteInsere.getSelectionModel().getSelectedItem();
             }
         });
 
@@ -266,6 +272,7 @@ public class F_Reserva implements Initializable {
 
     @FXML
     int idClient;
+    String idCliente;
     int idClientV = 0;
     ClienteDAO clienteDAO = new ClienteDAO();
 
@@ -325,15 +332,24 @@ public class F_Reserva implements Initializable {
         });
     }
 
+    String pesquisadcliente;
+    @FXML
+    public void onNomeCliente() {
+        pesquisadcliente = nomeCliente.getText();
+        //System.out.println(pesquisadcliente);
+        UtilizadorDAO.findClientepReservaCnome(pesquisadcliente);
+        listidClienteInsere.getItems().clear();
+        listidClienteInsere.getSelectionModel().clearSelection();
+        listidClienteInsere.getItems().add(pesquisadcliente);
+    }
+
+
 
     ReservaDAO reservaDAO;
     Reserva reserva = new Reserva();
 
     @FXML
     public void onCriaReserva(ActionEvent event) {
-
-
-
 
 
         if (datePickerI.getValue() == null || datePickerF.getValue() == null) {
@@ -380,6 +396,8 @@ public class F_Reserva implements Initializable {
             }
         }
     }
+
+
 
 
     int ultimaReserv;
