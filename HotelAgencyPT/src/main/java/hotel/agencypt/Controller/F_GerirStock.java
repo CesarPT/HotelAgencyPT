@@ -162,7 +162,7 @@ public class F_GerirStock implements Initializable {
         try {
             Stage window = (Stage) TableViewStock.getScene().getWindow();
             window.close();
-            Singleton.open("StockQuartos", "User: " + Controller.getInstance().getUsername() + " | Hotel >> Stock de Quartos");
+            Singleton.open("F_StockQuartos", "User: " + Controller.getInstance().getUsername() + " | Hotel >> Stock de Quartos");
         } catch (Exception e) {
             System.out.println("Erro ao abrir/fechar o scene");
         }
@@ -176,7 +176,8 @@ public class F_GerirStock implements Initializable {
     @FXML
     public void voltarAtras(ActionEvent actionEvent) {
         try {
-            Singleton.open("funcionariointerface", "Hotel >> Funcionário");
+            Singleton.open("funcionariointerface", "User: " + Controller.getInstance().getUsername()
+                    + " Hotel >> Funcionário");
         } catch (Exception e) {
             System.out.println("Erro ao voltar atrás.");
         }

@@ -70,11 +70,9 @@ public class F_interface {
      *
      * @param event Ação do evento
      */
-    public void abrirConfigQuarto(ActionEvent event) {
+    public void abrirServicosQuarto(ActionEvent event) {
         try {
-            Stage window = (Stage) RoomServices.getScene().getWindow();
-            window.close();
-            Singleton.open("GH_ConfigQuarto", "Hotel >> Funcionario >> Configurar quarto");
+
         } catch (Exception e) {
             System.out.println("Erro ao fechar/abrir o stage.");
         }

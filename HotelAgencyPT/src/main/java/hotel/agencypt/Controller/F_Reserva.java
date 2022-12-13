@@ -2,14 +2,9 @@ package hotel.agencypt.Controller;
 
 //Bibliotecas
 
+import Classes.*;
 import Classes.Cliente;
-import Classes.DAO.ClienteDAO;
-import Classes.DAO.QuartoDAO;
-import Classes.DAO.ReservaDAO;
-import Classes.DAO.ServicoDAO;
-import Classes.Quarto;
-import Classes.Reserva;
-import Classes.Servico;
+import Classes.DAO.*;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -63,6 +58,8 @@ public class F_Reserva implements Initializable {
     private ListView<String> listServtodos;
     @FXML
     private ListView<String> listServesco;
+    @FXML
+    private ListView<String>listidClienteInsere;
 
     //var para selecionar na Listview dos servicos
     String servicoselct;
@@ -72,6 +69,8 @@ public class F_Reserva implements Initializable {
     String idQuarto;
     Integer index = -1;
     List<Servico> arrayServico = new ArrayList<>();
+    List<Cliente> arrayCliente = new ArrayList<>();
+
     ServicoDAO servicoDAO = new ServicoDAO();
     QuartoDAO quartoDAO = new QuartoDAO();
     ArrayList<String> listaqq = new ArrayList<>();
@@ -100,10 +99,23 @@ public class F_Reserva implements Initializable {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
                 servicoselce = listServesco.getSelectionModel().getSelectedItem();
-
-
             }
         });
+
+
+
+        arrayCliente = ClienteDAO.findidCliente();
+        for (Cliente c : arrayCliente) {
+            listServtodos.getItems().add(String.valueOf(c.getIdCliente()));
+        }
+
+        listidClienteInsere.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                idClient = Integer.parseInt(listidClienteInsere.getSelectionModel().getSelectedItem());
+            }
+        });
+
         //drop box dos tipos de quartos
         cboxTquarto.setItems(listTquarto);
     }
@@ -252,11 +264,9 @@ public class F_Reserva implements Initializable {
     }
 
 
-    String idCliente;
-    int idClientV = 0;
     @FXML
-    TextField idClienteInsere;
-    List<Cliente> arrayCliente = new ArrayList<>();
+    int idClient;
+    int idClientV = 0;
     ClienteDAO clienteDAO = new ClienteDAO();
 
 
@@ -273,17 +283,11 @@ public class F_Reserva implements Initializable {
             alert.setHeaderText("Datas inválidas");
             alert.setContentText("A data de fim deve ser maior que a data de inicio.");
             alert.showAndWait();
-        } else if (cboxTquarto.getSelectionModel().isEmpty() || idClienteInsere.getText().isEmpty()) {
+        } else if (cboxTquarto.getSelectionModel().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Aviso");
             alert.setHeaderText("Sem seleção");
             alert.setContentText("Selecione um tipo de quarto e um quarto disponível.");
-            alert.showAndWait();
-        } else if (!idClienteInsere.getText().matches("^[1-500]*$")) {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Aviso");
-            alert.setHeaderText("Texto inválido: id cliente");
-            alert.setContentText("Escreva o seu número de cliente.");
             alert.showAndWait();
         } else if (!listServesco.getItems().toString().contains("Base")) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -292,7 +296,6 @@ public class F_Reserva implements Initializable {
             alert.setContentText("A reserva tem que ter o serviço: base que está incluida em todos os quartos.");
             alert.showAndWait();
         } else {
-            idQuarto = idClienteInsere.getText();
 
             //Preço do quarto, noites e Preço total
             Controller.getInstance().setIdquarto(Integer.parseInt(idQuarto));
@@ -313,25 +316,26 @@ public class F_Reserva implements Initializable {
         }
     }
 
-    @FXML
-    public void onidClienteInsere() {
-        idCliente = idClienteInsere.getText();
-
-        //System.out.println(idCliente);
-        //System.out.println(Integer.parseInt(idCliente));
-        arrayCliente = clienteDAO.findClienteCid(Integer.parseInt(idCliente));
-        for (Cliente c : arrayCliente) {
-            System.out.println(c.getIdCliente());
-            idClientV = c.getIdCliente();
-        }
-
+    public void clientescolhido(){
+        listidClienteInsere.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                idClient = Integer.parseInt(listidClienteInsere.getSelectionModel().getSelectedItem());
+            }
+        });
     }
+
 
     ReservaDAO reservaDAO;
     Reserva reserva = new Reserva();
 
     @FXML
     public void onCriaReserva(ActionEvent event) {
+
+
+
+
+
         if (datePickerI.getValue() == null || datePickerF.getValue() == null) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Aviso");
@@ -344,17 +348,11 @@ public class F_Reserva implements Initializable {
             alert.setHeaderText("Datas inválidas");
             alert.setContentText("A data de fim deve ser maior que a data de inicio.");
             alert.showAndWait();
-        } else if (cboxTquarto.getSelectionModel().isEmpty() || idClienteInsere.getText().isEmpty()) {
+        } else if (cboxTquarto.getSelectionModel().isEmpty() ) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Aviso");
             alert.setHeaderText("Sem seleção");
             alert.setContentText("Selecione um tipo de quarto e um quarto disponível.");
-            alert.showAndWait();
-        } else if (!idClienteInsere.getText().matches("^[1-500]*$")) {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Aviso");
-            alert.setHeaderText("Texto inválido: id cliente");
-            alert.setContentText("Escreva o seu número de cliente.");
             alert.showAndWait();
         } else if (!listServesco.getItems().toString().contains("Base")) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -364,14 +362,14 @@ public class F_Reserva implements Initializable {
             alert.showAndWait();
         } else {
             onEsTquarto();
-            onidClienteInsere();
+            idClient = listidClienteInsere.getSelectionModel().getSelectedIndex();
+            clientescolhido();
 
 
-            if (idClientV != 0 || myDateI != null || myDateF != null) {
+            if (idClient != 0 || myDateI != null || myDateF != null) {
                 //Criar a reserva
-                reserva.setIdcliente(idClientV);
+                reserva.setIdcliente(idClient);
                 reserva.setIdquarto(idQuartoesc);
-                reserva.setNumcartao(1);
                 reserva.setDataI(datai);
                 reserva.setDataF(dataf);
 
