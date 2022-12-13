@@ -4,7 +4,6 @@ import Classes.Cliente;
 import DataBase.ConnectionDB;
 import hotel.agencypt.Controller.Controller;
 
-import javax.sound.sampled.Control;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,6 +14,7 @@ import java.util.List;
 public class ClienteDAO {
     private static Connection con = ConnectionDB.establishConnection();
 
+<<<<<<< HEAD
     /**
      * Ligar à base de dados
      */
@@ -49,20 +49,18 @@ public class ClienteDAO {
 
 
 
+=======
+>>>>>>> a7df0e6abf9c8f5d49f1c1ff777884b5518cb162
     public List<Cliente> findClienteCid(int idcliente) {
         String sql = "SELECT idcliente\n" +
                 "FROM Cliente\n" +
                 "WHERE idcliente='" + idcliente + "'";
 
-
         List<Cliente> listCliente = new ArrayList<>();
 
-
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
         try {
-            stmt = con.prepareStatement(sql);
-            rs = stmt.executeQuery();
+            PreparedStatement stmt = con.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
                 Cliente cliente = new Cliente();
@@ -72,8 +70,6 @@ public class ClienteDAO {
 
         } catch (SQLException e) {
             System.err.println("[ERRO]: findRegEntradaQuarto " + e.getMessage());
-        } finally {
-            ConnectionDB.closeConnection(con, stmt, rs);
         }
         return listCliente;
     }

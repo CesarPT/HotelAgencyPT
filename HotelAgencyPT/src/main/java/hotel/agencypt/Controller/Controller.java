@@ -5,6 +5,7 @@ package hotel.agencypt.Controller;
  */
 public class Controller {
     private String username;
+    private char tipo_user;
     private int piso;
     private int idquarto;
     private final static Controller INSTANCE = new Controller();
@@ -31,6 +32,14 @@ public class Controller {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public char getTipo_user() {
+        return tipo_user;
+    }
+
+    public void setTipo_user(char tipo_user) {
+        this.tipo_user = tipo_user;
     }
 
     public int getPiso() {

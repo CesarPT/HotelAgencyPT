@@ -3,9 +3,7 @@ package hotel.agencypt.Controller;
 import Classes.Cliente;
 import Classes.DAO.ClienteDAO;
 import Classes.DAO.FeedbackDAO;
-import Classes.DAO.ReservaDAO;
 import Classes.Feedback;
-import Classes.Reserva;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -13,7 +11,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
-import java.awt.*;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +26,7 @@ public class C_CriarFeedback implements Initializable {
 
     ClienteDAO cDAO = new ClienteDAO();
     List<Classes.Cliente> arrayCliente = new ArrayList<>();
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         arrayCliente = cDAO.findIDCliente();
@@ -40,14 +38,14 @@ public class C_CriarFeedback implements Initializable {
     /**
      * Quando clica no + adiciona a reclamação
      */
-    public void adicionarReclamacao(){
-        if (textReclamacao.getText().length() < 30){
+    public void adicionarReclamacao() {
+        if (textReclamacao.getText().length() < 30) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Aviso");
             alert.setHeaderText("Sem descrição");
             alert.setContentText("Crie uma descrição maior.");
             alert.showAndWait();
-        } else if (textReclamacao.getText().length() > 500){
+        } else if (textReclamacao.getText().length() > 500) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Aviso");
             alert.setHeaderText("Descrição grande");
@@ -68,17 +66,18 @@ public class C_CriarFeedback implements Initializable {
             alert.showAndWait();
         }
     }
+
     /**
      * Quando clica no + adiciona a sugestão
      */
-    public void adicionarSugestao(){
-        if (textSugestao.getText().length() < 30){
+    public void adicionarSugestao() {
+        if (textSugestao.getText().length() < 30) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Aviso");
             alert.setHeaderText("Sem descrição");
             alert.setContentText("Crie uma descrição maior.");
             alert.showAndWait();
-        } else if (textSugestao.getText().length() > 500){
+        } else if (textSugestao.getText().length() > 500) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Aviso");
             alert.setHeaderText("Descrição grande");

@@ -68,8 +68,7 @@ public class RegisterController implements Initializable {
     public void registerButtonOnAction(ActionEvent event) {
         String user = usernameTextField.getText();
         verifyPass();
-        boolean vUser = verifyUser(user);
-        if (vUser == false) {
+        if (verifyUser(user) == false) {
             VerifyUserLabel.setText("O nome já existe!");
         } else {
             VerifyUserLabel.setText("");
@@ -129,11 +128,12 @@ public class RegisterController implements Initializable {
 
 
         //Inserção dos dados na base de dados
-        String insertFields = "INSERT INTO Utilizador(nomeuser, password, tipouser) VALUES('";
-        String insertValues = username + "' , '" + encrypt + "' , '" + tipouser + "')";
-        String insertToRegister = insertFields + insertValues;
-        RegisterDAO.Register(tipouser, username, insertToRegister);
-        JOptionPane.showMessageDialog(frame, "Registado com sucesso!");
+        boolean registe = RegisterDAO.Register(tipouser, username, encrypt);
+        if (registe == true) {
+            JOptionPane.showMessageDialog(frame, "Registado com sucesso!");
+        } else {
+            JOptionPane.showMessageDialog(frame, "Registo sem sucesso!");
+        }
     }
 
 

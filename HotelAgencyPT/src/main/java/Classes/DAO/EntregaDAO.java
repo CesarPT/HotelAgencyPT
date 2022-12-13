@@ -10,19 +10,11 @@ import java.sql.SQLException;
 
 public class EntregaDAO {
     private static Connection con = ConnectionDB.establishConnection();
-    ;
-
-    /**
-     * Ligar à base de dados
-     */
-    public EntregaDAO() {
-    }
 
     public boolean insertEntradaInfo(Entrega entrega) {
         String sql = "INSERT INTO Entrega (orderNumber,data_entrega, party_identifier, empresa, rua, n_porta, cidade, cp , pais) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        PreparedStatement stmt = null;
         try {
-            stmt = con.prepareStatement(sql);
+            PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setString(1, entrega.getOrderNumber());
             stmt.setDate(2, (Date) entrega.getData_entrega());
             stmt.setString(3, entrega.getParty_identifier());
@@ -38,8 +30,6 @@ public class EntregaDAO {
         } catch (SQLException e) {
             System.err.println("[ERRO]: insertEntradaInfo " + e.getMessage());
             return false;
-        } finally {
-            ConnectionDB.closeConnection(con, stmt);
         }
     }
 

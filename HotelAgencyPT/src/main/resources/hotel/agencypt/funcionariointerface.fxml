@@ -56,7 +56,7 @@
               style="-fx-background-color: white; -fx-background-radius: 20;">
             <children>
                 <Button fx:id="RoomServices" layoutX="14.0" layoutY="14.0" mnemonicParsing="false"
-                        onAction="#abrirConfigQuarto" text="Assitstir serviços de quarto">
+                        onAction="#abrirServicosQuarto" text="Assistir serviços de quarto">
                     <font>
                         <Font size="15.0"/>
                     </font>
