@@ -15,14 +15,7 @@ import java.util.List;
  * Classe pública que recebe dados da Base de Dados
  */
 public class CartaoDAO {
-    private Connection con;
-
-    /**
-     * Ligar à base de dados
-     */
-    public CartaoDAO() {
-        con = ConnectionDB.establishConnection();
-    }
+    private Connection con = ConnectionDB.establishConnection();
 
     /**
      * Método para pesquisar o cartão com o username
@@ -38,28 +31,19 @@ public class CartaoDAO {
                 "ON Utilizador.iduser = Cliente.iduser\n" +
                 "WHERE Utilizador.nomeuser=" + "'" + Controller.getInstance().getUsername() + "'";
 
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
-
         List<Cartao> listcartao = new ArrayList<>();
-
         try {
-            con = ConnectionDB.establishConnection();
-            stmt = con.prepareStatement(sql);
-            rs = stmt.executeQuery();
+            PreparedStatement stmt = con.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
                 Cartao cartao = new Cartao();
                 cartao.setNumcartao(rs.getInt("numcartao"));
-                cartao.setDatacriacao(rs.getDate("datacriacao"));
-                cartao.setDataexp(rs.getDate("dataexp"));
                 listcartao.add(cartao);
             }
 
         } catch (SQLException e) {
             System.err.println("[ERRO]: findCartao " + e.getMessage());
-        } finally {
-            ConnectionDB.closeConnection(con, stmt, rs);
         }
         return listcartao;
     }

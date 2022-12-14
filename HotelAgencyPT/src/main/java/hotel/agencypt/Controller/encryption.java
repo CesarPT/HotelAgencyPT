@@ -1,25 +1,10 @@
 package hotel.agencypt.Controller;
 
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
-
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-public class C_registoteste {
-
-    @FXML
-    private Button butaoteste;
-
-    @FXML
-    private PasswordField passwordController;
-
-    public void validarPassword() {
-        String password;
-        password = passwordController.getText();
-        String encryptedpassword = null;
+public class encryption {
+    public static String encrypt(String password, String encryptedpassword) {
         try {
             /* MessageDigest instance for MD5. */
             MessageDigest m = MessageDigest.getInstance("MD5");
@@ -38,16 +23,11 @@ public class C_registoteste {
 
             /* Complete hashed password in hexadecimal format */
             encryptedpassword = s.toString();
-        } catch (NoSuchAlgorithmException e) {
+        } catch (
+                NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
-        System.out.println("Plain-Text password: " + password);
-        System.out.println("encryptrdpassword:" + encryptedpassword);
-    }
-
-    @FXML
-    void onClick(ActionEvent event) {
-        validarPassword();
+        return encryptedpassword;
     }
 
 }

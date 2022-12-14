@@ -15,14 +15,7 @@ import java.util.List;
  * Classe pública que recebe dados da Base de Dados
  */
 public class RegEntradaDAO {
-    private Connection con;
-
-    /**
-     * Ligar à base de dados
-     */
-    public RegEntradaDAO() {
-        con = ConnectionDB.establishConnection();
-    }
+    private Connection con = ConnectionDB.establishConnection();
 
     /**
      * Método para pesquisar o cartão com o username
@@ -40,15 +33,11 @@ public class RegEntradaDAO {
                 "ON Utilizador.iduser = Cliente.iduser\n" +
                 "WHERE Utilizador.nomeuser='" + Controller.getInstance().getUsername() + "'";
 
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
-
         List<RegEntrada> listRegEntrada = new ArrayList<>();
 
         try {
-            con = ConnectionDB.establishConnection();
-            stmt = con.prepareStatement(sql);
-            rs = stmt.executeQuery();
+            PreparedStatement stmt = con.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
                 RegEntrada regentrada = new RegEntrada();
@@ -63,8 +52,6 @@ public class RegEntradaDAO {
 
         } catch (SQLException e) {
             System.err.println("[ERRO]: findRegEntradaQuarto " + e.getMessage());
-        } finally {
-            ConnectionDB.closeConnection(con, stmt, rs);
         }
         return listRegEntrada;
     }
@@ -77,9 +64,8 @@ public class RegEntradaDAO {
      */
     public boolean insertRegEntrada(RegEntrada regentrada) {
         String sql = "INSERT INTO RegEntrada (numcartao, local, data, hora) VALUES (?, ?, ?, ?)";
-        PreparedStatement stmt = null;
         try {
-            stmt = con.prepareStatement(sql);
+            PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setInt(1, regentrada.getNumcartao());
             stmt.setString(2, regentrada.getLocal());
             stmt.setString(3, regentrada.getData());
@@ -89,8 +75,6 @@ public class RegEntradaDAO {
         } catch (SQLException e) {
             System.err.println("[ERRO]: insertRegEntrada " + e.getMessage());
             return false;
-        } finally {
-            ConnectionDB.closeConnection(con, stmt);
         }
     }
 
@@ -109,15 +93,11 @@ public class RegEntradaDAO {
                 "INNER JOIN Utilizador\n" +
                 "ON Utilizador.iduser = Cliente.iduser";
 
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
-
         List<RegEntrada> listRegEntrada = new ArrayList<>();
 
         try {
-            con = ConnectionDB.establishConnection();
-            stmt = con.prepareStatement(sql);
-            rs = stmt.executeQuery();
+            PreparedStatement stmt = con.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
                 RegEntrada regentrada = new RegEntrada();
@@ -129,8 +109,6 @@ public class RegEntradaDAO {
 
         } catch (SQLException e) {
             System.err.println("[ERRO]: findTodosCartoes " + e.getMessage());
-        } finally {
-            ConnectionDB.closeConnection(con, stmt, rs);
         }
         return listRegEntrada;
     }

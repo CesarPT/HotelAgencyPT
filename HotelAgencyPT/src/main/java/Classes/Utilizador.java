@@ -22,6 +22,10 @@ public class Utilizador {
         this.nomeUtilizador = nomeUtilizador;
     }
 
+    public Utilizador() {
+
+    }
+
     /**
      * Devolve:
      *

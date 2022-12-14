@@ -1,28 +1,53 @@
 package Classes.DAO;
 
 import Classes.Entrega;
+import Classes.Stock;
 import DataBase.ConnectionDB;
 
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class EntregaDAO {
-    private static Connection con;
+    private static Connection con = ConnectionDB.establishConnection();
 
-    /**
-     * Ligar à base de dados
-     */
-    public EntregaDAO() {
-        con = ConnectionDB.establishConnection();
+    public List<Entrega> findEntrega() {
+        String sql = "SELECT orderNumber, data_entrega, party_identifier, empresa,\n" +
+                "\t   rua, n_porta, cidade, cp, pais\n" +
+                "FROM Entrega";
+
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        List<Entrega> listEntrega = new ArrayList<>();
+
+        //Limpar tudo e Adicionar todas as entradas de stock
+        try {
+            stmt = con.prepareStatement(sql);
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                Entrega entrega = new Entrega();
+                entrega.setOrderNumber(rs.getString("orderNumber"));
+                entrega.setData_entrega(rs.getDate("data_entrega"));
+                entrega.setParty_identifier(rs.getString("party_identifier"));
+                entrega.setEmpresa(rs.getString("empresa"));
+                entrega.setRua(rs.getString("rua"));
+                entrega.setCidade(rs.getString("cidade"));
+                entrega.setCp(rs.getString("cp"));
+                entrega.setPais(rs.getString("pais"));
+                listEntrega.add(entrega);
+            }
+        } catch (SQLException e) {
+            System.out.println("[ERRO]: findEntrega |" + e.getMessage());
+        }
+        return listEntrega;
     }
 
     public boolean insertEntradaInfo(Entrega entrega) {
         String sql = "INSERT INTO Entrega (orderNumber,data_entrega, party_identifier, empresa, rua, n_porta, cidade, cp , pais) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        PreparedStatement stmt = null;
         try {
-            stmt = con.prepareStatement(sql);
+            PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setString(1, entrega.getOrderNumber());
             stmt.setDate(2, (Date) entrega.getData_entrega());
             stmt.setString(3, entrega.getParty_identifier());
@@ -38,8 +63,6 @@ public class EntregaDAO {
         } catch (SQLException e) {
             System.err.println("[ERRO]: insertEntradaInfo " + e.getMessage());
             return false;
-        } finally {
-            ConnectionDB.closeConnection(con, stmt);
         }
     }
 

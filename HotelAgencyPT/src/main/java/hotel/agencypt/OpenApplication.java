@@ -1,6 +1,5 @@
 package hotel.agencypt;
 
-import hotel.agencypt.Controller.Controller;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -25,10 +24,8 @@ public class OpenApplication extends Application {
     }
 
     public static void main(String[] args) throws Exception {
-        //metodo para ler e dar print na consola o xml
-        //Lexml();
-        launch();
 
+        launch();
     }
 
 }

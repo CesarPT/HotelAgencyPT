@@ -14,14 +14,7 @@ import java.util.List;
  * Classe pública que recebe dados da Base de Dados
  */
 public class ServicoDAO {
-    private static Connection con;
-
-    /**
-     * Ligar à base de dados
-     */
-    public ServicoDAO() {
-        con = ConnectionDB.establishConnection();
-    }
+    private static Connection con = ConnectionDB.establishConnection();
 
     /**
      * Método para pesquisar reservas pelo username
@@ -29,15 +22,11 @@ public class ServicoDAO {
     public static List<Servico> findServico() {
         String sql = "SELECT idservico, descricao,preco from Servico";
 
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
-
         List<Servico> listservico = new ArrayList<>();
 
         try {
-            con = ConnectionDB.establishConnection();
-            stmt = con.prepareStatement(sql);
-            rs = stmt.executeQuery();
+            PreparedStatement stmt = con.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
                 Servico servico = new Servico();
@@ -45,14 +34,10 @@ public class ServicoDAO {
                 servico.setDescricao(rs.getString("descricao"));
                 servico.setPreco(rs.getFloat("preco"));
 
-
                 listservico.add(servico);
             }
-
         } catch (SQLException e) {
             System.err.println("[ERRO]: findServico " + e.getMessage());
-        } finally {
-            ConnectionDB.closeConnection(con, stmt, rs);
         }
         return listservico;
     }
@@ -61,15 +46,11 @@ public class ServicoDAO {
     public static List<Servico> findServicoEsc(String descricao) {
         String sql = "SELECT idservico from Servico where descricao='" + descricao + "'";
 
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
-
         List<Servico> listservico = new ArrayList<>();
 
         try {
-            con = ConnectionDB.establishConnection();
-            stmt = con.prepareStatement(sql);
-            rs = stmt.executeQuery();
+            PreparedStatement stmt = con.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
                 Servico servico = new Servico();
@@ -80,10 +61,7 @@ public class ServicoDAO {
 
         } catch (SQLException e) {
             System.err.println("[ERRO]: findServico " + e.getMessage());
-        } finally {
-            ConnectionDB.closeConnection(con, stmt, rs);
         }
         return listservico;
     }
-
 }

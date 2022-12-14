@@ -10,15 +10,13 @@
 <AnchorPane prefHeight="510.0" prefWidth="898.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="hotel.agencypt.Controller.F_GerirStock">
     <children>
-        <Pane layoutX="43.0" layoutY="59.0" prefHeight="450.0" prefWidth="857.0" style="-fx-background-color: gray;">
-            <children>
-                <Label layoutX="14.0" layoutY="183.0" text="Entregas:">
-                    <font>
-                        <Font size="18.0"/>
-                    </font>
-                </Label>
-            </children>
-        </Pane>
+        <Pane layoutX="44.0" layoutY="307.0" prefHeight="202.0" prefWidth="857.0" style="-fx-background-color: gray;"/>
+        <Label layoutX="51.0" layoutY="242.0" text="Entregas:">
+            <font>
+                <Font size="18.0"/>
+            </font>
+        </Label>
+        <Pane layoutX="43.0" layoutY="59.0" prefHeight="179.0" prefWidth="857.0" style="-fx-background-color: gray;"/>
         <Label layoutX="791.0" layoutY="23.0" text="Gerir Stock">
             <font>
                 <Font size="18.0"/>
@@ -50,7 +48,7 @@
                 <TableColumn fx:id="TableColumnPrecoTotal" prefWidth="89.0" text="Preço Total (€)"/>
             </columns>
         </TableView>
-        <Label layoutX="58.0" layoutY="23.0" text="Entrada de Stock:">
+        <Label layoutX="58.0" layoutY="23.0" text="Stock em Armazem:">
             <font>
                 <Font size="18.0"/>
             </font>
@@ -69,5 +67,11 @@
                 <TableColumn fx:id="ColumnPais" prefWidth="77.0" text="País"/>
             </columns>
         </TableView>
+        <Button layoutX="337.0" layoutY="16.0" mnemonicParsing="false" onAction="#abrirStockQuartos"
+                text="Ver stock dos QUARTOS">
+            <font>
+                <Font size="14.0"/>
+            </font>
+        </Button>
     </children>
 </AnchorPane>

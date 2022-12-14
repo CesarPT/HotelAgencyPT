@@ -1,6 +1,10 @@
 package hotel.agencypt.Controller;
 
+import Classes.DAO.EntregaDAO;
+import Classes.DAO.QuartoStockDAO;
+import Classes.DAO.StockDAO;
 import Classes.Entrega;
+import Classes.QuartoStock;
 import Classes.Stock;
 import DataBase.ConnectionDB;
 import javafx.collections.FXCollections;
@@ -12,20 +16,22 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.ResourceBundle;
 
 /**
  * Classe pública do controlador GH_GerirStock.fxml
  */
 public class F_GerirStock implements Initializable {
-    private Connection con;
     @FXML
     protected Button button;
     @FXML
@@ -67,6 +73,10 @@ public class F_GerirStock implements Initializable {
     @FXML
     private TableColumn<Entrega, String> ColumnPais;
     ObservableList<Entrega> obsEntregas = FXCollections.observableArrayList();
+    EntregaDAO eDAO = new EntregaDAO();
+    List<Entrega> arrayEntrega = new ArrayList<>();
+    StockDAO sDAO = new StockDAO();
+    List<Stock> arrayStock = new ArrayList<>();
 
     /**
      * Insere valores nas TableViews e executa a barra de pesquisa
@@ -78,37 +88,26 @@ public class F_GerirStock implements Initializable {
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        String sql = "SELECT product_identifier, product_description, quantidade, tipo_qtd," +
-                "     preco, vat, preco_total\n" +
-                "FROM Stock";
-        String sql2 = "SELECT orderNumber, data_entrega, party_identifier, empresa,\n" +
-                "\t   rua, n_porta, cidade, cp, pais\n" +
-                "FROM Entrega";
+        String pid;
+        String pd;
+        int qtd;
+        String tipo_qtd;
+        float preco;
+        float vat;
+        float preco_total;
 
-
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
-
-        //Limpar tudo e Adicionar todas as entradas de stock
-        try {
-            con = ConnectionDB.establishConnection();
-            stmt = con.prepareStatement(sql);
-            rs = stmt.executeQuery();
-
-            while (rs.next()) {
-                String pid = rs.getString("product_identifier");
-                String pd = rs.getString("product_description");
-                Integer qtd = rs.getInt("quantidade");
-                String tipo_qtd = rs.getString("tipo_qtd");
-                Float preco = rs.getFloat("preco");
-                Float vat = rs.getFloat("vat");
-                Float preco_total = rs.getFloat("preco_total");
-
-                obsEntradas.add(new Stock(pid, pd, qtd, tipo_qtd, preco, vat, preco_total));
-            }
-        } catch (SQLException e) {
-            System.out.println("[ERRO]: Inserir valores no observableList obsEntradas");
+        arrayStock = sDAO.findStock();
+        for (Stock s : arrayStock) {
+            pid = s.getProduct_identifier();
+            pd = s.getProduct_description();
+            qtd = s.getQuantidade();
+            tipo_qtd = s.getTipo_qtd();
+            preco = s.getPreco();
+            vat = s.getVat();
+            preco_total = s.getPreco_total();
+            obsEntradas.add(new Stock(pid, pd, qtd, tipo_qtd, preco, vat, preco_total));
         }
+
         //Colocar os valores nas colunas da TableView
         TableColumnIDP.setCellValueFactory(new PropertyValueFactory<>("product_identifier"));
         TableColumDescricao.setCellValueFactory(new PropertyValueFactory<>("product_description"));
@@ -120,30 +119,30 @@ public class F_GerirStock implements Initializable {
         TableViewStock.setItems(obsEntradas);
 
         //TableView da Entrega
+        String oN;
+        Date data;
+        String pi;
+        String empresa;
+        String rua;
+        String porta;
+        String cidade;
+        String cp;
+        String pais;
 
-        try {
-            con = ConnectionDB.establishConnection();
-            stmt = con.prepareStatement(sql2);
-            rs = stmt.executeQuery();
-
-            while (rs.next()) {
-                String oN = rs.getString("orderNumber");
-                Date data = rs.getDate("data_entrega");
-                String pi = rs.getString("party_identifier");
-                String empresa = rs.getString("empresa");
-                String rua = rs.getString("rua");
-                String porta = rs.getString("n_porta");
-                String cidade = rs.getString("cidade");
-                String cp = rs.getString("cp");
-                String pais = rs.getString("pais");
-
-                obsEntregas.add(new Entrega(oN, data, pi, empresa, rua, porta, cidade, cp, pais));
-            }
-        } catch (SQLException e) {
-            System.out.println("[ERRO]: Inserir valores no observableList obsEntregas");
-        } finally {
-            ConnectionDB.closeConnection(con, stmt, rs);
+        arrayEntrega = eDAO.findEntrega();
+        for (Entrega e : arrayEntrega) {
+            oN = e.getOrderNumber();
+            data = e.getData_entrega();
+            pi = e.getPais();
+            empresa = e.getEmpresa();
+            rua = e.getRua();
+            porta = e.getN_porta();
+            cidade = e.getCidade();
+            cp = e.getCp();
+            pais = e.getPais();
+            obsEntregas.add(new Entrega(oN, data, pi, empresa, rua, porta, cidade, cp, pais));
         }
+
         //Colocar os valores nas colunas da TableView
         ColumnNumOrdem.setCellValueFactory(new PropertyValueFactory<>("orderNumber"));
         ColumnData.setCellValueFactory(new PropertyValueFactory<>("data_entrega"));
@@ -159,6 +158,16 @@ public class F_GerirStock implements Initializable {
 
     }
 
+    public void abrirStockQuartos() {
+        try {
+            Stage window = (Stage) TableViewStock.getScene().getWindow();
+            window.close();
+            Singleton.open("F_StockQuartos", "User: " + Controller.getInstance().getUsername() + " | Hotel >> Stock de Quartos");
+        } catch (Exception e) {
+            System.out.println("Erro ao abrir/fechar o scene");
+        }
+    }
+
     /**
      * Volta atrás para a View GestorHotel.fxml
      *
@@ -167,7 +176,8 @@ public class F_GerirStock implements Initializable {
     @FXML
     public void voltarAtras(ActionEvent actionEvent) {
         try {
-            Singleton.open("funcionariointerface", "Hotel >> Funcionário");
+            Singleton.open("funcionariointerface", "User: " + Controller.getInstance().getUsername()
+                    + " Hotel >> Funcionário");
         } catch (Exception e) {
             System.out.println("Erro ao voltar atrás.");
         }

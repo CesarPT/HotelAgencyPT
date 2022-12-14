@@ -1,7 +1,5 @@
 package Classes;
 
-import java.util.Date;
-
 public class ReservaServico {
     private int idreserva;
     private int idservico;
@@ -10,7 +8,9 @@ public class ReservaServico {
         this.idreserva = idreserva;
         this.idservico = idservico;
     }
-    public ReservaServico() {}
+
+    public ReservaServico() {
+    }
 
 
     public int getIdreserva() {

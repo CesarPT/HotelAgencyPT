@@ -28,7 +28,7 @@ import java.util.ResourceBundle;
  * Classe pública do controlador GH_RegistrosCartao.fxml
  */
 public class GH_RegistrosCartao implements Initializable {
-    private Connection con;
+    private Connection con = ConnectionDB.establishConnection();
     @FXML
     protected Button button;
     @FXML
@@ -77,7 +77,6 @@ public class GH_RegistrosCartao implements Initializable {
 
         //Limpar tudo e Adicionar todos os cartões
         try {
-            con = ConnectionDB.establishConnection();
             stmt = con.prepareStatement(sql);
             rs = stmt.executeQuery();
 
