@@ -64,6 +64,8 @@ public class C_CriarFeedback implements Initializable {
             alert.setTitle("Reclamação adicionada");
             alert.setContentText("Reclamação adicionada com sucesso. Obrigado :)");
             alert.showAndWait();
+
+            textReclamacao.setText("Descrição:");
         }
     }
 
@@ -96,6 +98,8 @@ public class C_CriarFeedback implements Initializable {
             alert.setTitle("Sugestão adicionada");
             alert.setContentText("Sugestão adicionada com sucesso. Obrigado :)");
             alert.showAndWait();
+
+            textReclamacao.setText("Descrição:");
         }
     }
 
