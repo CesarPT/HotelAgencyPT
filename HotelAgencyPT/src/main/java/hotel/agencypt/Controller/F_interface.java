@@ -10,6 +10,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -93,26 +94,31 @@ public class F_interface {
         }
     }
 
-    public void abrirVerFicheiro(ActionEvent event) {
-        try {
-            Stage window = (Stage) RoomServices.getScene().getWindow();
-            window.close();
-            Singleton.open("F_VerFicheiro", "User: " + Controller.getInstance().getUsername() +" | Hotel >> Funcionario >> Ver ficheiro");
-        } catch (Exception e) {
-            System.out.println("Erro ao fechar/abrir o stage.");
-        }
-    }
-
     /**
      * Abre a janela para fazer o Check-in.
      *
      * @param event Ação do evento
-     * @throws Exception Verificação das exceções
      */
-    public void FazerCheckIn(ActionEvent event) throws Exception {
+    public void FazerCheckIn(ActionEvent event) {
+        try {
         Stage window = (Stage) CheckIn.getScene().getWindow();
         window.close();
-        Singleton.open("Check_In", "Hotel >> Funcionario >> Check In");
+            Singleton.open("Check_In", "User: " + Controller.getInstance().getUsername()
+                    + " | Hotel >> Funcionário >> Check-In");
+        } catch (Exception e){
+            System.out.println("Erro ao abrir/fechar scene");
+        }
+    }
+
+    public void abrirApagarReservas(ActionEvent event){
+        try {
+            Stage window = (Stage) CheckIn.getScene().getWindow();
+            window.close();
+            Singleton.open("F_ApagarReserva", "User: " + Controller.getInstance().getUsername()
+                    + " | Hotel >> Funcionário >> Apagar reservas");
+        } catch (Exception e){
+            System.out.println("Erro ao abrir/fechar scene");
+        }
     }
 
     int ultimaReserv;

@@ -1,35 +1,24 @@
 package hotel.agencypt.Controller;
 
 import Classes.DAO.StockDAO;
-import Classes.Entrega;
 import Classes.Stock;
-import DataBase.ConnectionDB;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.FileChooser;
-import javafx.stage.Stage;
 
 import java.io.File;
-import java.net.URL;
 import java.nio.file.Path;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.ResourceBundle;
 
 /**
  * Classe pública do controlador GH_GerirStock.fxml
  */
-public class F_VerFicheiro {
+public class GH_ImportarXML {
     XMLpath instanceXML = new XMLpath();
     @FXML
     private ListView listCaminho;
@@ -134,8 +123,8 @@ public class F_VerFicheiro {
     @FXML
     public void voltarAtras(ActionEvent actionEvent) {
         try {
-            Singleton.open("funcionariointerface", "User: " + Controller.getInstance().getUsername()
-                    + " Hotel >> Funcionário");
+            Singleton.open("GestorHotel", "User: " + Controller.getInstance().getUsername()
+                    + " | Hotel >> Gestor de Hotel");
         } catch (Exception e) {
             System.out.println("Erro ao voltar atrás.");
         }
