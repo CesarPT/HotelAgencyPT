@@ -122,6 +122,17 @@ public class GestorHotel {
         }
     }
 
+    public void abrirFicheiroJSON(ActionEvent event) {
+        try {
+            Stage window = (Stage) button.getScene().getWindow();
+            window.close();
+            Singleton.open("GH_ImportarJSON", "User: " + Controller.getInstance().getUsername() +
+                    " | Hotel >> Gestor de Hotel >> Ver ficheiro JSON");
+        } catch (Exception e) {
+            System.out.println("Erro ao fechar/abrir o stage.");
+        }
+    }
+
 
     @FXML
     public void switchToLogin(ActionEvent actionEvent) {
