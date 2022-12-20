@@ -12,6 +12,7 @@ import java.util.List;
  * Classe pública que recebe dados da Base de Dados
  */
 public class ReservaDAO {
+    static StockDAO stockDAO = new StockDAO();
     private static Connection con = ConnectionDB.establishConnection();
 
     /**
@@ -72,17 +73,18 @@ public class ReservaDAO {
 
 
     public static boolean criaReserva(Reserva reserva) {
-        String sql = "INSERT INTO Reserva (idcliente,idquarto, numcartao,datai,dataf) Values (?,?,?,?,?)";
+        String sql = "INSERT INTO Reserva (idcliente,idquarto,datai,dataf) Values (?,?,?,?)";
 
         try {
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setInt(1, reserva.getIdcliente());
             stmt.setInt(2, reserva.getIdquarto());
-            stmt.setInt(3, reserva.getNumcartao());
-
-            stmt.setDate(4, (Date) reserva.getDataI());
-            stmt.setDate(5, (Date) reserva.getDataF());
+            stmt.setDate(3, (Date) reserva.getDataI());
+            stmt.setDate(4, (Date) reserva.getDataF());
             stmt.executeUpdate();
+
+            //Remover produtos base da tabela Stock
+            stockDAO.decrementarStock();
             return true;
         } catch (SQLException e) {
             System.err.println("[ERRO]: criarReserva " + e.getMessage());

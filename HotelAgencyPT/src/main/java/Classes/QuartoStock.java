@@ -1,7 +1,5 @@
 package Classes;
 
-import javafx.scene.paint.Color;
-
 public class QuartoStock {
     private String idstock;
     private int idquarto;
@@ -16,12 +14,14 @@ public class QuartoStock {
         product_description = productDescription;
         this.quantidade = quantidade;
     }
+
     public QuartoStock(int idquarto, String productDescription, float quantidade, String estado) {
         this.idquarto = idquarto;
         product_description = productDescription;
         this.quantidade = quantidade;
         this.estado = estado;
     }
+
     public QuartoStock() {
 
     }

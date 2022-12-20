@@ -1,9 +1,8 @@
 package Classes.DAO;
 
-import Classes.Quarto;
 import Classes.Stock;
 import DataBase.ConnectionDB;
-import hotel.agencypt.Controller.Controller;
+import javafx.scene.control.Alert;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -95,7 +94,7 @@ public class StockDAO {
         } catch (SQLException e) {
             System.err.println("[ERRO]: findItem " + e.getMessage());
 
-            verfica=false;
+            verfica = false;
         }
         return verfica;
     }
@@ -105,7 +104,7 @@ public class StockDAO {
             String product_identifier, int quantidade
     ) {
 
-        String sql = "UPDATE Stock set quantidade = quantidade +" + quantidade + " where product_identifier ='" + product_identifier +"'";
+        String sql = "UPDATE Stock set quantidade = quantidade +" + quantidade + " where product_identifier ='" + product_identifier + "'";
         try {
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.executeUpdate();
@@ -116,4 +115,31 @@ public class StockDAO {
         }
     }
 
+    public static boolean decrementarStock(
+    ) {
+
+        String sql = "UPDATE Stock set quantidade = quantidade - 1 " +
+                "WHERE product_identifier ='PZ-1989' " +
+                "OR product_identifier ='X569P'" +
+                "OR product_identifier ='XQF6324'";
+        try {
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.executeUpdate();
+
+            //Informação
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Informação");
+            alert.setHeaderText("Decrementar produtos");
+            alert.setContentText("""
+                    Os seguintes produtos foram decrementados do Stock:
+                    -1 Toalha de banho 400g cinza
+                    -1 Secador de cabelo Philips Preto
+                    -1 Rituals Condicionador/Champô de banho 200ml""");
+            alert.showAndWait();
+            return true;
+        } catch (SQLException e) {
+            System.err.println("[ERRO]: decrementarStock " + e.getMessage());
+            return false;
+        }
+    }
 }

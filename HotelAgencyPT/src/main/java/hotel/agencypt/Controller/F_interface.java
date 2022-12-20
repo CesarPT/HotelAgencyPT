@@ -10,7 +10,6 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -101,22 +100,22 @@ public class F_interface {
      */
     public void FazerCheckIn(ActionEvent event) {
         try {
-        Stage window = (Stage) CheckIn.getScene().getWindow();
-        window.close();
+            Stage window = (Stage) CheckIn.getScene().getWindow();
+            window.close();
             Singleton.open("Check_In", "User: " + Controller.getInstance().getUsername()
                     + " | Hotel >> Funcionário >> Check-In");
-        } catch (Exception e){
+        } catch (Exception e) {
             System.out.println("Erro ao abrir/fechar scene");
         }
     }
 
-    public void abrirApagarReservas(ActionEvent event){
+    public void abrirApagarReservas(ActionEvent event) {
         try {
             Stage window = (Stage) CheckIn.getScene().getWindow();
             window.close();
             Singleton.open("F_ApagarReserva", "User: " + Controller.getInstance().getUsername()
                     + " | Hotel >> Funcionário >> Apagar reservas");
-        } catch (Exception e){
+        } catch (Exception e) {
             System.out.println("Erro ao abrir/fechar scene");
         }
     }

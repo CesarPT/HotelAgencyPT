@@ -7,7 +7,8 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
@@ -34,22 +35,22 @@ public class F_StockQuartos implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-                arrayQuartoStock = qsDAO.findQuartoStock();
-                for (QuartoStock qs : arrayQuartoStock) {
-                    Integer idquarto = qs.getIdquarto();
-                    String pd = qs.getProduct_description();
-                    Float qtd = qs.getQuantidade();
-                    String estado;
-                    if (qtd <= 3){
-                        qs.setEstado("Critico!");
-                    } else if (qtd <= 9) {
-                        qs.setEstado("Pouco stock");
-                    } else {
-                        qs.setEstado("Stock suficiente");
-                    }
-                    estado = qs.getEstado();
-                    obsQuartoStock.add(new QuartoStock(idquarto, pd, qtd, estado));
+        arrayQuartoStock = qsDAO.findQuartoStock();
+        for (QuartoStock qs : arrayQuartoStock) {
+            Integer idquarto = qs.getIdquarto();
+            String pd = qs.getProduct_description();
+            Float qtd = qs.getQuantidade();
+            String estado;
+            if (qtd <= 3) {
+                qs.setEstado("Critico!");
+            } else if (qtd <= 9) {
+                qs.setEstado("Pouco stock");
+            } else {
+                qs.setEstado("Stock suficiente");
             }
+            estado = qs.getEstado();
+            obsQuartoStock.add(new QuartoStock(idquarto, pd, qtd, estado));
+        }
         columnQuarto.setCellValueFactory(new PropertyValueFactory<>("idquarto"));
         columnDescricao.setCellValueFactory(new PropertyValueFactory<>("product_description"));
         columnQuantidade.setCellValueFactory(new PropertyValueFactory<>("quantidade"));

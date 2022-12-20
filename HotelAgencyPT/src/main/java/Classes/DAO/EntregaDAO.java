@@ -1,7 +1,6 @@
 package Classes.DAO;
 
 import Classes.Entrega;
-import Classes.Stock;
 import DataBase.ConnectionDB;
 
 import java.sql.*;

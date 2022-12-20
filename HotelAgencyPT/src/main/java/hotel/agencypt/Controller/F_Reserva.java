@@ -2,9 +2,9 @@ package hotel.agencypt.Controller;
 
 //Bibliotecas
 
-import Classes.*;
 import Classes.Cliente;
 import Classes.DAO.*;
+import Classes.*;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -61,14 +61,13 @@ public class F_Reserva implements Initializable {
     @FXML
     private ListView<String> listServesco;
     @FXML
-    private ListView<String>listidClienteInsere;
+    private ListView<String> listidClienteInsere;
 
     //var para selecionar na Listview dos servicos
     String servicoselct;
     String servicoselce;
     String escolhaTquarto;
     String preco;
-    String idQuarto;
     Integer index = -1;
     List<Servico> arrayServico = new ArrayList<>();
     List<Utilizador> arrayUtilizador = new ArrayList<>();
@@ -87,7 +86,6 @@ public class F_Reserva implements Initializable {
          */
         arrayServico = servicoDAO.findServico();
         for (Servico s : arrayServico) {
-            System.out.println(s.getDescricao());
             listServtodos.getItems().add(
                     s.getDescricao() + " " + s.getPreco()
             );
@@ -270,8 +268,7 @@ public class F_Reserva implements Initializable {
     }
 
 
-    @FXML
-    int idClient;
+    String nomeC;
     String idCliente;
     int idClientV = 0;
     ClienteDAO clienteDAO = new ClienteDAO();
@@ -323,16 +320,12 @@ public class F_Reserva implements Initializable {
         }
     }
 
-    public void clientescolhido(){
-        listidClienteInsere.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                idClient = Integer.parseInt(listidClienteInsere.getSelectionModel().getSelectedItem());
-            }
-        });
+    public void clientescolhido() {
+        nomeC = listidClienteInsere.getSelectionModel().getSelectedItem();
     }
 
     String pesquisadcliente;
+
     @FXML
     public void onNomeCliente() {
         pesquisadcliente = nomeCliente.getText();
@@ -344,9 +337,9 @@ public class F_Reserva implements Initializable {
     }
 
 
-
     ReservaDAO reservaDAO = new ReservaDAO();
     Reserva reserva = new Reserva();
+
 
     @FXML
     public void onCriaReserva(ActionEvent event) {
@@ -364,7 +357,7 @@ public class F_Reserva implements Initializable {
             alert.setHeaderText("Datas inválidas");
             alert.setContentText("A data de fim deve ser maior que a data de inicio.");
             alert.showAndWait();
-        } else if (cboxTquarto.getSelectionModel().isEmpty() ) {
+        } else if (cboxTquarto.getSelectionModel().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Aviso");
             alert.setHeaderText("Sem seleção");
@@ -378,27 +371,37 @@ public class F_Reserva implements Initializable {
             alert.showAndWait();
         } else {
             onEsTquarto();
+<<<<<<< HEAD
 
             idClient = listidClienteInsere.getSelectionModel().getSelectedIndex();
+=======
+            nomeC = String.valueOf(listidClienteInsere.getSelectionModel().getSelectedIndex());
+>>>>>>> Development
             clientescolhido();
 
 
-            if (idClient != 0 || myDateI != null || myDateF != null) {
+            List<Cliente> arrayClienteID = new ArrayList<>();
+
+            if (nomeCliente != null || myDateI != null || myDateF != null) {
                 //Criar a reserva
-                reserva.setIdcliente(idClient);
+
+                Controller.getInstance().setUsername(nomeC);
+                arrayClienteID = clienteDAO.findIDCliente();
+
+                for (Cliente c : arrayClienteID) {
+                    nomeC = String.valueOf(c.getIdCliente());
+                }
+                reserva.setIdcliente(Integer.parseInt(nomeC));
                 reserva.setIdquarto(idQuartoesc);
                 reserva.setDataI(datai);
                 reserva.setDataF(dataf);
 
                 reservaDAO.criaReserva(reserva);
-
                 //Relação de tabela
                 RelacionaResServ();
             }
         }
     }
-
-
 
 
     int ultimaReserv;
@@ -464,9 +467,4 @@ public class F_Reserva implements Initializable {
 
     public void onIdCliente(ActionEvent event) {
     }
-
-
 }
-
-
-
