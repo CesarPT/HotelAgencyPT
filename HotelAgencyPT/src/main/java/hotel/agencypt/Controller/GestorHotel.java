@@ -40,6 +40,18 @@ public class GestorHotel {
         }
     }
 
+    @FXML
+    protected void onConfigurarServicos() {
+        try {
+            Stage window = (Stage) button.getScene().getWindow();
+            window.close();
+            Singleton.open("GH_ConfigServicos", "Hotel >> Gestor de Hotel >> Configurar Serviços");
+        } catch (Exception e) {
+            System.out.println("Erro ao fechar/abrir o stage.");
+        }
+    }
+
+
     /**
      * Fecha o stage atual e abre o stage próprio do botão
      */
@@ -94,10 +106,61 @@ public class GestorHotel {
         }
     }
 
+
+    /**
+     * Abrir scene F_ApagarReservas.fxml
+     */
+    public void abrirApagarReservas() {
+        try {
+            Stage window = (Stage) button.getScene().getWindow();
+            window.close();
+            Singleton.open("F_ApagarReserva", "Hotel >> Gestor de Hotel >> Apagar reservas");
+        } catch (Exception e) {
+            System.out.println("Erro ao fechar/abrir o stage.");
+        }
+    }
+
+    /**
+     * Abrir a scene para importar/confirmar ficheiro XML
+     *
+     * @param event
+     */
+    public void abrirFicheiroXML(ActionEvent event) {
+        try {
+            Stage window = (Stage) button.getScene().getWindow();
+            window.close();
+            Singleton.open("GH_ImportarXML", "User: " + Controller.getInstance().getUsername() +
+                    " | Hotel >> Gestor de Hotel >> Ver ficheiro XML");
+        } catch (Exception e) {
+            System.out.println("Erro ao fechar/abrir o stage.");
+        }
+    }
+
+    public void abrirFicheiroJSON(ActionEvent event) {
+        try {
+            Stage window = (Stage) button.getScene().getWindow();
+            window.close();
+            Singleton.open("GH_ImportarJSON", "User: " + Controller.getInstance().getUsername() +
+                    " | Hotel >> Gestor de Hotel >> Ver ficheiro JSON");
+        } catch (Exception e) {
+            System.out.println("Erro ao fechar/abrir o stage.");
+        }
+    }
+
+
+    @FXML
+    public void switchToLogin(ActionEvent actionEvent) {
+        try {
+            Singleton.open("Login", "Hotel Agency PT");
+        } catch (Exception e) {
+            System.out.println("Erro ao voltar atrás.");
+        }
+    }
+
     @FXML
     public void voltarAtras(ActionEvent actionEvent) {
         try {
-            Singleton.open("Login", "Hotel Agency PT");
+            Singleton.open("Login", "Hotel >> Login");
         } catch (Exception e) {
             System.out.println("Erro ao voltar atrás.");
         }

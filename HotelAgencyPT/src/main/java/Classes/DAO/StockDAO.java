@@ -2,6 +2,7 @@ package Classes.DAO;
 
 import Classes.Stock;
 import DataBase.ConnectionDB;
+import javafx.scene.control.Alert;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -51,12 +52,15 @@ public class StockDAO {
                 "preco, vat, preco_total\n" +
                 "FROM Stock";
 
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
         List<Stock> listStock = new ArrayList<>();
 
         //Limpar tudo e Adicionar todas as entradas de stock
         try {
-            PreparedStatement stmt = con.prepareStatement(sql);
-            ResultSet rs = stmt.executeQuery();
+            stmt = con.prepareStatement(sql);
+            rs = stmt.executeQuery();
 
             while (rs.next()) {
                 Stock stock = new Stock();
@@ -111,4 +115,31 @@ public class StockDAO {
         }
     }
 
+    public static boolean decrementarStock(
+    ) {
+
+        String sql = "UPDATE Stock set quantidade = quantidade - 1 " +
+                "WHERE product_identifier ='PZ-1989' " +
+                "OR product_identifier ='X569P'" +
+                "OR product_identifier ='XQF6324'";
+        try {
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.executeUpdate();
+
+            //Informação
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Informação");
+            alert.setHeaderText("Decrementar produtos");
+            alert.setContentText("""
+                    Os seguintes produtos foram decrementados do Stock:
+                    -1 Toalha de banho 400g cinza
+                    -1 Secador de cabelo Philips Preto
+                    -1 Rituals Condicionador/Champô de banho 200ml""");
+            alert.showAndWait();
+            return true;
+        } catch (SQLException e) {
+            System.err.println("[ERRO]: decrementarStock " + e.getMessage());
+            return false;
+        }
+    }
 }

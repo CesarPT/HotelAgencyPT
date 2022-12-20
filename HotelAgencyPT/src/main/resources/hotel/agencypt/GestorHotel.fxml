@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+
 <?import javafx.scene.control.*?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.image.Image?>
@@ -7,10 +8,10 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.*?>
-<AnchorPane prefHeight="381.0" prefWidth="578.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="hotel.agencypt.Controller.GestorHotel">
+<AnchorPane prefHeight="381.0" prefWidth="578.0" xmlns="http://javafx.com/javafx/17.0.2-ea"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="hotel.agencypt.Controller.GestorHotel">
     <children>
-        <ImageView fitHeight="344.0" fitWidth="530.0" layoutX="48.0" layoutY="56.0" pickOnBounds="true"
+        <ImageView fitHeight="330.0" fitWidth="530.0" layoutX="48.0" layoutY="56.0" pickOnBounds="true"
                    preserveRatio="true">
             <image>
                 <Image url="@../../Imagens/hotel.jpg"/>
@@ -34,6 +35,7 @@
                 <Cursor fx:constant="HAND"/>
             </cursor>
         </Button>
+
         <Pane layoutX="342.0" layoutY="213.0" prefHeight="156.0" prefWidth="200.0"
               style="-fx-background-color: white; -fx-background-radius: 20;">
             <children>
@@ -57,7 +59,7 @@
                 </Button>
             </children>
         </Pane>
-        <Button layoutX="92.0" layoutY="338.0" mnemonicParsing="false" onAction="#abrirConfigQuarto"
+        <Button layoutX="95.0" layoutY="178.0" mnemonicParsing="false" onAction="#abrirConfigQuarto"
                 text="Configurar quartos">
             <font>
                 <Font size="15.0"/>
@@ -69,7 +71,8 @@
                 <Font size="15.0"/>
             </font>
         </Button>
-        <Button layoutX="92.0" layoutY="133.0" mnemonicParsing="false" text="Apagar reservas">
+        <Button layoutX="92.0" layoutY="133.0" mnemonicParsing="false" onAction="#abrirApagarReservas"
+                text="Apagar reservas">
             <font>
                 <Font size="15.0"/>
             </font>
@@ -79,5 +82,34 @@
                 <Font name="System Bold" size="18.0"/>
             </font>
         </Label>
+        <Button layoutX="91.0" layoutY="221.0" mnemonicParsing="false" onAction="#onConfigurarServicos"
+                prefHeight="31.0" prefWidth="153.0" text="Configurar Serviços">
+            <font>
+                <Font size="15.0"/>
+            </font>
+        </Button>
+        <Label alignment="CENTER" layoutX="92.0" layoutY="267.0" text="Ficheiros">
+            <font>
+                <Font name="System Bold" size="18.0"/>
+            </font>
+        </Label>
+        <Button layoutX="92.0" layoutY="291.0" mnemonicParsing="false" onAction="#abrirFicheiroXML"
+                text="Importar ficheiro XML">
+            <font>
+                <Font size="15.0"/>
+            </font>
+        </Button>
+        <Button layoutX="451.0" layoutY="65.0" mnemonicParsing="false" onAction="#switchToLogin" prefHeight="36.0"
+                prefWidth="91.0" style="-fx-background-radius: 20;" text="Login">
+            <font>
+                <Font size="16.0"/>
+            </font>
+        </Button>
+        <Button layoutX="92.0" layoutY="329.0" mnemonicParsing="false" onAction="#abrirFicheiroJSON"
+                text="Importar ficheiro JSON">
+            <font>
+                <Font size="15.0"/>
+            </font>
+        </Button>
     </children>
 </AnchorPane>

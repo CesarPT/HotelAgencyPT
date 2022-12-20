@@ -45,7 +45,8 @@
                         <Font size="15.0"/>
                     </font>
                 </Button>
-                <Button layoutX="19.0" layoutY="60.0" mnemonicParsing="false" text="Apagar reservas">
+                <Button layoutX="19.0" layoutY="60.0" mnemonicParsing="false" onAction="#abrirApagarReservas"
+                        text="Apagar reservas">
                     <font>
                         <Font size="15.0"/>
                     </font>
