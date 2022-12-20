@@ -106,8 +106,7 @@ public class GestorHotel {
         }
     }
 
-<<<<<<< HEAD
-=======
+
     /**
      * Abrir scene F_ApagarReservas.fxml
      */
@@ -136,7 +135,6 @@ public class GestorHotel {
         }
     }
 
->>>>>>> 71e13ea00288bbbe2ce1ce00496abab7c10fa6e6
 
     @FXML
     public void switchToLogin(ActionEvent actionEvent) {
