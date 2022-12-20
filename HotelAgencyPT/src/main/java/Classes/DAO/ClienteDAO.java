@@ -69,6 +69,7 @@ public class ClienteDAO {
     }
 
 
+
     public List<Cliente> findIDCliente() {
         String sql = "SELECT idcliente\n" +
                 "FROM Cliente\n" +
