@@ -135,6 +135,17 @@ public class GestorHotel {
         }
     }
 
+    public void abrirFicheiroJSON(ActionEvent event) {
+        try {
+            Stage window = (Stage) button.getScene().getWindow();
+            window.close();
+            Singleton.open("GH_ImportarJSON", "User: " + Controller.getInstance().getUsername() +
+                    " | Hotel >> Gestor de Hotel >> Ver ficheiro JSON");
+        } catch (Exception e) {
+            System.out.println("Erro ao fechar/abrir o stage.");
+        }
+    }
+
 
     @FXML
     public void switchToLogin(ActionEvent actionEvent) {
@@ -145,6 +156,16 @@ public class GestorHotel {
         }
     }
 
+<<<<<<< HEAD
     public void voltarAtras(ActionEvent event) {
+=======
+    @FXML
+    public void voltarAtras(ActionEvent actionEvent) {
+        try {
+            Singleton.open("Login", "Hotel >> Login");
+        } catch (Exception e) {
+            System.out.println("Erro ao voltar atrás.");
+        }
+>>>>>>> 4a214b6a59eb2aee89378c8e679e4a3448fd1315
     }
 }
