@@ -6,7 +6,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.FileChooser;
 
@@ -47,6 +50,7 @@ public class GH_ImportarXML {
 
     /**
      * Clicar no botão de Importar XML
+     *
      * @param event
      */
     public void clicarBtnImportar(ActionEvent event) throws Exception {
@@ -57,7 +61,7 @@ public class GH_ImportarXML {
         File selectedFile = fc.showOpenDialog(null);
 
         //Se não selecionar
-        if (selectedFile != null){
+        if (selectedFile != null) {
             listCaminho.getItems().add(selectedFile.getAbsolutePath());
             //Ler ficheiro XML com o path que escolheu
             instanceXML.Lexml(Path.of(selectedFile.getAbsolutePath()));
@@ -67,7 +71,7 @@ public class GH_ImportarXML {
         }
     }
 
-    public void atualizarTableView(){
+    public void atualizarTableView() {
         //Limpar tableview
         TableViewStock.getItems().clear();
         //Mostrar na tableview

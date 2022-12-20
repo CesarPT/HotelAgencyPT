@@ -3,9 +3,6 @@ package hotel.agencypt.Controller;
 import Classes.DAO.FuncionarioDAO;
 import Classes.DAO.UtilizadorDAO;
 import Classes.EstadoFunc;
-import Classes.Funcionario;
-import Classes.Servico;
-import Classes.Utilizador;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -21,21 +18,22 @@ import java.util.ResourceBundle;
 /**
  * Classe pública do controlador GH_GerirStock.fxml
  */
-public class GH_GerirFuncionario  implements Initializable {
+public class GH_GerirFuncionario implements Initializable {
 
     @FXML
     private ListView<String> listFuncionarios;
 
-    List<EstadoFunc> arrayFuncionario=new ArrayList<>();
-    UtilizadorDAO utilizadorDAO=new UtilizadorDAO();
+    List<EstadoFunc> arrayFuncionario = new ArrayList<>();
+    UtilizadorDAO utilizadorDAO = new UtilizadorDAO();
 
     String utilizadorselect;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
         arrayFuncionario = utilizadorDAO.findAllFuncionarios();
         for (EstadoFunc estadoFunc : arrayFuncionario) {
-            listFuncionarios.getItems().add("Nome: "+ estadoFunc.getNomefunc() +" - "+ estadoFunc.getEstado()
+            listFuncionarios.getItems().add("Nome: " + estadoFunc.getNomefunc() + " - " + estadoFunc.getEstado()
             );
         }
 
@@ -54,27 +52,28 @@ public class GH_GerirFuncionario  implements Initializable {
 
     String textoformatado;
     int index;
+
     @FXML
-    public void AtivarFunc(){
+    public void AtivarFunc() {
 
 
-        index= utilizadorselect.indexOf("-");
-        textoformatado=utilizadorselect.substring(0,index);
-        textoformatado=textoformatado.replace("Nome:","");
-        textoformatado=textoformatado.trim();
+        index = utilizadorselect.indexOf("-");
+        textoformatado = utilizadorselect.substring(0, index);
+        textoformatado = textoformatado.replace("Nome:", "");
+        textoformatado = textoformatado.trim();
         System.out.println(textoformatado);
 
         FuncionarioDAO.updateAtiva(utilizadorselect);
     }
 
     @FXML
-    public void InativarFunc(){
-        index= utilizadorselect.indexOf("-");
-        textoformatado=utilizadorselect.substring(0,index);
-        textoformatado=textoformatado.replace("Nome:","");
-        textoformatado=textoformatado.trim();
+    public void InativarFunc() {
+        index = utilizadorselect.indexOf("-");
+        textoformatado = utilizadorselect.substring(0, index);
+        textoformatado = textoformatado.replace("Nome:", "");
+        textoformatado = textoformatado.trim();
         System.out.println(textoformatado);
-        
+
         FuncionarioDAO.updateInativa(utilizadorselect);
     }
 

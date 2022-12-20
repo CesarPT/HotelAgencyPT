@@ -2,6 +2,7 @@ package Classes.DAO;
 
 import Classes.QuartoStock;
 import DataBase.ConnectionDB;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,6 +15,7 @@ public class QuartoStockDAO {
 
     /**
      * Método para pesquisar o idquarto, descrição do produto e quantidade
+     *
      * @return lista
      */
     public List<QuartoStock> findQuartoStock() {

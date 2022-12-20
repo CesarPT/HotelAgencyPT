@@ -2,9 +2,9 @@ package hotel.agencypt.Controller;
 
 //Bibliotecas
 
-import Classes.*;
 import Classes.Cliente;
 import Classes.DAO.*;
+import Classes.*;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -16,7 +16,6 @@ import javafx.scene.control.*;
 
 import java.net.URL;
 import java.sql.Date;
-import java.sql.SQLException;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -62,7 +61,7 @@ public class F_Reserva implements Initializable {
     @FXML
     private ListView<String> listServesco;
     @FXML
-    private ListView<String>listidClienteInsere;
+    private ListView<String> listidClienteInsere;
 
     //var para selecionar na Listview dos servicos
     String servicoselct;
@@ -321,11 +320,12 @@ public class F_Reserva implements Initializable {
         }
     }
 
-    public void clientescolhido(){
-                nomeC = listidClienteInsere.getSelectionModel().getSelectedItem();
+    public void clientescolhido() {
+        nomeC = listidClienteInsere.getSelectionModel().getSelectedItem();
     }
 
     String pesquisadcliente;
+
     @FXML
     public void onNomeCliente() {
         pesquisadcliente = nomeCliente.getText();
@@ -335,7 +335,6 @@ public class F_Reserva implements Initializable {
         listidClienteInsere.getSelectionModel().clearSelection();
         listidClienteInsere.getItems().add(pesquisadcliente);
     }
-
 
 
     ReservaDAO reservaDAO = new ReservaDAO();
@@ -358,7 +357,7 @@ public class F_Reserva implements Initializable {
             alert.setHeaderText("Datas inválidas");
             alert.setContentText("A data de fim deve ser maior que a data de inicio.");
             alert.showAndWait();
-        } else if (cboxTquarto.getSelectionModel().isEmpty() ) {
+        } else if (cboxTquarto.getSelectionModel().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Aviso");
             alert.setHeaderText("Sem seleção");
@@ -392,14 +391,12 @@ public class F_Reserva implements Initializable {
                 reserva.setDataI(datai);
                 reserva.setDataF(dataf);
 
-                    reservaDAO.criaReserva(reserva);
-                    //Relação de tabela
-                    RelacionaResServ();
+                reservaDAO.criaReserva(reserva);
+                //Relação de tabela
+                RelacionaResServ();
             }
         }
     }
-
-
 
 
     int ultimaReserv;
@@ -465,9 +462,4 @@ public class F_Reserva implements Initializable {
 
     public void onIdCliente(ActionEvent event) {
     }
-
-
 }
-
-
-

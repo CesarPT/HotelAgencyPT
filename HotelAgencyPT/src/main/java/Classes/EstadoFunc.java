@@ -4,7 +4,7 @@ public class EstadoFunc {
     private String nomefunc;
     private String estado;
 
-    public EstadoFunc(){
+    public EstadoFunc() {
     }
 
     public void setEstado(String estado) {

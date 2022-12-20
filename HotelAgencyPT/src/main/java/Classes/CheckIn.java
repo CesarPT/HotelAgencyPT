@@ -14,6 +14,9 @@ public class CheckIn {
     private Integer numcartao;
     private String datai;
     private String dataf;
+    private Integer idClient;
+    private Integer floor;
+    private String type;
 
 
     public CheckIn(Integer idreserva, Integer idquarto, String datai, String dataf) {
@@ -31,8 +34,11 @@ public class CheckIn {
      * @param idquarto  «     * @param numcartao
      * @param datai
      * @param dataf
+     * @param idClient
+     * @param floor
+     * @param type
      */
-    public CheckIn(int idreserva, Integer idcliente, Integer idquarto, Integer idservico, Integer numcartao, String datai, String dataf) {
+    public CheckIn(int idreserva, Integer idcliente, Integer idquarto, Integer idservico, Integer numcartao, String datai, String dataf, int idClient, Integer floor, String type) {
         this.idreserva = idreserva;
         this.idcliente = idcliente;
         this.idquarto = idquarto;
@@ -40,6 +46,9 @@ public class CheckIn {
         this.numcartao = numcartao;
         this.datai = datai;
         this.dataf = dataf;
+        this.idClient = idClient;
+        this.floor = floor;
+        this.type = type;
     }
 
     public CheckIn() {
@@ -76,7 +85,7 @@ public class CheckIn {
         return dataf;
     }
 
-    public void setIdreserva(Integer idreserva) {
+    public void setIdreserva(Integer queryReservID) {
         this.idreserva = idreserva;
     }
 
@@ -102,5 +111,29 @@ public class CheckIn {
 
     public void setDataf(String dataf) {
         this.dataf = dataf;
+    }
+
+    public Integer getIdClient() {
+        return idClient;
+    }
+
+    public void setIdClient(Integer idClient) {
+        this.idClient = idClient;
+    }
+
+    public Integer getFloor() {
+        return floor;
+    }
+
+    public void setFloor(Integer floor) {
+        this.floor = floor;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }

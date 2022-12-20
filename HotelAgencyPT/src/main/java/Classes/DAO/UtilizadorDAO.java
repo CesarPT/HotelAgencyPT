@@ -1,7 +1,6 @@
 package Classes.DAO;
 
 import Classes.EstadoFunc;
-import Classes.Funcionario;
 import Classes.Utilizador;
 import DataBase.ConnectionDB;
 

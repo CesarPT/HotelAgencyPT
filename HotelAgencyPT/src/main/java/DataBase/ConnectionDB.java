@@ -17,19 +17,16 @@ public class ConnectionDB {
      */
     public static Connection establishConnection() {
         List<String> list = SearchFile.SearchDB();
-        String[] array = list.toArray(new String[0]);
-        for(String str : array) {
-            System.out.println(str);
-        }
-        String url = array[0];
-        String user = array[1];
-        String pass = array[2];
+
+        String url = list.get(0);
+        String user = list.get(1);
+        String pass = list.get(2);
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            connect = DriverManager.getConnection(url,user,pass);
+            connect = DriverManager.getConnection(url, user, pass);
             System.out.println("A carregar informacoes da base de dados...");
 
-        }catch (ClassNotFoundException | SQLException e) {
+        } catch (ClassNotFoundException | SQLException e) {
             System.out.println("Erro ao conectar a base de dados! \n Erro: ");
             e.printStackTrace();
         }

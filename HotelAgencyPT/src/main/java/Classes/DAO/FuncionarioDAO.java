@@ -1,9 +1,7 @@
 package Classes.DAO;
 
 import Classes.Funcionario;
-import Classes.Reserva;
 import DataBase.ConnectionDB;
-import hotel.agencypt.Controller.Controller;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -32,6 +30,7 @@ public class FuncionarioDAO {
             throw new RuntimeException(e);
         }
     }
+
     public static void updateInativa(String nome) {
         String sql = "update Funcionario SET Funcionario.estado = 'Inativado'From Funcionario " +
                 "inner join Utilizador on Utilizador.iduser = Funcionario.iduser " +

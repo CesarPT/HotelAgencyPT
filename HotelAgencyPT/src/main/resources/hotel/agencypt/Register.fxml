@@ -30,7 +30,7 @@
                         <Image url="@../../Imagens/ResgistorIcon.png"/>
                     </image>
                 </ImageView>
-                <Label layoutX="126.0" layoutY="28.0" text="Registro de utilizador">
+                <Label layoutX="126.0" layoutY="28.0" text="Registo de utilizador">
                     <font>
                         <Font size="18.0"/>
                     </font>

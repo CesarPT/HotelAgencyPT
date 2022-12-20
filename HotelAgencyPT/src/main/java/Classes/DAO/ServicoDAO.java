@@ -1,13 +1,14 @@
 package Classes.DAO;
 
-import Classes.Reserva;
 import Classes.Servico;
 import DataBase.ConnectionDB;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
 
 
 /**
@@ -72,7 +73,7 @@ public class ServicoDAO {
         try {
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setString(1, descricao);
-            stmt.setFloat(2,preco);
+            stmt.setFloat(2, preco);
 
             stmt.executeUpdate();
             return true;
@@ -82,7 +83,7 @@ public class ServicoDAO {
         }
     }
 
-    public static boolean apagaServico(String descricao){
+    public static boolean apagaServico(String descricao) {
         String sql = "Delete from Servico where descricao = ?";
 
 

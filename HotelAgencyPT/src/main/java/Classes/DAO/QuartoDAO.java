@@ -57,7 +57,7 @@ public class QuartoDAO {
         String sql = "SELECT preco\n" +
                 "FROM Quarto\n" +
                 "WHERE idquarto=" + Controller.getInstance().getIdQuarto();
-                //" AND descricao='" + Controller.getInstance().getDescricaoQuarto() + "'"+
+        //" AND descricao='" + Controller.getInstance().getDescricaoQuarto() + "'"+
 
         List<Quarto> listPreco = new ArrayList<>();
 

@@ -1,9 +1,7 @@
 package Classes.DAO;
 
-import Classes.Quarto;
 import Classes.Stock;
 import DataBase.ConnectionDB;
-import hotel.agencypt.Controller.Controller;
 import javafx.scene.control.Alert;
 
 import java.sql.Connection;
@@ -96,7 +94,7 @@ public class StockDAO {
         } catch (SQLException e) {
             System.err.println("[ERRO]: findItem " + e.getMessage());
 
-            verfica=false;
+            verfica = false;
         }
         return verfica;
     }
@@ -106,7 +104,7 @@ public class StockDAO {
             String product_identifier, int quantidade
     ) {
 
-        String sql = "UPDATE Stock set quantidade = quantidade +" + quantidade + " where product_identifier ='" + product_identifier +"'";
+        String sql = "UPDATE Stock set quantidade = quantidade +" + quantidade + " where product_identifier ='" + product_identifier + "'";
         try {
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.executeUpdate();
