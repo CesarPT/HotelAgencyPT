@@ -1,12 +1,67 @@
 package hotel.agencypt.Controller;
 
+import Classes.DAO.FuncionarioDAO;
+import Classes.DAO.UtilizadorDAO;
+import Classes.Funcionario;
+import Classes.Servico;
+import Classes.Utilizador;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.ListView;
+
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ResourceBundle;
 
 /**
  * Classe pública do controlador GH_GerirStock.fxml
  */
-public class GH_GerirFuncionario {
+public class GH_GerirFuncionario  implements Initializable {
+
+    @FXML
+    private ListView<String> listFuncionarios;
+
+    List<Utilizador> arrayFuncionario=new ArrayList<>();
+    UtilizadorDAO utilizadorDAO=new UtilizadorDAO();
+
+    String utilizadorselect;
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+        arrayFuncionario = utilizadorDAO.findAllFuncionarios();
+        for (Utilizador u : arrayFuncionario) {
+            listFuncionarios.getItems().add( u.getNomeUtilizador()
+            );
+        }
+
+        /**
+         * deixa selecionar
+         */
+        listFuncionarios.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                utilizadorselect = listFuncionarios.getSelectionModel().getSelectedItem();
+            }
+        });
+
+    }
+
+
+
+    @FXML
+    public void AtivarFunc(){
+        FuncionarioDAO.updateAtiva(utilizadorselect);
+    }
+
+    @FXML
+    public void InativarFunc(){
+        FuncionarioDAO.updateInativa(utilizadorselect);
+    }
+
 
     /**
      * Volta atrás para a View GestorHotel.fxml
@@ -21,4 +76,6 @@ public class GH_GerirFuncionario {
             System.out.println("Erro ao voltar atrás.");
         }
     }
+
+
 }

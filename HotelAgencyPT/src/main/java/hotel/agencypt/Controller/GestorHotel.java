@@ -144,4 +144,7 @@ public class GestorHotel {
             System.out.println("Erro ao voltar atrás.");
         }
     }
+
+    public void voltarAtras(ActionEvent event) {
+    }
 }

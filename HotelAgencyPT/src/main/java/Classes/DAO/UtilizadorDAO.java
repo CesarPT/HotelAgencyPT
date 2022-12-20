@@ -1,6 +1,6 @@
 package Classes.DAO;
 
-import Classes.Cliente;
+import Classes.Funcionario;
 import Classes.Utilizador;
 import DataBase.ConnectionDB;
 
@@ -43,6 +43,27 @@ public class UtilizadorDAO {
                 "on Cliente.iduser=Utilizador.iduser and Utilizador.nomeuser= '" + nomeclient + "'";
 
 
+        List<Utilizador> listUser = new ArrayList<>();
+
+        try {
+            PreparedStatement stmt = con.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                Utilizador utilizador = new Utilizador();
+                utilizador.setNomeUtilizador(rs.getString("nomeuser"));
+                listUser.add(utilizador);
+            }
+
+        } catch (SQLException e) {
+            System.err.println("[ERRO]: findClientepReserva123 " + e.getMessage());
+        }
+        return listUser;
+    }
+
+
+    public static List<Utilizador> findAllFuncionarios() {
+        String sql = "select Utilizador.nomeuser , Funcionario.estado from Utilizador inner join Funcionario on Utilizador.iduser = Funcionario.iduser";
         List<Utilizador> listUser = new ArrayList<>();
 
         try {
