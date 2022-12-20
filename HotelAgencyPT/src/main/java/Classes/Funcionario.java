@@ -3,19 +3,23 @@ package Classes;
 public class Funcionario {
 
     int idUtilizador, idFuncionario;
-    String funcao;
+    String estado;
 
     /**
      * Contrutor completo
      *
      * @param idUtilizador
      * @param idFuncionario
-     * @param funcao
+     * @param estado
      */
-    public Funcionario(int idUtilizador, int idFuncionario, String funcao) {
+    public Funcionario(int idUtilizador, int idFuncionario, String estado) {
         this.idUtilizador = idUtilizador;
         this.idFuncionario = idFuncionario;
-        this.funcao = funcao;
+        this.estado = estado;
+    }
+
+    public Funcionario() {
+
     }
 
     /**
@@ -60,15 +64,15 @@ public class Funcionario {
      * @return funcao
      */
     public String getFuncao() {
-        return funcao;
+        return estado;
     }
 
     /**
      * Muda o valor:
      *
-     * @param funcao set
+     * @param estado set
      */
-    public void setFuncao(String funcao) {
-        this.funcao = funcao;
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 }

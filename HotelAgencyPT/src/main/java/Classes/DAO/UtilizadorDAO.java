@@ -1,6 +1,7 @@
 package Classes.DAO;
 
-import Classes.Cliente;
+import Classes.EstadoFunc;
+import Classes.Funcionario;
 import Classes.Utilizador;
 import DataBase.ConnectionDB;
 
@@ -53,6 +54,28 @@ public class UtilizadorDAO {
                 Utilizador utilizador = new Utilizador();
                 utilizador.setNomeUtilizador(rs.getString("nomeuser"));
                 listUser.add(utilizador);
+            }
+
+        } catch (SQLException e) {
+            System.err.println("[ERRO]: findClientepReserva123 " + e.getMessage());
+        }
+        return listUser;
+    }
+
+
+    public static List<EstadoFunc> findAllFuncionarios() {
+        String sql = "select Utilizador.nomeuser , Funcionario.estado from Utilizador inner join Funcionario on Utilizador.iduser = Funcionario.iduser";
+        List<EstadoFunc> listUser = new ArrayList<>();
+
+        try {
+            PreparedStatement stmt = con.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                EstadoFunc estadoFunc = new EstadoFunc();
+                estadoFunc.setNomefunc(rs.getString("nomeuser"));
+                estadoFunc.setEstado(rs.getString("estado"));
+                listUser.add(estadoFunc);
             }
 
         } catch (SQLException e) {

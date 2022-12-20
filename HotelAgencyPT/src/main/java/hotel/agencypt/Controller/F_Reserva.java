@@ -68,7 +68,6 @@ public class F_Reserva implements Initializable {
     String servicoselce;
     String escolhaTquarto;
     String preco;
-    String idQuarto;
     Integer index = -1;
     List<Servico> arrayServico = new ArrayList<>();
     List<Utilizador> arrayUtilizador = new ArrayList<>();
