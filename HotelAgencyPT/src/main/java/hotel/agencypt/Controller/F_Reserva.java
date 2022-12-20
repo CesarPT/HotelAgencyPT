@@ -87,7 +87,6 @@ public class F_Reserva implements Initializable {
          */
         arrayServico = servicoDAO.findServico();
         for (Servico s : arrayServico) {
-            System.out.println(s.getDescricao());
             listServtodos.getItems().add(
                     s.getDescricao() + " " + s.getPreco()
             );
