@@ -1,5 +1,6 @@
 package Classes.DAO;
 
+import Classes.EstadoFunc;
 import Classes.Funcionario;
 import Classes.Utilizador;
 import DataBase.ConnectionDB;
@@ -62,18 +63,19 @@ public class UtilizadorDAO {
     }
 
 
-    public static List<Utilizador> findAllFuncionarios() {
+    public static List<EstadoFunc> findAllFuncionarios() {
         String sql = "select Utilizador.nomeuser , Funcionario.estado from Utilizador inner join Funcionario on Utilizador.iduser = Funcionario.iduser";
-        List<Utilizador> listUser = new ArrayList<>();
+        List<EstadoFunc> listUser = new ArrayList<>();
 
         try {
             PreparedStatement stmt = con.prepareStatement(sql);
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
-                Utilizador utilizador = new Utilizador();
-                utilizador.setNomeUtilizador(rs.getString("nomeuser"));
-                listUser.add(utilizador);
+                EstadoFunc estadoFunc = new EstadoFunc();
+                estadoFunc.setNomefunc(rs.getString("nomeuser"));
+                estadoFunc.setEstado(rs.getString("estado"));
+                listUser.add(estadoFunc);
             }
 
         } catch (SQLException e) {

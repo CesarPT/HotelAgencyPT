@@ -2,6 +2,7 @@ package hotel.agencypt.Controller;
 
 import Classes.DAO.FuncionarioDAO;
 import Classes.DAO.UtilizadorDAO;
+import Classes.EstadoFunc;
 import Classes.Funcionario;
 import Classes.Servico;
 import Classes.Utilizador;
@@ -25,7 +26,7 @@ public class GH_GerirFuncionario  implements Initializable {
     @FXML
     private ListView<String> listFuncionarios;
 
-    List<Utilizador> arrayFuncionario=new ArrayList<>();
+    List<EstadoFunc> arrayFuncionario=new ArrayList<>();
     UtilizadorDAO utilizadorDAO=new UtilizadorDAO();
 
     String utilizadorselect;
@@ -33,8 +34,8 @@ public class GH_GerirFuncionario  implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         arrayFuncionario = utilizadorDAO.findAllFuncionarios();
-        for (Utilizador u : arrayFuncionario) {
-            listFuncionarios.getItems().add( u.getNomeUtilizador()
+        for (EstadoFunc estadoFunc : arrayFuncionario) {
+            listFuncionarios.getItems().add("Nome: "+ estadoFunc.getNomefunc() +" - "+ estadoFunc.getEstado()
             );
         }
 
@@ -51,14 +52,29 @@ public class GH_GerirFuncionario  implements Initializable {
     }
 
 
-
+    String textoformatado;
+    int index;
     @FXML
     public void AtivarFunc(){
+
+
+        index= utilizadorselect.indexOf("-");
+        textoformatado=utilizadorselect.substring(0,index);
+        textoformatado=textoformatado.replace("Nome:","");
+        textoformatado=textoformatado.trim();
+        System.out.println(textoformatado);
+
         FuncionarioDAO.updateAtiva(utilizadorselect);
     }
 
     @FXML
     public void InativarFunc(){
+        index= utilizadorselect.indexOf("-");
+        textoformatado=utilizadorselect.substring(0,index);
+        textoformatado=textoformatado.replace("Nome:","");
+        textoformatado=textoformatado.trim();
+        System.out.println(textoformatado);
+        
         FuncionarioDAO.updateInativa(utilizadorselect);
     }
 
