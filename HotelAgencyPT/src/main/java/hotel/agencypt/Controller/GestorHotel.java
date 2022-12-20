@@ -106,9 +106,40 @@ public class GestorHotel {
         }
     }
 
+<<<<<<< HEAD
+=======
+    /**
+     * Abrir scene F_ApagarReservas.fxml
+     */
+    public void abrirApagarReservas(){
+        try {
+            Stage window = (Stage) button.getScene().getWindow();
+            window.close();
+            Singleton.open("F_ApagarReserva", "Hotel >> Gestor de Hotel >> Apagar reservas");
+        } catch (Exception e) {
+            System.out.println("Erro ao fechar/abrir o stage.");
+        }
+    }
+
+    /**
+     * Abrir a scene para importar/confirmar ficheiro XML
+     * @param event
+     */
+    public void abrirFicheiroXML(ActionEvent event) {
+        try {
+            Stage window = (Stage) button.getScene().getWindow();
+            window.close();
+            Singleton.open("GH_ImportarXML", "User: " + Controller.getInstance().getUsername() +
+                    " | Hotel >> Gestor de Hotel >> Ver ficheiro XML");
+        } catch (Exception e) {
+            System.out.println("Erro ao fechar/abrir o stage.");
+        }
+    }
+
+>>>>>>> 71e13ea00288bbbe2ce1ce00496abab7c10fa6e6
 
     @FXML
-    public void voltarAtras(ActionEvent actionEvent) {
+    public void switchToLogin(ActionEvent actionEvent) {
         try {
             Singleton.open("Login", "Hotel Agency PT");
         } catch (Exception e) {

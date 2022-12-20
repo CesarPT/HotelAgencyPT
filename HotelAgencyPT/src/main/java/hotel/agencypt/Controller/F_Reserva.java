@@ -304,7 +304,7 @@ public class F_Reserva implements Initializable {
         } else {
 
             //Preço do quarto, noites e Preço total
-            Controller.getInstance().setIdquarto(Integer.parseInt(idQuarto));
+            Controller.getInstance().setIdquarto(idQuartoesc);
             arrayPrecoQuarto = quartoDAO.findPreco();
             for (Quarto q : arrayPrecoQuarto) {
                 textPrecoQuarto.setText(String.valueOf(q.getPreco()));
@@ -344,7 +344,7 @@ public class F_Reserva implements Initializable {
 
 
 
-    ReservaDAO reservaDAO;
+    ReservaDAO reservaDAO = new ReservaDAO();
     Reserva reserva = new Reserva();
 
     @FXML
