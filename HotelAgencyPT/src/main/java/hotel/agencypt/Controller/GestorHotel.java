@@ -156,9 +156,6 @@ public class GestorHotel {
         }
     }
 
-<<<<<<< HEAD
-    public void voltarAtras(ActionEvent event) {
-=======
     @FXML
     public void voltarAtras(ActionEvent actionEvent) {
         try {
@@ -166,6 +163,5 @@ public class GestorHotel {
         } catch (Exception e) {
             System.out.println("Erro ao voltar atrás.");
         }
->>>>>>> 4a214b6a59eb2aee89378c8e679e4a3448fd1315
     }
 }
