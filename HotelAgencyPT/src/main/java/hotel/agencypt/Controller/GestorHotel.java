@@ -155,4 +155,13 @@ public class GestorHotel {
             System.out.println("Erro ao voltar atrás.");
         }
     }
+
+    @FXML
+    public void voltarAtras(ActionEvent actionEvent) {
+        try {
+            Singleton.open("Login", "Hotel >> Login");
+        } catch (Exception e) {
+            System.out.println("Erro ao voltar atrás.");
+        }
+    }
 }
