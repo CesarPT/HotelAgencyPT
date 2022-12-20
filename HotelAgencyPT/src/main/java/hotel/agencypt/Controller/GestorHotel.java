@@ -40,6 +40,18 @@ public class GestorHotel {
         }
     }
 
+    @FXML
+    protected void onConfigurarServicos(){
+        try {
+            Stage window = (Stage) button.getScene().getWindow();
+            window.close();
+            Singleton.open("GH_ConfigServicos", "Hotel >> Gestor de Hotel >> Configurar Serviços");
+        } catch (Exception e) {
+            System.out.println("Erro ao fechar/abrir o stage.");
+        }
+    }
+
+
     /**
      * Fecha o stage atual e abre o stage próprio do botão
      */
@@ -93,6 +105,7 @@ public class GestorHotel {
             System.out.println("Erro ao fechar/abrir o stage.");
         }
     }
+
 
     /**
      * Abrir scene F_ApagarReservas.fxml
