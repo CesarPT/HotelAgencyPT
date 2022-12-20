@@ -1,30 +1,22 @@
 package hotel.agencypt.Controller;
 
 import Classes.DAO.StockDAO;
-import Classes.Entrega;
 import Classes.Stock;
-import DataBase.ConnectionDB;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.FileChooser;
-import javafx.stage.Stage;
 
 import java.io.File;
-import java.net.URL;
 import java.nio.file.Path;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.ResourceBundle;
 
 /**
  * Classe pública do controlador GH_GerirStock.fxml
@@ -58,6 +50,7 @@ public class F_VerFicheiro {
 
     /**
      * Clicar no botão de Importar XML
+     *
      * @param event
      */
     public void clicarBtnImportar(ActionEvent event) throws Exception {
@@ -68,7 +61,7 @@ public class F_VerFicheiro {
         File selectedFile = fc.showOpenDialog(null);
 
         //Se não selecionar
-        if (selectedFile != null){
+        if (selectedFile != null) {
             listCaminho.getItems().add(selectedFile.getAbsolutePath());
             //Ler ficheiro XML com o path que escolheu
             instanceXML.Lexml(Path.of(selectedFile.getAbsolutePath()));
@@ -78,7 +71,7 @@ public class F_VerFicheiro {
         }
     }
 
-    public void atualizarTableView(){
+    public void atualizarTableView() {
         //Limpar tableview
         TableViewStock.getItems().clear();
         //Mostrar na tableview

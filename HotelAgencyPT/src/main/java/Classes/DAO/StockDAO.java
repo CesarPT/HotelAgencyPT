@@ -1,9 +1,7 @@
 package Classes.DAO;
 
-import Classes.Quarto;
 import Classes.Stock;
 import DataBase.ConnectionDB;
-import hotel.agencypt.Controller.Controller;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

@@ -15,7 +15,7 @@ public class CheckIn {
     private String datai;
     private String dataf;
     private Integer idClient;
-    private  Integer floor;
+    private Integer floor;
     private String type;
 
 

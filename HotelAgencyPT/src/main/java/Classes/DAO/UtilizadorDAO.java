@@ -1,6 +1,5 @@
 package Classes.DAO;
 
-import Classes.Cliente;
 import Classes.Utilizador;
 import DataBase.ConnectionDB;
 

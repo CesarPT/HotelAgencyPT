@@ -97,7 +97,7 @@ public class F_interface {
         try {
             Stage window = (Stage) RoomServices.getScene().getWindow();
             window.close();
-            Singleton.open("F_VerFicheiro", "User: " + Controller.getInstance().getUsername() +" | Hotel >> Funcionario >> Ver ficheiro");
+            Singleton.open("F_VerFicheiro", "User: " + Controller.getInstance().getUsername() + " | Hotel >> Funcionario >> Ver ficheiro");
         } catch (Exception e) {
             System.out.println("Erro ao fechar/abrir o stage.");
         }

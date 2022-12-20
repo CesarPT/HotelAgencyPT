@@ -1,10 +1,8 @@
 package Classes.DAO;
 
 import Classes.CheckIn;
-import Classes.Cliente;
 import DataBase.ConnectionDB;
 import javafx.scene.control.Alert;
-import javafx.scene.control.TableView;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -21,11 +19,10 @@ public class CheckInDAO {
     public static CheckIn check = new CheckIn();
 
 
-
     public static void getTable() {
 
         Integer client = check.getIdClient();
-        String query = "Select idreserva, idquarto AS quarto, datai, dataf FROM Reserva WHERE idcliente = "+client;
+        String query = "Select idreserva, idquarto AS quarto, datai, dataf FROM Reserva WHERE idcliente = " + client;
         try {
             PreparedStatement stm = con.prepareStatement(query);
             ResultSet rs = stm.executeQuery();
@@ -44,9 +41,9 @@ public class CheckInDAO {
         }
     }
 
-    public static void getFloorType(){
+    public static void getFloorType() {
         Integer roomID = check.getIdquarto();
-        String query ="SELECT piso,descricao As tipo FROM Quarto WHERE idquarto = "+roomID;
+        String query = "SELECT piso,descricao As tipo FROM Quarto WHERE idquarto = " + roomID;
         try {
             PreparedStatement stm = con.prepareStatement(query);
             ResultSet rs = stm.executeQuery();
@@ -55,25 +52,27 @@ public class CheckInDAO {
                 check.setFloor(rs.getInt("piso"));
                 check.setType(rs.getString("tipo"));
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    public static void CreateCheckIn(Integer idReserv){
+
+    public static void CreateCheckIn(Integer idReserv) {
         String checkIn = "Insert INTO CheckInOut(EstadoCheckIn, idcliente, idreserva) VALUES('I',?,?)";
         Integer idClient = check.getIdClient();
-        try{
+        try {
             PreparedStatement stmt = con.prepareStatement(checkIn);
-            stmt.setInt(1,idClient);
-            stmt.setInt(2,idReserv);
+            stmt.setInt(1, idClient);
+            stmt.setInt(2, idReserv);
             stmt.executeUpdate();
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    public static boolean VerifyExists(String username){
-        String verify = "SELECT COUNT(1) FROM Cliente INNER JOIN Utilizador on Cliente.iduser = Utilizador.iduser where Utilizador.nomeuser = '"+username+"'";
-        String idClient = "SELECT idcliente FROM Cliente INNER JOIN Utilizador on Cliente.iduser = Utilizador.iduser where Utilizador.nomeuser ='"+username+"'";
+
+    public static boolean VerifyExists(String username) {
+        String verify = "SELECT COUNT(1) FROM Cliente INNER JOIN Utilizador on Cliente.iduser = Utilizador.iduser where Utilizador.nomeuser = '" + username + "'";
+        String idClient = "SELECT idcliente FROM Cliente INNER JOIN Utilizador on Cliente.iduser = Utilizador.iduser where Utilizador.nomeuser ='" + username + "'";
         boolean exist;
         try {
             PreparedStatement stm = con.prepareStatement(verify);
@@ -104,14 +103,14 @@ public class CheckInDAO {
         return exist;
     }
 
-    public static void getIdClient(String idClient){
+    public static void getIdClient(String idClient) {
         try {
             PreparedStatement stm = con.prepareStatement(idClient);
             ResultSet rs = stm.executeQuery();
             while (rs.next()) {
                 check.setIdClient(rs.getInt("idcliente"));
             }
-        }catch (SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }

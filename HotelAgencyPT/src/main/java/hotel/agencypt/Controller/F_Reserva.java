@@ -2,9 +2,11 @@ package hotel.agencypt.Controller;
 
 //Bibliotecas
 
-import Classes.*;
-import Classes.Cliente;
 import Classes.DAO.*;
+import Classes.Quarto;
+import Classes.Reserva;
+import Classes.Servico;
+import Classes.Utilizador;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -61,7 +63,7 @@ public class F_Reserva implements Initializable {
     @FXML
     private ListView<String> listServesco;
     @FXML
-    private ListView<String>listidClienteInsere;
+    private ListView<String> listidClienteInsere;
 
     //var para selecionar na Listview dos servicos
     String servicoselct;
@@ -323,7 +325,7 @@ public class F_Reserva implements Initializable {
         }
     }
 
-    public void clientescolhido(){
+    public void clientescolhido() {
         listidClienteInsere.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
@@ -333,6 +335,7 @@ public class F_Reserva implements Initializable {
     }
 
     String pesquisadcliente;
+
     @FXML
     public void onNomeCliente() {
         pesquisadcliente = nomeCliente.getText();
@@ -342,7 +345,6 @@ public class F_Reserva implements Initializable {
         listidClienteInsere.getSelectionModel().clearSelection();
         listidClienteInsere.getItems().add(pesquisadcliente);
     }
-
 
 
     ReservaDAO reservaDAO = new ReservaDAO();
@@ -364,7 +366,7 @@ public class F_Reserva implements Initializable {
             alert.setHeaderText("Datas inválidas");
             alert.setContentText("A data de fim deve ser maior que a data de inicio.");
             alert.showAndWait();
-        } else if (cboxTquarto.getSelectionModel().isEmpty() ) {
+        } else if (cboxTquarto.getSelectionModel().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Aviso");
             alert.setHeaderText("Sem seleção");
@@ -397,8 +399,6 @@ public class F_Reserva implements Initializable {
             }
         }
     }
-
-
 
 
     int ultimaReserv;

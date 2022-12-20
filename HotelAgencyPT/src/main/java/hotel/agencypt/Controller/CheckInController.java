@@ -60,7 +60,7 @@ public class CheckInController {
         }
     }
 
-    public  void CheckIn(ActionEvent event){
+    public void CheckIn(ActionEvent event) {
         try {
             String room = String.valueOf(ReservaTableView.getSelectionModel().getSelectedItem().getIdquarto());
             RoomN.setText(room);
@@ -75,7 +75,7 @@ public class CheckInController {
             Integer idReserv = ReservaTableView.getSelectionModel().getSelectedItem().getIdreserva();
             CreateCheckIn(idReserv);
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -124,10 +124,10 @@ public class CheckInController {
         Singleton.open("funcionariointerface", "Hotel >> Funcionário");
     }
 
-    public void Clean(ActionEvent event){
+    public void Clean(ActionEvent event) {
         try {
             CheckInObservableList.clear();
-        }catch (Exception ex){
+        } catch (Exception ex) {
             ex.printStackTrace();
 
         }

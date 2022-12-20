@@ -1,37 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ECECE7;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hotel.agencypt.Controller.CheckInController">
+<?import javafx.scene.text.*?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+            prefWidth="600.0" style="-fx-background-color: #ECECE7;" xmlns="http://javafx.com/javafx/19"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="hotel.agencypt.Controller.CheckInController">
     <children>
         <Label layoutX="70.0" layoutY="28.0" text="Username:">
             <font>
-                <Font size="14.0" />
+                <Font size="14.0"/>
             </font>
         </Label>
-        <TextField fx:id="userTextField" layoutX="142.0" layoutY="26.0" />
+        <TextField fx:id="userTextField" layoutX="142.0" layoutY="26.0"/>
         <Label layoutX="68.0" layoutY="62.0" prefHeight="17.0" prefWidth="69.0" text="Nº Quarto:">
             <font>
-                <Font size="14.0" />
+                <Font size="14.0"/>
             </font>
         </Label>
-        <TextField fx:id="RoomN" editable="false" layoutX="142.0" layoutY="59.0" />
+        <TextField fx:id="RoomN" editable="false" layoutX="142.0" layoutY="59.0"/>
         <SplitPane prefHeight="400.0" prefWidth="54.0" style="-fx-background-color: #BDA880;">
             <items>
-                <Button fx:id="BackButton" mnemonicParsing="false" onAction="#BackToStaff" prefHeight="53.0" prefWidth="54.0" style="-fx-background-color: transparent;">
+                <Button fx:id="BackButton" mnemonicParsing="false" onAction="#BackToStaff" prefHeight="53.0"
+                        prefWidth="54.0" style="-fx-background-color: transparent;">
                     <graphic>
                         <ImageView fitHeight="39.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../../Imagens/voltar.png" />
+                                <Image url="@../../Imagens/voltar.png"/>
                             </image>
                         </ImageView>
                     </graphic>
@@ -40,45 +37,58 @@
         </SplitPane>
         <TableView fx:id="ReservaTableView" layoutX="296.0" layoutY="45.0" prefHeight="311.0" prefWidth="300.0">
             <columns>
-                <TableColumn fx:id="ReservaTableColumn" prefWidth="75.0" text="Nº Reserva" />
-                <TableColumn fx:id="QuartoTableColumn" prefWidth="75.0" text="Nº Quarto" />
-                <TableColumn fx:id="DataITableColumn" prefWidth="89.0" text="Data Inicial" />
-                <TableColumn fx:id="DataFTableColumn" prefWidth="61.0" text="Data Final" />
+                <TableColumn fx:id="ReservaTableColumn" prefWidth="75.0" text="Nº Reserva"/>
+                <TableColumn fx:id="QuartoTableColumn" prefWidth="75.0" text="Nº Quarto"/>
+                <TableColumn fx:id="DataITableColumn" prefWidth="89.0" text="Data Inicial"/>
+                <TableColumn fx:id="DataFTableColumn" prefWidth="61.0" text="Data Final"/>
             </columns>
         </TableView>
-        <Button layoutX="296.0" layoutY="364.0" mnemonicParsing="false" onAction="#Pesquisar" prefHeight="27.0" prefWidth="111.0" style="-fx-border-radius: 20; -fx-border-color: black; -fx-background-color: #BDA880; -fx-background-radius: 20;" text="Selecionar User" />
+        <Button layoutX="296.0" layoutY="364.0" mnemonicParsing="false" onAction="#Pesquisar" prefHeight="27.0"
+                prefWidth="111.0"
+                style="-fx-border-radius: 20; -fx-border-color: black; -fx-background-color: #BDA880; -fx-background-radius: 20;"
+                text="Selecionar User"/>
         <Label layoutX="63.0" layoutY="273.0" prefHeight="20.0" prefWidth="79.0" text="Data Inicial:">
             <font>
-                <Font size="14.0" />
+                <Font size="14.0"/>
             </font>
         </Label>
-        <TextField fx:id="StartD" editable="false" layoutX="140.0" layoutY="270.0" />
+        <TextField fx:id="StartD" editable="false" layoutX="140.0" layoutY="270.0"/>
         <Label layoutX="69.0" layoutY="309.0" prefHeight="20.0" prefWidth="69.0" text="Data Final:">
             <font>
-                <Font size="14.0" />
+                <Font size="14.0"/>
             </font>
         </Label>
-        <TextField fx:id="FinalD" editable="false" layoutX="140.0" layoutY="306.0" />
+        <TextField fx:id="FinalD" editable="false" layoutX="140.0" layoutY="306.0"/>
         <Label layoutX="324.0" layoutY="15.0" text="Procurar:">
             <font>
-                <Font size="15.0" />
+                <Font size="15.0"/>
             </font>
         </Label>
-        <TextField fx:id="SearchBar" layoutX="389.0" layoutY="13.0" prefHeight="25.0" prefWidth="197.0" promptText="Palavra..." />
-        <Button fx:id="CleanButton" layoutX="507.0" layoutY="364.0" mnemonicParsing="false" onAction="#Clean" prefHeight="25.0" prefWidth="79.0" style="-fx-border-radius: 20; -fx-border-color: black; -fx-background-color: #BDA880; -fx-background-radius: 20;" text="Limpar" />
-      <Button layoutX="93.0" layoutY="351.0" mnemonicParsing="false" onAction="#CheckIn" prefHeight="25.0" prefWidth="79.0" style="-fx-border-radius: 20; -fx-border-color: black; -fx-background-color: #BDA880; -fx-background-radius: 20;" text="Check-In" />
-      <Button layoutX="188.0" layoutY="351.0" mnemonicParsing="false" onAction="#CheckIn" prefHeight="25.0" prefWidth="79.0" style="-fx-border-radius: 20; -fx-border-color: black; -fx-background-color: #BDA880; -fx-background-radius: 20;" text="Check-Out" />
-      <Label layoutX="107.0" layoutY="96.0" prefHeight="20.0" prefWidth="35.0" text="Piso:">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <TextField fx:id="Floor" editable="false" layoutX="140.0" layoutY="93.0" />
-      <Label layoutX="59.0" layoutY="132.0" prefHeight="20.0" prefWidth="79.0" text="Tipo Quarto:">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <TextField fx:id="RoomType" editable="false" layoutX="140.0" layoutY="129.0" />
+        <TextField fx:id="SearchBar" layoutX="389.0" layoutY="13.0" prefHeight="25.0" prefWidth="197.0"
+                   promptText="Palavra..."/>
+        <Button fx:id="CleanButton" layoutX="507.0" layoutY="364.0" mnemonicParsing="false" onAction="#Clean"
+                prefHeight="25.0" prefWidth="79.0"
+                style="-fx-border-radius: 20; -fx-border-color: black; -fx-background-color: #BDA880; -fx-background-radius: 20;"
+                text="Limpar"/>
+        <Button layoutX="93.0" layoutY="351.0" mnemonicParsing="false" onAction="#CheckIn" prefHeight="25.0"
+                prefWidth="79.0"
+                style="-fx-border-radius: 20; -fx-border-color: black; -fx-background-color: #BDA880; -fx-background-radius: 20;"
+                text="Check-In"/>
+        <Button layoutX="188.0" layoutY="351.0" mnemonicParsing="false" onAction="#CheckIn" prefHeight="25.0"
+                prefWidth="79.0"
+                style="-fx-border-radius: 20; -fx-border-color: black; -fx-background-color: #BDA880; -fx-background-radius: 20;"
+                text="Check-Out"/>
+        <Label layoutX="107.0" layoutY="96.0" prefHeight="20.0" prefWidth="35.0" text="Piso:">
+            <font>
+                <Font size="14.0"/>
+            </font>
+        </Label>
+        <TextField fx:id="Floor" editable="false" layoutX="140.0" layoutY="93.0"/>
+        <Label layoutX="59.0" layoutY="132.0" prefHeight="20.0" prefWidth="79.0" text="Tipo Quarto:">
+            <font>
+                <Font size="14.0"/>
+            </font>
+        </Label>
+        <TextField fx:id="RoomType" editable="false" layoutX="140.0" layoutY="129.0"/>
     </children>
 </AnchorPane>

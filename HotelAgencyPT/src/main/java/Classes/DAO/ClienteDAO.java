@@ -5,7 +5,6 @@ import Classes.Utilizador;
 import DataBase.ConnectionDB;
 import hotel.agencypt.Controller.Controller;
 
-import javax.swing.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -21,7 +20,7 @@ public class ClienteDAO {
 
 
         List<Cliente> listCliente = new ArrayList<>();
-        List<Utilizador>listUser=new ArrayList<>();
+        List<Utilizador> listUser = new ArrayList<>();
         PreparedStatement stmt = null;
         ResultSet rs = null;
         try {
