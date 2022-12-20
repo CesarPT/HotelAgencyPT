@@ -16,6 +16,7 @@ import javafx.scene.control.*;
 
 import java.net.URL;
 import java.sql.Date;
+import java.sql.SQLException;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -268,8 +269,7 @@ public class F_Reserva implements Initializable {
     }
 
 
-    @FXML
-    int idClient;
+    String nomeC;
     String idCliente;
     int idClientV = 0;
     ClienteDAO clienteDAO = new ClienteDAO();
@@ -322,12 +322,7 @@ public class F_Reserva implements Initializable {
     }
 
     public void clientescolhido(){
-        listidClienteInsere.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                idClient = Integer.parseInt(listidClienteInsere.getSelectionModel().getSelectedItem());
-            }
-        });
+                nomeC = listidClienteInsere.getSelectionModel().getSelectedItem();
     }
 
     String pesquisadcliente;
@@ -345,6 +340,7 @@ public class F_Reserva implements Initializable {
 
     ReservaDAO reservaDAO = new ReservaDAO();
     Reserva reserva = new Reserva();
+
 
     @FXML
     public void onCriaReserva(ActionEvent event) {
@@ -376,21 +372,29 @@ public class F_Reserva implements Initializable {
             alert.showAndWait();
         } else {
             onEsTquarto();
-            idClient = listidClienteInsere.getSelectionModel().getSelectedIndex();
+            nomeC = String.valueOf(listidClienteInsere.getSelectionModel().getSelectedIndex());
             clientescolhido();
 
 
-            if (idClient != 0 || myDateI != null || myDateF != null) {
+            List<Cliente> arrayClienteID = new ArrayList<>();
+
+            if (nomeCliente != null || myDateI != null || myDateF != null) {
                 //Criar a reserva
-                reserva.setIdcliente(idClient);
+
+                Controller.getInstance().setUsername(nomeC);
+                arrayClienteID = clienteDAO.findIDCliente();
+
+                for (Cliente c : arrayClienteID) {
+                    nomeC = String.valueOf(c.getIdCliente());
+                }
+                reserva.setIdcliente(Integer.parseInt(nomeC));
                 reserva.setIdquarto(idQuartoesc);
                 reserva.setDataI(datai);
                 reserva.setDataF(dataf);
 
-                reservaDAO.criaReserva(reserva);
-
-                //Relação de tabela
-                RelacionaResServ();
+                    reservaDAO.criaReserva(reserva);
+                    //Relação de tabela
+                    RelacionaResServ();
             }
         }
     }

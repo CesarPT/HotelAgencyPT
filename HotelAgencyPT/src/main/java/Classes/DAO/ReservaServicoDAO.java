@@ -21,7 +21,7 @@ public class ReservaServicoDAO {
             stmt.executeUpdate();
             return true;
         } catch (SQLException e) {
-            System.err.println("[ERRO]: insertReserva " + e.getMessage());
+            System.err.println("[ERRO]: insertReservaServico " + e.getMessage());
             return false;
         }
     }
