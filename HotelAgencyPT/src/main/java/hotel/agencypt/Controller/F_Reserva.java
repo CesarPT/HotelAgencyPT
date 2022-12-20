@@ -2,14 +2,9 @@ package hotel.agencypt.Controller;
 
 //Bibliotecas
 
+import Classes.*;
 import Classes.Cliente;
-import Classes.DAO.ClienteDAO;
-import Classes.DAO.QuartoDAO;
-import Classes.DAO.ReservaDAO;
-import Classes.DAO.ServicoDAO;
-import Classes.Quarto;
-import Classes.Reserva;
-import Classes.Servico;
+import Classes.DAO.*;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -45,6 +40,8 @@ public class F_Reserva implements Initializable {
     @FXML
     private TextField textNoites;
     @FXML
+    private TextField nomeCliente;
+    @FXML
     public DatePicker datePickerI = new DatePicker();
     @FXML
     public DatePicker datePickerF = new DatePicker();
@@ -64,7 +61,7 @@ public class F_Reserva implements Initializable {
     @FXML
     private ListView<String> listServesco;
     @FXML
-    private ListView<String> listidClienteInsere;
+    private ListView<String>listidClienteInsere;
 
     //var para selecionar na Listview dos servicos
     String servicoselct;
@@ -74,8 +71,7 @@ public class F_Reserva implements Initializable {
     String idQuarto;
     Integer index = -1;
     List<Servico> arrayServico = new ArrayList<>();
-    List<Cliente> arrayCliente = new ArrayList<>();
-
+    List<Utilizador> arrayUtilizador = new ArrayList<>();
     ServicoDAO servicoDAO = new ServicoDAO();
     QuartoDAO quartoDAO = new QuartoDAO();
     ArrayList<String> listaqq = new ArrayList<>();
@@ -86,6 +82,9 @@ public class F_Reserva implements Initializable {
 
         cboxTquarto.setItems(listTquarto);
 
+        /**
+         * percorre todos os serviços da base de dados na tabela Serviços
+         */
         arrayServico = servicoDAO.findServico();
         for (Servico s : arrayServico) {
             System.out.println(s.getDescricao());
@@ -93,6 +92,10 @@ public class F_Reserva implements Initializable {
                     s.getDescricao() + " " + s.getPreco()
             );
         }
+
+        /**
+         * deixa selecionar
+         */
         listServtodos.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
@@ -107,16 +110,15 @@ public class F_Reserva implements Initializable {
             }
         });
 
-
-        arrayCliente = ClienteDAO.findidCliente();
-        for (Cliente c : arrayCliente) {
-            listServtodos.getItems().add(String.valueOf(c.getIdCliente()));
+        arrayUtilizador = UtilizadorDAO.findClientepReserva();
+        for (Utilizador u : arrayUtilizador) {
+            listidClienteInsere.getItems().add(String.valueOf(u.getNomeUtilizador()));
         }
 
         listidClienteInsere.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                idClient = Integer.parseInt(listidClienteInsere.getSelectionModel().getSelectedItem());
+                idCliente = listidClienteInsere.getSelectionModel().getSelectedItem();
             }
         });
 
@@ -270,6 +272,7 @@ public class F_Reserva implements Initializable {
 
     @FXML
     int idClient;
+    String idCliente;
     int idClientV = 0;
     ClienteDAO clienteDAO = new ClienteDAO();
 
@@ -302,7 +305,7 @@ public class F_Reserva implements Initializable {
         } else {
 
             //Preço do quarto, noites e Preço total
-            Controller.getInstance().setIdquarto(Integer.parseInt(idQuarto));
+            Controller.getInstance().setIdquarto(idQuartoesc);
             arrayPrecoQuarto = quartoDAO.findPreco();
             for (Quarto q : arrayPrecoQuarto) {
                 textPrecoQuarto.setText(String.valueOf(q.getPreco()));
@@ -320,7 +323,7 @@ public class F_Reserva implements Initializable {
         }
     }
 
-    public void clientescolhido() {
+    public void clientescolhido(){
         listidClienteInsere.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
@@ -329,8 +332,20 @@ public class F_Reserva implements Initializable {
         });
     }
 
+    String pesquisadcliente;
+    @FXML
+    public void onNomeCliente() {
+        pesquisadcliente = nomeCliente.getText();
+        //System.out.println(pesquisadcliente);
+        UtilizadorDAO.findClientepReservaCnome(pesquisadcliente);
+        listidClienteInsere.getItems().clear();
+        listidClienteInsere.getSelectionModel().clearSelection();
+        listidClienteInsere.getItems().add(pesquisadcliente);
+    }
 
-    ReservaDAO reservaDAO;
+
+
+    ReservaDAO reservaDAO = new ReservaDAO();
     Reserva reserva = new Reserva();
 
     @FXML
@@ -349,7 +364,7 @@ public class F_Reserva implements Initializable {
             alert.setHeaderText("Datas inválidas");
             alert.setContentText("A data de fim deve ser maior que a data de inicio.");
             alert.showAndWait();
-        } else if (cboxTquarto.getSelectionModel().isEmpty()) {
+        } else if (cboxTquarto.getSelectionModel().isEmpty() ) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Aviso");
             alert.setHeaderText("Sem seleção");
@@ -363,6 +378,7 @@ public class F_Reserva implements Initializable {
             alert.showAndWait();
         } else {
             onEsTquarto();
+
             idClient = listidClienteInsere.getSelectionModel().getSelectedIndex();
             clientescolhido();
 
@@ -381,6 +397,8 @@ public class F_Reserva implements Initializable {
             }
         }
     }
+
+
 
 
     int ultimaReserv;

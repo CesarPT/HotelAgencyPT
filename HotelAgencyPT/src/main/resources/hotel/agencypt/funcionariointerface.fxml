@@ -1,133 +1,124 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-<AnchorPane prefHeight="460.0" prefWidth="568.0" style="-fx-background-color: #BDA880;"
-            xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="hotel.agencypt.Controller.F_interface">
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="460.0" prefWidth="568.0" style="-fx-background-color: #BDA880;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hotel.agencypt.Controller.F_interface">
 
     <children>
-        <Pane layoutX="48.0" layoutY="141.0" prefHeight="88.0" prefWidth="140.0"
-              style="-fx-background-color: white; -fx-background-radius: 20;">
+        <Pane layoutX="48.0" layoutY="141.0" prefHeight="88.0" prefWidth="140.0" style="-fx-background-color: white; -fx-background-radius: 20;">
             <children>
-                <Button fx:id="Registerbutton" layoutX="9.0" layoutY="29.0" mnemonicParsing="false"
-                        onAction="#ClientRegister" text="Registar cliente">
+                <Button fx:id="Registerbutton" layoutX="9.0" layoutY="29.0" mnemonicParsing="false" onAction="#ClientRegister" text="Registar cliente">
                     <font>
-                        <Font size="15.0"/>
+                        <Font size="15.0" />
                     </font>
                 </Button>
             </children>
         </Pane>
         <Label alignment="CENTER" layoutX="401.0" layoutY="274.0" text="Gestão">
             <font>
-                <Font name="System Bold" size="18.0"/>
+                <Font name="System Bold" size="18.0" />
             </font>
         </Label>
-        <Pane layoutX="23.0" layoutY="313.0" prefHeight="76.0" prefWidth="197.0"
-              style="-fx-background-color: white; -fx-background-radius: 20;">
+        <Pane layoutX="23.0" layoutY="313.0" prefHeight="76.0" prefWidth="197.0" style="-fx-background-color: white; -fx-background-radius: 20;">
             <children>
-                <Button fx:id="CheckIn" layoutX="22.0" layoutY="23.0" mnemonicParsing="false" onAction="#FazerCheckIn"
-                        text="Check-in/Check-out">
+                <Button fx:id="CheckIn" layoutX="22.0" layoutY="23.0" mnemonicParsing="false" onAction="#FazerCheckIn" text="Check-in/Check-out">
                     <font>
-                        <Font size="15.0"/>
+                        <Font size="15.0" />
                     </font>
                 </Button>
             </children>
         </Pane>
-        <Pane layoutX="338.0" layoutY="141.0" prefHeight="105.0" prefWidth="165.0"
-              style="-fx-background-color: white; -fx-background-radius: 20;">
+        <Pane layoutX="338.0" layoutY="141.0" prefHeight="105.0" prefWidth="165.0" style="-fx-background-color: white; -fx-background-radius: 20;">
             <children>
-                <Button layoutX="31.0" layoutY="14.0" mnemonicParsing="false" onAction="#abrirCriarReserva"
-                        text="Criar reserva">
+                <Button layoutX="31.0" layoutY="14.0" mnemonicParsing="false" onAction="#abrirCriarReserva" text="Criar reserva">
                     <font>
-                        <Font size="15.0"/>
+                        <Font size="15.0" />
                     </font>
                 </Button>
                 <Button layoutX="19.0" layoutY="60.0" mnemonicParsing="false" text="Apagar reservas">
                     <font>
-                        <Font size="15.0"/>
+                        <Font size="15.0" />
                     </font>
                 </Button>
             </children>
         </Pane>
-        <Pane layoutX="303.0" layoutY="313.0" prefHeight="105.0" prefWidth="224.0"
-              style="-fx-background-color: white; -fx-background-radius: 20;">
+        <Pane layoutX="303.0" layoutY="313.0" prefHeight="105.0" prefWidth="224.0" style="-fx-background-color: white; -fx-background-radius: 20;">
             <children>
-                <Button fx:id="RoomServices" layoutX="14.0" layoutY="14.0" mnemonicParsing="false"
-                        onAction="#abrirServicosQuarto" text="Assistir serviços de quarto">
+                <Button fx:id="RoomServices" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#abrirServicosQuarto" text="Assistir serviços de quarto">
                     <font>
-                        <Font size="15.0"/>
+                        <Font size="15.0" />
                     </font>
                 </Button>
-                <Button fx:id="Stock" layoutX="67.0" layoutY="60.0" mnemonicParsing="false" onAction="#abrirGerirStock"
-                        text="Gerir stock">
+                <Button fx:id="Stock" layoutX="113.0" layoutY="60.0" mnemonicParsing="false" onAction="#abrirGerirStock" text="Gerir stock">
                     <font>
-                        <Font size="15.0"/>
+                        <Font size="15.0" />
                     </font>
                 </Button>
+            <Button layoutX="14.0" layoutY="60.0" mnemonicParsing="false" onAction="#abrirVerFicheiro" text="Ver ficheiro">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
             </children>
         </Pane>
         <Label alignment="CENTER" layoutX="405.0" layoutY="104.0" text="Reservar">
             <font>
-                <Font name="System Bold" size="18.0"/>
+                <Font name="System Bold" size="18.0" />
             </font>
         </Label>
         <Label alignment="CENTER" layoutX="106.0" layoutY="104.0" text="Registo">
             <font>
-                <Font name="System Bold" size="18.0"/>
+                <Font name="System Bold" size="18.0" />
             </font>
         </Label>
         <Label alignment="CENTER" layoutX="103.0" layoutY="275.0" text="CICO">
             <font>
-                <Font name="System Bold" size="18.0"/>
+                <Font name="System Bold" size="18.0" />
             </font>
         </Label>
         <AnchorPane layoutY="-1.0" prefHeight="76.0" prefWidth="570.0">
             <children>
                 <Label layoutX="187.0" layoutY="26.0" text="Funcionário:">
                     <font>
-                        <Font name="Britannic Bold" size="35.0"/>
+                        <Font name="Britannic Bold" size="35.0" />
                     </font>
                 </Label>
-                <ImageView fitHeight="53.0" fitWidth="57.0" layoutX="49.0" layoutY="12.0" pickOnBounds="true"
-                           preserveRatio="true">
+                <ImageView fitHeight="53.0" fitWidth="57.0" layoutX="49.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../../Imagens/Funcionario.png"/>
+                        <Image url="@../../Imagens/Funcionario.png" />
                     </image>
                 </ImageView>
-                <Button fx:id="LoginButton" layoutX="455.0" layoutY="26.0" mnemonicParsing="false"
-                        onAction="#switchToLogin" prefHeight="36.0" prefWidth="91.0" style="-fx-background-radius: 20;"
-                        text="Login">
+                <Button fx:id="LoginButton" layoutX="455.0" layoutY="26.0" mnemonicParsing="false" onAction="#switchToLogin" prefHeight="36.0" prefWidth="91.0" style="-fx-background-radius: 20;" text="Login">
                     <font>
-                        <Font size="16.0"/>
+                        <Font size="16.0" />
                     </font>
                 </Button>
             </children>
         </AnchorPane>
-        <ImageView fitHeight="31.0" fitWidth="32.0" layoutX="67.0" layoutY="273.0" pickOnBounds="true"
-                   preserveRatio="true">
+        <ImageView fitHeight="31.0" fitWidth="32.0" layoutX="67.0" layoutY="273.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@../../Imagens/CICO.png"/>
+                <Image url="@../../Imagens/CICO.png" />
             </image>
         </ImageView>
-        <ImageView fitHeight="36.0" fitWidth="42.0" layoutX="67.0" layoutY="100.0" pickOnBounds="true"
-                   preserveRatio="true">
+        <ImageView fitHeight="36.0" fitWidth="42.0" layoutX="67.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@../../Imagens/Registo.png"/>
+                <Image url="@../../Imagens/Registo.png" />
             </image>
         </ImageView>
-        <ImageView fitHeight="36.0" fitWidth="36.0" layoutX="360.0" layoutY="100.0" pickOnBounds="true"
-                   preserveRatio="true">
+        <ImageView fitHeight="36.0" fitWidth="36.0" layoutX="360.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@../../Imagens/Reservar.png"/>
+                <Image url="@../../Imagens/Reservar.png" />
             </image>
         </ImageView>
-        <ImageView fitHeight="36.0" fitWidth="42.0" layoutX="356.0" layoutY="270.0" pickOnBounds="true"
-                   preserveRatio="true">
+        <ImageView fitHeight="36.0" fitWidth="42.0" layoutX="356.0" layoutY="270.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@../../Imagens/Gestao.png"/>
+                <Image url="@../../Imagens/Gestao.png" />
             </image>
         </ImageView>
     </children>

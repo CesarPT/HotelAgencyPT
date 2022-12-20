@@ -20,10 +20,21 @@ import java.sql.Date;
 import java.text.SimpleDateFormat;
 
 public class XMLpath {
-
-    public static void Lexml() throws Exception {
-
-        Path path = Paths.get("../HotelAgencyPT/src/main/java/hotel/agencypt/ProductHero.xml");
+    String[] pind;
+    String[] pd;
+    String[] iq;
+    int[] qt;
+    double[] pu;
+    double[] tax;
+    Float[] cv;
+    float[] taxp;
+    double[] taxa;
+    String[] taxl;
+    Float[] lba;
+    Stock stock = new Stock();
+    StockDAO stockDAO = new StockDAO();
+    NodeList nodeslba;
+    public void Lexml(Path path) throws Exception {
 
         //documento builder para o XML
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -59,8 +70,6 @@ public class XMLpath {
         EntregaDAO entregaDAO = new EntregaDAO();
         Entrega entrega = new Entrega();
 
-        Stock stock = new Stock();
-        StockDAO stockDAO = new StockDAO();
         //OrderNUmber
         XPathExpression expron = xpath.compile("//Header//OrderNumber/text()");
         Object resulton = expron.evaluate(document, XPathConstants.NODESET);
@@ -160,7 +169,7 @@ public class XMLpath {
         //lINE
 
         //product id
-        String[] pind = new String[10];
+        pind = new String[10];
         XPathExpression exprpi = xpath.compile("//Line//Product/ProductIdentifier/text()");
         Object resultpi = exprpi.evaluate(document, XPathConstants.NODESET);
         NodeList nodespi = (NodeList) resultpi;
@@ -170,7 +179,7 @@ public class XMLpath {
 
 
         //product descriçao
-        String[] pd = new String[10];
+        pd = new String[10];
         XPathExpression exprpd = xpath.compile("//Line//Product/ProductDescription/text()");
         Object resultpd = exprpd.evaluate(document, XPathConstants.NODESET);
         NodeList nodespd = (NodeList) resultpd;
@@ -180,7 +189,7 @@ public class XMLpath {
 
 
         //peso
-        String[] iq = new String[10];
+        iq = new String[10];
         XPathExpression expriq = xpath.compile("//Line//InformationalQuantity//Value[@UOM='Kilogram']/text()");
         Object resultiq = expriq.evaluate(document, XPathConstants.NODESET);
         NodeList nodesiq = (NodeList) resultiq;
@@ -191,7 +200,7 @@ public class XMLpath {
 
 
         //Quantidade
-        int[] qt = new int[10];
+        qt = new int[10];
         XPathExpression exprqt = xpath.compile("//Line//Quantity//Value[@UOM='Unit']/text()");
         Object resultqt = exprqt.evaluate(document, XPathConstants.NODESET);
         NodeList nodesqt = (NodeList) resultqt;
@@ -201,7 +210,7 @@ public class XMLpath {
 
 
         //preço unitario
-        double[] pu = new double[10];
+        pu = new double[10];
         XPathExpression exprpu = xpath.compile("//Line//PricePerUnit//CurrencyValue/text()");
         Object resultpu = exprpu.evaluate(document, XPathConstants.NODESET);
         NodeList nodespu = (NodeList) resultpu;
@@ -211,7 +220,7 @@ public class XMLpath {
         }
 
         //Taxas
-        double[] tax = new double[10];
+        tax = new double[10];
         XPathExpression exprtax = xpath.compile("//Line//MonetaryAdjustment//MonetaryAdjustmentLine/text()");
         Object resulttax = exprtax.evaluate(document, XPathConstants.NODESET);
         NodeList nodestax = (NodeList) resulttax;
@@ -221,7 +230,7 @@ public class XMLpath {
         }
 
         //CurrencyValue (preço sem taxa)
-        Float[] cv = new Float[10];
+        cv = new Float[10];
         XPathExpression exprcv = xpath.compile("//Line//MonetaryAdjustment//MonetaryAdjustmentStartAmount/CurrencyValue/text()");
         Object resultcv = exprcv.evaluate(document, XPathConstants.NODESET);
         NodeList nodescv = (NodeList) resultcv;
@@ -232,7 +241,7 @@ public class XMLpath {
 
 
         //Tax percent
-        float[] taxp = new float[10];
+        taxp = new float[10];
         XPathExpression exprtaxp = xpath.compile("//Line//TaxAdjustment//TaxPercent/text()");
         Object resulttaxp = exprtaxp.evaluate(document, XPathConstants.NODESET);
         NodeList nodestaxp = (NodeList) resulttaxp;
@@ -242,7 +251,7 @@ public class XMLpath {
         }
 
         //Tax Amount
-        double[] taxa = new double[10];
+        taxa = new double[10];
         XPathExpression exprtaxa = xpath.compile("//Line//TaxAdjustment//TaxAmount/CurrencyValue/text()");
         Object resulttaxa = exprtaxa.evaluate(document, XPathConstants.NODESET);
         NodeList nodestaxa = (NodeList) resulttaxa;
@@ -252,7 +261,7 @@ public class XMLpath {
         }
 
         //Tax Locationm
-        String[] taxl = new String[10];
+        taxl = new String[10];
         XPathExpression exprtaxl = xpath.compile("//Line//TaxAdjustment//TaxLocation/text()");
         Object resulttaxl = exprtaxl.evaluate(document, XPathConstants.NODESET);
         NodeList nodestaxl = (NodeList) resulttaxl;
@@ -262,15 +271,17 @@ public class XMLpath {
         }
 
         //LineBaseAmount
-        Float[] lba = new Float[10];
+        lba = new Float[10];
         XPathExpression exprlba = xpath.compile("//Line//LineBaseAmount//CurrencyValue/text()");
         Object resultlba = exprlba.evaluate(document, XPathConstants.NODESET);
-        NodeList nodeslba = (NodeList) resultlba;
+        nodeslba = (NodeList) resultlba;
         for (int i = 0; i < nodeslba.getLength(); i++) {
             lba[i] = Float.valueOf(nodeslba.item(i).getNodeValue());
             System.out.println(lba[i]);
         }
+    }
 
+    public void confirmarXML(){
         //Converter para string e inserir na BD
         int quantprod;
         String idprod;
@@ -280,7 +291,7 @@ public class XMLpath {
         float vat;
         float preco_total;
 
-        boolean teste = false;
+        boolean teste=false;
         for (int i = 0; i < nodeslba.getLength(); i++) {
             idprod = pind[i];
             descprod = pd[i];
@@ -290,11 +301,11 @@ public class XMLpath {
             vat = taxp[i];
             preco_total = lba[i];
 
-            teste = stockDAO.IFfindItem(idprod);
+            teste=stockDAO.IFfindItem(idprod);
 
-            if (teste == true) {
-                StockDAO.updateStock(idprod, quantprod);
-            } else {
+            if(teste==true){
+                StockDAO.updateStock(idprod,quantprod);
+            }else {
                 StockDAO.insertNewStock(idprod, descprod, tipo_qtd, quantprod, preco, vat, preco_total);
             }
         }

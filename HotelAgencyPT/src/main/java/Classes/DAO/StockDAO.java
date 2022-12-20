@@ -1,7 +1,9 @@
 package Classes.DAO;
 
+import Classes.Quarto;
 import Classes.Stock;
 import DataBase.ConnectionDB;
+import hotel.agencypt.Controller.Controller;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -46,6 +48,34 @@ public class StockDAO {
         }
     }
 
+    public List<Stock> findStock() {
+        String sql = "SELECT product_identifier, product_description, quantidade, tipo_qtd," +
+                "preco, vat, preco_total\n" +
+                "FROM Stock";
+
+        List<Stock> listStock = new ArrayList<>();
+
+        //Limpar tudo e Adicionar todas as entradas de stock
+        try {
+            PreparedStatement stmt = con.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                Stock stock = new Stock();
+                stock.setProduct_identifier(rs.getString("product_identifier"));
+                stock.setProduct_description(rs.getString("product_description"));
+                stock.setQuantidade(rs.getInt("quantidade"));
+                stock.setTipo_qtd(rs.getString("tipo_qtd"));
+                stock.setPreco(rs.getFloat("preco"));
+                stock.setVat(rs.getFloat("vat"));
+                stock.setPreco_total(rs.getFloat("preco_total"));
+                listStock.add(stock);
+            }
+        } catch (SQLException e) {
+            System.out.println("[ERRO]: Inserir valores no observableList obsEntradas");
+        }
+        return listStock;
+    }
 
     public static boolean IFfindItem(String id_prod) {
         boolean verfica = true;

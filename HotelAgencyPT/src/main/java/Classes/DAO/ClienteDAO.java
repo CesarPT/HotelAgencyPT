@@ -1,9 +1,11 @@
 package Classes.DAO;
 
 import Classes.Cliente;
+import Classes.Utilizador;
 import DataBase.ConnectionDB;
 import hotel.agencypt.Controller.Controller;
 
+import javax.swing.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,11 +17,11 @@ public class ClienteDAO {
     private static Connection con = ConnectionDB.establishConnection();
 
     public static List<Cliente> findidCliente() {
-        String sql = "SELECT idcliente\n" +
-                "FROM Cliente";
+        String sql = "Select Cliente.idcliente,Utilizador.nomeuser from Cliente INNER JOIN Utilizador on Cliente.iduser=Utilizador.iduser";
 
 
         List<Cliente> listCliente = new ArrayList<>();
+        List<Utilizador>listUser=new ArrayList<>();
         PreparedStatement stmt = null;
         ResultSet rs = null;
         try {
@@ -28,7 +30,9 @@ public class ClienteDAO {
 
             while (rs.next()) {
                 Cliente cliente = new Cliente();
+                Utilizador utilizador = new Utilizador();
                 cliente.setIdCliente(rs.getInt("idcliente"));
+                utilizador.setNomeUtilizador(rs.getString("nomeuser"));
                 listCliente.add(cliente);
             }
 
