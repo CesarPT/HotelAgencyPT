@@ -54,6 +54,9 @@ public class Reserva {
         this.CheckIn = checkIn;
     }
 
+    public void selectedRow(int idreserva){
+        setIdreserva(idreserva);
+    }
     public int getIdreserva() {
         return idreserva;
     }

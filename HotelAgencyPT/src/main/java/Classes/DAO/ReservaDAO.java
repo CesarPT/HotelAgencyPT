@@ -1,5 +1,6 @@
 package Classes.DAO;
 
+import Classes.Entrega;
 import Classes.Reserva;
 import DataBase.ConnectionDB;
 import hotel.agencypt.Controller.Controller;
@@ -112,6 +113,21 @@ public class ReservaDAO {
             stockDAO.decrementarStock();
         } catch (SQLException e) {
             System.err.println("[ERRO]: criarReserva " + e.getMessage());
+        }
+    }
+
+    public boolean deleteReserva() {
+        String sql = "DELETE FROM ReservaServico\n" +
+                "    WHERE idreserva=" + Controller.getInstance().getSelectedRowReserva() + "\n" +
+                "    DELETE FROM Reserva\n" +
+                "    WHERE idreserva="+Controller.getInstance().getSelectedRowReserva();
+        try {
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            System.err.println("[ERRO]: deleteReserva " + e.getMessage());
+            return false;
         }
     }
 }

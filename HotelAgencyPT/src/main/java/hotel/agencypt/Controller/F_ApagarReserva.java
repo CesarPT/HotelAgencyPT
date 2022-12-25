@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class F_ApagarReserva implements Initializable {
+public class F_ApagarReserva {
 
     @FXML
     private TableView<Reserva> tableApagarReserva;
@@ -33,8 +33,11 @@ public class F_ApagarReserva implements Initializable {
     List<Reserva> arrayReserva = new ArrayList<>();
     ReservaDAO rDAO = new ReservaDAO();
         ObservableList<Reserva> obsCheckIn = FXCollections.observableArrayList();
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
+
+    public void initialize() {
+        tableApagarReserva.getSelectionModel().clearSelection();
+        tableApagarReserva.getItems().clear();
+
         arrayReserva = rDAO.temCheckIn();
         for (Reserva r : arrayReserva) {
             obsCheckIn.add(new Reserva(r.getIdcliente(), r.getIdreserva(), r.getCheckIn()));
@@ -60,10 +63,22 @@ public class F_ApagarReserva implements Initializable {
                         "não pode apagar a sua reserva.");
                 alert2.showAndWait();
             } else {
+                //Insere os valores selecionados da tableview nos sets
+                Reserva reserva = tableApagarReserva.getSelectionModel().getSelectedItem();
+
+                //Recebe os valores selecionados nos gets e envia para o controlador
+                //usa-se o get do controller no ReservaDAO
+                Controller.getInstance().setSelectedRowReserva(reserva.getIdreserva());
+                //Remove na BD
+                rDAO.deleteReserva();
+
                 Alert alert2 = new Alert(Alert.AlertType.INFORMATION);
                 alert2.setTitle("Informação");
                 alert2.setContentText("Reserva do cliente apagada com sucesso.");
                 alert2.showAndWait();
+
+                //Atualiza a tableview
+                initialize();
             }
             //Sem seleção
         } else {

@@ -8,6 +8,7 @@ public class Controller {
     private char tipo_user;
     private int piso;
     private int idquarto;
+    private int selectedRowReserva;
     private final static Controller INSTANCE = new Controller();
 
     /**
@@ -56,5 +57,13 @@ public class Controller {
 
     public void setIdquarto(int idquarto) {
         this.idquarto = idquarto;
+    }
+
+    public int getSelectedRowReserva() {
+        return selectedRowReserva;
+    }
+
+    public void setSelectedRowReserva(int selectedRowReserva) {
+        this.selectedRowReserva = selectedRowReserva;
     }
 }
