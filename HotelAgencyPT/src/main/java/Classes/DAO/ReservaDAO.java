@@ -109,8 +109,6 @@ public class ReservaDAO {
             stmt.setDate(4, (Date) reserva.getDataF());
             stmt.executeUpdate();
 
-            //Remover produtos base da tabela Stock
-            stockDAO.decrementarStock();
         } catch (SQLException e) {
             System.err.println("[ERRO]: criarReserva " + e.getMessage());
         }

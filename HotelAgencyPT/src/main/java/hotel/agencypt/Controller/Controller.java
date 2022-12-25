@@ -9,6 +9,8 @@ public class Controller {
     private int piso;
     private int idquarto;
     private int selectedRowReserva;
+
+    private String produtosEscolhidos;
     private final static Controller INSTANCE = new Controller();
 
     /**
@@ -65,5 +67,13 @@ public class Controller {
 
     public void setSelectedRowReserva(int selectedRowReserva) {
         this.selectedRowReserva = selectedRowReserva;
+    }
+
+    public String getProdutosEscolhidos() {
+        return produtosEscolhidos;
+    }
+
+    public void setProdutosEscolhidos(String produtosEscolhidos) {
+        this.produtosEscolhidos = produtosEscolhidos;
     }
 }

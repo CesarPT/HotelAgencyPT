@@ -2,6 +2,7 @@ package Classes.DAO;
 
 import Classes.Stock;
 import DataBase.ConnectionDB;
+import hotel.agencypt.Controller.Controller;
 import javafx.scene.control.Alert;
 
 import java.sql.Connection;
@@ -79,6 +80,45 @@ public class StockDAO {
         return listStock;
     }
 
+    /**
+     * Lista de produtos só consumíveis
+     * @return
+     */
+    public List<Stock> findStockConsumivel() {
+        String sql = "SELECT product_identifier, product_description, quantidade, tipo_qtd," +
+                "preco, vat, preco_total\n" +
+                "FROM Stock\n" +
+                "WHERE NOT (product_identifier='CF-9812'\n" +
+                "OR product_identifier='LG18964'\n" +
+                "OR product_identifier='XPO-756')";
+
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        List<Stock> listStock = new ArrayList<>();
+
+        //Limpar tudo e Adicionar todas as entradas de stock
+        try {
+            stmt = con.prepareStatement(sql);
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                Stock stock = new Stock();
+                stock.setProduct_identifier(rs.getString("product_identifier"));
+                stock.setProduct_description(rs.getString("product_description"));
+                stock.setQuantidade(rs.getInt("quantidade"));
+                stock.setTipo_qtd(rs.getString("tipo_qtd"));
+                stock.setPreco(rs.getFloat("preco"));
+                stock.setVat(rs.getFloat("vat"));
+                stock.setPreco_total(rs.getFloat("preco_total"));
+                listStock.add(stock);
+            }
+        } catch (SQLException e) {
+            System.out.println("[ERRO]: findStockConsumivel | " + e.getMessage());
+        }
+        return listStock;
+    }
+
     public static boolean IFfindItem(String id_prod) {
         boolean verfica = true;
 
@@ -115,13 +155,26 @@ public class StockDAO {
         }
     }
 
+    public static boolean updateStockQtd(
+            int quantidade, String product_description
+    ) {
+
+        String sql = "UPDATE Stock set quantidade = quantidade -" + quantidade +
+                     " WHERE product_description ='" + product_description + "'";
+        try {
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            System.err.println("[ERRO]: updateStockQtd " + e.getMessage());
+            return false;
+        }
+    }
     public static boolean decrementarStock(
     ) {
 
         String sql = "UPDATE Stock set quantidade = quantidade - 1 " +
-                "WHERE product_identifier ='PZ-1989' " +
-                "OR product_identifier ='X569P'" +
-                "OR product_identifier ='XQF6324'";
+                "WHERE product_identifier ="+ Controller.getInstance().getProdutosEscolhidos();
         try {
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.executeUpdate();
@@ -130,11 +183,7 @@ public class StockDAO {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Informação");
             alert.setHeaderText("Decrementar produtos");
-            alert.setContentText("""
-                    Os seguintes produtos foram decrementados do Stock:
-                    -1 Toalha de banho 400g cinza
-                    -1 Secador de cabelo Philips Preto
-                    -1 Rituals Condicionador/Champô de banho 200ml""");
+            alert.setContentText("-1 ");
             alert.showAndWait();
             return true;
         } catch (SQLException e) {
