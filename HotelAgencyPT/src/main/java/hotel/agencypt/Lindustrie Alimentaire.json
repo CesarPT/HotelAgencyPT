@@ -30,7 +30,7 @@
           ],
           "ProductDescription": "Croissant Brioche délifrance"
         },
-		"Quantity": {
+        "Quantity": {
           "Value": {
             "UOM": "Unit",
             "Value": 10000
@@ -44,16 +44,16 @@
             }
           }
         ],
-         "PricePerUnit": {
-            "CurrencyValue": {
-              "CurrencyType": "EUR",
-              "Value": 0.25
-            },
-            "Value": {
-              "UOM": "Unit",
-              "Value": 1
-            }
-         },
+        "PricePerUnit": {
+          "CurrencyValue": {
+            "CurrencyType": "EUR",
+            "Value": 0.25
+          },
+          "Value": {
+            "UOM": "Unit",
+            "Value": 1
+          }
+        },
         "MonetaryAdjustment": {
           "AdjustmentType": "Tax",
           "MonetaryAdjustmentLine": 1,
@@ -75,7 +75,6 @@
             "TaxLocation": "FR"
           }
         },
-        
         "LineBaseAmount": {
           "CurrencyValue": {
             "CurrencyType": "EUR",
@@ -95,7 +94,7 @@
           ],
           "ProductDescription": "Pão Campagne Francês"
         },
-		"Quantity": {
+        "Quantity": {
           "Value": {
             "UOM": "Unit",
             "Value": 100
@@ -109,16 +108,16 @@
             }
           }
         ],
-         "PricePerUnit": {
-            "CurrencyValue": {
-              "CurrencyType": "EUR",
-              "Value": 2.12
-            },
-            "Value": {
-              "UOM": "Unit",
-              "Value": 1
-            }
-         },
+        "PricePerUnit": {
+          "CurrencyValue": {
+            "CurrencyType": "EUR",
+            "Value": 2.12
+          },
+          "Value": {
+            "UOM": "Unit",
+            "Value": 1
+          }
+        },
         "MonetaryAdjustment": {
           "AdjustmentType": "Tax",
           "MonetaryAdjustmentLine": 1,
@@ -140,7 +139,6 @@
             "TaxLocation": "FR"
           }
         },
-        
         "LineBaseAmount": {
           "CurrencyValue": {
             "CurrencyType": "EUR",
@@ -148,7 +146,7 @@
           }
         }
       },
-	  {
+      {
         "LineNumber": 3,
         "Product": {
           "ProductIdentifier": [
@@ -160,7 +158,7 @@
           ],
           "ProductDescription": "Baguette francesa"
         },
-		"Quantity": {
+        "Quantity": {
           "Value": {
             "UOM": "Unit",
             "Value": 200
@@ -174,16 +172,16 @@
             }
           }
         ],
-         "PricePerUnit": {
-            "CurrencyValue": {
-              "CurrencyType": "EUR",
-              "Value": 0.32
-            },
-            "Value": {
-              "UOM": "Unit",
-              "Value": 1
-            }
-         },
+        "PricePerUnit": {
+          "CurrencyValue": {
+            "CurrencyType": "EUR",
+            "Value": 0.32
+          },
+          "Value": {
+            "UOM": "Unit",
+            "Value": 1
+          }
+        },
         "MonetaryAdjustment": {
           "AdjustmentType": "Tax",
           "MonetaryAdjustmentLine": 1,
@@ -205,7 +203,6 @@
             "TaxLocation": "FR"
           }
         },
-        
         "LineBaseAmount": {
           "CurrencyValue": {
             "CurrencyType": "EUR",
@@ -213,7 +210,7 @@
           }
         }
       },
-	  {
+      {
         "LineNumber": 4,
         "Product": {
           "ProductIdentifier": [
@@ -225,7 +222,7 @@
           ],
           "ProductDescription": "Bâtonnets de cannelle"
         },
-		"Quantity": {
+        "Quantity": {
           "Value": {
             "UOM": "Unit",
             "Value": 100
@@ -239,16 +236,16 @@
             }
           }
         ],
-         "PricePerUnit": {
-            "CurrencyValue": {
-              "CurrencyType": "EUR",
-              "Value": 0.61
-            },
-            "Value": {
-              "UOM": "Unit",
-              "Value": 1
-            }
-         },
+        "PricePerUnit": {
+          "CurrencyValue": {
+            "CurrencyType": "EUR",
+            "Value": 0.61
+          },
+          "Value": {
+            "UOM": "Unit",
+            "Value": 1
+          }
+        },
         "MonetaryAdjustment": {
           "AdjustmentType": "Tax",
           "MonetaryAdjustmentLine": 1,
@@ -270,7 +267,6 @@
             "TaxLocation": "FR"
           }
         },
-        
         "LineBaseAmount": {
           "CurrencyValue": {
             "CurrencyType": "EUR",
@@ -278,7 +274,7 @@
           }
         }
       },
-	  {
+      {
         "LineNumber": 5,
         "Product": {
           "ProductIdentifier": [
@@ -290,7 +286,7 @@
           ],
           "ProductDescription": "Queijo Camembert"
         },
-		"Quantity": {
+        "Quantity": {
           "Value": {
             "UOM": "Unit",
             "Value": 50
@@ -304,16 +300,16 @@
             }
           }
         ],
-         "PricePerUnit": {
-            "CurrencyValue": {
-              "CurrencyType": "EUR",
-              "Value": 1.33
-            },
-            "Value": {
-              "UOM": "Unit",
-              "Value": 1
-            }
-         },
+        "PricePerUnit": {
+          "CurrencyValue": {
+            "CurrencyType": "EUR",
+            "Value": 1.33
+          },
+          "Value": {
+            "UOM": "Unit",
+            "Value": 1
+          }
+        },
         "MonetaryAdjustment": {
           "AdjustmentType": "Tax",
           "MonetaryAdjustmentLine": 1,
@@ -335,7 +331,6 @@
             "TaxLocation": "FR"
           }
         },
-        
         "LineBaseAmount": {
           "CurrencyValue": {
             "CurrencyType": "EUR",
@@ -343,7 +338,7 @@
           }
         }
       },
-	  {
+      {
         "LineNumber": 6,
         "Product": {
           "ProductIdentifier": [
@@ -355,7 +350,7 @@
           ],
           "ProductDescription": "Saumure jambon"
         },
-		"Quantity": {
+        "Quantity": {
           "Value": {
             "UOM": "Unit",
             "Value": 1
@@ -369,16 +364,16 @@
             }
           }
         ],
-         "PricePerUnit": {
-            "CurrencyValue": {
-              "CurrencyType": "EUR",
-              "Value": 19.99
-            },
-            "Value": {
-              "UOM": "Unit",
-              "Value": 1
-            }
-         },
+        "PricePerUnit": {
+          "CurrencyValue": {
+            "CurrencyType": "EUR",
+            "Value": 19.99
+          },
+          "Value": {
+            "UOM": "Unit",
+            "Value": 1
+          }
+        },
         "MonetaryAdjustment": {
           "AdjustmentType": "Tax",
           "MonetaryAdjustmentLine": 1,
@@ -400,7 +395,6 @@
             "TaxLocation": "FR"
           }
         },
-        
         "LineBaseAmount": {
           "CurrencyValue": {
             "CurrencyType": "EUR",
@@ -408,7 +402,7 @@
           }
         }
       },
-	  {
+      {
         "LineNumber": 7,
         "Product": {
           "ProductIdentifier": [
@@ -420,7 +414,7 @@
           ],
           "ProductDescription": "Melon vert"
         },
-		"Quantity": {
+        "Quantity": {
           "Value": {
             "UOM": "Unit",
             "Value": 5
@@ -434,16 +428,16 @@
             }
           }
         ],
-         "PricePerUnit": {
-            "CurrencyValue": {
-              "CurrencyType": "EUR",
-              "Value": 1.39
-            },
-            "Value": {
-              "UOM": "Unit",
-              "Value": 1
-            }
-         },
+        "PricePerUnit": {
+          "CurrencyValue": {
+            "CurrencyType": "EUR",
+            "Value": 1.39
+          },
+          "Value": {
+            "UOM": "Unit",
+            "Value": 1
+          }
+        },
         "MonetaryAdjustment": {
           "AdjustmentType": "Tax",
           "MonetaryAdjustmentLine": 1,
@@ -465,7 +459,6 @@
             "TaxLocation": "FR"
           }
         },
-        
         "LineBaseAmount": {
           "CurrencyValue": {
             "CurrencyType": "EUR",
@@ -473,7 +466,7 @@
           }
         }
       },
-	  {
+      {
         "LineNumber": 8,
         "Product": {
           "ProductIdentifier": [
@@ -485,7 +478,7 @@
           ],
           "ProductDescription": "Banana da Madeira"
         },
-		"Quantity": {
+        "Quantity": {
           "Value": {
             "UOM": "Unit",
             "Value": 100
@@ -499,16 +492,16 @@
             }
           }
         ],
-         "PricePerUnit": {
-            "CurrencyValue": {
-              "CurrencyType": "EUR",
-              "Value": 1.15
-            },
-            "Value": {
-              "UOM": "Unit",
-              "Value": 1
-            }
-         },
+        "PricePerUnit": {
+          "CurrencyValue": {
+            "CurrencyType": "EUR",
+            "Value": 1.15
+          },
+          "Value": {
+            "UOM": "Unit",
+            "Value": 1
+          }
+        },
         "MonetaryAdjustment": {
           "AdjustmentType": "Tax",
           "MonetaryAdjustmentLine": 1,
@@ -530,7 +523,6 @@
             "TaxLocation": "FR"
           }
         },
-        
         "LineBaseAmount": {
           "CurrencyValue": {
             "CurrencyType": "EUR",
@@ -538,7 +530,7 @@
           }
         }
       },
-	  {
+      {
         "LineNumber": 9,
         "Product": {
           "ProductIdentifier": [
@@ -550,7 +542,7 @@
           ],
           "ProductDescription": "Iogurtes Adagio"
         },
-		"Quantity": {
+        "Quantity": {
           "Value": {
             "UOM": "Unit",
             "Value": 500
@@ -564,16 +556,16 @@
             }
           }
         ],
-         "PricePerUnit": {
-            "CurrencyValue": {
-              "CurrencyType": "EUR",
-              "Value": 0.22
-            },
-            "Value": {
-              "UOM": "Unit",
-              "Value": 1
-            }
-         },
+        "PricePerUnit": {
+          "CurrencyValue": {
+            "CurrencyType": "EUR",
+            "Value": 0.22
+          },
+          "Value": {
+            "UOM": "Unit",
+            "Value": 1
+          }
+        },
         "MonetaryAdjustment": {
           "AdjustmentType": "Tax",
           "MonetaryAdjustmentLine": 1,
@@ -595,7 +587,6 @@
             "TaxLocation": "FR"
           }
         },
-        
         "LineBaseAmount": {
           "CurrencyValue": {
             "CurrencyType": "EUR",

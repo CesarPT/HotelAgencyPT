@@ -41,7 +41,7 @@ public class GestorHotel {
     }
 
     @FXML
-    protected void onConfigurarServicos(){
+    protected void onConfigurarServicos() {
         try {
             Stage window = (Stage) button.getScene().getWindow();
             window.close();
@@ -110,7 +110,7 @@ public class GestorHotel {
     /**
      * Abrir scene F_ApagarReservas.fxml
      */
-    public void abrirApagarReservas(){
+    public void abrirApagarReservas() {
         try {
             Stage window = (Stage) button.getScene().getWindow();
             window.close();
@@ -122,6 +122,7 @@ public class GestorHotel {
 
     /**
      * Abrir a scene para importar/confirmar ficheiro XML
+     *
      * @param event
      */
     public void abrirFicheiroXML(ActionEvent event) {

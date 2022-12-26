@@ -1,5 +1,6 @@
 package Classes.DAO;
 
+import Classes.Entrega;
 import Classes.Reserva;
 import DataBase.ConnectionDB;
 import hotel.agencypt.Controller.Controller;
@@ -71,8 +72,33 @@ public class ReservaDAO {
         return listreserva;
     }
 
+    public static List<Reserva> temCheckIn() {
+        String sql = "SELECT Reserva.idcliente, Reserva.idreserva,\n" +
+                "            case when CheckInOut.EstadoCheckIn = 'I' Then 'Sim' Else 'Nao' End as CheckIn\n" +
+                "    FROM Reserva\n" +
+                "    FULL OUTER JOIN CheckInOut\n" +
+                "    ON CheckInOut.idreserva = Reserva.idreserva\n" +
+                "    ORDER BY CheckIn desc";
 
-    public static boolean criaReserva(Reserva reserva) {
+        List<Reserva> listreserva = new ArrayList<>();
+        try {
+            PreparedStatement stmt = con.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                Reserva reserva = new Reserva();
+                reserva.setIdcliente(rs.getInt("idcliente"));
+                reserva.setIdreserva(rs.getInt("idreserva"));
+                reserva.setCheckIn(rs.getString("CheckIn"));
+                listreserva.add(reserva);
+            }
+        } catch (SQLException e) {
+            System.err.println("[ERRO]: temCheckIn " + e.getMessage());
+        }
+        return listreserva;
+    }
+
+    public static void criaReserva(Reserva reserva) {
         String sql = "INSERT INTO Reserva (idcliente,idquarto,datai,dataf) Values (?,?,?,?)";
 
         try {
@@ -83,11 +109,22 @@ public class ReservaDAO {
             stmt.setDate(4, (Date) reserva.getDataF());
             stmt.executeUpdate();
 
-            //Remover produtos base da tabela Stock
-            stockDAO.decrementarStock();
-            return true;
         } catch (SQLException e) {
             System.err.println("[ERRO]: criarReserva " + e.getMessage());
+        }
+    }
+
+    public boolean deleteReserva() {
+        String sql = "DELETE FROM ReservaServico\n" +
+                "    WHERE idreserva=" + Controller.getInstance().getSelectedRowReserva() + "\n" +
+                "    DELETE FROM Reserva\n" +
+                "    WHERE idreserva="+Controller.getInstance().getSelectedRowReserva();
+        try {
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            System.err.println("[ERRO]: deleteReserva " + e.getMessage());
             return false;
         }
     }

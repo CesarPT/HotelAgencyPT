@@ -15,7 +15,6 @@ import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathFactory;
 import java.io.File;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 
@@ -34,6 +33,7 @@ public class XMLpath {
     Stock stock = new Stock();
     StockDAO stockDAO = new StockDAO();
     NodeList nodeslba;
+
     public void Lexml(Path path) throws Exception {
 
         //documento builder para o XML
@@ -281,7 +281,7 @@ public class XMLpath {
         }
     }
 
-    public void confirmarXML(){
+    public void confirmarXML() {
         //Converter para string e inserir na BD
         int quantprod;
         String idprod;
@@ -291,7 +291,7 @@ public class XMLpath {
         float vat;
         float preco_total;
 
-        boolean teste=false;
+        boolean teste = false;
         for (int i = 0; i < nodeslba.getLength(); i++) {
             idprod = pind[i];
             descprod = pd[i];
@@ -301,11 +301,11 @@ public class XMLpath {
             vat = taxp[i];
             preco_total = lba[i];
 
-            teste=stockDAO.IFfindItem(idprod);
+            teste = stockDAO.IFfindItem(idprod);
 
-            if(teste==true){
-                StockDAO.updateStock(idprod,quantprod);
-            }else {
+            if (teste == true) {
+                StockDAO.updateStock(idprod, quantprod);
+            } else {
                 StockDAO.insertNewStock(idprod, descprod, tipo_qtd, quantprod, preco, vat, preco_total);
             }
         }

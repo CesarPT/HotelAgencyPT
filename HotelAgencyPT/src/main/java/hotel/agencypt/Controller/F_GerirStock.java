@@ -1,12 +1,9 @@
 package hotel.agencypt.Controller;
 
 import Classes.DAO.EntregaDAO;
-import Classes.DAO.QuartoStockDAO;
 import Classes.DAO.StockDAO;
 import Classes.Entrega;
-import Classes.QuartoStock;
 import Classes.Stock;
-import DataBase.ConnectionDB;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -19,10 +16,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;

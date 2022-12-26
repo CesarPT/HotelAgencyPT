@@ -2,9 +2,9 @@ package hotel.agencypt.Controller;
 
 //Bibliotecas
 
-import Classes.*;
 import Classes.Cliente;
 import Classes.DAO.*;
+import Classes.*;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -13,6 +13,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.sql.Date;
@@ -61,19 +62,28 @@ public class F_Reserva implements Initializable {
     @FXML
     private ListView<String> listServesco;
     @FXML
-    private ListView<String>listidClienteInsere;
+    private ListView<String> listidClienteInsere;
 
     //var para selecionar na Listview dos servicos
     String servicoselct;
     String servicoselce;
+    String servicoselct2;
+    String servicoselce2;
     String escolhaTquarto;
     String preco;
+    String produto;
     Integer index = -1;
+    Integer index2 = -1;
     List<Servico> arrayServico = new ArrayList<>();
+    List<Stock> arrayProduto = new ArrayList<>();
     List<Utilizador> arrayUtilizador = new ArrayList<>();
     ServicoDAO servicoDAO = new ServicoDAO();
     QuartoDAO quartoDAO = new QuartoDAO();
+    StockDAO stockDAO = new StockDAO();
     ArrayList<String> listaqq = new ArrayList<>();
+
+    @FXML
+    private ComboBox comboBoxQuantidade;
 
 
     @Override
@@ -198,6 +208,7 @@ public class F_Reserva implements Initializable {
         }
     }
 
+
     Date myDateI;
     Date datai;
 
@@ -321,6 +332,7 @@ public class F_Reserva implements Initializable {
         }
     }
 
+<<<<<<< HEAD
     public void clientescolhido(){
         listidClienteInsere.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
@@ -328,9 +340,14 @@ public class F_Reserva implements Initializable {
                 idClient = Integer.parseInt(listidClienteInsere.getSelectionModel().getSelectedItem());
             }
         });
+=======
+    public void clientescolhido() {
+        nomeC = listidClienteInsere.getSelectionModel().getSelectedItem();
+>>>>>>> 8bfa6770c0f10d4bb94e111ff8781ad01deff59d
     }
 
     String pesquisadcliente;
+
     @FXML
     public void onNomeCliente() {
         pesquisadcliente = nomeCliente.getText();
@@ -342,14 +359,35 @@ public class F_Reserva implements Initializable {
     }
 
 
-
     ReservaDAO reservaDAO = new ReservaDAO();
     Reserva reserva = new Reserva();
 
+<<<<<<< HEAD
+=======
+
+    /**
+     * Abre uma scene para escolher produtos do quarto
+     */
+    public void escolherProdutos(){
+        try {
+            //Se não escolher um tipo de quarto
+                System.out.println(Controller.getInstance().getIdQuarto());
+                Stage stage = (Stage) listServesco.getScene().getWindow();
+                stage.close();
+                Singleton.open("F_DecrementarStock", "User: " + Controller.getInstance().getUsername()
+                        + " | Hotel >> " + Controller.getInstance().getTipo_user());
+        } catch (Exception e) {
+            System.out.println("Erro ao abrir/fechar scene.");
+        }
+    }
+    /**
+     * Verificações e criar a reserva para o cliente
+     * @param event
+     */
+>>>>>>> 8bfa6770c0f10d4bb94e111ff8781ad01deff59d
     @FXML
     public void onCriaReserva(ActionEvent event) {
-
-
+        //Verificações
         if (datePickerI.getValue() == null || datePickerF.getValue() == null) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Aviso");
@@ -362,7 +400,7 @@ public class F_Reserva implements Initializable {
             alert.setHeaderText("Datas inválidas");
             alert.setContentText("A data de fim deve ser maior que a data de inicio.");
             alert.showAndWait();
-        } else if (cboxTquarto.getSelectionModel().isEmpty() ) {
+        } else if (cboxTquarto.getSelectionModel().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Aviso");
             alert.setHeaderText("Sem seleção");
@@ -387,15 +425,18 @@ public class F_Reserva implements Initializable {
                 reserva.setDataI(datai);
                 reserva.setDataF(dataf);
 
+<<<<<<< HEAD
                 reservaDAO.criaReserva(reserva);
 
                 //Relação de tabela
+=======
+               reservaDAO.criaReserva(reserva);
+               //Relação de tabela
+>>>>>>> 8bfa6770c0f10d4bb94e111ff8781ad01deff59d
                 RelacionaResServ();
             }
         }
     }
-
-
 
 
     int ultimaReserv;
@@ -439,9 +480,8 @@ public class F_Reserva implements Initializable {
                 criaReservaServico(ultimaReserv, relacionaservico);
 
             }
-
-
         }
+        escolherProdutos();
     }
     //------------------------------------------------------
 
@@ -462,9 +502,4 @@ public class F_Reserva implements Initializable {
 
     public void onIdCliente(ActionEvent event) {
     }
-
-
 }
-
-
-

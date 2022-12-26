@@ -57,7 +57,7 @@ public class QuartoDAO {
         String sql = "SELECT preco\n" +
                 "FROM Quarto\n" +
                 "WHERE idquarto=" + Controller.getInstance().getIdQuarto();
-                //" AND descricao='" + Controller.getInstance().getDescricaoQuarto() + "'"+
+        //" AND descricao='" + Controller.getInstance().getDescricaoQuarto() + "'"+
 
         List<Quarto> listPreco = new ArrayList<>();
 
@@ -91,21 +91,6 @@ public class QuartoDAO {
             return true;
         } catch (SQLException e) {
             System.err.println("[ERRO]: updatePreco " + e.getMessage());
-            return false;
-        }
-    }
-
-    public boolean updateDescricao(Quarto quarto) {
-        String sql = "UPDATE Quarto SET descricaoQuarto = ?" +
-                " WHERE idquarto=" + Controller.getInstance().getIdQuarto();
-
-        try {
-            PreparedStatement stmt = con.prepareStatement(sql);
-            stmt.setString(1, quarto.getDescricao());
-            stmt.executeUpdate();
-            return true;
-        } catch (SQLException e) {
-            System.err.println("[ERRO]: updateDescricaoQuarto " + e.getMessage());
             return false;
         }
     }
@@ -205,4 +190,18 @@ public class QuartoDAO {
         return listquarto;
     }
 
+    public boolean updateDescricao(Quarto quarto) {
+        String sql = "UPDATE Quarto SET descricaoQuarto = ?" +
+                " WHERE idquarto=" + Controller.getInstance().getIdQuarto();
+
+        try {
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setString(1, quarto.getDescricao());
+            stmt.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            System.err.println("[ERRO]: updateDescricaoQuarto " + e.getMessage());
+            return false;
+        }
+    }
 }

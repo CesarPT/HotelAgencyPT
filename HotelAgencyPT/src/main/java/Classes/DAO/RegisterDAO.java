@@ -113,7 +113,7 @@ public class RegisterDAO {
                 while (rs.next()) {
                     if (rs.getInt(1) == 1) {
                     } else {
-                        String create = "INSERT INTO Funcionario(iduser) VALUES(" + id + ")";
+                        String create = "INSERT INTO Funcionario(iduser, estado) VALUES(" + id + ", 'Ativo')";
                         PreparedStatement stm1 = con.prepareStatement(create);
                         stm1.executeQuery();
                     }

@@ -12,7 +12,6 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
 import java.net.URL;
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -20,15 +19,15 @@ import java.util.ResourceBundle;
 
 public class GH_ConfigServicos implements Initializable {
 
-@FXML
-private ListView<String> listServtodos;
-@FXML
-private TextField descricaoServ, precoServ;
+    @FXML
+    private ListView<String> listServtodos;
+    @FXML
+    private TextField descricaoServ, precoServ;
 
-String servicoselct,descricao,preco,testeapaga;
-List<Servico> arrayServico = new ArrayList<>();
-ServicoDAO servicoDAO = new ServicoDAO();
-Alert alertapaga= new Alert(Alert.AlertType.NONE);
+    String servicoselct, descricao, preco, testeapaga;
+    List<Servico> arrayServico = new ArrayList<>();
+    ServicoDAO servicoDAO = new ServicoDAO();
+    Alert alertapaga = new Alert(Alert.AlertType.NONE);
 
     public GH_ConfigServicos() {
     }
@@ -58,26 +57,26 @@ Alert alertapaga= new Alert(Alert.AlertType.NONE);
     }
 
     @FXML
-    public void onCriarReserva(){
+    public void onCriarReserva() {
         descricao = descricaoServ.getText();
         preco = precoServ.getText();
         servicoDAO.criaServico(descricao, Float.parseFloat(preco));
     }
 
     @FXML
-    public void onApagarReserva(){
+    public void onApagarReserva() {
 
 
-        if(testeapaga==null){
+        if (testeapaga == null) {
             alertapaga.setAlertType(Alert.AlertType.WARNING);
             alertapaga.setContentText("Selecione um serviço para apagar");
             alertapaga.show();
         } else {
 
-            testeapaga=servicoselct;
-            testeapaga = testeapaga.replace(".","")
-                    .replaceAll("[0-9]","");
-            testeapaga=testeapaga.substring(0,testeapaga.length() - 1);
+            testeapaga = servicoselct;
+            testeapaga = testeapaga.replace(".", "")
+                    .replaceAll("[0-9]", "");
+            testeapaga = testeapaga.substring(0, testeapaga.length() - 1);
 
             servicoDAO.apagaServico(testeapaga);
         }

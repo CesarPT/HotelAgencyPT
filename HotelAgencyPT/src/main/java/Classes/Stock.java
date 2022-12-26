@@ -33,8 +33,12 @@ public class Stock {
         this.preco_total = precoTotal;
     }
 
+    public Stock(String productDescription) {
+        this.product_description = productDescription;
+    }
     public Stock() {
     }
+
 
     public void setProduct_identifier(String product_identifier) {
         this.product_identifier = product_identifier;

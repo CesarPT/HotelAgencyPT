@@ -1,0 +1,3 @@
+url-->jdbc:sqlserver://CTESPBD.DEI.ISEP.IPP.PT
+username-->2022_E_LP3_G2
+password-->LP3_bdG2
