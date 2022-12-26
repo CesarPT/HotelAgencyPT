@@ -6,6 +6,7 @@ import Classes.EstadoFunc;
 import Classes.Funcionario;
 import Classes.Servico;
 import Classes.Utilizador;
+import DataBase.ConnectionDB;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -14,6 +15,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
 
 import java.net.URL;
+import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -64,18 +66,19 @@ public class GH_GerirFuncionario  implements Initializable {
         textoformatado=textoformatado.trim();
         System.out.println(textoformatado);
 
-        FuncionarioDAO.updateAtiva(utilizadorselect);
+        FuncionarioDAO.updateAtiva(textoformatado);
     }
 
     @FXML
     public void InativarFunc(){
+
         index= utilizadorselect.indexOf("-");
         textoformatado=utilizadorselect.substring(0,index);
         textoformatado=textoformatado.replace("Nome:","");
         textoformatado=textoformatado.trim();
         System.out.println(textoformatado);
         
-        FuncionarioDAO.updateInativa(utilizadorselect);
+        FuncionarioDAO.updateInativa(textoformatado);
     }
 
 
