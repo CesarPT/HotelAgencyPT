@@ -332,20 +332,19 @@ public class F_Reserva implements Initializable {
         }
     }
 
-<<<<<<< HEAD
-    public void clientescolhido(){
+    public void clientescolhido() {
         listidClienteInsere.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
                 idClient = Integer.parseInt(listidClienteInsere.getSelectionModel().getSelectedItem());
             }
         });
-=======
-    public void clientescolhido() {
-        nomeC = listidClienteInsere.getSelectionModel().getSelectedItem();
->>>>>>> 8bfa6770c0f10d4bb94e111ff8781ad01deff59d
     }
-
+        //----------------------------------------------------
+/*    public void clientescolhido() {
+        nomeC = listidClienteInsere.getSelectionModel().getSelectedItem();
+    }
+ */
     String pesquisadcliente;
 
     @FXML
@@ -362,8 +361,7 @@ public class F_Reserva implements Initializable {
     ReservaDAO reservaDAO = new ReservaDAO();
     Reserva reserva = new Reserva();
 
-<<<<<<< HEAD
-=======
+
 
     /**
      * Abre uma scene para escolher produtos do quarto
@@ -384,7 +382,6 @@ public class F_Reserva implements Initializable {
      * Verificações e criar a reserva para o cliente
      * @param event
      */
->>>>>>> 8bfa6770c0f10d4bb94e111ff8781ad01deff59d
     @FXML
     public void onCriaReserva(ActionEvent event) {
         //Verificações
@@ -424,15 +421,9 @@ public class F_Reserva implements Initializable {
                 reserva.setIdquarto(idQuartoesc);
                 reserva.setDataI(datai);
                 reserva.setDataF(dataf);
-
-<<<<<<< HEAD
-                reservaDAO.criaReserva(reserva);
-
-                //Relação de tabela
-=======
+                
                reservaDAO.criaReserva(reserva);
                //Relação de tabela
->>>>>>> 8bfa6770c0f10d4bb94e111ff8781ad01deff59d
                 RelacionaResServ();
             }
         }

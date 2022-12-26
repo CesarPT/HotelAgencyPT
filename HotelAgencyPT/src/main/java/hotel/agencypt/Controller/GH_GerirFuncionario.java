@@ -3,22 +3,13 @@ package hotel.agencypt.Controller;
 import Classes.DAO.FuncionarioDAO;
 import Classes.DAO.UtilizadorDAO;
 import Classes.EstadoFunc;
-<<<<<<< HEAD
-import Classes.Funcionario;
-import Classes.Servico;
-import Classes.Utilizador;
-import DataBase.ConnectionDB;
-=======
->>>>>>> 8bfa6770c0f10d4bb94e111ff8781ad01deff59d
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
-
 import java.net.URL;
-import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -73,28 +64,16 @@ public class GH_GerirFuncionario implements Initializable {
 
         FuncionarioDAO.updateAtiva(textoformatado);
     }
-
     @FXML
-<<<<<<< HEAD
-    public void InativarFunc(){
-
-        index= utilizadorselect.indexOf("-");
-        textoformatado=utilizadorselect.substring(0,index);
-        textoformatado=textoformatado.replace("Nome:","");
-        textoformatado=textoformatado.trim();
-        System.out.println(textoformatado);
-        
-        FuncionarioDAO.updateInativa(textoformatado);
-=======
     public void InativarFunc() {
+
         index = utilizadorselect.indexOf("-");
         textoformatado = utilizadorselect.substring(0, index);
         textoformatado = textoformatado.replace("Nome:", "");
         textoformatado = textoformatado.trim();
         System.out.println(textoformatado);
 
-        FuncionarioDAO.updateInativa(utilizadorselect);
->>>>>>> 8bfa6770c0f10d4bb94e111ff8781ad01deff59d
+        FuncionarioDAO.updateInativa(textoformatado);
     }
 
 
