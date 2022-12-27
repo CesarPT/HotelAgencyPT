@@ -4,6 +4,8 @@ module hotel.agencypt {
     requires java.sql;
     requires javafx.graphics;
     requires java.desktop;
+    requires org.json;
+    requires json.simple;
 
     opens hotel.agencypt to javafx.fxml;
     opens Classes to javafx.base;
