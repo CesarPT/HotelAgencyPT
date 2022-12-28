@@ -11,6 +11,12 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class OpenApplication extends Application {
+    /**
+     * @param stage the primary stage for this application, onto which
+     * the application scene can be set.
+     * Applications may create other stages, if needed, but they will not be
+     * primary stages.
+     */
     public void start(Stage stage) {
         try {
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Login.fxml")));
@@ -23,8 +29,11 @@ public class OpenApplication extends Application {
         }
     }
 
-    public static void main(String[] args) throws Exception {
-
+    /**
+     * Classe estática sem retorno que inicia a aplicação
+     * @param args
+     */
+    public static void main(String[] args) {
         launch();
     }
 
