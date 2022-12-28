@@ -63,18 +63,19 @@ public class GH_GerirFuncionario implements Initializable {
         textoformatado = textoformatado.trim();
         System.out.println(textoformatado);
 
-        FuncionarioDAO.updateAtiva(utilizadorselect);
+        FuncionarioDAO.updateAtiva(textoformatado);
     }
 
     @FXML
     public void InativarFunc() {
+
         index = utilizadorselect.indexOf("-");
         textoformatado = utilizadorselect.substring(0, index);
         textoformatado = textoformatado.replace("Nome:", "");
         textoformatado = textoformatado.trim();
         System.out.println(textoformatado);
 
-        FuncionarioDAO.updateInativa(utilizadorselect);
+        FuncionarioDAO.updateInativa(textoformatado);
     }
 
 
