@@ -19,11 +19,9 @@ public class UtilizadorDAO {
     public static List<Utilizador> findClientepReserva() {
         String sql = "Select Utilizador.nomeuser from Utilizador INNER JOIN Cliente on Cliente.iduser=Utilizador.iduser";
         List<Utilizador> listUser = new ArrayList<>();
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
         try {
-            stmt = con.prepareStatement(sql);
-            rs = stmt.executeQuery();
+            PreparedStatement stmt = con.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
                 Utilizador utilizador = new Utilizador();

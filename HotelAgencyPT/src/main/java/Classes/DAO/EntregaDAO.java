@@ -15,15 +15,12 @@ public class EntregaDAO {
                 "\t   rua, n_porta, cidade, cp, pais\n" +
                 "FROM Entrega";
 
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
-
         List<Entrega> listEntrega = new ArrayList<>();
 
         //Limpar tudo e Adicionar todas as entradas de stock
         try {
-            stmt = con.prepareStatement(sql);
-            rs = stmt.executeQuery();
+            PreparedStatement stmt = con.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
                 Entrega entrega = new Entrega();

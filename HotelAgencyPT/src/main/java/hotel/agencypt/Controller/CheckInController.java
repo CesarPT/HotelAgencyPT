@@ -68,18 +68,30 @@ public class CheckInController {
             StartD.setText(iDate);
             String fDate = ReservaTableView.getSelectionModel().getSelectedItem().getDataf();
             FinalD.setText(fDate);
-            System.out.println(check.getFloor());
             Floor.setText(String.valueOf(check.getFloor()));
-            System.out.println(check.getType());
             RoomType.setText(check.getType());
             Integer idReserv = ReservaTableView.getSelectionModel().getSelectedItem().getIdreserva();
-            CreateCheckIn(idReserv);
-
+            VerifyCheckInExists(idReserv);
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
 
-
+    public void CheckOut(ActionEvent event) {
+        try {
+            String room = String.valueOf(ReservaTableView.getSelectionModel().getSelectedItem().getIdquarto());
+            RoomN.setText(room);
+            String iDate = ReservaTableView.getSelectionModel().getSelectedItem().getDatai();
+            StartD.setText(iDate);
+            String fDate = ReservaTableView.getSelectionModel().getSelectedItem().getDataf();
+            FinalD.setText(fDate);
+            Floor.setText(String.valueOf(check.getFloor()));
+            RoomType.setText(check.getType());
+            Integer idReserv = ReservaTableView.getSelectionModel().getSelectedItem().getIdreserva();
+            VerifyCheckOutExists(idReserv);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void table() {
@@ -127,6 +139,11 @@ public class CheckInController {
     public void Clean(ActionEvent event) {
         try {
             CheckInObservableList.clear();
+            RoomN.clear();
+            StartD.clear();
+            FinalD.clear();
+            Floor.clear();
+            RoomType.clear();
         } catch (Exception ex) {
             ex.printStackTrace();
 

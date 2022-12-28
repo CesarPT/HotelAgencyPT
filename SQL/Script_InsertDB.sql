@@ -50,3 +50,8 @@ go
 
 INSERT INTO RegEntrada
 VALUES ('Quarto', '2022-11-22', 1)
+
+INSERT INTO TipoUser
+VALUES ('Gestor', 'G'),
+	   ('Funcionario','F')
+	   ('Cliente','C')

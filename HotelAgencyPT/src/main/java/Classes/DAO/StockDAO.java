@@ -52,15 +52,12 @@ public class StockDAO {
                 "preco, vat, preco_total\n" +
                 "FROM Stock";
 
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
-
         List<Stock> listStock = new ArrayList<>();
 
         //Limpar tudo e Adicionar todas as entradas de stock
         try {
-            stmt = con.prepareStatement(sql);
-            rs = stmt.executeQuery();
+            PreparedStatement stmt = con.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
                 Stock stock = new Stock();
@@ -84,13 +81,11 @@ public class StockDAO {
 
         String sql = "SELECT product_identifier from Stock where product_identifier='" + id_prod + "'";
 
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
         List<Stock> liststock = new ArrayList<>();
 
         try {
-            stmt = con.prepareStatement(sql);
-            rs = stmt.executeQuery();
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.executeQuery();
         } catch (SQLException e) {
             System.err.println("[ERRO]: findItem " + e.getMessage());
 
@@ -100,9 +95,7 @@ public class StockDAO {
     }
 
 
-    public static boolean updateStock(
-            String product_identifier, int quantidade
-    ) {
+    public static boolean updateStock(String product_identifier, int quantidade) {
 
         String sql = "UPDATE Stock set quantidade = quantidade +" + quantidade + " where product_identifier ='" + product_identifier + "'";
         try {
@@ -115,8 +108,7 @@ public class StockDAO {
         }
     }
 
-    public static boolean decrementarStock(
-    ) {
+    public static boolean decrementarStock() {
 
         String sql = "UPDATE Stock set quantidade = quantidade - 1 " +
                 "WHERE product_identifier ='PZ-1989' " +

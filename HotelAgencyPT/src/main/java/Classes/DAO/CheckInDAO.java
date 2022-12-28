@@ -15,6 +15,9 @@ import static hotel.agencypt.Controller.CheckInController.CheckInObservableList;
 public class CheckInDAO {
     static Connection con = ConnectionDB.establishConnection();
     static String correctOrIncorrect;
+    static String verifyCheckIn;
+
+    static Integer id;
 
     public static CheckIn check = new CheckIn();
 
@@ -57,9 +60,8 @@ public class CheckInDAO {
         }
     }
 
-    public static void CreateCheckIn(Integer idReserv) {
+    public static void CreateCheckIn(Integer idClient, Integer idReserv) {
         String checkIn = "Insert INTO CheckInOut(EstadoCheckIn, idcliente, idreserva) VALUES('I',?,?)";
-        Integer idClient = check.getIdClient();
         try {
             PreparedStatement stmt = con.prepareStatement(checkIn);
             stmt.setInt(1, idClient);
@@ -69,6 +71,77 @@ public class CheckInDAO {
             e.printStackTrace();
         }
     }
+
+    public static void VerifyCheckInExists(Integer idReserv) {
+        Integer idClient = check.getIdClient();
+        String exists = "SELECT COUNT(1) FROM CheckInOut where idcliente = " + idClient + " AND idreserva = " + idReserv + " AND (EstadoCheckIn = 'I' OR EstadoCheckIn = 'O')";
+        try {
+            PreparedStatement stm = con.prepareStatement(exists);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                if (rs.getInt(1) == 1) {
+                    verifyCheckIn = "Exists!";
+                } else {
+                    verifyCheckIn = "Not Exists!";
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        if (Objects.equals(verifyCheckIn, "Exists!")) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Aviso!");
+            alert.setHeaderText("Esta reserva já tem Check-IN");
+            alert.showAndWait();
+        } else {
+            CreateCheckIn(idClient, idReserv);
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Sucesso!");
+            alert.setHeaderText("O Check-In foi feito com sucesso!");
+            alert.showAndWait();
+        }
+    }
+
+    public static void createCheckOut(Integer idClient, Integer idReserv) {
+        String update = "UPDATE CheckInOut SET EstadoCheckIn = 'O' WHERE idcliente = " + idClient + " AND idreserva = " + idReserv;
+        try {
+            PreparedStatement stmt = con.prepareStatement(update);
+            stmt.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void VerifyCheckOutExists(Integer idReserv) {
+        Integer idClient = check.getIdClient();
+        String exists = "SELECT COUNT(1) FROM CheckInOut where idcliente = " + idClient + " AND idreserva = " + idReserv + "AND EstadoCheckIn = 'I'";
+        try {
+            PreparedStatement stm = con.prepareStatement(exists);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                if (rs.getInt(1) == 1) {
+                    verifyCheckIn = "Exists!";
+                } else {
+                    verifyCheckIn = "Not Exists!";
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        if (Objects.equals(verifyCheckIn, "Exists!")) {
+            createCheckOut(idClient, idReserv);
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Sucesso!");
+            alert.setHeaderText("O Check-out foi feito com sucesso!");
+            alert.showAndWait();
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Aviso!");
+            alert.setHeaderText("Esta reserva não tem Check-IN");
+            alert.showAndWait();
+        }
+    }
+
 
     public static boolean VerifyExists(String username) {
         String verify = "SELECT COUNT(1) FROM Cliente INNER JOIN Utilizador on Cliente.iduser = Utilizador.iduser where Utilizador.nomeuser = '" + username + "'";
@@ -90,7 +163,7 @@ public class CheckInDAO {
         }
         if (Objects.equals(correctOrIncorrect, "Exists!")) {
             exist = true;
-            getIdClient(idClient);
+            check.setIdClient(getIdClient(idClient));
             getTable();
             getFloorType();
         } else {
@@ -103,16 +176,17 @@ public class CheckInDAO {
         return exist;
     }
 
-    public static void getIdClient(String idClient) {
+    public static Integer getIdClient(String idClient) {
         try {
             PreparedStatement stm = con.prepareStatement(idClient);
             ResultSet rs = stm.executeQuery();
             while (rs.next()) {
-                check.setIdClient(rs.getInt("idcliente"));
+                id = rs.getInt("idcliente");
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-    }
+        return id;
 
+    }
 }
