@@ -1,14 +1,15 @@
 package hotel.agencypt.Controller;
 
 import Classes.DAO.QuartoDAO;
+import Classes.DAO.QuartoStockDAO;
+import Classes.DAO.StockDAO;
 import Classes.Quarto;
+import Classes.QuartoStock;
+import Classes.Stock;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -19,7 +20,7 @@ import java.util.ResourceBundle;
 /**
  * Classe pública do controlador GH_ConfigQuarto.fxml
  */
-public class GH_ConfigQuarto implements Initializable {
+public class GH_ConfigQuarto {
 
     String quartoEscolhido;
 
@@ -40,9 +41,17 @@ public class GH_ConfigQuarto implements Initializable {
     private TextArea textPreco;
     @FXML
     private TextArea textAlterarPreco;
+    @FXML
+    private ListView<String> listProdutosStock;
+    @FXML
+    private ListView<String> listProdutosQuarto;;
     QuartoDAO qDAO = new QuartoDAO();
+    StockDAO sDAO = new StockDAO();
+    QuartoStockDAO qsDAO = new QuartoStockDAO();
     List<Quarto> arrayQuartos = new ArrayList<>();
     List<Quarto> arrayPreco = new ArrayList<>();
+    List<Stock> arrayStock = new ArrayList<>();
+    List <QuartoStock> arrayQuartoStock = new ArrayList<>();
 
     /**
      * Insere valores nas listviews
@@ -52,7 +61,7 @@ public class GH_ConfigQuarto implements Initializable {
      * @param resources The resources used to localize the root object, or {@code null} if
      *                  the root object was not localized.
      */
-    public void initialize(URL location, ResourceBundle resources) {
+    public void initialize() {
 
         //Limpar tudo e inserir valores na combobox
         comboBoxPisoID.getSelectionModel().clearSelection();
@@ -62,6 +71,12 @@ public class GH_ConfigQuarto implements Initializable {
                 "Piso 1",
                 "Piso 2"
         );
+        arrayStock = sDAO.findStock();
+
+        listProdutosQuarto.getItems().clear();
+        for (Stock s : arrayStock) {
+            listProdutosStock.getItems().add(" Descrição: " + s.getProduct_description() + " Quantidade: " + s.getQuantidade());
+        }
     }
 
     public void verificarPiso(ActionEvent event) {
@@ -117,6 +132,10 @@ public class GH_ConfigQuarto implements Initializable {
             arrayPreco = qDAO.findPreco();
             for (Quarto q : arrayPreco) {
                 textPreco.setText(String.valueOf(q.getPreco()));
+            }
+            arrayQuartoStock = qsDAO.findQuartoStock();
+            for (QuartoStock qs : arrayQuartoStock) {
+                listProdutosQuarto.getItems().add(" Descrição: " + qs.getProduct_description() + " Quantidade: " + qs.getQuantidade());
             }
             //Ativar botões e limpar texto na TextArea preço
             verificarPrecoID.setDisable(false);
@@ -190,7 +209,7 @@ public class GH_ConfigQuarto implements Initializable {
             alert.setHeaderText(null);
             alert.setContentText("Atualizou com sucesso.");
             alert.showAndWait();
-            //Atualiza o preço
+            //Atualiza a descrição
             verificarQuarto(new ActionEvent());
             //Se não emite aviso
         } else {

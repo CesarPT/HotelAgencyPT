@@ -19,15 +19,14 @@ public class QuartoStockDAO {
      *
      * @return lista
      */
+    List<QuartoStock> listQuartoStock = new ArrayList<>();
     public List<QuartoStock> findQuartoStock() {
         String sql = "SELECT QuartoStock.idquarto, Stock.product_description, QuartoStock.quantidade\n" +
                 "FROM QuartoStock\n" +
                 "INNER JOIN Stock\n" +
                 "ON Stock.product_identifier = QuartoStock.idstock\n" +
+                "WHERE QuartoStock.idquarto=" + Controller.getInstance().getIdQuarto() +
                 "ORDER BY QuartoStock.idquarto";
-
-
-        List<QuartoStock> listQuartoStock = new ArrayList<>();
 
         try {
             PreparedStatement stmt = con.prepareStatement(sql);
