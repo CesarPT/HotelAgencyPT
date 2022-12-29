@@ -54,12 +54,7 @@ public class GH_ConfigQuarto {
     List <QuartoStock> arrayQuartoStock = new ArrayList<>();
 
     /**
-     * Insere valores nas listviews
-     *
-     * @param location  The location used to resolve relative paths for the root object, or
-     *                  {@code null} if the location is not known.
-     * @param resources The resources used to localize the root object, or {@code null} if
-     *                  the root object was not localized.
+     * Iniciar/Atualizar a scene
      */
     public void initialize() {
 
@@ -112,6 +107,9 @@ public class GH_ConfigQuarto {
     }
 
     public void verificarQuarto(ActionEvent event) {
+        arrayQuartoStock.clear();
+        listProdutosQuarto.getItems().clear();
+        listProdutosQuarto.getSelectionModel().clearSelection();
         //Envia para o controlador a seleção de quarto
         //Pega só no número na combobox
         String quartoEscolhido = comboBoxQuartoID.getValue()
