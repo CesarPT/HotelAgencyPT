@@ -68,7 +68,12 @@ public class RegisterDAO {
         return vUser;
     }
 
-    public static void verifyTypeUser(String perm) {
+    /**
+     * Guarda o prefixo da permissão
+     *
+     * @param perm recebe a permissão
+     */
+    public static void getPrefix(String perm) {
         String getTypeUser = "SELECT prefixo FROM TipoUser where tipouser = '" + perm + "'";
         try {
             PreparedStatement stmt = con.prepareStatement(getTypeUser);
@@ -81,6 +86,12 @@ public class RegisterDAO {
         }
     }
 
+    /**
+     * Cria um utilizador
+     *
+     * @param username recebe o nome de utilizador
+     * @param encrypt recebe a password encriptada
+     */
     public static void Register(String username, String encrypt) {
         String prefix = user.getTipoUtilizador();
         String insertToRegister = "INSERT INTO Utilizador(nomeuser, password, tipouser) VALUES(?,?,?)";
@@ -98,11 +109,17 @@ public class RegisterDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-        CreateTypeUser(username, prefix);
+        getIdUser(username, prefix);
+        CreateTypeUser(prefix);
     }
 
-    public static void validateUser(String username, String prefix) {
+    /**
+     * Guarda o id de utilizador na variavel id
+     *
+     * @param username recebe um username de utilizador
+     * @param prefix recebe o prefixo da permissão
+     */
+    public static void getIdUser(String username, String prefix) {
         String getIDUser = "SELECT iduser FROM Utilizador WHERE nomeuser = '" + username + "' and tipouser ='" + prefix + "'";
         try {
             PreparedStatement stm = con.prepareStatement(getIDUser);
@@ -116,8 +133,13 @@ public class RegisterDAO {
         }
     }
 
-    public static void CreateTypeUser(String username, String prefix) {
-        validateUser(username, prefix);
+    /**
+     * Faz validação se existe outro utilizador com o mesmo id de utilizador na tabela (cliente/funcionario/gestor) dependendo da permissão e se não existir insire nessa mesma tabela e atribui um id de cliente/funcionario/gestor
+     *
+     * @param prefix recebe o prefixo da permissão
+     */
+    public static void CreateTypeUser(String prefix) {
+
         if (Objects.equals(prefix, "C")) {
             String validateC = "SELECT count(1) FROM Cliente WHERE iduser=" + id;
             try {

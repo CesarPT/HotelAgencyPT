@@ -22,6 +22,9 @@ public class CheckInDAO {
     public static CheckIn check = new CheckIn();
 
 
+    /**
+     * Vai buscar os dados a base dados e manda para tabela
+     */
     public static void getTable() {
 
         Integer client = check.getIdClient();
@@ -44,6 +47,9 @@ public class CheckInDAO {
         }
     }
 
+    /**
+     * Vai buscar o tipo de quarto e o piso
+     */
     public static void getFloorType() {
         Integer roomID = check.getIdquarto();
         String query = "SELECT piso,descricao As tipo FROM Quarto WHERE idquarto = " + roomID;
@@ -60,6 +66,12 @@ public class CheckInDAO {
         }
     }
 
+    /**
+     * Cria o Check-in da reserva selecionada
+     *
+     * @param idClient recebe o id do cliente
+     * @param idReserv recebe o id da reserva
+     */
     public static void CreateCheckIn(Integer idClient, Integer idReserv) {
         String checkIn = "Insert INTO CheckInOut(EstadoCheckIn, idcliente, idreserva) VALUES('I',?,?)";
         try {
@@ -72,6 +84,11 @@ public class CheckInDAO {
         }
     }
 
+    /**
+     * Verifica se a reserva ja tem o check-in ou check-out
+     *
+     * @param idReserv recebe o id da reserva
+     */
     public static void VerifyCheckInExists(Integer idReserv) {
         Integer idClient = check.getIdClient();
         String exists = "SELECT COUNT(1) FROM CheckInOut where idcliente = " + idClient + " AND idreserva = " + idReserv + " AND (EstadoCheckIn = 'I' OR EstadoCheckIn = 'O')";
@@ -102,6 +119,12 @@ public class CheckInDAO {
         }
     }
 
+    /**
+     * Muda a reserva que esta com Check-in para check-out
+     *
+     * @param idClient Recebe o id do cliente
+     * @param idReserv Recebe o id da reserva
+     */
     public static void createCheckOut(Integer idClient, Integer idReserv) {
         String update = "UPDATE CheckInOut SET EstadoCheckIn = 'O' WHERE idcliente = " + idClient + " AND idreserva = " + idReserv;
         try {
@@ -112,6 +135,11 @@ public class CheckInDAO {
         }
     }
 
+    /**
+     * Verifica se a reserva esta com o Check-in
+     *
+     * @param idReserv recebe o id da reserva
+     */
     public static void VerifyCheckOutExists(Integer idReserv) {
         Integer idClient = check.getIdClient();
         String exists = "SELECT COUNT(1) FROM CheckInOut where idcliente = " + idClient + " AND idreserva = " + idReserv + "AND EstadoCheckIn = 'I'";
@@ -142,7 +170,12 @@ public class CheckInDAO {
         }
     }
 
-
+    /**
+     * Verifica se o cliente existe
+     *
+     * @param username recebe o username do cliente
+     * @return se existe o cliente
+     */
     public static boolean VerifyExists(String username) {
         String verify = "SELECT COUNT(1) FROM Cliente INNER JOIN Utilizador on Cliente.iduser = Utilizador.iduser where Utilizador.nomeuser = '" + username + "'";
         String idClient = "SELECT idcliente FROM Cliente INNER JOIN Utilizador on Cliente.iduser = Utilizador.iduser where Utilizador.nomeuser ='" + username + "'";
@@ -176,6 +209,12 @@ public class CheckInDAO {
         return exist;
     }
 
+    /**
+     * Vai buscar o id do cliente
+     *
+     * @param idClient recebe a query para ir buscar o id a base dados
+     * @return o id do cliente
+     */
     public static Integer getIdClient(String idClient) {
         try {
             PreparedStatement stm = con.prepareStatement(idClient);

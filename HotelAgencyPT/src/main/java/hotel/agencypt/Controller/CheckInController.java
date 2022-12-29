@@ -45,6 +45,11 @@ public class CheckInController {
     public static ObservableList<CheckIn> CheckInObservableList = FXCollections.observableArrayList();
 
 
+    /**
+     * Validações da pesquisa das reservas do cliente
+     *
+     * @param event Recebe o clique no botão 'Selecionar User'
+     */
     public void Pesquisar(ActionEvent event) {
         String username = userTextField.getText();
         boolean verify = VerifyExists(username);
@@ -60,6 +65,11 @@ public class CheckInController {
         }
     }
 
+    /**
+     * Cria o check-in e insere os parametros dessa reserva nos textfields
+     *
+     * @param event Recebe o clique no botão 'Check-In'
+     */
     public void CheckIn(ActionEvent event) {
         try {
             String room = String.valueOf(ReservaTableView.getSelectionModel().getSelectedItem().getIdquarto());
@@ -77,6 +87,11 @@ public class CheckInController {
         }
     }
 
+    /**
+     * Cria o Chekout dessa reserva do cliente
+     *
+     * @param event Recebe o clique no botão 'Check-Out'
+     */
     public void CheckOut(ActionEvent event) {
         try {
             String room = String.valueOf(ReservaTableView.getSelectionModel().getSelectedItem().getIdquarto());
@@ -94,6 +109,9 @@ public class CheckInController {
         }
     }
 
+    /**
+     * Devolve as reservas desse mesmo cliente
+     */
     public void table() {
         ReservaTableColumn.setCellValueFactory(new PropertyValueFactory<>("idreserva"));
         QuartoTableColumn.setCellValueFactory(new PropertyValueFactory<>("idquarto"));
@@ -130,12 +148,26 @@ public class CheckInController {
         ReservaTableView.setItems(sortedData);
     }
 
-    public void BackToStaff(ActionEvent event) throws Exception {
+    /**
+     * Butão para voltar para a pagina principal do funcionario
+     *
+     * @param event Recebe o clique no botão para voltar para trás
+     */
+    public void BackToStaff(ActionEvent event) {
+        try {
         Stage stage = (Stage) BackButton.getScene().getWindow();
         stage.close();
         Singleton.open("funcionariointerface", "Hotel >> Funcionário");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
+    /**
+     * Botão para limpar toda a interface
+     *
+     * @param event Recebe o clique no botão 'Limpar'
+     */
     public void Clean(ActionEvent event) {
         try {
             CheckInObservableList.clear();

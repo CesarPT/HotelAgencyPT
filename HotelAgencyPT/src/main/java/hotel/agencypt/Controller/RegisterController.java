@@ -108,7 +108,6 @@ public class RegisterController implements Initializable {
     public void registerUser() {
         String username = usernameTextField.getText();
 
-
         //Encrpytação da password
         String encrypt = "";
         String password = setPasswordField.getText();
@@ -121,7 +120,7 @@ public class RegisterController implements Initializable {
             alert.showAndWait();
         } else {
             String perm = permissionComboBox.getSelectionModel().getSelectedItem().toString();
-            verifyTypeUser(perm);
+            getPrefix(perm);
 
             //Inserção dos dados na base de dados
             RegisterDAO.Register(username, encrypt);

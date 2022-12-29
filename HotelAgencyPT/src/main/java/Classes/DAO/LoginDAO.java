@@ -24,6 +24,14 @@ public class LoginDAO {
     static Funcionario func = new Funcionario();
     static Connection con = ConnectionDB.establishConnection();
 
+    /**
+     * Verifica se existe na base dados e se existir faz o login
+     *
+     * @param user Recebe o nome de utilizador
+     * @param window Recebe a stage
+     * @param encryptedpassword Recebe a palavra-passe encriptada
+     * @return retorna se o login foi feito com sucesso ou não
+     */
     public static boolean login(String user, Stage window, String encryptedpassword) {
         String verifyLogin = "SELECT count(1) FROM Utilizador WHERE nomeuser ='" + user + "' AND convert (varchar(MAX), password) = '" + encryptedpassword + "'";
         boolean log;
@@ -54,8 +62,12 @@ public class LoginDAO {
     }
 
 
+
     /**
      * Valida as permissões e abre a aba dessa mesma.
+     *
+     * @param user recebe o nome de utilizador para fazer a validação
+     * @param window Recebe a stage para conseguir mudar a janela
      */
     public static void validatePerms(String user, Stage window) {
         String verifyPerm = ("SELECT iduser, tipouser FROM Utilizador WHERE nomeuser ='" + user + "'");
@@ -86,6 +98,11 @@ public class LoginDAO {
         }
     }
 
+    /**
+     * Valida se o funcionario esta ativo para que possa prosseguir
+     *
+     * @param window Recebe a stage para conseguir mudar para a janela do funcionario
+     */
     public static void validateEmployee(Stage window) {
         Integer idUser = func.getIdUtilizador();
         String ValidateIDE = "SELECT estado FROM Funcionario WHERE iduser = " + idUser;
@@ -110,6 +127,11 @@ public class LoginDAO {
         }
     }
 
+    /**
+     * Valida se o cliente tem check-in para que possa prosseguir
+     *
+     * @param window Recebe a stage para conseguir mudar para a janela do cliente
+     */
     public static void validateClient(Stage window) {
         Integer idUser = util.getIdUtilizador();
         String Client = "SELECT idcliente FROM Cliente INNER JOIN Utilizador on Cliente.iduser = Utilizador.iduser where Utilizador.iduser =" + idUser + "";
