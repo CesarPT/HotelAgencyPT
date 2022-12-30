@@ -6,6 +6,8 @@ import Classes.DAO.StockDAO;
 import Classes.Quarto;
 import Classes.QuartoStock;
 import Classes.Stock;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -52,6 +54,8 @@ public class GH_ConfigQuarto {
     List<Quarto> arrayPreco = new ArrayList<>();
     List<Stock> arrayStock = new ArrayList<>();
     List <QuartoStock> arrayQuartoStock = new ArrayList<>();
+    String prodSelct;
+    String prodSelct2;
 
     /**
      * Iniciar/Atualizar a scene
@@ -70,8 +74,21 @@ public class GH_ConfigQuarto {
 
         listProdutosQuarto.getItems().clear();
         for (Stock s : arrayStock) {
-            listProdutosStock.getItems().add(" Descrição: " + s.getProduct_description() + " Quantidade: " + s.getQuantidade());
+            listProdutosStock.getItems().add(s.getProduct_description());
         }
+
+        listProdutosStock.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                prodSelct = listProdutosStock.getSelectionModel().getSelectedItem();
+            }
+        });
+        listProdutosQuarto.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                prodSelct2 = listProdutosQuarto.getSelectionModel().getSelectedItem();
+            }
+        });
     }
 
     public void verificarPiso(ActionEvent event) {
@@ -133,7 +150,7 @@ public class GH_ConfigQuarto {
             }
             arrayQuartoStock = qsDAO.findQuartoStock();
             for (QuartoStock qs : arrayQuartoStock) {
-                listProdutosQuarto.getItems().add(" Descrição: " + qs.getProduct_description() + " Quantidade: " + qs.getQuantidade());
+                listProdutosQuarto.getItems().add(qs.getProduct_description());
             }
             //Ativar botões e limpar texto na TextArea preço
             verificarPrecoID.setDisable(false);
@@ -234,4 +251,50 @@ public class GH_ConfigQuarto {
 
     }
 
+    public void atualizarStock(ActionEvent Event){
+        listProdutosStock.getItems().clear();
+        for (Stock s : arrayStock) {
+            listProdutosStock.getItems().add(s.getProduct_description());
+        }
+    }
+
+    public void addProdutoQuarto(ActionEvent Event){
+        quartoEscolhido = comboBoxQuartoID.getSelectionModel().getSelectedItem()
+                .replaceAll("[a-zA-Z]", "")
+                .replace(":", "")
+                .replace(" ", "");
+
+        Controller.getInstance().setIdquarto(Integer.parseInt(quartoEscolhido));
+
+        int index = listProdutosStock.getSelectionModel().getSelectedIndex();
+        if (index == -1) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Aviso");
+            alert.setHeaderText("Sem seleção");
+            alert.setContentText("Selecione primeiro um serviço da lista.");
+            alert.showAndWait();
+        } else {
+            listProdutosQuarto.getItems().add(prodSelct);
+            listProdutosStock.getItems().remove(prodSelct);
+        }
+    }
+    public void deleteProdutoQuarto(ActionEvent Event){
+        quartoEscolhido = comboBoxQuartoID.getSelectionModel().getSelectedItem()
+                .replaceAll("[a-zA-Z]", "")
+                .replace(":", "")
+                .replace(" ", "");
+
+        Controller.getInstance().setIdquarto(Integer.parseInt(quartoEscolhido));
+
+        int index = listProdutosQuarto.getSelectionModel().getSelectedIndex();
+        if (index == -1) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Aviso");
+            alert.setHeaderText("Sem seleção");
+            alert.setContentText("Selecione primeiro um serviço da lista.");
+            alert.showAndWait();
+        } else {
+            listProdutosQuarto.getItems().remove(prodSelct2);
+        }
+    }
 }

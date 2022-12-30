@@ -93,4 +93,20 @@ public class QuartoStockDAO {
             return false;
         }
     }
+    public boolean deleteProdutoQuarto(QuartoStock quarto) {
+        String sql = "DELETE FROM QuartoStock\n" +
+                "  INNER JOIN Stock\n" +
+                "  ON Stock.product_identifier = QuartoStock.idstock\n" +
+                "                WHERE idquarto=" + Controller.getInstance().getIdQuarto() + " and Stock.product_description='" +
+                Controller.getInstance().getProdutosEscolhidos() + "'";
+
+        try {
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            System.err.println("[ERRO]: deleteProdutoQuarto " + e.getMessage());
+            return false;
+        }
+    }
 }
