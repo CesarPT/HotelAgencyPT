@@ -83,7 +83,7 @@ public class F_GerirStock implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         String pid;
         String pd;
-        int qtd;
+        float qtd;
         String tipo_qtd;
         float preco;
         float vat;
