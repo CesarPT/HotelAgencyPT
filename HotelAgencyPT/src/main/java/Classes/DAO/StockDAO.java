@@ -15,16 +15,9 @@ import java.util.List;
 public class StockDAO {
     private static Connection con = ConnectionDB.establishConnection();
 
-    /*
-    public void closebd() {
-        PreparedStatement stmt = null;
-        ConnectionDB.closeConnection(con, stmt);
-    }
-     */
-
     public static boolean insertNewStock(
             String product_identifier, String product_description, String tipo_qtd,
-            int quantidade, float preco, float vat, float preco_total
+            float quantidade, float preco, float vat, float preco_total
     ) {
 
         String sql = "INSERT INTO Stock (product_identifier,product_description, tipo_qtd, quantidade," +
@@ -34,7 +27,7 @@ public class StockDAO {
             stmt.setString(1, product_identifier);
             stmt.setString(2, product_description);
             stmt.setString(3, tipo_qtd);
-            stmt.setInt(4, quantidade);
+            stmt.setFloat(4, quantidade);
             stmt.setFloat(5, preco);
             stmt.setFloat(6, vat);
             stmt.setFloat(7, preco_total);
@@ -53,15 +46,12 @@ public class StockDAO {
                 "preco, vat, preco_total\n" +
                 "FROM Stock";
 
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
-
         List<Stock> listStock = new ArrayList<>();
 
         //Limpar tudo e Adicionar todas as entradas de stock
         try {
-            stmt = con.prepareStatement(sql);
-            rs = stmt.executeQuery();
+            PreparedStatement stmt = con.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
                 Stock stock = new Stock();
@@ -82,6 +72,7 @@ public class StockDAO {
 
     /**
      * Lista de produtos só consumíveis
+     *
      * @return
      */
     public List<Stock> findStockConsumivel() {
@@ -92,15 +83,13 @@ public class StockDAO {
                 "OR product_identifier='LG18964'\n" +
                 "OR product_identifier='XPO-756')";
 
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
 
         List<Stock> listStock = new ArrayList<>();
 
         //Limpar tudo e Adicionar todas as entradas de stock
         try {
-            stmt = con.prepareStatement(sql);
-            rs = stmt.executeQuery();
+            PreparedStatement stmt = con.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
                 Stock stock = new Stock();
@@ -124,13 +113,11 @@ public class StockDAO {
 
         String sql = "SELECT product_identifier from Stock where product_identifier='" + id_prod + "'";
 
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
         List<Stock> liststock = new ArrayList<>();
 
         try {
-            stmt = con.prepareStatement(sql);
-            rs = stmt.executeQuery();
+            PreparedStatement stmt = con.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
         } catch (SQLException e) {
             System.err.println("[ERRO]: findItem " + e.getMessage());
 
@@ -141,10 +128,11 @@ public class StockDAO {
 
 
     public static boolean updateStock(
-            String product_identifier, int quantidade
+            String product_identifier, float quantidade
     ) {
 
-        String sql = "UPDATE Stock set quantidade = quantidade +" + quantidade + " where product_identifier ='" + product_identifier + "'";
+        String sql = "UPDATE Stock set quantidade = quantidade +" + quantidade +
+                " WHERE product_identifier ='" + product_identifier + "'";
         try {
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.executeUpdate();
@@ -160,7 +148,7 @@ public class StockDAO {
     ) {
 
         String sql = "UPDATE Stock set quantidade = quantidade -" + quantidade +
-                     " WHERE product_description ='" + product_description + "'";
+                " WHERE product_description ='" + product_description + "'";
         try {
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.executeUpdate();
@@ -170,11 +158,11 @@ public class StockDAO {
             return false;
         }
     }
-    public static boolean decrementarStock(
-    ) {
+
+    public static boolean decrementarStock() {
 
         String sql = "UPDATE Stock set quantidade = quantidade - 1 " +
-                "WHERE product_identifier ="+ Controller.getInstance().getProdutosEscolhidos();
+                "WHERE product_identifier =" + Controller.getInstance().getProdutosEscolhidos();
         try {
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.executeUpdate();

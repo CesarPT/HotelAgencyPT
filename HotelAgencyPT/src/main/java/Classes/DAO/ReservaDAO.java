@@ -1,6 +1,5 @@
 package Classes.DAO;
 
-import Classes.Entrega;
 import Classes.Reserva;
 import DataBase.ConnectionDB;
 import hotel.agencypt.Controller.Controller;
@@ -118,7 +117,7 @@ public class ReservaDAO {
         String sql = "DELETE FROM ReservaServico\n" +
                 "    WHERE idreserva=" + Controller.getInstance().getSelectedRowReserva() + "\n" +
                 "    DELETE FROM Reserva\n" +
-                "    WHERE idreserva="+Controller.getInstance().getSelectedRowReserva();
+                "    WHERE idreserva=" + Controller.getInstance().getSelectedRowReserva();
         try {
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.executeUpdate();

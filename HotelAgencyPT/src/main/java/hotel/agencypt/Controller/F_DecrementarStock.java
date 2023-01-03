@@ -1,16 +1,17 @@
 package hotel.agencypt.Controller;
 
-import Classes.DAO.QuartoDAO;
 import Classes.DAO.QuartoStockDAO;
 import Classes.DAO.StockDAO;
-import Classes.Quarto;
 import Classes.QuartoStock;
 import Classes.Stock;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextArea;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,10 +44,11 @@ public class F_DecrementarStock {
     StockDAO sDAO = new StockDAO();
     QuartoStockDAO qDAO = new QuartoStockDAO();
     List<Stock> arrayStock = new ArrayList<>();
+
     public void initialize() {
         //Setar todos os valores
         textIDQuarto.setText(String.valueOf(Controller.getInstance().getIdQuarto()));
-        
+
         comboQuantidade.setItems(listQtd);
 
         arrayStock = sDAO.findStockConsumivel();
@@ -65,7 +67,7 @@ public class F_DecrementarStock {
         //Produtos no quarto
         arrayQuarto = qDAO.findIDQuartoStock();
         for (QuartoStock q : arrayQuarto) {
-            obsQuarto.add(q.getProduct_description() + " | Quantidade: "+ q.getQuantidade());
+            obsQuarto.add(q.getProduct_description() + " | Quantidade: " + q.getQuantidade());
         }
         listQuarto.setItems(obsQuarto);
     }
@@ -73,7 +75,7 @@ public class F_DecrementarStock {
     /**
      * Adicionar produto escolhido ao quarto com a quantidade
      */
-    public void adicionarConsumivel(){
+    public void adicionarConsumivel() {
         index = listConsumivel.getSelectionModel().getSelectedIndex();
         index2 = comboQuantidade.getSelectionModel().getSelectedIndex();
         //Se não selecionou um item da listview
@@ -84,12 +86,12 @@ public class F_DecrementarStock {
             alert.setContentText("Selecione primeiro um consumível da lista.");
             alert.showAndWait();
             //Se não selecionou a combobox
-        } else if (index2 == -1){
-                Alert alert2 = new Alert(Alert.AlertType.WARNING);
-                alert2.setTitle("Aviso");
-                alert2.setHeaderText("Sem seleção");
-                alert2.setContentText("Selecione primeiro uma quantidade.");
-                alert2.showAndWait();
+        } else if (index2 == -1) {
+            Alert alert2 = new Alert(Alert.AlertType.WARNING);
+            alert2.setTitle("Aviso");
+            alert2.setHeaderText("Sem seleção");
+            alert2.setContentText("Selecione primeiro uma quantidade.");
+            alert2.showAndWait();
         } else {
             //Decrementar tabela Stock
             sDAO.updateStockQtd(Integer.parseInt(comboQuantidade.getSelectionModel().getSelectedItem()), listConsumivel.getSelectionModel().getSelectedItem());
@@ -112,7 +114,7 @@ public class F_DecrementarStock {
     /**
      * Limpar todas as listviews
      */
-    public void limparTudo(){
+    public void limparTudo() {
         listConsumivel.getItems().clear();
         listConsumivel.getSelectionModel().clearSelection();
         listStock.getItems().clear();
@@ -124,6 +126,7 @@ public class F_DecrementarStock {
         obsProdutos.clear();
         initialize();
     }
+
     /**
      * Volta atrás para a View GestorHotel.fxml
      *

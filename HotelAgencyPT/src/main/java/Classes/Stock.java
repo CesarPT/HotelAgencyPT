@@ -6,7 +6,7 @@ package Classes;
 public class Stock {
     private String product_identifier;
     private String product_description;
-    private int quantidade;
+    private float quantidade;
     private String tipo_qtd;
     private float preco;
     private float vat;
@@ -23,7 +23,7 @@ public class Stock {
      * @param vat
      * @param precoTotal
      */
-    public Stock(String product_identifier, String product_description, int quantidade, String tipoQtd, float preco, float vat, float precoTotal) {
+    public Stock(String product_identifier, String product_description, float quantidade, String tipoQtd, float preco, float vat, float precoTotal) {
         this.product_identifier = product_identifier;
         this.product_description = product_description;
         this.quantidade = quantidade;
@@ -36,7 +36,22 @@ public class Stock {
     public Stock(String productDescription) {
         this.product_description = productDescription;
     }
+
     public Stock() {
+    }
+
+
+    /**
+     * Construtor para JSON
+     */
+    public Stock(String productIdentifier, String productDescription, String qtd, String tipoQtd, String preco, String vat, String precototal) {
+        this.product_identifier = productIdentifier;
+        this.product_description = productDescription;
+        this.quantidade = Float.parseFloat(qtd);
+        this.tipo_qtd = tipoQtd;
+        this.preco = Float.parseFloat(preco);
+        this.vat = Float.parseFloat(vat);
+        this.preco_total = Float.parseFloat(precototal);
     }
 
 
@@ -76,7 +91,7 @@ public class Stock {
         return product_description;
     }
 
-    public int getQuantidade() {
+    public float getQuantidade() {
         return quantidade;
     }
 

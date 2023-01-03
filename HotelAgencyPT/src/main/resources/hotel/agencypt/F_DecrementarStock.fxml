@@ -1,85 +1,85 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.*?>
 <?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
-
-<AnchorPane prefHeight="498.0" prefWidth="759.0" style="-fx-background-color: lightblue;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hotel.agencypt.Controller.F_DecrementarStock">
+<?import javafx.scene.text.*?>
+<AnchorPane prefHeight="498.0" prefWidth="759.0" style="-fx-background-color: lightblue;"
+            xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="hotel.agencypt.Controller.F_DecrementarStock">
     <children>
-        <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#voltarAtras" prefHeight="501.0" prefWidth="49.0" style="-fx-background-color: #ccffff; -fx-border-color: gray;">
+        <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#voltarAtras"
+                prefHeight="501.0" prefWidth="49.0" style="-fx-background-color: #ccffff; -fx-border-color: gray;">
             <graphic>
                 <ImageView fitHeight="38.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../../Imagens/voltar.png" />
+                        <Image url="@../../Imagens/voltar.png"/>
                     </image>
                 </ImageView>
             </graphic>
             <cursor>
-                <Cursor fx:constant="HAND" />
+                <Cursor fx:constant="HAND"/>
             </cursor>
         </Button>
         <Label fx:id="labelAviso" layoutX="228.0" layoutY="365.0">
             <font>
-                <Font size="14.0" />
+                <Font size="14.0"/>
             </font>
         </Label>
         <Button layoutX="326.0" layoutY="251.0" mnemonicParsing="false" onAction="#adicionarConsumivel" text="&gt;&gt;">
             <font>
-                <Font size="15.0" />
+                <Font size="15.0"/>
             </font>
-         <graphic>
-            <ImageView fitHeight="32.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../Imagens/certo.png" />
-               </image>
-            </ImageView>
-         </graphic>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
+            <graphic>
+                <ImageView fitHeight="32.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../Imagens/certo.png"/>
+                    </image>
+                </ImageView>
+            </graphic>
+            <cursor>
+                <Cursor fx:constant="HAND"/>
+            </cursor>
         </Button>
-      <ComboBox fx:id="comboQuantidade" layoutX="254.0" layoutY="202.0" prefHeight="25.0" prefWidth="110.0" promptText="Quantidade" />
-      <Label layoutX="137.0" layoutY="206.0" text="Produto escolhido:" />
-      <Text layoutX="577.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Produtos no Quarto">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Text>
-      <Text layoutX="516.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Produtos no Quarto">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Text>
-      <ListView fx:id="listQuarto" layoutX="432.0" layoutY="114.0" prefHeight="180.0" prefWidth="308.0" />
-      <Text layoutX="152.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Produtos consumíveis:">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Text>
-      <ListView fx:id="listStock" layoutX="97.0" layoutY="312.0" prefHeight="180.0" prefWidth="643.0" style="-fx-background-color: gray;" />
-      <Text layoutX="97.0" layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Produtos em Stock">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Text>
-      <Text layoutX="60.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quarto:">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Text>
-      <TextArea fx:id="textIDQuarto" layoutX="137.0" layoutY="9.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="41.0" prefWidth="66.0" text="0">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </TextArea>
-      <ListView fx:id="listConsumivel" layoutX="97.0" layoutY="116.0" prefHeight="82.0" prefWidth="308.0" />
+        <ComboBox fx:id="comboQuantidade" layoutX="254.0" layoutY="202.0" prefHeight="25.0" prefWidth="110.0"
+                  promptText="Quantidade"/>
+        <Label layoutX="137.0" layoutY="206.0" text="Produto escolhido:"/>
+        <Text layoutX="577.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Produtos no Quarto">
+            <font>
+                <Font size="18.0"/>
+            </font>
+        </Text>
+        <Text layoutX="516.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Produtos no Quarto">
+            <font>
+                <Font size="16.0"/>
+            </font>
+        </Text>
+        <ListView fx:id="listQuarto" layoutX="432.0" layoutY="114.0" prefHeight="180.0" prefWidth="308.0"/>
+        <Text layoutX="152.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Produtos consumíveis:">
+            <font>
+                <Font size="16.0"/>
+            </font>
+        </Text>
+        <ListView fx:id="listStock" layoutX="97.0" layoutY="312.0" prefHeight="180.0" prefWidth="643.0"
+                  style="-fx-background-color: gray;"/>
+        <Text layoutX="97.0" layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Produtos em Stock">
+            <font>
+                <Font size="16.0"/>
+            </font>
+        </Text>
+        <Text layoutX="60.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quarto:">
+            <font>
+                <Font size="18.0"/>
+            </font>
+        </Text>
+        <TextArea fx:id="textIDQuarto" layoutX="137.0" layoutY="9.0" minHeight="-Infinity" minWidth="-Infinity"
+                  prefHeight="41.0" prefWidth="66.0" text="0">
+            <font>
+                <Font size="18.0"/>
+            </font>
+        </TextArea>
+        <ListView fx:id="listConsumivel" layoutX="97.0" layoutY="116.0" prefHeight="82.0" prefWidth="308.0"/>
     </children>
 </AnchorPane>

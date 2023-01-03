@@ -45,6 +45,11 @@ public class CheckInController {
     public static ObservableList<CheckIn> CheckInObservableList = FXCollections.observableArrayList();
 
 
+    /**
+     * Validações da pesquisa das reservas do cliente
+     *
+     * @param event Recebe o clique no botão 'Selecionar User'
+     */
     public void Pesquisar(ActionEvent event) {
         String username = userTextField.getText();
         boolean verify = VerifyExists(username);
@@ -60,6 +65,11 @@ public class CheckInController {
         }
     }
 
+    /**
+     * Cria o check-in e insere os parametros dessa reserva nos textfields
+     *
+     * @param event Recebe o clique no botão 'Check-In'
+     */
     public void CheckIn(ActionEvent event) {
         try {
             String room = String.valueOf(ReservaTableView.getSelectionModel().getSelectedItem().getIdquarto());
@@ -68,20 +78,40 @@ public class CheckInController {
             StartD.setText(iDate);
             String fDate = ReservaTableView.getSelectionModel().getSelectedItem().getDataf();
             FinalD.setText(fDate);
-            System.out.println(check.getFloor());
             Floor.setText(String.valueOf(check.getFloor()));
-            System.out.println(check.getType());
             RoomType.setText(check.getType());
             Integer idReserv = ReservaTableView.getSelectionModel().getSelectedItem().getIdreserva();
-            CreateCheckIn(idReserv);
-
+            VerifyCheckInExists(idReserv);
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-
     }
 
+    /**
+     * Cria o Chekout dessa reserva do cliente
+     *
+     * @param event Recebe o clique no botão 'Check-Out'
+     */
+    public void CheckOut(ActionEvent event) {
+        try {
+            String room = String.valueOf(ReservaTableView.getSelectionModel().getSelectedItem().getIdquarto());
+            RoomN.setText(room);
+            String iDate = ReservaTableView.getSelectionModel().getSelectedItem().getDatai();
+            StartD.setText(iDate);
+            String fDate = ReservaTableView.getSelectionModel().getSelectedItem().getDataf();
+            FinalD.setText(fDate);
+            Floor.setText(String.valueOf(check.getFloor()));
+            RoomType.setText(check.getType());
+            Integer idReserv = ReservaTableView.getSelectionModel().getSelectedItem().getIdreserva();
+            VerifyCheckOutExists(idReserv);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Devolve as reservas desse mesmo cliente
+     */
     public void table() {
         ReservaTableColumn.setCellValueFactory(new PropertyValueFactory<>("idreserva"));
         QuartoTableColumn.setCellValueFactory(new PropertyValueFactory<>("idquarto"));
@@ -118,15 +148,34 @@ public class CheckInController {
         ReservaTableView.setItems(sortedData);
     }
 
-    public void BackToStaff(ActionEvent event) throws Exception {
+    /**
+     * Butão para voltar para a pagina principal do funcionario
+     *
+     * @param event Recebe o clique no botão para voltar para trás
+     */
+    public void BackToStaff(ActionEvent event) {
+        try {
         Stage stage = (Stage) BackButton.getScene().getWindow();
         stage.close();
         Singleton.open("funcionariointerface", "Hotel >> Funcionário");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
+    /**
+     * Botão para limpar toda a interface
+     *
+     * @param event Recebe o clique no botão 'Limpar'
+     */
     public void Clean(ActionEvent event) {
         try {
             CheckInObservableList.clear();
+            RoomN.clear();
+            StartD.clear();
+            FinalD.clear();
+            Floor.clear();
+            RoomType.clear();
         } catch (Exception ex) {
             ex.printStackTrace();
 

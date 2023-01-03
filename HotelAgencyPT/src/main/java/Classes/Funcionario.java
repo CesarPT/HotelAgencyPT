@@ -63,7 +63,7 @@ public class Funcionario {
      *
      * @return funcao
      */
-    public String getFuncao() {
+    public String getEstado() {
         return estado;
     }
 

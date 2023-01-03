@@ -1,6 +1,5 @@
 package Classes.DAO;
 
-import Classes.Quarto;
 import Classes.QuartoStock;
 import DataBase.ConnectionDB;
 import hotel.agencypt.Controller.Controller;
@@ -27,14 +26,12 @@ public class QuartoStockDAO {
                 "ON Stock.product_identifier = QuartoStock.idstock\n" +
                 "ORDER BY QuartoStock.idquarto";
 
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
 
         List<QuartoStock> listQuartoStock = new ArrayList<>();
 
         try {
-            stmt = con.prepareStatement(sql);
-            rs = stmt.executeQuery();
+            PreparedStatement stmt = con.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
                 QuartoStock quarto = new QuartoStock();
@@ -46,8 +43,6 @@ public class QuartoStockDAO {
 
         } catch (SQLException e) {
             System.err.println("[ERRO]: findQuartoStock " + e.getMessage());
-        } finally {
-            ConnectionDB.closeConnection(con, stmt, rs);
         }
         return listQuartoStock;
     }

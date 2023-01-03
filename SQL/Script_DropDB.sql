@@ -29,3 +29,5 @@ go
 drop table Cliente
 go
 drop table Utilizador
+go
+drop table TipoUtilizador

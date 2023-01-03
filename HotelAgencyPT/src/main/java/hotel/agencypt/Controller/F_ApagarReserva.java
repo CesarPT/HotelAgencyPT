@@ -1,24 +1,18 @@
 package hotel.agencypt.Controller;
 
-import Classes.DAO.EntregaDAO;
 import Classes.DAO.ReservaDAO;
-import Classes.Entrega;
 import Classes.Reserva;
-import Classes.Stock;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-import javax.swing.event.ChangeListener;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.ResourceBundle;
 
 public class F_ApagarReserva {
 
@@ -32,7 +26,7 @@ public class F_ApagarReserva {
     private TableColumn<Reserva, String> columnCheckIn;
     List<Reserva> arrayReserva = new ArrayList<>();
     ReservaDAO rDAO = new ReservaDAO();
-        ObservableList<Reserva> obsCheckIn = FXCollections.observableArrayList();
+    ObservableList<Reserva> obsCheckIn = FXCollections.observableArrayList();
 
     public void initialize() {
         tableApagarReserva.getSelectionModel().clearSelection();
@@ -50,12 +44,12 @@ public class F_ApagarReserva {
         tableApagarReserva.setItems(obsCheckIn);
     }
 
-    public void clicarRemoverReserva(){
+    public void clicarRemoverReserva() {
         // Verifica se selecionou e se é Sim ou Nao tem checkin
         if (tableApagarReserva.getSelectionModel().getSelectedItem() != null) {
             Reserva selectedPerson = tableApagarReserva.getSelectionModel().getSelectedItem();
 
-            if(selectedPerson.getCheckIn().equals("Sim")){
+            if (selectedPerson.getCheckIn().equals("Sim")) {
                 Alert alert2 = new Alert(Alert.AlertType.WARNING);
                 alert2.setTitle("Aviso");
                 alert2.setHeaderText("Cliente com Check-in");
@@ -89,6 +83,7 @@ public class F_ApagarReserva {
             alert.showAndWait();
         }
     }
+
     public void voltarAtras(ActionEvent actionEvent) {
         try {
             if (Controller.getInstance().getTipo_user() == 'G') {

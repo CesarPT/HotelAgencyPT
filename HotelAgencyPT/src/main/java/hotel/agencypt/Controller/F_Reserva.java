@@ -2,7 +2,6 @@ package hotel.agencypt.Controller;
 
 //Bibliotecas
 
-import Classes.Cliente;
 import Classes.DAO.*;
 import Classes.*;
 import javafx.beans.value.ChangeListener;
@@ -340,7 +339,8 @@ public class F_Reserva implements Initializable {
             }
         });
     }
-        //----------------------------------------------------
+
+    //----------------------------------------------------
 /*    public void clientescolhido() {
         nomeC = listidClienteInsere.getSelectionModel().getSelectedItem();
     }
@@ -362,24 +362,25 @@ public class F_Reserva implements Initializable {
     Reserva reserva = new Reserva();
 
 
-
     /**
      * Abre uma scene para escolher produtos do quarto
      */
-    public void escolherProdutos(){
+    public void escolherProdutos() {
         try {
             //Se não escolher um tipo de quarto
-                System.out.println(Controller.getInstance().getIdQuarto());
-                Stage stage = (Stage) listServesco.getScene().getWindow();
-                stage.close();
-                Singleton.open("F_DecrementarStock", "User: " + Controller.getInstance().getUsername()
-                        + " | Hotel >> " + Controller.getInstance().getTipo_user());
+            System.out.println(Controller.getInstance().getIdQuarto());
+            Stage stage = (Stage) listServesco.getScene().getWindow();
+            stage.close();
+            Singleton.open("F_DecrementarStock", "User: " + Controller.getInstance().getUsername()
+                    + " | Hotel >> " + Controller.getInstance().getTipo_user());
         } catch (Exception e) {
             System.out.println("Erro ao abrir/fechar scene.");
         }
     }
+
     /**
      * Verificações e criar a reserva para o cliente
+     *
      * @param event
      */
     @FXML
@@ -421,9 +422,9 @@ public class F_Reserva implements Initializable {
                 reserva.setIdquarto(idQuartoesc);
                 reserva.setDataI(datai);
                 reserva.setDataF(dataf);
-                
-               reservaDAO.criaReserva(reserva);
-               //Relação de tabela
+
+                reservaDAO.criaReserva(reserva);
+                //Relação de tabela
                 RelacionaResServ();
             }
         }

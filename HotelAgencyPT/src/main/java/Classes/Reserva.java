@@ -1,11 +1,7 @@
 package Classes;
 
 
-import Classes.DAO.StockDAO;
-
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 /**
  * Classe pública com todas os métodos usadas na aplicação
@@ -54,9 +50,10 @@ public class Reserva {
         this.CheckIn = checkIn;
     }
 
-    public void selectedRow(int idreserva){
+    public void selectedRow(int idreserva) {
         setIdreserva(idreserva);
     }
+
     public int getIdreserva() {
         return idreserva;
     }

@@ -9,6 +9,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
+
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -64,6 +65,7 @@ public class GH_GerirFuncionario implements Initializable {
 
         FuncionarioDAO.updateAtiva(textoformatado);
     }
+
     @FXML
     public void InativarFunc() {
 
