@@ -143,12 +143,13 @@ public class StockDAO {
         }
     }
 
+
     public static boolean updateStockQtd(
             int quantidade, String product_description
     ) {
 
-        String sql = "UPDATE Stock set quantidade = quantidade -" + quantidade +
-                " WHERE product_description ='" + product_description + "'";
+        String sql = "UPDATE Stock set quantidade = quantidade" + quantidade +
+                " WHERE product_description ='" + Controller.getInstance().getProdutosEscolhidos();
         try {
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.executeUpdate();
@@ -159,10 +160,10 @@ public class StockDAO {
         }
     }
 
-    public static boolean decrementarStock() {
+    public List<Stock> decrementarStock() {
 
         String sql = "UPDATE Stock set quantidade = quantidade - 1 " +
-                "WHERE product_identifier =" + Controller.getInstance().getProdutosEscolhidos();
+                "WHERE product_description ='" + Controller.getInstance().getProdutosEscolhidos()+ "'";
         try {
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.executeUpdate();
@@ -171,12 +172,13 @@ public class StockDAO {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Informação");
             alert.setHeaderText("Decrementar produtos");
-            alert.setContentText("-1 ");
+            alert.setContentText("Stock: -1 \nQuartoStock: +1 ");
             alert.showAndWait();
-            return true;
         } catch (SQLException e) {
             System.err.println("[ERRO]: decrementarStock " + e.getMessage());
-            return false;
         }
+        return null;
     }
+
+
 }
