@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Classe pública do controlador GH_ConfigQuarto.fxml
@@ -56,6 +57,7 @@ public class GH_ConfigQuarto {
     List <QuartoStock> arrayQuartoStock = new ArrayList<>();
     String prodSelct;
     String prodSelct2;
+    int quantidade;
 
     /**
      * Iniciar/Atualizar a scene
@@ -74,7 +76,7 @@ public class GH_ConfigQuarto {
 
         listProdutosQuarto.getItems().clear();
         for (Stock s : arrayStock) {
-            listProdutosStock.getItems().add(s.getProduct_description());
+            listProdutosStock.getItems().add(s.getProduct_description()+"||Qtd: "+s.getQuantidade());
         }
 
         listProdutosStock.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
@@ -90,6 +92,7 @@ public class GH_ConfigQuarto {
             }
         });
     }
+
 
     public void verificarPiso(ActionEvent event) {
         if (Objects.equals(comboBoxPisoID.getSelectionModel().getSelectedItem(), "Piso 1")) {
@@ -150,7 +153,7 @@ public class GH_ConfigQuarto {
             }
             arrayQuartoStock = qsDAO.findQuartoStock();
             for (QuartoStock qs : arrayQuartoStock) {
-                listProdutosQuarto.getItems().add(qs.getProduct_description());
+                listProdutosQuarto.getItems().add(qs.getProduct_description()+"||Qtd: "+qs.getQuantidade());
             }
             //Ativar botões e limpar texto na TextArea preço
             verificarPrecoID.setDisable(false);
@@ -251,14 +254,8 @@ public class GH_ConfigQuarto {
 
     }
 
-    public void atualizarStock(ActionEvent Event){
-        listProdutosStock.getItems().clear();
-        for (Stock s : arrayStock) {
-            listProdutosStock.getItems().add(s.getProduct_description());
-        }
-    }
-
-    public void addProdutoQuarto(ActionEvent Event){
+    String prodFinal;
+    public void addProdutoQuarto(ActionEvent Event) throws InterruptedException {
         quartoEscolhido = comboBoxQuartoID.getSelectionModel().getSelectedItem()
                 .replaceAll("[a-zA-Z]", "")
                 .replace(":", "")
@@ -274,10 +271,15 @@ public class GH_ConfigQuarto {
             alert.setContentText("Selecione primeiro um serviço da lista.");
             alert.showAndWait();
         } else {
-            listProdutosQuarto.getItems().add(prodSelct);
-            listProdutosStock.getItems().remove(prodSelct);
+            prodFinal = prodSelct.substring(0, prodSelct.indexOf("||")).trim();
+            Controller.getInstance().setProdutosEscolhidos(prodFinal);
+
+            arrayStock = sDAO.decrementarStock();
+            arrayQuartoStock = qsDAO.updateStockQuarto();
+            limparTudo();
         }
     }
+    String prodFinal2;
     public void deleteProdutoQuarto(ActionEvent Event){
         quartoEscolhido = comboBoxQuartoID.getSelectionModel().getSelectedItem()
                 .replaceAll("[a-zA-Z]", "")
@@ -294,7 +296,26 @@ public class GH_ConfigQuarto {
             alert.setContentText("Selecione primeiro um serviço da lista.");
             alert.showAndWait();
         } else {
-            listProdutosQuarto.getItems().remove(prodSelct2);
+            prodFinal2 = prodSelct2.substring(0, prodSelct2.indexOf("||")).trim();
+            Controller.getInstance().setProdutosEscolhidos(prodFinal2);
+            arrayQuartoStock = qsDAO.RemoveStockQuarto();
+            limparTudo();
         }
+    }
+
+    public void limparTudo(){
+        listProdutosQuarto.getItems().clear();
+        listProdutosStock.getItems().clear();
+        listProdutosQuarto.getSelectionModel().clearSelection();
+        listProdutosStock.getSelectionModel().clearSelection();
+        arrayStock = sDAO.findStock();
+        for (Stock s : arrayStock) {
+            listProdutosStock.getItems().add(s.getProduct_description()+"||Qtd: "+s.getQuantidade());
+        }
+        arrayQuartoStock = qsDAO.findQuartoStock();
+        for (QuartoStock qs : arrayQuartoStock) {
+            listProdutosQuarto.getItems().add(qs.getProduct_description()+"||Qtd: "+qs.getQuantidade());
+        }
+
     }
 }

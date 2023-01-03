@@ -3,6 +3,7 @@ package Classes.DAO;
 import Classes.QuartoStock;
 import DataBase.ConnectionDB;
 import hotel.agencypt.Controller.Controller;
+import javafx.scene.control.Alert;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -67,12 +68,53 @@ public class QuartoStockDAO {
                 quarto.setProduct_description(rs.getString("product_description"));
                 quarto.setQuantidade(rs.getFloat("quantidade"));
                 listQuartoStock.add(quarto);
+
             }
 
         } catch (SQLException e) {
             System.err.println("[ERRO]: findIDQuartoStock " + e.getMessage());
+
         }
         return listQuartoStock;
+    }
+
+    public List<QuartoStock>  updateStockQuarto() {
+
+        String sql = "UPDATE QuartoStock set quantidade += 1\n" +
+                "FROM \n" +
+                "    QuartoStock\n" +
+                "    INNER JOIN Stock\n" +
+                "        ON Stock.product_identifier = QuartoStock.idstock\n" +
+                "                WHERE product_description='"+Controller.getInstance().getProdutosEscolhidos()+"' AND idquarto="+Controller.getInstance().getIdQuarto();
+        try {
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            System.err.println("[ERRO]: updateStock " + e.getMessage());
+        }
+        return  null;
+    }
+
+    public List<QuartoStock>  RemoveStockQuarto() {
+
+        String sql = "UPDATE QuartoStock set quantidade = 0\n" +
+                "FROM \n" +
+                "    QuartoStock\n" +
+                "    INNER JOIN Stock\n" +
+                "        ON Stock.product_identifier = QuartoStock.idstock\n" +
+                "                WHERE product_description='"+Controller.getInstance().getProdutosEscolhidos();
+        try {
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.executeUpdate();
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Informação");
+            alert.setHeaderText("Decrementar produtos");
+            alert.setContentText("QuartoStock: -1 ");
+            alert.showAndWait();
+        } catch (SQLException e) {
+            System.err.println("[ERRO]: updateStock " + e.getMessage());
+        }
+        return  null;
     }
 
 
@@ -103,7 +145,10 @@ public class QuartoStockDAO {
         try {
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.executeUpdate();
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+
             return true;
+
         } catch (SQLException e) {
             System.err.println("[ERRO]: deleteProdutoQuarto " + e.getMessage());
             return false;
