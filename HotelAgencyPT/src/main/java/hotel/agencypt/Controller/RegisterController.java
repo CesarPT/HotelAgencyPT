@@ -8,11 +8,10 @@ import javafx.scene.control.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
-import javax.swing.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import static Classes.DAO.RegisterDAO.verifyUser;
+import static Classes.DAO.RegisterDAO.*;
 
 
 public class RegisterController implements Initializable {
@@ -41,7 +40,7 @@ public class RegisterController implements Initializable {
      * Inicia a scene com o conteúdo desta classe.
      */
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        permissionComboBox.getItems().setAll("Cliente", "Funcionario", "Gestor");
+        getTypeUserComboBox(permissionComboBox);
     }
 
     /**
@@ -107,32 +106,24 @@ public class RegisterController implements Initializable {
      * Faz a encriptação da password e regista o utilizador na base de dados
      */
     public void registerUser() {
-        JFrame frame = new JFrame("Register");
-        frame.setTitle("Registo");
-
-        char tipouser;
         String username = usernameTextField.getText();
-        String perm = (String) permissionComboBox.getSelectionModel().getSelectedItem();
-        if (perm == "Gestor") {
-            tipouser = 'G';
-        } else if (perm == "Funcionario") {
-            tipouser = 'F';
-        } else {
-            tipouser = 'C';
-        }
 
         //Encrpytação da password
         String encrypt = "";
         String password = setPasswordField.getText();
         encrypt = encryption.encrypt(password, encrypt);
 
-
-        //Inserção dos dados na base de dados
-        boolean registe = RegisterDAO.Register(tipouser, username, encrypt);
-        if (registe == true) {
-            JOptionPane.showMessageDialog(frame, "Registado com sucesso!");
+        if (permissionComboBox.getSelectionModel().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Informação!");
+            alert.setHeaderText("Por favor selecione um tipo de utilizador!");
+            alert.showAndWait();
         } else {
-            JOptionPane.showMessageDialog(frame, "Registo sem sucesso!");
+            String perm = permissionComboBox.getSelectionModel().getSelectedItem().toString();
+            getPrefix(perm);
+
+            //Inserção dos dados na base de dados
+            RegisterDAO.Register(username, encrypt);
         }
     }
 

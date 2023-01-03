@@ -95,21 +95,6 @@ public class QuartoDAO {
         }
     }
 
-    public boolean updateDescricao(Quarto quarto) {
-        String sql = "UPDATE Quarto SET descricaoQuarto = ?" +
-                " WHERE idquarto=" + Controller.getInstance().getIdQuarto();
-
-        try {
-            PreparedStatement stmt = con.prepareStatement(sql);
-            stmt.setString(1, quarto.getDescricao());
-            stmt.executeUpdate();
-            return true;
-        } catch (SQLException e) {
-            System.err.println("[ERRO]: updateDescricaoQuarto " + e.getMessage());
-            return false;
-        }
-    }
-
     public List<Quarto> findDescricaoQuarto() {
         String sql = "select descricaoQuarto " +
                 "from Quarto " +
@@ -205,4 +190,18 @@ public class QuartoDAO {
         return listquarto;
     }
 
+    public boolean updateDescricao(Quarto quarto) {
+        String sql = "UPDATE Quarto SET descricaoQuarto = ?" +
+                " WHERE idquarto=" + Controller.getInstance().getIdQuarto();
+
+        try {
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setString(1, quarto.getDescricao());
+            stmt.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            System.err.println("[ERRO]: updateDescricaoQuarto " + e.getMessage());
+            return false;
+        }
+    }
 }

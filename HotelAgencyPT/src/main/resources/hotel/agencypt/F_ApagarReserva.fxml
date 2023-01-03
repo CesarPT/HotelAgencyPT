@@ -11,7 +11,8 @@
     <children>
         <Pane layoutX="44.0" layoutY="58.0" prefHeight="367.0" prefWidth="629.0" style="-fx-background-color: #BBB6B6;">
             <children>
-                <Button layoutX="551.0" layoutY="297.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="61.0">
+                <Button layoutX="551.0" layoutY="297.0" mnemonicParsing="false" onAction="#clicarRemoverReserva"
+                        prefHeight="42.0" prefWidth="61.0">
                     <graphic>
                         <ImageView fitHeight="44.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -23,11 +24,12 @@
                         <Cursor fx:constant="HAND"/>
                     </cursor>
                 </Button>
-                <TableView layoutX="23.0" layoutY="13.0" prefHeight="336.0" prefWidth="422.0">
+                <TableView fx:id="tableApagarReserva" layoutX="23.0" layoutY="13.0" prefHeight="336.0"
+                           prefWidth="422.0">
                     <columns>
-                        <TableColumn prefWidth="122.0" text="ID Cliente"/>
-                        <TableColumn prefWidth="163.0" text="ID Reserva"/>
-                        <TableColumn prefWidth="117.0" text="Tem check-in?"/>
+                        <TableColumn fx:id="columnIDCliente" prefWidth="122.0" text="ID Cliente"/>
+                        <TableColumn fx:id="columnIDReserva" prefWidth="163.0" text="ID Reserva"/>
+                        <TableColumn fx:id="columnCheckIn" prefWidth="117.0" text="Tem check-in?"/>
                     </columns>
                 </TableView>
                 <TextArea editable="false" layoutX="455.0" layoutY="14.0" prefHeight="137.0" prefWidth="157.0"

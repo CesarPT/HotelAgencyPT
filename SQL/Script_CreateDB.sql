@@ -129,3 +129,9 @@ Create Table FicheiroXML(
 	descricao varchar(50)
 );
 GO
+Create Table TipoUser(
+	idtipo int PRIMARY KEY IDENTITY,
+	tipouser varchar(50) NOT NULL,
+	prefixo char NOT NULL
+);
+GO

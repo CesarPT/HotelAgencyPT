@@ -21,11 +21,10 @@ public class ClienteDAO {
 
         List<Cliente> listCliente = new ArrayList<>();
         List<Utilizador> listUser = new ArrayList<>();
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
+
         try {
-            stmt = con.prepareStatement(sql);
-            rs = stmt.executeQuery();
+            PreparedStatement stmt = con.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
                 Cliente cliente = new Cliente();
@@ -37,8 +36,6 @@ public class ClienteDAO {
 
         } catch (SQLException e) {
             System.err.println("[ERRO]: findRegEntradaQuarto " + e.getMessage());
-        } finally {
-            ConnectionDB.closeConnection(con, stmt, rs);
         }
         return listCliente;
     }
@@ -78,12 +75,9 @@ public class ClienteDAO {
 
         List<Cliente> listCliente = new ArrayList<>();
 
-
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
         try {
-            stmt = con.prepareStatement(sql);
-            rs = stmt.executeQuery();
+            PreparedStatement stmt = con.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
                 Cliente cliente = new Cliente();
@@ -93,8 +87,6 @@ public class ClienteDAO {
 
         } catch (SQLException e) {
             System.err.println("[ERRO]: findRegEntradaQuarto " + e.getMessage());
-        } finally {
-            ConnectionDB.closeConnection(con, stmt, rs);
         }
         return listCliente;
     }

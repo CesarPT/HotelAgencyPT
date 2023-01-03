@@ -1,6 +1,9 @@
 package Classes.DAO;
 
+import Classes.Utilizador;
 import DataBase.ConnectionDB;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ComboBox;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,12 +16,32 @@ public class RegisterDAO {
     static Connection con = ConnectionDB.establishConnection();
     private static int id;
     static String vExists;
-    static String registe;
+    static Utilizador user = new Utilizador();
 
     /**
-     * Verificação se o username já existe!
+     * Obter os tipos de utilizador que existe na base dados e adicionar na combobox
      *
-     * @return user
+     * @param permissionComboBox recebe a comboBox
+     */
+    public static void getTypeUserComboBox(ComboBox permissionComboBox) {
+        String getTypeUser = "SELECT tipouser FROM TipoUser";
+        try {
+            PreparedStatement stmt = con.prepareStatement(getTypeUser);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                String typeUser = rs.getString("tipouser");
+                permissionComboBox.getItems().add(typeUser);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Verifica se existe outro nome de utilizador igual
+     *
+     * @param user recebe o nome de utilizador
+     * @return se o nome já existe ou não
      */
     public static boolean verifyUser(String user) {
         boolean vUser;
@@ -45,51 +68,82 @@ public class RegisterDAO {
         return vUser;
     }
 
-
-    public static boolean Register(char tipouser, String username, String encrypt) {
-        String insertToRegister = "INSERT INTO Utilizador(nomeuser, password, tipouser) VALUES('" + username + "' , '" + encrypt + "' , '" + tipouser + "')";
-        boolean rg;
+    /**
+     * Guarda o prefixo da permissão
+     *
+     * @param perm recebe a permissão
+     */
+    public static void getPrefix(String perm) {
+        String getTypeUser = "SELECT prefixo FROM TipoUser where tipouser = '" + perm + "'";
         try {
-            PreparedStatement stmt = con.prepareStatement(insertToRegister);
+            PreparedStatement stmt = con.prepareStatement(getTypeUser);
             ResultSet rs = stmt.executeQuery();
-            if (rs.next()) {
-                registe = "Registado com sucesso!";
-            } else {
-                registe = "";
-            }
-        } catch (SQLException e) {
-            e.getCause();
-        }
-        String getIDUser = "SELECT iduser FROM Utilizador WHERE nomeuser = '" + username + "' and tipouser ='" + tipouser + "'";
-        CreateTypeUser(getIDUser, tipouser);
-        if (Objects.equals(registe, "Registado com sucesso!")) {
-            rg = true;
-        } else {
-            rg = false;
-        }
-        return rg;
-    }
-
-    public static void validateUser(String getIDUser) {
-        try {
-            PreparedStatement stm = con.prepareStatement(getIDUser);
-            ResultSet rs = stm.executeQuery();
-
-            if (rs.next()) {
-                id = rs.getInt("iduser");
-                System.out.println(id);
+            while (rs.next()) {
+                user.setTipoUtilizador(rs.getString("prefixo"));
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public static void CreateTypeUser(String getIDUser, char tipoUser) {
-        validateUser(getIDUser);
-        if (tipoUser == 'C') {
-            String validarC = "SELECT count(1) FROM Cliente WHERE iduser=" + id;
+    /**
+     * Cria um utilizador
+     *
+     * @param username recebe o nome de utilizador
+     * @param encrypt recebe a password encriptada
+     */
+    public static void Register(String username, String encrypt) {
+        String prefix = user.getTipoUtilizador();
+        String insertToRegister = "INSERT INTO Utilizador(nomeuser, password, tipouser) VALUES(?,?,?)";
+        try {
+            PreparedStatement stmt = con.prepareStatement(insertToRegister);
+            stmt.setString(1, username);
+            stmt.setString(2, encrypt);
+            stmt.setString(3, prefix);
+            stmt.executeUpdate();
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Sucesso!");
+            alert.setHeaderText("Registado com sucesso!");
+            alert.showAndWait();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        getIdUser(username, prefix);
+        CreateTypeUser(prefix);
+    }
+
+    /**
+     * Guarda o id de utilizador na variavel id
+     *
+     * @param username recebe um username de utilizador
+     * @param prefix recebe o prefixo da permissão
+     */
+    public static void getIdUser(String username, String prefix) {
+        String getIDUser = "SELECT iduser FROM Utilizador WHERE nomeuser = '" + username + "' and tipouser ='" + prefix + "'";
+        try {
+            PreparedStatement stm = con.prepareStatement(getIDUser);
+            ResultSet rs = stm.executeQuery();
+
+            if (rs.next()) {
+                id = rs.getInt("iduser");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Faz validação se existe outro utilizador com o mesmo id de utilizador na tabela (cliente/funcionario/gestor) dependendo da permissão e se não existir insire nessa mesma tabela e atribui um id de cliente/funcionario/gestor
+     *
+     * @param prefix recebe o prefixo da permissão
+     */
+    public static void CreateTypeUser(String prefix) {
+
+        if (Objects.equals(prefix, "C")) {
+            String validateC = "SELECT count(1) FROM Cliente WHERE iduser=" + id;
             try {
-                PreparedStatement stmt = con.prepareStatement(validarC);
+                PreparedStatement stmt = con.prepareStatement(validateC);
                 ResultSet rs = stmt.executeQuery();
 
                 while (rs.next()) {
@@ -97,14 +151,14 @@ public class RegisterDAO {
                     } else {
                         String create = "INSERT INTO Cliente(iduser) VALUES(" + id + ")";
                         PreparedStatement stm1 = con.prepareStatement(create);
-                        stm1.executeQuery();
+                        stm1.executeUpdate();
                     }
                 }
 
             } catch (Exception e) {
-                e.getCause();
+                e.printStackTrace();
             }
-        } else if (tipoUser == 'F') {
+        } else if (Objects.equals(prefix, "F")) {
             String validateF = "SELECT count(1) FROM Funcionario WHERE iduser=" + id;
             try {
                 PreparedStatement stmt = con.prepareStatement(validateF);
@@ -115,13 +169,14 @@ public class RegisterDAO {
                     } else {
                         String create = "INSERT INTO Funcionario(iduser, estado) VALUES(" + id + ", 'Ativo')";
                         PreparedStatement stm1 = con.prepareStatement(create);
-                        stm1.executeQuery();
+                        stm1.executeUpdate();
+                        ;
                     }
                 }
             } catch (Exception e) {
                 e.getCause();
             }
-        } else if (tipoUser == 'G') {
+        } else if (Objects.equals(prefix, "G")) {
             String validarG = "SELECT count(1) FROM Gestor WHERE iduser=" + id;
             try {
                 PreparedStatement stmt = con.prepareStatement(validarG);
@@ -132,7 +187,7 @@ public class RegisterDAO {
                     } else {
                         String create = "INSERT INTO Gestor(iduser) VALUES(" + id + ")";
                         PreparedStatement stm1 = con.prepareStatement(create);
-                        stm1.executeQuery();
+                        stm1.executeUpdate();
                     }
                 }
             } catch (Exception e) {

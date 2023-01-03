@@ -67,13 +67,59 @@ public class ServicoDAO {
     }
 
 
-    public static boolean criaServico(String descricao, float preco) {
-        String sql = "INSERT INTO Servico (descricao,preco) Values (?,?)";
+    public  List<Servico> findPrecoServico(String descricao) {
+        String sql = "SELECT preco from Servico where descricao='" + descricao + "'";
+
+        List<Servico> listservico = new ArrayList<>();
+
+        try {
+            PreparedStatement stmt = con.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                Servico servico = new Servico();
+                servico.setPreco(rs.getInt("preco"));
+
+                listservico.add(servico);
+            }
+
+        } catch (SQLException e) {
+            System.err.println("[ERRO]: findServico " + e.getMessage());
+        }
+        return listservico;
+    }
+
+    public  List<Servico> findEstadoServico(String descricao) {
+        String sql = "SELECT estado from Servico where descricao='" + descricao + "'";
+
+        List<Servico> listservico = new ArrayList<>();
+
+        try {
+            PreparedStatement stmt = con.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                Servico servico = new Servico();
+                servico.setEstado(rs.getString("estado"));
+
+                listservico.add(servico);
+            }
+
+        } catch (SQLException e) {
+            System.err.println("[ERRO]: findServico " + e.getMessage());
+        }
+        return listservico;
+    }
+
+
+    public static boolean criaServico(String descricao, float preco,String estado) {
+        String sql = "INSERT INTO Servico (descricao,preco,estado) Values (?,?,?)";
 
         try {
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setString(1, descricao);
             stmt.setFloat(2, preco);
+            stmt.setString(3, estado);
 
             stmt.executeUpdate();
             return true;
@@ -83,8 +129,24 @@ public class ServicoDAO {
         }
     }
 
-    public static boolean apagaServico(String descricao) {
-        String sql = "Delete from Servico where descricao = ?";
+    public static boolean ativaServico(String descricao) {
+        String sql = "update Servico set estado='Ativo' where descricao=?";
+
+
+        try {
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setString(1, descricao);
+
+            stmt.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            System.err.println("[ERRO]: apagaServico " + e.getMessage());
+            return false;
+        }
+    }
+
+    public static boolean inativaServico(String descricao) {
+        String sql = "update Servico set estado='Inativo' where descricao=?";
 
 
         try {

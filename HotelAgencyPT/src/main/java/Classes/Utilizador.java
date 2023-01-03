@@ -5,7 +5,7 @@ package Classes;
  */
 public class Utilizador {
     int idUtilizador;
-    String password, tipoUtilizador, nomeUtilizador;
+    String password, nomeUtilizador, tipoUtilizador;
 
     /**
      * Contrutor completo

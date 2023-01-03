@@ -4,6 +4,13 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class encryption {
+    /**
+     * Faz a encriptação da palavra-passe
+     *
+     * @param password Recebe a palavra-passe
+     * @param encryptedpassword Recebe uma variavel vazia
+     * @return Devolve a variavel 'encryptedpassword'
+     */
     public static String encrypt(String password, String encryptedpassword) {
         try {
             /* MessageDigest instance for MD5. */

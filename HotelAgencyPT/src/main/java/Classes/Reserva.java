@@ -1,5 +1,6 @@
 package Classes;
 
+
 import java.util.Date;
 
 /**
@@ -13,6 +14,7 @@ public class Reserva {
     private int numcartao;
     private Date datai;
     private Date dataf;
+    private String CheckIn;
 
     /**
      * Construtor completo
@@ -22,8 +24,9 @@ public class Reserva {
      * @param idquarto  «     * @param numcartao
      * @param datai
      * @param dataf
+     * @param checkIn
      */
-    public Reserva(int idreserva, int idcliente, int idquarto, int idservico, int numcartao, Date datai, Date dataf) {
+    public Reserva(int idreserva, int idcliente, int idquarto, int idservico, int numcartao, Date datai, Date dataf, String checkIn) {
         this.idreserva = idreserva;
         this.idcliente = idcliente;
         this.idquarto = idquarto;
@@ -31,6 +34,7 @@ public class Reserva {
         this.numcartao = numcartao;
         this.datai = datai;
         this.dataf = dataf;
+        CheckIn = checkIn;
     }
 
     /**
@@ -38,6 +42,16 @@ public class Reserva {
      */
     public Reserva() {
 
+    }
+
+    public Reserva(int idcliente, int idreserva, String checkIn) {
+        this.idcliente = idcliente;
+        this.idreserva = idreserva;
+        this.CheckIn = checkIn;
+    }
+
+    public void selectedRow(int idreserva) {
+        setIdreserva(idreserva);
     }
 
     public int getIdreserva() {
@@ -96,5 +110,13 @@ public class Reserva {
 
     public void setDataF(Date dataf) {
         this.dataf = dataf;
+    }
+
+    public String getCheckIn() {
+        return CheckIn;
+    }
+
+    public void setCheckIn(String checkIn) {
+        CheckIn = checkIn;
     }
 }

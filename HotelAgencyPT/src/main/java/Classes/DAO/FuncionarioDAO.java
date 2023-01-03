@@ -14,10 +14,9 @@ public class FuncionarioDAO {
 
 
     public static void updateAtiva(String nome) {
-        String sql = "update Funcionario SET Funcionario.estado = 'Ativo'From Funcionario " +
+        String sql = "update Funcionario SET Funcionario.estado = 'Ativo' From Funcionario " +
                 "inner join Utilizador on Utilizador.iduser = Funcionario.iduser " +
                 "where Utilizador.nomeuser=?";
-
         List<Funcionario> listfuncionario = new ArrayList<>();
 
         try {
@@ -32,7 +31,7 @@ public class FuncionarioDAO {
     }
 
     public static void updateInativa(String nome) {
-        String sql = "update Funcionario SET Funcionario.estado = 'Inativado'From Funcionario " +
+        String sql = "update Funcionario SET Funcionario.estado = 'Inativado' From Funcionario " +
                 "inner join Utilizador on Utilizador.iduser = Funcionario.iduser " +
                 "where Utilizador.nomeuser=?";
 

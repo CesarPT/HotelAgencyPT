@@ -6,7 +6,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.*?>
-<AnchorPane prefHeight="469.0" prefWidth="818.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
+<AnchorPane prefHeight="454.0" prefWidth="818.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="hotel.agencypt.Controller.F_Reserva">
     <children>
         <Text layoutX="69.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Funcionário">
@@ -17,21 +17,21 @@
 
         <ComboBox fx:id="cboxTquarto" layoutX="95.0" layoutY="187.0" onAction="#onEsTquarto" prefHeight="26.0"
                   prefWidth="191.0" promptText="Escolher tipo quarto" visibleRowCount="3"/>
-        <ListView fx:id="listServesco" layoutX="433.0" layoutY="44.0" prefHeight="229.0" prefWidth="149.0"
+        <ListView fx:id="listServesco" layoutX="439.0" layoutY="37.0" prefHeight="164.0" prefWidth="149.0"
                   style="-fx-background-color: lightblue;"/>
-        <ListView fx:id="listServtodos" layoutX="655.0" layoutY="43.0" prefHeight="229.0" prefWidth="149.0"
+        <ListView fx:id="listServtodos" layoutX="661.0" layoutY="36.0" prefHeight="164.0" prefWidth="149.0"
                   style="-fx-background-color: lightblue;"/>
-        <Text layoutX="675.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Todos os serviços">
+        <Text layoutX="681.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Todos os serviços">
             <font>
                 <Font size="14.0"/>
             </font>
         </Text>
-        <Text layoutX="448.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Serviços escolhidos">
+        <Text layoutX="454.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Serviços escolhidos">
             <font>
                 <Font size="14.0"/>
             </font>
         </Text>
-        <Button layoutX="594.0" layoutY="106.0" mnemonicParsing="false" onAction="#onRemover" prefHeight="31.0"
+        <Button layoutX="600.0" layoutY="99.0" mnemonicParsing="false" onAction="#onRemover" prefHeight="31.0"
                 prefWidth="47.0" style="-fx-background-radius: 10;" text="--&gt;">
             <font>
                 <Font size="15.0"/>
@@ -40,7 +40,7 @@
                 <Cursor fx:constant="HAND"/>
             </cursor>
         </Button>
-        <Button layoutX="594.0" layoutY="153.0" mnemonicParsing="false" onAction="#onAdicionar" prefHeight="31.0"
+        <Button layoutX="600.0" layoutY="146.0" mnemonicParsing="false" onAction="#onAdicionar" prefHeight="31.0"
                 prefWidth="47.0" style="-fx-background-radius: 10;" text="&lt;--">
             <font>
                 <Font size="15.0"/>
@@ -49,7 +49,7 @@
                 <Cursor fx:constant="HAND"/>
             </cursor>
         </Button>
-        <Button layoutX="691.0" layoutY="405.0" mnemonicParsing="false" onAction="#onCriaReserva" text="Criar reserva">
+        <Button layoutX="670.0" layoutY="401.0" mnemonicParsing="false" onAction="#onCriaReserva" text="Criar reserva">
             <font>
                 <Font size="16.0"/>
             </font>
@@ -58,7 +58,7 @@
             </cursor>
         </Button>
         <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#voltarAtras"
-                prefHeight="469.0" prefWidth="49.0" style="-fx-background-color: #ccffff; -fx-border-color: gray;">
+                prefHeight="455.0" prefWidth="49.0" style="-fx-background-color: #ccffff; -fx-border-color: gray;">
             <graphic>
                 <ImageView fitHeight="38.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
                     <image>
@@ -82,68 +82,68 @@
                     style="-fx-background-color: gray;"/>
         <DatePicker fx:id="datePickerF" editable="false" layoutX="95.0" layoutY="145.0" onAction="#getDateF"
                     style="-fx-background-color: gray;"/>
-        <Label layoutX="477.0" layoutY="363.0" text="Preço Total (quarto+serviços):">
+        <Label layoutX="478.0" layoutY="316.0" text="Preço Total (quarto+serviços):">
             <font>
                 <Font size="16.0"/>
             </font>
         </Label>
-        <TextField fx:id="textPrecoTotal" editable="false" layoutX="701.0" layoutY="360.0" prefHeight="30.0"
+        <TextField fx:id="textPrecoTotal" editable="false" layoutX="702.0" layoutY="313.0" prefHeight="30.0"
                    prefWidth="91.0" text="0">
             <font>
                 <Font size="14.0"/>
             </font>
         </TextField>
-        <Label layoutX="556.0" layoutY="303.0" text="Preço dos serviços:">
+        <Label layoutX="557.0" layoutY="256.0" text="Preço dos serviços:">
             <font>
                 <Font size="16.0"/>
             </font>
         </Label>
-        <TextField fx:id="textPrecoServicos" editable="false" layoutX="700.0" layoutY="299.0" prefHeight="30.0"
+        <TextField fx:id="textPrecoServicos" editable="false" layoutX="701.0" layoutY="252.0" prefHeight="30.0"
                    prefWidth="91.0" style="-fx-background-color: lightblue;" text="0">
             <font>
                 <Font size="14.0"/>
             </font>
         </TextField>
-        <Label layoutX="573.0" layoutY="332.0" text="Preço do quarto:">
+        <Label layoutX="574.0" layoutY="285.0" text="Preço do quarto:">
             <font>
                 <Font size="16.0"/>
             </font>
         </Label>
-        <TextField fx:id="textPrecoQuarto" editable="false" layoutX="700.0" layoutY="330.0" prefHeight="30.0"
+        <TextField fx:id="textPrecoQuarto" editable="false" layoutX="701.0" layoutY="283.0" prefHeight="30.0"
                    prefWidth="91.0" text="0">
             <font>
                 <Font size="14.0"/>
             </font>
         </TextField>
-        <Label layoutX="398.0" layoutY="304.0" text="Noites:">
+        <Label layoutX="394.0" layoutY="256.0" text="Noites:">
             <font>
                 <Font size="16.0"/>
             </font>
         </Label>
-        <TextField fx:id="textNoites" editable="false" layoutX="453.0" layoutY="301.0" prefHeight="30.0"
+        <TextField fx:id="textNoites" editable="false" layoutX="450.0" layoutY="254.0" prefHeight="30.0"
                    prefWidth="91.0" style="-fx-background-color: gray;">
             <font>
                 <Font size="14.0"/>
             </font>
         </TextField>
-        <Button layoutX="563.0" layoutY="409.0" mnemonicParsing="false" onAction="#atualizarPrecos"
+        <Button layoutX="670.0" layoutY="363.0" mnemonicParsing="false" onAction="#atualizarPrecos"
                 text="Atualizar preços">
             <font>
                 <Font size="13.0"/>
             </font>
         </Button>
         <Label layoutX="90.0" layoutY="235.0" text="id Cliente"/>
-        <Label layoutX="797.0" layoutY="363.0" text="€">
+        <Label layoutX="798.0" layoutY="286.0" text="€">
             <font>
                 <Font size="16.0"/>
             </font>
         </Label>
-        <Label layoutX="800.0" layoutY="299.0" text="€">
+        <Label layoutX="798.0" layoutY="256.0" text="€">
             <font>
                 <Font size="16.0"/>
             </font>
         </Label>
-        <Label layoutX="800.0" layoutY="332.0" text="€">
+        <Label layoutX="798.0" layoutY="316.0" text="€">
             <font>
                 <Font size="16.0"/>
             </font>
@@ -152,5 +152,7 @@
         <TextField fx:id="nomeCliente" layoutX="143.0" layoutY="393.0" onAction="#onNomeCliente" prefHeight="25.0"
                    prefWidth="217.0"/>
         <Text layoutX="96.0" layoutY="410.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome :"/>
+        <Label layoutX="651.0" layoutY="368.0" text="1."/>
+        <Label layoutX="651.0" layoutY="410.0" text="2."/>
     </children>
 </AnchorPane>

@@ -18,6 +18,9 @@ public class Cliente {
 
     }
 
+    public static void setIdClient(int idcliente) {
+    }
+
     /**
      * Devolve:
      *
