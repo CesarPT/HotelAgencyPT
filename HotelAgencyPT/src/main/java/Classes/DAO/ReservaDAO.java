@@ -114,7 +114,9 @@ public class ReservaDAO {
     }
 
     public boolean deleteReserva() {
-        String sql = "DELETE FROM ReservaServico\n" +
+        String sql = "DELETE FROM CheckInOut\n" +
+                "    WHERE idreserva=" + Controller.getInstance().getSelectedRowReserva() + "\n" +
+                "DELETE FROM ReservaServico\n" +
                 "    WHERE idreserva=" + Controller.getInstance().getSelectedRowReserva() + "\n" +
                 "    DELETE FROM Reserva\n" +
                 "    WHERE idreserva=" + Controller.getInstance().getSelectedRowReserva();

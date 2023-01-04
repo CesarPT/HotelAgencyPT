@@ -93,7 +93,7 @@ public class F_Reserva implements Initializable {
         /**
          * percorre todos os serviços da base de dados na tabela Serviços
          */
-        arrayServico = servicoDAO.findServico();
+        arrayServico = servicoDAO.findServicoAtivo();
         for (Servico s : arrayServico) {
             listServtodos.getItems().add(
                     s.getDescricao() + " " + s.getPreco()
@@ -413,11 +413,9 @@ public class F_Reserva implements Initializable {
         } else {
             onEsTquarto();
 
-
             idClient = listidClienteInsere.getSelectionModel().getSelectedIndex();
 
            // nomeC = String.valueOf(listidClienteInsere.getSelectionModel().getSelectedIndex());
-
 
             clientescolhido();
 
