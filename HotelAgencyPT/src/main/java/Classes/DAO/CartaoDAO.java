@@ -15,7 +15,7 @@ import java.util.List;
  * Classe pública que recebe dados da Base de Dados
  */
 public class CartaoDAO {
-    private Connection con = ConnectionDB.establishConnection();
+    private final Connection con = ConnectionDB.establishConnection();
 
     /**
      * Método para pesquisar o cartão com o username

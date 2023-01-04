@@ -20,7 +20,9 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-
+/**
+ * Classe pública do controlador Cliente.fxml
+ */
 public class Cliente {
     @FXML
     protected Button creatReserva;
@@ -40,7 +42,7 @@ public class Cliente {
     private TextArea dataexp;
     @FXML
     private ChoiceBox<String> opcoesEntrada;
-    private String[] opEntrada = {"Restaurante", "Piscina Privada", "Spá", "Sala de Conferência", "Evento Cultural"};
+    private final String[] opEntrada = {"Restaurante", "Piscina Privada", "Spá", "Sala de Conferência", "Evento Cultural"};
     CartaoDAO cDAO = new CartaoDAO();
     ReservaDAO rDAO = new ReservaDAO();
     RegEntradaDAO reDAO = new RegEntradaDAO();
@@ -49,6 +51,9 @@ public class Cliente {
     List<RegEntrada> arrayRegEntrada = new ArrayList<>();
     String reservasel;
 
+    /**
+     * Método sem retorno, ao iniciar a scene ele é iniciado
+     */
     public void initialize() {
         //Limpar e aparecer opcoes da choicebox
         opcoesEntrada.getSelectionModel().clearSelection();
@@ -75,7 +80,7 @@ public class Cliente {
         //Limpar tudo e Adicionar reservas com o username
         listReserva.getItems().clear();
         arrayReserva.clear();
-        arrayReserva = rDAO.findReserva();
+        arrayReserva = ReservaDAO.findReserva();
         for (Reserva r : arrayReserva) {
             listReserva.getItems().add(
                     "Reserva " + r.getIdreserva()
@@ -107,8 +112,10 @@ public class Cliente {
 
     }
 
-
-    //Adicionar RegEntrada de quarto na base de dados
+    /**
+     * Adicionar RegEntrada de quarto na base de dados
+     * @param actionEvent
+     */
     @FXML
     public void registroEntradaQuarto(ActionEvent actionEvent) {
         if (listReserva.getSelectionModel().getSelectedItem() == null) {
@@ -137,6 +144,10 @@ public class Cliente {
         }
     }
 
+    /**
+     * Verificações, entrar no quarto/outros e enviar para a BD
+     * @param event
+     */
     public void getopEntrada(ActionEvent event) {
         String opEntrada = opcoesEntrada.getValue();
         if (listReserva.getSelectionModel().getSelectedItem() == null) {
@@ -258,8 +269,7 @@ public class Cliente {
     }
 
     /**
-     * Método para voltar atrás
-     *
+     * Método para voltar atrás no Login
      * @param actionEvent
      */
     @FXML
@@ -270,10 +280,5 @@ public class Cliente {
             System.out.println("Erro ao voltar atrás.");
         }
     }
-
-    public void onCreateReserva() {
-
-    }
-
 
 }

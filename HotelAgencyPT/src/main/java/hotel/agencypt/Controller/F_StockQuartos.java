@@ -16,6 +16,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+/**
+ * Classe pública do Controlador F_StockQuartos.fxml
+ */
 public class F_StockQuartos implements Initializable {
     QuartoStockDAO qsDAO = new QuartoStockDAO();
     List<QuartoStock> arrayQuartoStock = new ArrayList<>();
@@ -33,6 +36,16 @@ public class F_StockQuartos implements Initializable {
     @FXML
     private TableColumn<QuartoStock, String> columnEstado;
 
+    /**
+     * Método sem retorno, ao iniciar a scene ele é iniciado
+     * @param location
+     * The location used to resolve relative paths for the root object, or
+     * {@code null} if the location is not known.
+     *
+     * @param resources
+     * The resources used to localize the root object, or {@code null} if
+     * the root object was not localized.
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         arrayQuartoStock = qsDAO.findQuartoStock();
@@ -60,9 +73,7 @@ public class F_StockQuartos implements Initializable {
 
 
     /**
-     * Volta atrás
-     *
-     * @param actionEvent
+     * Voltar atrás consoante o tipo_user
      */
     @FXML
     public void voltarAtras(ActionEvent actionEvent) {

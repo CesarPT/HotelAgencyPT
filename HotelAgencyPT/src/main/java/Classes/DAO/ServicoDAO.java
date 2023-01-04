@@ -15,7 +15,7 @@ import java.util.List;
  * Classe pública que recebe dados da Base de Dados
  */
 public class ServicoDAO {
-    private static Connection con = ConnectionDB.establishConnection();
+    private static final Connection con = ConnectionDB.establishConnection();
 
     /**
      * Método para pesquisar reservas pelo username

@@ -31,7 +31,6 @@ import java.util.List;
  * Classe pública do controlador GH_ImportarJSON.fxml
  */
 public class GH_ImportarJSON {
-    JSONpath instanceJSON = new JSONpath();
     @FXML
     private TableView<Stock> TableViewStock;
     @FXML
@@ -95,7 +94,10 @@ public class GH_ImportarJSON {
         TableViewStock.setItems(obsEntradas);
     }
 
-
+    /**
+     * Chama outro método para enviar os produtos para a BD corretamente
+     * @throws Exception
+     */
     public void confirmarJSON() throws Exception {
         //Enviar para a base de dados
         confirmarJSON2();
@@ -119,7 +121,6 @@ public class GH_ImportarJSON {
 
     /**
      * Ler ficheiro JSON com GSON
-     *
      * @param path
      */
     public void Lerjson(Path path) {
@@ -133,7 +134,7 @@ public class GH_ImportarJSON {
             while ((header = br.readLine()) != null) {
                 sb.append(header);
             }
-            System.out.println("JSON file: " + sb.toString());
+            System.out.println("JSON file: " + sb);
             //Parse do GSON para o JSON
             JsonObject jsonObject = new Gson().fromJson(sb.toString(), JsonObject.class);
 
@@ -255,6 +256,9 @@ public class GH_ImportarJSON {
             }
     }
 
+    /**
+     * Método chamado para enviar produtos para a BD
+     */
     public void confirmarJSON2() {
         //Converter para string e inserir na BD
         String idprod;
@@ -276,9 +280,9 @@ public class GH_ImportarJSON {
             preco_total = Float.parseFloat(precototal[o]);
 
             StockDAO stockDAO = new StockDAO();
-            teste = stockDAO.IFfindItem(idprod);
+            teste = StockDAO.IFfindItem(idprod);
 
-            if (teste == true) {
+            if (teste) {
                 //Atualiza id, quantidade e peso
                 StockDAO.updateStock(idprod, quantprod);
             } else {
@@ -288,8 +292,7 @@ public class GH_ImportarJSON {
     }
 
     /**
-     * Volta atrás para a View funcionariointerface.fxml
-     *
+     * Volta atrás consoante o tipo_user
      * @param actionEvent
      */
     @FXML

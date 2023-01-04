@@ -14,6 +14,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Classe pública do Controlador F_ApagarReserva.fxml
+ */
 public class F_ApagarReserva {
 
     @FXML
@@ -28,11 +31,14 @@ public class F_ApagarReserva {
     ReservaDAO rDAO = new ReservaDAO();
     ObservableList<Reserva> obsCheckIn = FXCollections.observableArrayList();
 
+    /**
+     * Método sem retorno, ao iniciar a scene ele é iniciado
+     */
     public void initialize() {
         tableApagarReserva.getSelectionModel().clearSelection();
         tableApagarReserva.getItems().clear();
 
-        arrayReserva = rDAO.temCheckIn();
+        arrayReserva = ReservaDAO.temCheckIn();
         for (Reserva r : arrayReserva) {
             obsCheckIn.add(new Reserva(r.getIdcliente(), r.getIdreserva(), r.getCheckIn()));
         }
@@ -44,6 +50,9 @@ public class F_ApagarReserva {
         tableApagarReserva.setItems(obsCheckIn);
     }
 
+    /**
+     * Clicar para apagar reserva e atualizar listviews
+     */
     public void clicarRemoverReserva() {
         // Verifica se selecionou e se é Sim ou Nao tem checkin
         if (tableApagarReserva.getSelectionModel().getSelectedItem() != null) {
@@ -84,6 +93,10 @@ public class F_ApagarReserva {
         }
     }
 
+    /**
+     * Voltar atrás consoante o tipo_user
+     * @param actionEvent
+     */
     public void voltarAtras(ActionEvent actionEvent) {
         try {
             if (Controller.getInstance().getTipo_user() == 'G') {

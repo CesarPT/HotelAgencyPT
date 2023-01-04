@@ -22,7 +22,7 @@ import java.util.ResourceBundle;
  * Classe pública do controlador GH_GerirFeedback.fxml
  */
 public class GH_GerirFeedback implements Initializable {
-    private Connection con = ConnectionDB.establishConnection();
+    private final Connection con = ConnectionDB.establishConnection();
     @FXML
     private TableView<Feedback> tableReclamacao;
     @FXML
@@ -41,7 +41,6 @@ public class GH_GerirFeedback implements Initializable {
 
     /**
      * Volta atrás para a View GestorHotel.fxml
-     *
      * @param actionEvent
      */
     @FXML
@@ -53,6 +52,16 @@ public class GH_GerirFeedback implements Initializable {
         }
     }
 
+    /**
+     * Método chamado ao iniciar a scene
+     * @param location
+     * The location used to resolve relative paths for the root object, or
+     * {@code null} if the location is not known.
+     *
+     * @param resources
+     * The resources used to localize the root object, or {@code null} if
+     * the root object was not localized.
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         String sql = "SELECT idcliente, descricao\n" +

@@ -60,11 +60,7 @@ public class RegisterDAO {
         } catch (SQLException e) {
             e.getCause();
         }
-        if (Objects.equals(vExists, "O nome já existe!")) {
-            vUser = false;
-        } else {
-            vUser = true;
-        }
+        vUser = !Objects.equals(vExists, "O nome já existe!");
         return vUser;
     }
 
@@ -170,7 +166,6 @@ public class RegisterDAO {
                         String create = "INSERT INTO Funcionario(iduser, estado) VALUES(" + id + ", 'Ativo')";
                         PreparedStatement stm1 = con.prepareStatement(create);
                         stm1.executeUpdate();
-                        ;
                     }
                 }
             } catch (Exception e) {

@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 /**
- * Classe pública do controlador GH_GerirStock.fxml
+ * Classe pública do controlador GH_GerirFuncionario.fxml
  */
 public class GH_GerirFuncionario implements Initializable {
 
@@ -28,10 +28,20 @@ public class GH_GerirFuncionario implements Initializable {
 
     String utilizadorselect;
 
+    /**
+     * Método chamado ao iniciar a scene
+     * @param location
+     * The location used to resolve relative paths for the root object, or
+     * {@code null} if the location is not known.
+     *
+     * @param resources
+     * The resources used to localize the root object, or {@code null} if
+     * the root object was not localized.
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        arrayFuncionario = utilizadorDAO.findAllFuncionarios();
+        arrayFuncionario = UtilizadorDAO.findAllFuncionarios();
         for (EstadoFunc estadoFunc : arrayFuncionario) {
             listFuncionarios.getItems().add("Nome: " + estadoFunc.getNomefunc() + " - " + estadoFunc.getEstado()
             );
@@ -53,6 +63,9 @@ public class GH_GerirFuncionario implements Initializable {
     String textoformatado;
     int index;
 
+    /**
+     * Ativar o funcionário escolhido para a BD
+     */
     @FXML
     public void AtivarFunc() {
 
@@ -81,7 +94,6 @@ public class GH_GerirFuncionario implements Initializable {
 
     /**
      * Volta atrás para a View GestorHotel.fxml
-     *
      * @param actionEvent
      */
     @FXML

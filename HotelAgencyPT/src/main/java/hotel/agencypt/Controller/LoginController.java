@@ -17,7 +17,9 @@ import java.util.ResourceBundle;
 
 import static Classes.DAO.LoginDAO.login;
 
-
+/**
+ * Classe pública do LoginController.fxml
+ */
 public class LoginController implements Initializable {
     @FXML
     private Button loginButton;
@@ -34,7 +36,6 @@ public class LoginController implements Initializable {
 
     /**
      * Inicialização do controlador.
-     *
      * @param url            The location used to resolve relative paths for the root object, or
      *                       {@code null} if the location is not known.
      * @param resourceBundle The resources used to localize the root object, or {@code null} if
@@ -49,11 +50,10 @@ public class LoginController implements Initializable {
 
     /**
      * Verifica se os campos estão vazios.
-     *
      * @param event Ação do evento
      */
     public void loginButtonOnAction(ActionEvent event) {
-        if (usernameTextField.getText().isBlank() == false && enterPasswordField.getText().isBlank() == false) {
+        if (!usernameTextField.getText().isBlank() && !enterPasswordField.getText().isBlank()) {
             validateLogin();
         } else {
             loginMessageLabel.setText("Preencha o username e a password");
@@ -62,7 +62,6 @@ public class LoginController implements Initializable {
 
     /**
      * Fecha a janela do login através do butão cancel.
-     *
      * @param event Ação do evento
      */
     public void cancelButtonOnAction(ActionEvent event) {
@@ -85,7 +84,7 @@ public class LoginController implements Initializable {
 
         // Verificação se existe na base dados
         boolean login = login(user, window, encryptedpassword);
-        if (login == true) {
+        if (login) {
             loginMessageLabel.setText("Login com sucesso!");
         } else {
             loginMessageLabel.setText("Login invalido, tente novamente!");

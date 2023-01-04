@@ -47,7 +47,7 @@ public class GH_ConfigQuarto {
     @FXML
     private ListView<String> listProdutosStock;
     @FXML
-    private ListView<String> listProdutosQuarto;;
+    private ListView<String> listProdutosQuarto;
     QuartoDAO qDAO = new QuartoDAO();
     StockDAO sDAO = new StockDAO();
     QuartoStockDAO qsDAO = new QuartoStockDAO();
@@ -165,6 +165,9 @@ public class GH_ConfigQuarto {
         }
     }
 
+    /**
+     * Verificações do preço introduzido quando clica no botão
+     */
     public void verificarAlterarPreco() {
         //Se o preço que inseriu é igual ao match de:
         //Qualquer dígito de 0 a 9 com 3 digitos no máximo
@@ -201,7 +204,6 @@ public class GH_ConfigQuarto {
 
     /**
      * Volta atrás para a View GestorHotel.fxml
-     *
      * @param actionEvent
      */
     @FXML
@@ -213,6 +215,9 @@ public class GH_ConfigQuarto {
         }
     }
 
+    /**
+     * Verificações do input da TextArea ao clicar no botão
+     */
     public void verificarAlterarDescricao() {
         //Verifica se o texto tem mais de 200 carateres
         if (textAlterarDescricao.getText().length() <= 200) {
@@ -239,6 +244,10 @@ public class GH_ConfigQuarto {
         }
     }
 
+    /**
+     * Botão para ver a descrição do quarto da base de dados
+     * @param Event
+     */
     public void verDescricao(ActionEvent Event) {
         quartoEscolhido = comboBoxQuartoID.getSelectionModel().getSelectedItem()
                 .replaceAll("[a-zA-Z]", "")
@@ -255,6 +264,12 @@ public class GH_ConfigQuarto {
     }
 
     String prodFinal;
+
+    /**
+     * Verificações, adicionar produtos no quarto e atualizar listviews
+     * @param Event
+     * @throws InterruptedException
+     */
     public void addProdutoQuarto(ActionEvent Event) throws InterruptedException {
         quartoEscolhido = comboBoxQuartoID.getSelectionModel().getSelectedItem()
                 .replaceAll("[a-zA-Z]", "")
@@ -280,6 +295,10 @@ public class GH_ConfigQuarto {
         }
     }
     String prodFinal2;
+    /**
+     * Verificações, remover produtos no quarto e atualizar listviews
+     * @param Event
+     */
     public void deleteProdutoQuarto(ActionEvent Event){
         quartoEscolhido = comboBoxQuartoID.getSelectionModel().getSelectedItem()
                 .replaceAll("[a-zA-Z]", "")
@@ -303,6 +322,9 @@ public class GH_ConfigQuarto {
         }
     }
 
+    /**
+     * Método sem retorno chamado para atualizar as listviews
+     */
     public void limparTudo(){
         listProdutosQuarto.getItems().clear();
         listProdutosStock.getItems().clear();

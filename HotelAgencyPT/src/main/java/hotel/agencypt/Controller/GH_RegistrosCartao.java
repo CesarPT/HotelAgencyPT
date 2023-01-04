@@ -28,7 +28,7 @@ import java.util.ResourceBundle;
  * Classe pública do controlador GH_RegistrosCartao.fxml
  */
 public class GH_RegistrosCartao implements Initializable {
-    private Connection con = ConnectionDB.establishConnection();
+    private final Connection con = ConnectionDB.establishConnection();
     @FXML
     protected Button button;
     @FXML
@@ -53,7 +53,6 @@ public class GH_RegistrosCartao implements Initializable {
 
     /**
      * Insere valores nas TableViews e executa a barra de pesquisa
-     *
      * @param location  The location used to resolve relative paths for the root object, or
      *                  {@code null} if the location is not known.
      * @param resources The resources used to localize the root object, or {@code null} if
@@ -134,7 +133,6 @@ public class GH_RegistrosCartao implements Initializable {
 
     /**
      * Volta atrás para a View GestorHotel.fxml
-     *
      * @param actionEvent
      */
     @FXML

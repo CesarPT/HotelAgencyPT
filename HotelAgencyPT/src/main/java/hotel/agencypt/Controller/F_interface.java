@@ -13,6 +13,9 @@ import javafx.stage.Stage;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Classe pública do Controlador funcionariointerface.fxml
+ */
 public class F_interface {
     @FXML
     private Button Registerbutton;
@@ -28,7 +31,6 @@ public class F_interface {
 
     /**
      * Abre a janela para fazer o registo de um novo cliente.
-     *
      * @param event Ação do evento
      * @throws Exception Verificação das exceções
      */
@@ -40,7 +42,6 @@ public class F_interface {
 
     /**
      * Abre a janela para fazer o login.
-     *
      * @param event Ação do evento
      * @throws Exception Verificação das exceções
      */
@@ -52,7 +53,6 @@ public class F_interface {
 
     /**
      * Abre a janela para criar uma reserva.
-     *
      * @param event Ação do evento
      */
     public void abrirCriarReserva(ActionEvent event) {
@@ -67,7 +67,6 @@ public class F_interface {
 
     /**
      * Abre a janela para fazer a configuração do quarto.
-     *
      * @param event Ação do evento
      */
     public void abrirServicosQuarto(ActionEvent event) {
@@ -80,7 +79,6 @@ public class F_interface {
 
     /**
      * Abre a janela para gerir o stock do hotel.
-     *
      * @param event Ação do evento
      */
     public void abrirGerirStock(ActionEvent event) {
@@ -95,7 +93,6 @@ public class F_interface {
 
     /**
      * Abre a janela para fazer o Check-in.
-     *
      * @param event Ação do evento
      */
     public void FazerCheckIn(ActionEvent event) {

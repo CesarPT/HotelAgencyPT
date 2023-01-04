@@ -21,7 +21,6 @@ public class Controller {
 
     /**
      * Obter a instância
-     *
      * @return INSTANCE
      */
     public static Controller getInstance() {

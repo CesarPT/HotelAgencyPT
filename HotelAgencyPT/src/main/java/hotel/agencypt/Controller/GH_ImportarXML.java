@@ -31,7 +31,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Classe pública do controlador GH_GerirStock.fxml
+ * Classe pública do controlador GH_ImportarXML.fxml
  */
 public class GH_ImportarXML {
     @FXML
@@ -61,7 +61,6 @@ public class GH_ImportarXML {
 
     /**
      * Clicar no botão de Importar XML
-     *
      * @param event
      */
     public void clicarBtnImportar(ActionEvent event) throws Exception {
@@ -82,6 +81,9 @@ public class GH_ImportarXML {
         }
     }
 
+    /**
+     * Método chamado para atualizar tableview
+     */
     public void atualizarTableView() {
         //Limpar tableview
         TableViewStock.getItems().clear();
@@ -97,6 +99,11 @@ public class GH_ImportarXML {
         TableViewStock.setItems(obsEntradas);
     }
 
+    /**
+     * Método que chama outro método para enviar produtos para a BD
+     * e atualizar listviews
+     * @throws Exception
+     */
     public void confirmarXML() throws Exception {
         //Enviar para a base de dados
         confirmarXML2();
@@ -127,6 +134,11 @@ public class GH_ImportarXML {
     StockDAO stockDAO = new StockDAO();
     NodeList nodeslba;
 
+    /**
+     * Ler ficheiro XML
+     * @param path
+     * @throws Exception
+     */
     public void Lexml(Path path) throws Exception {
 
         //documento builder para o XML
@@ -377,6 +389,9 @@ public class GH_ImportarXML {
         }
     }
 
+    /**
+     * Método chamado para enviar produtos para a BD corretamente
+     */
     public void confirmarXML2() {
         //Converter para string e inserir na BD
         int quantprod;
@@ -397,9 +412,9 @@ public class GH_ImportarXML {
             vat = taxp[i];
             preco_total = lba[i];
 
-            teste = stockDAO.IFfindItem(idprod);
+            teste = StockDAO.IFfindItem(idprod);
 
-            if (teste == true) {
+            if (teste) {
                StockDAO.updateStock(idprod, quantprod);
             } else {
                 StockDAO.insertNewStock(idprod, descprod, tipo_qtd, quantprod, preco, vat, preco_total);
@@ -408,8 +423,7 @@ public class GH_ImportarXML {
     }
 
     /**
-     * Volta atrás para a View funcionariointerface.fxml
-     *
+     * Volta atrás consoante o tipo_user
      * @param actionEvent
      */
     @FXML

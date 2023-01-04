@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EntregaDAO {
-    private static Connection con = ConnectionDB.establishConnection();
+    private static final Connection con = ConnectionDB.establishConnection();
 
     public List<Entrega> findEntrega() {
         String sql = "SELECT orderNumber, data_entrega, party_identifier, empresa,\n" +

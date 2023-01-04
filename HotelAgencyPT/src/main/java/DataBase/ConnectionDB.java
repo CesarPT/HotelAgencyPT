@@ -5,7 +5,9 @@ import Classes.SearchFile;
 import java.sql.*;
 import java.util.List;
 
-
+/**
+ * Classe pública ConnectionDB
+ */
 public class ConnectionDB {
 
     static Connection connect = null;

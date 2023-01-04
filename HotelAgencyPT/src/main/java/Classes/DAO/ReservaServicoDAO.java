@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 public class ReservaServicoDAO {
 
-    private static Connection con = ConnectionDB.establishConnection();
+    private static final Connection con = ConnectionDB.establishConnection();
 
     public static boolean criaReservaServico(int idreserva, int idservico) {
         String sql = "INSERT INTO ReservaServico (idreserva,idservico) Values(?,?)";

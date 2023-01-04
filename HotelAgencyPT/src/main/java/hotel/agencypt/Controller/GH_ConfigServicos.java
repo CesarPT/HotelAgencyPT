@@ -17,7 +17,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-
+/**
+ * Classe pública do GH_ConfigServicos.fxml
+ */
 public class GH_ConfigServicos implements Initializable {
 
     @FXML
@@ -33,11 +35,17 @@ public class GH_ConfigServicos implements Initializable {
 
 
 
-
-
-
-
-    //s.getDescricao(),s.getPreco(),s.getEstado()
+    /**
+     * Método usado ao iniciar a scene
+     * s.getDescricao(),s.getPreco(),s.getEstado()
+     * @param location
+     * The location used to resolve relative paths for the root object, or
+     * {@code null} if the location is not known.
+     *
+     * @param resources
+     * The resources used to localize the root object, or {@code null} if
+     * the root object was not localized.
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -45,7 +53,7 @@ public class GH_ConfigServicos implements Initializable {
          * percorre todos os serviços da base de dados na tabela Serviços
          */
 
-        arrayServico = servicoDAO.findServico();
+        arrayServico = ServicoDAO.findServico();
         for (Servico s : arrayServico) {
             listServtodos.getItems().add(
                     s.getDescricao()
@@ -67,10 +75,18 @@ public class GH_ConfigServicos implements Initializable {
 
     }
 
+    /**
+     * Adiciona descrição ao serviço escolhido
+     * @param escolhido
+     */
     public void mandaDescriçao(String escolhido){
         descricaoServ.setText(escolhido);
     }
 
+    /**
+     * Adiciona preço ao serviço escolhido
+     * @param escolhido
+     */
     public void mandaPreco(String escolhido){
 
         arrayServico = servicoDAO.findPrecoServico(escolhido);
@@ -80,6 +96,10 @@ public class GH_ConfigServicos implements Initializable {
         }
    }
 
+    /**
+     * Adiciona o estado ativo/inativo no serviço escolhido
+     * @param escolhido
+     */
     public void mandaEstado(String escolhido){
 
         arrayServico = servicoDAO.findEstadoServico(escolhido);
@@ -89,10 +109,9 @@ public class GH_ConfigServicos implements Initializable {
         }
     }
 
-
     public boolean verificaAdiciona(String descricao){
         int valida=0;
-        arrayServico=servicoDAO.findServicoEsc(descricao);
+        arrayServico= ServicoDAO.findServicoEsc(descricao);
         for (Servico s : arrayServico) {
             valida=s.getIdServico();
         }
@@ -116,9 +135,9 @@ public class GH_ConfigServicos implements Initializable {
         estado=estadoServ.getText();
         boolean valida=verificaAdiciona(descricao);
 
-        if(valida==false) {
+        if(!valida) {
 
-            servicoDAO.criaServico(descricao, Float.parseFloat(preco), estado);
+            ServicoDAO.criaServico(descricao, Float.parseFloat(preco), estado);
 
         }
     }
@@ -138,13 +157,13 @@ public class GH_ConfigServicos implements Initializable {
             ativa = servicoselct;
             ativa=ativa.trim();
 
-            servicoDAO.ativaServico(ativa);
+            ServicoDAO.ativaServico(ativa);
         }
 
     }
 
     /**
-     * Metodo para Inativar um servilo escolhido na base de dados
+     * Metodo para Inativar um serviço escolhido na base de dados
      */
     @FXML
     public void onInativarServico() {
@@ -157,12 +176,15 @@ public class GH_ConfigServicos implements Initializable {
             inativa = servicoselct;
             inativa=inativa.trim();
 
-            servicoDAO.inativaServico(inativa);
+            ServicoDAO.inativaServico(inativa);
         }
 
     }
 
-
+    /**
+     * Método para voltar atrás
+     * @param actionEvent
+     */
     @FXML
     public void voltarAtras(ActionEvent actionEvent) {
         try {
