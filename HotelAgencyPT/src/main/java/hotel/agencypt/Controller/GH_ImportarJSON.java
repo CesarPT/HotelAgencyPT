@@ -16,11 +16,9 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.FileChooser;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.lang.reflect.Array;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
 import java.text.Normalizer;
 import java.util.ArrayList;
@@ -128,8 +126,8 @@ public class GH_ImportarJSON {
             String header;
             StringBuilder sb = new StringBuilder();
 
-            //Ler o ficheiro JSON
-            BufferedReader br = new BufferedReader(new FileReader(path.toFile()));
+            //Ler o ficheiro JSON em UTF-8
+            BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(path.toFile()), StandardCharsets.UTF_8));
             //Ler o header
             while ((header = br.readLine()) != null) {
                 sb.append(header);
@@ -283,7 +281,7 @@ public class GH_ImportarJSON {
             teste = StockDAO.IFfindItem(idprod);
 
             if (teste) {
-                //Atualiza id, quantidade e peso
+                //Atualiza ‘id’, quantidade
                 StockDAO.updateStock(idprod, quantprod);
             } else {
                 StockDAO.insertNewStock(idprod, descprod, tipo_qtd, quantprod, prc, vat, preco_total);
