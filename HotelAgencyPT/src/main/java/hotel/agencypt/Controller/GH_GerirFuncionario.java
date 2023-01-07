@@ -18,7 +18,7 @@ import java.util.ResourceBundle;
 /**
  * Classe pública do controlador GH_GerirFuncionario.fxml
  */
-public class GH_GerirFuncionario implements Initializable {
+public class GH_GerirFuncionario {
 
     @FXML
     private ListView<String> listFuncionarios;
@@ -38,8 +38,9 @@ public class GH_GerirFuncionario implements Initializable {
      * The resources used to localize the root object, or {@code null} if
      * the root object was not localized.
      */
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    public void initialize() {
+        listFuncionarios.getItems().clear();
+        listFuncionarios.getSelectionModel().clearSelection();
 
         arrayFuncionario = UtilizadorDAO.findAllFuncionarios();
         for (EstadoFunc estadoFunc : arrayFuncionario) {
@@ -68,8 +69,6 @@ public class GH_GerirFuncionario implements Initializable {
      */
     @FXML
     public void AtivarFunc() {
-
-
         index = utilizadorselect.indexOf("-");
         textoformatado = utilizadorselect.substring(0, index);
         textoformatado = textoformatado.replace("Nome:", "");
@@ -77,6 +76,8 @@ public class GH_GerirFuncionario implements Initializable {
         System.out.println(textoformatado);
 
         FuncionarioDAO.updateAtiva(textoformatado);
+        //Atualizar listview
+        initialize();
     }
 
     @FXML
@@ -89,6 +90,8 @@ public class GH_GerirFuncionario implements Initializable {
         System.out.println(textoformatado);
 
         FuncionarioDAO.updateInativa(textoformatado);
+        //Atualizar listview
+        initialize();
     }
 
 

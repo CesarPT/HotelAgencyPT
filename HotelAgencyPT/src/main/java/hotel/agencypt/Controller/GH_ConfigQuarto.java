@@ -57,13 +57,11 @@ public class GH_ConfigQuarto {
     List <QuartoStock> arrayQuartoStock = new ArrayList<>();
     String prodSelct;
     String prodSelct2;
-    int quantidade;
 
     /**
      * Iniciar/Atualizar a scene
      */
     public void initialize() {
-
         //Limpar tudo e inserir valores na combobox
         comboBoxPisoID.getSelectionModel().clearSelection();
         comboBoxPisoID.getItems().clear();
@@ -332,7 +330,7 @@ public class GH_ConfigQuarto {
         listProdutosStock.getSelectionModel().clearSelection();
         arrayStock = sDAO.findStock();
         for (Stock s : arrayStock) {
-            listProdutosStock.getItems().add(s.getProduct_description()+"||Qtd: "+s.getQuantidade());
+            listProdutosStock.getItems().add(s.getProduct_description() + "||Qtd: " + s.getQuantidade());
         }
         arrayQuartoStock = qsDAO.findQuartoStock();
         for (QuartoStock qs : arrayQuartoStock) {
