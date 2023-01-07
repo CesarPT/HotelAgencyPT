@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StockDAO {
-    private static Connection con = ConnectionDB.establishConnection();
+    private static final Connection con = ConnectionDB.establishConnection();
 
     public static boolean insertNewStock(
             String product_identifier, String product_description, String tipo_qtd,

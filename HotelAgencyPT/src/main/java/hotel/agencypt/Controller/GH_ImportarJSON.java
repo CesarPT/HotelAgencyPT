@@ -16,11 +16,9 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.FileChooser;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.lang.reflect.Array;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
 import java.text.Normalizer;
 import java.util.ArrayList;
@@ -31,7 +29,6 @@ import java.util.List;
  * Classe pública do controlador GH_ImportarJSON.fxml
  */
 public class GH_ImportarJSON {
-    JSONpath instanceJSON = new JSONpath();
     @FXML
     private TableView<Stock> TableViewStock;
     @FXML
@@ -95,7 +92,10 @@ public class GH_ImportarJSON {
         TableViewStock.setItems(obsEntradas);
     }
 
-
+    /**
+     * Chama outro método para enviar os produtos para a BD corretamente
+     * @throws Exception
+     */
     public void confirmarJSON() throws Exception {
         //Enviar para a base de dados
         confirmarJSON2();
@@ -119,7 +119,6 @@ public class GH_ImportarJSON {
 
     /**
      * Ler ficheiro JSON com GSON
-     *
      * @param path
      */
     public void Lerjson(Path path) {
@@ -127,13 +126,13 @@ public class GH_ImportarJSON {
             String header;
             StringBuilder sb = new StringBuilder();
 
-            //Ler o ficheiro JSON
-            BufferedReader br = new BufferedReader(new FileReader(path.toFile()));
+            //Ler o ficheiro JSON em UTF-8
+            BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(path.toFile()), StandardCharsets.UTF_8));
             //Ler o header
             while ((header = br.readLine()) != null) {
                 sb.append(header);
             }
-            System.out.println("JSON file: " + sb.toString());
+            System.out.println("JSON file: " + sb);
             //Parse do GSON para o JSON
             JsonObject jsonObject = new Gson().fromJson(sb.toString(), JsonObject.class);
 
@@ -255,6 +254,9 @@ public class GH_ImportarJSON {
             }
     }
 
+    /**
+     * Método chamado para enviar produtos para a BD
+     */
     public void confirmarJSON2() {
         //Converter para string e inserir na BD
         String idprod;
@@ -276,10 +278,10 @@ public class GH_ImportarJSON {
             preco_total = Float.parseFloat(precototal[o]);
 
             StockDAO stockDAO = new StockDAO();
-            teste = stockDAO.IFfindItem(idprod);
+            teste = StockDAO.IFfindItem(idprod);
 
-            if (teste == true) {
-                //Atualiza id, quantidade e peso
+            if (teste) {
+                //Atualiza ‘id’, quantidade
                 StockDAO.updateStock(idprod, quantprod);
             } else {
                 StockDAO.insertNewStock(idprod, descprod, tipo_qtd, quantprod, prc, vat, preco_total);
@@ -288,8 +290,7 @@ public class GH_ImportarJSON {
     }
 
     /**
-     * Volta atrás para a View funcionariointerface.fxml
-     *
+     * Volta atrás consoante o tipo_user
      * @param actionEvent
      */
     @FXML

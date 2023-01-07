@@ -45,6 +45,9 @@ public class F_DecrementarStock {
     QuartoStockDAO qDAO = new QuartoStockDAO();
     List<Stock> arrayStock = new ArrayList<>();
 
+    /**
+     * Método sem retorno, ao iniciar a scene ele é iniciado
+     */
     public void initialize() {
         //Setar todos os valores
         textIDQuarto.setText(String.valueOf(Controller.getInstance().getIdQuarto()));
@@ -94,7 +97,7 @@ public class F_DecrementarStock {
             alert2.showAndWait();
         } else {
             //Decrementar tabela Stock
-            sDAO.updateStockQtd(Integer.parseInt(comboQuantidade.getSelectionModel().getSelectedItem()), listConsumivel.getSelectionModel().getSelectedItem());
+            StockDAO.updateStockQtd(Integer.parseInt(comboQuantidade.getSelectionModel().getSelectedItem()), listConsumivel.getSelectionModel().getSelectedItem());
             //Atualizar produtos no quarto
             Controller.getInstance().setIdquarto(Integer.parseInt(textIDQuarto.getText()));
             QuartoStock quarto = new QuartoStock();
@@ -128,8 +131,7 @@ public class F_DecrementarStock {
     }
 
     /**
-     * Volta atrás para a View GestorHotel.fxml
-     *
+     * Volta atrás para a F_Reserva.fxml
      * @param actionEvent
      */
     @FXML

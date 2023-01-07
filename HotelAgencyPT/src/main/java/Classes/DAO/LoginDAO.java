@@ -145,7 +145,7 @@ public class LoginDAO {
                     hasCheck = true;
                 }
             }
-            if (hasCheck == true) {
+            if (hasCheck) {
                 Controller.getInstance().setTipo_user('C');
                 window.close();
                 Singleton.open("Cliente", "Username: " + Controller.getInstance().getUsername() + " | Hotel >> Cliente");

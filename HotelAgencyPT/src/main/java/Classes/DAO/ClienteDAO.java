@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ClienteDAO {
-    private static Connection con = ConnectionDB.establishConnection();
+    private static final Connection con = ConnectionDB.establishConnection();
 
     public static List<Cliente> findidCliente() {
         String sql = "Select Cliente.idcliente,Utilizador.nomeuser from Cliente INNER JOIN Utilizador on Cliente.iduser=Utilizador.iduser";

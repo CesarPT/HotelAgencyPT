@@ -17,7 +17,6 @@ public class Singleton {
 
     /**
      * Abrir o stage seguinte com parâmetros
-     *
      * @param id
      * @param title
      * @throws Exception
@@ -37,7 +36,6 @@ public class Singleton {
 
     /**
      * Abrir o stage seguinte
-     *
      * @param id
      * @param title
      * @throws Exception
@@ -48,7 +46,6 @@ public class Singleton {
 
     /**
      * Fechar o stage anterior
-     *
      * @param scene
      * @throws Exception
      */
@@ -58,7 +55,6 @@ public class Singleton {
 
     /**
      * Recebe a localização da pasta onde estão os ficheiros .fxml
-     *
      * @param path
      * @return
      * @throws Exception

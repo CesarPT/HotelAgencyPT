@@ -8,7 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class FeedbackDAO {
-    private static Connection con = ConnectionDB.establishConnection();
+    private static final Connection con = ConnectionDB.establishConnection();
 
     /**
      * Criar uma reclamação

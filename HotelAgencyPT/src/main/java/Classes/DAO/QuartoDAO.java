@@ -17,7 +17,7 @@ import java.util.List;
  * Classe pública com todos os métodos/atributos necessários.
  */
 public class QuartoDAO {
-    private static Connection con = ConnectionDB.establishConnection();
+    private static final Connection con = ConnectionDB.establishConnection();
 
     /**
      * Método para pesquisar a descrição de quartos do piso escolhido

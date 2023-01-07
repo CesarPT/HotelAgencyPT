@@ -13,7 +13,7 @@ import java.util.List;
 
 public class UtilizadorDAO {
 
-    private static Connection con = ConnectionDB.establishConnection();
+    private static final Connection con = ConnectionDB.establishConnection();
 
 
     public static List<Utilizador> findClientepReserva() {

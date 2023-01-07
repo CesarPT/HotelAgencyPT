@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class QuartoStockDAO {
-    private static Connection con = ConnectionDB.establishConnection();
+    private static final Connection con = ConnectionDB.establishConnection();
 
     /**
      * Método para pesquisar o idquarto, descrição do produto e quantidade

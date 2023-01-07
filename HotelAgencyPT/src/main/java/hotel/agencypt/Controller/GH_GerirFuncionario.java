@@ -16,9 +16,9 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 /**
- * Classe pública do controlador GH_GerirStock.fxml
+ * Classe pública do controlador GH_GerirFuncionario.fxml
  */
-public class GH_GerirFuncionario implements Initializable {
+public class GH_GerirFuncionario {
 
     @FXML
     private ListView<String> listFuncionarios;
@@ -28,10 +28,21 @@ public class GH_GerirFuncionario implements Initializable {
 
     String utilizadorselect;
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    /**
+     * Método chamado ao iniciar a scene
+     * @param location
+     * The location used to resolve relative paths for the root object, or
+     * {@code null} if the location is not known.
+     *
+     * @param resources
+     * The resources used to localize the root object, or {@code null} if
+     * the root object was not localized.
+     */
+    public void initialize() {
+        listFuncionarios.getItems().clear();
+        listFuncionarios.getSelectionModel().clearSelection();
 
-        arrayFuncionario = utilizadorDAO.findAllFuncionarios();
+        arrayFuncionario = UtilizadorDAO.findAllFuncionarios();
         for (EstadoFunc estadoFunc : arrayFuncionario) {
             listFuncionarios.getItems().add("Nome: " + estadoFunc.getNomefunc() + " - " + estadoFunc.getEstado()
             );
@@ -53,10 +64,11 @@ public class GH_GerirFuncionario implements Initializable {
     String textoformatado;
     int index;
 
+    /**
+     * Ativar o funcionário escolhido para a BD
+     */
     @FXML
     public void AtivarFunc() {
-
-
         index = utilizadorselect.indexOf("-");
         textoformatado = utilizadorselect.substring(0, index);
         textoformatado = textoformatado.replace("Nome:", "");
@@ -64,6 +76,8 @@ public class GH_GerirFuncionario implements Initializable {
         System.out.println(textoformatado);
 
         FuncionarioDAO.updateAtiva(textoformatado);
+        //Atualizar listview
+        initialize();
     }
 
     @FXML
@@ -76,12 +90,13 @@ public class GH_GerirFuncionario implements Initializable {
         System.out.println(textoformatado);
 
         FuncionarioDAO.updateInativa(textoformatado);
+        //Atualizar listview
+        initialize();
     }
 
 
     /**
      * Volta atrás para a View GestorHotel.fxml
-     *
      * @param actionEvent
      */
     @FXML

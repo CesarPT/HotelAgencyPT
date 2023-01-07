@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class ReservaDAO {
     static StockDAO stockDAO = new StockDAO();
-    private static Connection con = ConnectionDB.establishConnection();
+    private static final Connection con = ConnectionDB.establishConnection();
 
     /**
      * Método para pesquisar reservas pelo username
