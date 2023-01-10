@@ -13,7 +13,8 @@ public class encryption {
      * @param encryptedpassword Recebe uma variavel vazia
      * @return Devolve a variavel 'encryptedpassword'
      */
-    public static String encrypt(String password, String encryptedpassword) {
+    public static String encrypt(String password) {
+        String encryptedpassword = "";
         try {
             /* MessageDigest instance for MD5. */
             MessageDigest m = MessageDigest.getInstance("MD5");
