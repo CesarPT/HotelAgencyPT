@@ -13,7 +13,11 @@ import javafx.stage.Stage;
 
 import static Classes.DAO.CheckInDAO.*;
 
-
+/**
+ *
+ *  Classe pública do controlador Check_In.fxml
+ *
+ */
 public class CheckInController {
     @FXML
     private Button BackButton;
@@ -47,14 +51,13 @@ public class CheckInController {
 
     /**
      * Validações da pesquisa das reservas do cliente
-     *
      * @param event Recebe o clique no botão 'Selecionar User'
      */
     public void Pesquisar(ActionEvent event) {
         String username = userTextField.getText();
         boolean verify = VerifyExists(username);
         if (!username.isBlank()) {
-            if (verify == true) {
+            if (verify) {
                 table();
             }
         } else {
@@ -67,7 +70,6 @@ public class CheckInController {
 
     /**
      * Cria o check-in e insere os parametros dessa reserva nos textfields
-     *
      * @param event Recebe o clique no botão 'Check-In'
      */
     public void CheckIn(ActionEvent event) {
@@ -89,7 +91,6 @@ public class CheckInController {
 
     /**
      * Cria o Chekout dessa reserva do cliente
-     *
      * @param event Recebe o clique no botão 'Check-Out'
      */
     public void CheckOut(ActionEvent event) {
@@ -149,8 +150,7 @@ public class CheckInController {
     }
 
     /**
-     * Butão para voltar para a pagina principal do funcionario
-     *
+     * Botão para voltar para a página principal do funcionário
      * @param event Recebe o clique no botão para voltar para trás
      */
     public void BackToStaff(ActionEvent event) {
@@ -165,7 +165,6 @@ public class CheckInController {
 
     /**
      * Botão para limpar toda a interface
-     *
      * @param event Recebe o clique no botão 'Limpar'
      */
     public void Clean(ActionEvent event) {

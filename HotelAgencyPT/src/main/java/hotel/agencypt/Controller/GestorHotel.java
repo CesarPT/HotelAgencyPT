@@ -40,6 +40,9 @@ public class GestorHotel {
         }
     }
 
+    /**
+     * Fecha o stage atual e abre o stage próprio do botão
+     */
     @FXML
     protected void onConfigurarServicos() {
         try {
@@ -122,7 +125,6 @@ public class GestorHotel {
 
     /**
      * Abrir a scene para importar/confirmar ficheiro XML
-     *
      * @param event
      */
     public void abrirFicheiroXML(ActionEvent event) {
@@ -136,6 +138,9 @@ public class GestorHotel {
         }
     }
 
+    /**
+     * Fecha o stage atual e abre o stage próprio do botão
+     */
     public void abrirFicheiroJSON(ActionEvent event) {
         try {
             Stage window = (Stage) button.getScene().getWindow();
@@ -148,6 +153,9 @@ public class GestorHotel {
     }
 
 
+    /**
+     * Voltar atrás para o Login.fxml
+     */
     @FXML
     public void switchToLogin(ActionEvent actionEvent) {
         try {
@@ -157,6 +165,10 @@ public class GestorHotel {
         }
     }
 
+    /**
+     * Voltar atrás para o Login.fxml
+     * @param actionEvent
+     */
     @FXML
     public void voltarAtras(ActionEvent actionEvent) {
         try {

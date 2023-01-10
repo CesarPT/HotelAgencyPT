@@ -22,7 +22,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 /**
- * Classe pública do controlador GH_GerirStock.fxml
+ * Classe pública do controlador F_GerirStock.fxml
  */
 public class F_GerirStock implements Initializable {
     @FXML
@@ -72,6 +72,7 @@ public class F_GerirStock implements Initializable {
     List<Stock> arrayStock = new ArrayList<>();
 
     /**
+     * Método sem retorno, ao iniciar a scene ele é iniciado
      * Insere valores nas TableViews e executa a barra de pesquisa
      *
      * @param location  The location used to resolve relative paths for the root object, or
@@ -83,7 +84,7 @@ public class F_GerirStock implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         String pid;
         String pd;
-        int qtd;
+        float qtd;
         String tipo_qtd;
         float preco;
         float vat;
@@ -151,6 +152,9 @@ public class F_GerirStock implements Initializable {
 
     }
 
+    /**
+     * Abrir a view StockQuartos.fxml
+     */
     public void abrirStockQuartos() {
         try {
             Stage window = (Stage) TableViewStock.getScene().getWindow();
@@ -162,9 +166,7 @@ public class F_GerirStock implements Initializable {
     }
 
     /**
-     * Volta atrás para a View GestorHotel.fxml
-     *
-     * @param actionEvent
+     * Volta atrás para funcionariointerface.fxml
      */
     @FXML
     public void voltarAtras(ActionEvent actionEvent) {

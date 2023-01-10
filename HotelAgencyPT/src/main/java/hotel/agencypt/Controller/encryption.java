@@ -3,10 +3,12 @@ package hotel.agencypt.Controller;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+/**
+ * Classe pública com todos os métodos para encriptar a senha em MD5
+ */
 public class encryption {
     /**
      * Faz a encriptação da palavra-passe
-     *
      * @param password Recebe a palavra-passe
      * @param encryptedpassword Recebe uma variavel vazia
      * @return Devolve a variavel 'encryptedpassword'

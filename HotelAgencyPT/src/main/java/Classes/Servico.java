@@ -4,6 +4,7 @@ public class Servico {
     int idServico;
     String descricao;
     float preco;
+    String estado;
 
     /**
      * Contrutor completo
@@ -21,6 +22,12 @@ public class Servico {
      * Contrutor vasio
      */
     public Servico() {
+    }
+
+    public Servico(String descricao, float preco, String estado) {
+        this.descricao = descricao;
+        this.preco = preco;
+        this.estado=estado;
     }
 
     /**
@@ -77,4 +84,14 @@ public class Servico {
     public void setPreco(float preco) {
         this.preco = preco;
     }
+
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
 }

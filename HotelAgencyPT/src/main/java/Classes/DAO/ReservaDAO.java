@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class ReservaDAO {
     static StockDAO stockDAO = new StockDAO();
-    private static Connection con = ConnectionDB.establishConnection();
+    private static final Connection con = ConnectionDB.establishConnection();
 
     /**
      * Método para pesquisar reservas pelo username
@@ -114,7 +114,9 @@ public class ReservaDAO {
     }
 
     public boolean deleteReserva() {
-        String sql = "DELETE FROM ReservaServico\n" +
+        String sql = "DELETE FROM CheckInOut\n" +
+                "    WHERE idreserva=" + Controller.getInstance().getSelectedRowReserva() + "\n" +
+                "DELETE FROM ReservaServico\n" +
                 "    WHERE idreserva=" + Controller.getInstance().getSelectedRowReserva() + "\n" +
                 "    DELETE FROM Reserva\n" +
                 "    WHERE idreserva=" + Controller.getInstance().getSelectedRowReserva();

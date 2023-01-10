@@ -28,6 +28,9 @@ import java.util.stream.Stream;
 import static Classes.DAO.ReservaServicoDAO.criaReservaServico;
 import static Classes.DAO.ServicoDAO.findServicoEsc;
 
+/**
+ * Classe pública do Controlador F_Reserva.fxml
+ */
 public class F_Reserva implements Initializable {
 
 
@@ -84,7 +87,16 @@ public class F_Reserva implements Initializable {
     @FXML
     private ComboBox comboBoxQuantidade;
 
-
+    /**
+     * Método sem retorno, ao iniciar a scene ele é iniciado
+     * @param location
+     * The location used to resolve relative paths for the root object, or
+     * {@code null} if the location is not known.
+     *
+     * @param resources
+     * The resources used to localize the root object, or {@code null} if
+     * the root object was not localized.
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -93,7 +105,7 @@ public class F_Reserva implements Initializable {
         /**
          * percorre todos os serviços da base de dados na tabela Serviços
          */
-        arrayServico = servicoDAO.findServico();
+        arrayServico = ServicoDAO.findServicoAtivo();
         for (Servico s : arrayServico) {
             listServtodos.getItems().add(
                     s.getDescricao() + " " + s.getPreco()
@@ -211,6 +223,10 @@ public class F_Reserva implements Initializable {
     Date myDateI;
     Date datai;
 
+    /**
+     * Data de inicio
+     * @param event
+     */
     @FXML
     public void getDateI(ActionEvent event) {
         ZoneId defaultZoneId = ZoneId.systemDefault();
@@ -229,6 +245,10 @@ public class F_Reserva implements Initializable {
     Date myDateF;
     Date dataf;
 
+    /**
+     * Data de fim
+     * @param event
+     */
     @FXML
     public void getDateF(ActionEvent event) {
         ZoneId defaultZoneId = ZoneId.systemDefault();
@@ -251,6 +271,9 @@ public class F_Reserva implements Initializable {
     List<Quarto> arrayPrecoQuarto = new ArrayList<>();
     int idQuartoesc = 0;
 
+    /**
+     * Escolher tipo de quarto
+     */
     @FXML
     public void onEsTquarto() {
         escolhaTquarto = (String) cboxTquarto.getValue();
@@ -277,14 +300,16 @@ public class F_Reserva implements Initializable {
         }
     }
 
-
     @FXML
     int idClient;
     String idCliente;
     int idClientV = 0;
     ClienteDAO clienteDAO = new ClienteDAO();
 
-
+    /**
+     * Botão de atualizar preços
+     * @param event
+     */
     public void atualizarPrecos(ActionEvent event) {
         if (datePickerI.getValue() == null || datePickerF.getValue() == null) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -292,7 +317,7 @@ public class F_Reserva implements Initializable {
             alert.setHeaderText("Sem seleção");
             alert.setContentText("Selecione uma data de inicio e fim.");
             alert.showAndWait();
-        } else if (datePickerF.getValue().compareTo(datePickerI.getValue()) < 0) {
+        } else if (datePickerF.getValue().isBefore(datePickerI.getValue())) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Aviso");
             alert.setHeaderText("Datas inválidas");
@@ -331,6 +356,9 @@ public class F_Reserva implements Initializable {
         }
     }
 
+    /**
+     * Cliente escolhido na listview
+     */
     public void clientescolhido() {
         listidClienteInsere.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
@@ -340,13 +368,11 @@ public class F_Reserva implements Initializable {
         });
     }
 
-    //----------------------------------------------------
-/*    public void clientescolhido() {
-        nomeC = listidClienteInsere.getSelectionModel().getSelectedItem();
-    }
- */
     String pesquisadcliente;
 
+    /**
+     * Pesquisar nome do cliente
+     */
     @FXML
     public void onNomeCliente() {
         pesquisadcliente = nomeCliente.getText();
@@ -380,7 +406,6 @@ public class F_Reserva implements Initializable {
 
     /**
      * Verificações e criar a reserva para o cliente
-     *
      * @param event
      */
     @FXML
@@ -392,7 +417,7 @@ public class F_Reserva implements Initializable {
             alert.setHeaderText("Sem seleção");
             alert.setContentText("Selecione uma data de inicio e fim.");
             alert.showAndWait();
-        } else if (datePickerF.getValue().compareTo(datePickerI.getValue()) < 0) {
+        } else if (datePickerF.getValue().isBefore(datePickerI.getValue())) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Aviso");
             alert.setHeaderText("Datas inválidas");
@@ -412,7 +437,11 @@ public class F_Reserva implements Initializable {
             alert.showAndWait();
         } else {
             onEsTquarto();
+
             idClient = listidClienteInsere.getSelectionModel().getSelectedIndex();
+
+           // nomeC = String.valueOf(listidClienteInsere.getSelectionModel().getSelectedIndex());
+
             clientescolhido();
 
 
@@ -423,7 +452,7 @@ public class F_Reserva implements Initializable {
                 reserva.setDataI(datai);
                 reserva.setDataF(dataf);
 
-                reservaDAO.criaReserva(reserva);
+                ReservaDAO.criaReserva(reserva);
                 //Relação de tabela
                 RelacionaResServ();
             }
@@ -480,7 +509,6 @@ public class F_Reserva implements Initializable {
 
     /**
      * Método para voltar atrás
-     *
      * @param actionEvent
      */
     @FXML

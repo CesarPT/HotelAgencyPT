@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 /**
- * Classe pública do controlador GH_GerirFeedback.fxml
+ * Classe pública do controlador C_CriarFeedback.fxml
  */
 public class C_CriarFeedback implements Initializable {
     public TextField textIDCliente;
@@ -58,7 +58,7 @@ public class C_CriarFeedback implements Initializable {
             feedback.setId_cliente(Integer.parseInt(textIDCliente.getText()));
             feedback.setDescricao(textReclamacao.getText());
             feedback.setTipofeedback('R');
-            feedbackDAO.criarReclamacao(feedback);
+            FeedbackDAO.criarReclamacao(feedback);
 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Reclamação adicionada");
@@ -92,7 +92,7 @@ public class C_CriarFeedback implements Initializable {
             feedback.setId_cliente(Integer.parseInt(textIDCliente.getText()));
             feedback.setDescricao(textSugestao.getText());
             feedback.setTipofeedback('S');
-            feedbackDAO.criarSugestao(feedback);
+            FeedbackDAO.criarSugestao(feedback);
 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Sugestão adicionada");
@@ -104,8 +104,7 @@ public class C_CriarFeedback implements Initializable {
     }
 
     /**
-     * Volta atrás para a View GestorHotel.fxml
-     *
+     * Volta atrás para a View Cliente.fxml
      * @param actionEvent
      */
     @FXML

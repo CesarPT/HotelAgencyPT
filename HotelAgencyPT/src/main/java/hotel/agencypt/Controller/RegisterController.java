@@ -13,7 +13,9 @@ import java.util.ResourceBundle;
 
 import static Classes.DAO.RegisterDAO.*;
 
-
+/**
+ * Classe pública do RegisterController.fxml
+ */
 public class RegisterController implements Initializable {
 
     @FXML
@@ -35,9 +37,15 @@ public class RegisterController implements Initializable {
     @FXML
     private ComboBox permissionComboBox;
 
-
-    /**
+     /**
      * Inicia a scene com o conteúdo desta classe.
+     * @param url
+     * The location used to resolve relative paths for the root object, or
+     * {@code null} if the location is not known.
+     *
+     * @param resourceBundle
+     * The resources used to localize the root object, or {@code null} if
+     * the root object was not localized.
      */
     public void initialize(URL url, ResourceBundle resourceBundle) {
         getTypeUserComboBox(permissionComboBox);
@@ -61,20 +69,19 @@ public class RegisterController implements Initializable {
 
     /**
      * Botão para fazer o registo.
-     *
      * @param event Ação do evento
      */
     public void registerButtonOnAction(ActionEvent event) {
         String user = usernameTextField.getText();
         verifyPass();
-        if (verifyUser(user) == false) {
+        if (!verifyUser(user)) {
             VerifyUserLabel.setText("O nome já existe!");
         } else {
             VerifyUserLabel.setText("");
         }
-        if (setPasswordField.getText().isBlank() == false && usernameTextField.getText().isBlank() == false) {
+        if (!setPasswordField.getText().isBlank() && !usernameTextField.getText().isBlank()) {
             registrationMessageLabel.setText("");
-            if (verifyPass() == true && verifyUser(user) == true) {
+            if (verifyPass() && verifyUser(user)) {
                 registerUser();
             }
         } else {
@@ -87,7 +94,6 @@ public class RegisterController implements Initializable {
 
     /**
      * Verificação se as passwords coincidem
-     *
      * @return password
      */
     public boolean verifyPass() {
@@ -130,7 +136,6 @@ public class RegisterController implements Initializable {
 
     /**
      * Botão para mudar para a aba do login
-     *
      * @param event Ação do evento
      * @throws Exception Verificação das exceções
      */

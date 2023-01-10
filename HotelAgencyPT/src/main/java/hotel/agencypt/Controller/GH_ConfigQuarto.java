@@ -1,25 +1,29 @@
 package hotel.agencypt.Controller;
 
 import Classes.DAO.QuartoDAO;
+import Classes.DAO.QuartoStockDAO;
+import Classes.DAO.StockDAO;
 import Classes.Quarto;
+import Classes.QuartoStock;
+import Classes.Stock;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
 
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Classe pública do controlador GH_ConfigQuarto.fxml
  */
-public class GH_ConfigQuarto implements Initializable {
+public class GH_ConfigQuarto {
 
     String quartoEscolhido;
 
@@ -40,20 +44,24 @@ public class GH_ConfigQuarto implements Initializable {
     private TextArea textPreco;
     @FXML
     private TextArea textAlterarPreco;
+    @FXML
+    private ListView<String> listProdutosStock;
+    @FXML
+    private ListView<String> listProdutosQuarto;
     QuartoDAO qDAO = new QuartoDAO();
+    StockDAO sDAO = new StockDAO();
+    QuartoStockDAO qsDAO = new QuartoStockDAO();
     List<Quarto> arrayQuartos = new ArrayList<>();
     List<Quarto> arrayPreco = new ArrayList<>();
+    List<Stock> arrayStock = new ArrayList<>();
+    List <QuartoStock> arrayQuartoStock = new ArrayList<>();
+    String prodSelct;
+    String prodSelct2;
 
     /**
-     * Insere valores nas listviews
-     *
-     * @param location  The location used to resolve relative paths for the root object, or
-     *                  {@code null} if the location is not known.
-     * @param resources The resources used to localize the root object, or {@code null} if
-     *                  the root object was not localized.
+     * Iniciar/Atualizar a scene
      */
-    public void initialize(URL location, ResourceBundle resources) {
-
+    public void initialize() {
         //Limpar tudo e inserir valores na combobox
         comboBoxPisoID.getSelectionModel().clearSelection();
         comboBoxPisoID.getItems().clear();
@@ -62,7 +70,27 @@ public class GH_ConfigQuarto implements Initializable {
                 "Piso 1",
                 "Piso 2"
         );
+        arrayStock = sDAO.findStock();
+
+        listProdutosQuarto.getItems().clear();
+        for (Stock s : arrayStock) {
+            listProdutosStock.getItems().add(s.getProduct_description()+"||Qtd: "+s.getQuantidade());
+        }
+
+        listProdutosStock.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                prodSelct = listProdutosStock.getSelectionModel().getSelectedItem();
+            }
+        });
+        listProdutosQuarto.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                prodSelct2 = listProdutosQuarto.getSelectionModel().getSelectedItem();
+            }
+        });
     }
+
 
     public void verificarPiso(ActionEvent event) {
         if (Objects.equals(comboBoxPisoID.getSelectionModel().getSelectedItem(), "Piso 1")) {
@@ -97,6 +125,9 @@ public class GH_ConfigQuarto implements Initializable {
     }
 
     public void verificarQuarto(ActionEvent event) {
+        arrayQuartoStock.clear();
+        listProdutosQuarto.getItems().clear();
+        listProdutosQuarto.getSelectionModel().clearSelection();
         //Envia para o controlador a seleção de quarto
         //Pega só no número na combobox
         String quartoEscolhido = comboBoxQuartoID.getValue()
@@ -118,6 +149,10 @@ public class GH_ConfigQuarto implements Initializable {
             for (Quarto q : arrayPreco) {
                 textPreco.setText(String.valueOf(q.getPreco()));
             }
+            arrayQuartoStock = qsDAO.findQuartoStock();
+            for (QuartoStock qs : arrayQuartoStock) {
+                listProdutosQuarto.getItems().add(qs.getProduct_description()+"||Qtd: "+qs.getQuantidade());
+            }
             //Ativar botões e limpar texto na TextArea preço
             verificarPrecoID.setDisable(false);
             verDescricaoID.setDisable(false);
@@ -128,6 +163,9 @@ public class GH_ConfigQuarto implements Initializable {
         }
     }
 
+    /**
+     * Verificações do preço introduzido quando clica no botão
+     */
     public void verificarAlterarPreco() {
         //Se o preço que inseriu é igual ao match de:
         //Qualquer dígito de 0 a 9 com 3 digitos no máximo
@@ -164,7 +202,6 @@ public class GH_ConfigQuarto implements Initializable {
 
     /**
      * Volta atrás para a View GestorHotel.fxml
-     *
      * @param actionEvent
      */
     @FXML
@@ -176,6 +213,9 @@ public class GH_ConfigQuarto implements Initializable {
         }
     }
 
+    /**
+     * Verificações do input da TextArea ao clicar no botão
+     */
     public void verificarAlterarDescricao() {
         //Verifica se o texto tem mais de 200 carateres
         if (textAlterarDescricao.getText().length() <= 200) {
@@ -190,7 +230,7 @@ public class GH_ConfigQuarto implements Initializable {
             alert.setHeaderText(null);
             alert.setContentText("Atualizou com sucesso.");
             alert.showAndWait();
-            //Atualiza o preço
+            //Atualiza a descrição
             verificarQuarto(new ActionEvent());
             //Se não emite aviso
         } else {
@@ -202,6 +242,10 @@ public class GH_ConfigQuarto implements Initializable {
         }
     }
 
+    /**
+     * Botão para ver a descrição do quarto da base de dados
+     * @param Event
+     */
     public void verDescricao(ActionEvent Event) {
         quartoEscolhido = comboBoxQuartoID.getSelectionModel().getSelectedItem()
                 .replaceAll("[a-zA-Z]", "")
@@ -217,4 +261,81 @@ public class GH_ConfigQuarto implements Initializable {
 
     }
 
+    String prodFinal;
+
+    /**
+     * Verificações, adicionar produtos no quarto e atualizar listviews
+     * @param Event
+     * @throws InterruptedException
+     */
+    public void addProdutoQuarto(ActionEvent Event) throws InterruptedException {
+        quartoEscolhido = comboBoxQuartoID.getSelectionModel().getSelectedItem()
+                .replaceAll("[a-zA-Z]", "")
+                .replace(":", "")
+                .replace(" ", "");
+
+        Controller.getInstance().setIdquarto(Integer.parseInt(quartoEscolhido));
+
+        int index = listProdutosStock.getSelectionModel().getSelectedIndex();
+        if (index == -1) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Aviso");
+            alert.setHeaderText("Sem seleção");
+            alert.setContentText("Selecione primeiro um serviço da lista.");
+            alert.showAndWait();
+        } else {
+            prodFinal = prodSelct.substring(0, prodSelct.indexOf("||")).trim();
+            Controller.getInstance().setProdutosEscolhidos(prodFinal);
+
+            arrayStock = sDAO.decrementarStock();
+            arrayQuartoStock = qsDAO.updateStockQuarto();
+            limparTudo();
+        }
+    }
+    String prodFinal2;
+    /**
+     * Verificações, remover produtos no quarto e atualizar listviews
+     * @param Event
+     */
+    public void deleteProdutoQuarto(ActionEvent Event){
+        quartoEscolhido = comboBoxQuartoID.getSelectionModel().getSelectedItem()
+                .replaceAll("[a-zA-Z]", "")
+                .replace(":", "")
+                .replace(" ", "");
+
+        Controller.getInstance().setIdquarto(Integer.parseInt(quartoEscolhido));
+
+        int index = listProdutosQuarto.getSelectionModel().getSelectedIndex();
+        if (index == -1) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Aviso");
+            alert.setHeaderText("Sem seleção");
+            alert.setContentText("Selecione primeiro um serviço da lista.");
+            alert.showAndWait();
+        } else {
+            prodFinal2 = prodSelct2.substring(0, prodSelct2.indexOf("||")).trim();
+            Controller.getInstance().setProdutosEscolhidos(prodFinal2);
+            arrayQuartoStock = qsDAO.RemoveStockQuarto();
+            limparTudo();
+        }
+    }
+
+    /**
+     * Método sem retorno chamado para atualizar as listviews
+     */
+    public void limparTudo(){
+        listProdutosQuarto.getItems().clear();
+        listProdutosStock.getItems().clear();
+        listProdutosQuarto.getSelectionModel().clearSelection();
+        listProdutosStock.getSelectionModel().clearSelection();
+        arrayStock = sDAO.findStock();
+        for (Stock s : arrayStock) {
+            listProdutosStock.getItems().add(s.getProduct_description() + "||Qtd: " + s.getQuantidade());
+        }
+        arrayQuartoStock = qsDAO.findQuartoStock();
+        for (QuartoStock qs : arrayQuartoStock) {
+            listProdutosQuarto.getItems().add(qs.getProduct_description()+"||Qtd: "+qs.getQuantidade());
+        }
+
+    }
 }
