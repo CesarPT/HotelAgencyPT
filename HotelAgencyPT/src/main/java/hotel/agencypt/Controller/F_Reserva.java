@@ -4,6 +4,7 @@ package hotel.agencypt.Controller;
 
 import Classes.DAO.*;
 import Classes.*;
+import hotel.agencypt.Api.Main;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -12,6 +13,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -32,8 +34,17 @@ import static Classes.DAO.ServicoDAO.findServicoEsc;
  * Classe pública do Controlador F_Reserva.fxml
  */
 public class F_Reserva implements Initializable {
-
-
+    ObservableList<String> obsPark = FXCollections.observableArrayList();
+    @FXML
+    private TableView<objparking> tableParque;
+    @FXML
+    private TableColumn<objparking, String> columnLugar;
+    @FXML
+    private TableColumn<objparking, Double> columnPreco;
+    @FXML
+    private TableColumn<objparking, Boolean> columnTipoLugar;
+    @FXML
+    private TableColumn<objparking, Boolean> columnOcupado;
     @FXML
     private TextField textPrecoServicos;
     @FXML
@@ -143,7 +154,21 @@ public class F_Reserva implements Initializable {
 
         //drop box dos tipos de quartos
         cboxTquarto.setItems(listTquarto);
+
+
+        //Parque de estacionamento (API)
+        ObservableList<objparking> obsPark = hotel.agencypt.Api.Main.GetTodosLugares();
+
+        columnLugar.setCellValueFactory(new PropertyValueFactory<>("ParkingSpot"));
+        columnPreco.setCellValueFactory(new PropertyValueFactory<>("Price"));
+        //columnTipoLugar.setCellValueFactory(new PropertyValueFactory<>("Indoor"));
+        columnTipoLugar.setCellValueFactory(new PropertyValueFactory<>("IndoorString"));
+        columnOcupado.setCellValueFactory(new PropertyValueFactory<>("OccupiedString"));
+        tableParque.setItems(obsPark);
+
+
     }
+
 
     /**
      * Adicionar item da lista selecionada para a outra lista

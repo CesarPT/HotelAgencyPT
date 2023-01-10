@@ -1,158 +1,201 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.*?>
-<AnchorPane prefHeight="454.0" prefWidth="818.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="hotel.agencypt.Controller.F_Reserva">
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="537.0" prefWidth="818.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hotel.agencypt.Controller.F_Reserva">
     <children>
         <Text layoutX="69.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Funcionário">
             <font>
-                <Font size="18.0"/>
+                <Font size="18.0" />
             </font>
         </Text>
 
-        <ComboBox fx:id="cboxTquarto" layoutX="95.0" layoutY="187.0" onAction="#onEsTquarto" prefHeight="26.0"
-                  prefWidth="191.0" promptText="Escolher tipo quarto" visibleRowCount="3"/>
-        <ListView fx:id="listServesco" layoutX="439.0" layoutY="37.0" prefHeight="164.0" prefWidth="149.0"
-                  style="-fx-background-color: lightblue;"/>
-        <ListView fx:id="listServtodos" layoutX="661.0" layoutY="36.0" prefHeight="164.0" prefWidth="149.0"
-                  style="-fx-background-color: lightblue;"/>
+        <ComboBox fx:id="cboxTquarto" layoutX="63.0" layoutY="286.0" onAction="#onEsTquarto" prefHeight="26.0" prefWidth="191.0" promptText="Escolher tipo quarto" visibleRowCount="3" />
+        <ListView fx:id="listServesco" layoutX="439.0" layoutY="37.0" prefHeight="164.0" prefWidth="149.0" style="-fx-background-color: lightblue;" />
+        <ListView fx:id="listServtodos" layoutX="661.0" layoutY="36.0" prefHeight="164.0" prefWidth="149.0" style="-fx-background-color: lightblue;" />
         <Text layoutX="681.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Todos os serviços">
             <font>
-                <Font size="14.0"/>
+                <Font size="14.0" />
             </font>
         </Text>
         <Text layoutX="454.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Serviços escolhidos">
             <font>
-                <Font size="14.0"/>
+                <Font size="14.0" />
             </font>
         </Text>
-        <Button layoutX="600.0" layoutY="99.0" mnemonicParsing="false" onAction="#onRemover" prefHeight="31.0"
-                prefWidth="47.0" style="-fx-background-radius: 10;" text="--&gt;">
+        <Button layoutX="600.0" layoutY="99.0" mnemonicParsing="false" onAction="#onRemover" prefHeight="31.0" prefWidth="47.0" style="-fx-background-radius: 10;" text="--&gt;">
             <font>
-                <Font size="15.0"/>
+                <Font size="15.0" />
             </font>
             <cursor>
-                <Cursor fx:constant="HAND"/>
+                <Cursor fx:constant="HAND" />
             </cursor>
         </Button>
-        <Button layoutX="600.0" layoutY="146.0" mnemonicParsing="false" onAction="#onAdicionar" prefHeight="31.0"
-                prefWidth="47.0" style="-fx-background-radius: 10;" text="&lt;--">
+        <Button layoutX="600.0" layoutY="146.0" mnemonicParsing="false" onAction="#onAdicionar" prefHeight="31.0" prefWidth="47.0" style="-fx-background-radius: 10;" text="&lt;--">
             <font>
-                <Font size="15.0"/>
+                <Font size="15.0" />
             </font>
             <cursor>
-                <Cursor fx:constant="HAND"/>
+                <Cursor fx:constant="HAND" />
             </cursor>
         </Button>
-        <Button layoutX="670.0" layoutY="401.0" mnemonicParsing="false" onAction="#onCriaReserva" text="Criar reserva">
+        <Button layoutX="700.0" layoutY="480.0" mnemonicParsing="false" onAction="#onCriaReserva" text="Criar reserva">
             <font>
-                <Font size="16.0"/>
+                <Font size="16.0" />
             </font>
             <cursor>
-                <Cursor fx:constant="HAND"/>
+                <Cursor fx:constant="HAND" />
             </cursor>
         </Button>
-        <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#voltarAtras"
-                prefHeight="455.0" prefWidth="49.0" style="-fx-background-color: #ccffff; -fx-border-color: gray;">
+        <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#voltarAtras" prefHeight="537.0" prefWidth="49.0" style="-fx-background-color: #ccffff; -fx-border-color: gray;">
             <graphic>
                 <ImageView fitHeight="38.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../../Imagens/voltar.png"/>
+                        <Image url="@../../Imagens/voltar.png" />
                     </image>
                 </ImageView>
             </graphic>
             <cursor>
-                <Cursor fx:constant="HAND"/>
+                <Cursor fx:constant="HAND" />
             </cursor>
         </Button>
         <Label fx:id="labelAviso" layoutX="228.0" layoutY="365.0">
             <font>
-                <Font size="14.0"/>
+                <Font size="14.0" />
             </font>
         </Label>
 
-        <Label fx:id="dataILabel" layoutX="108.0" layoutY="75.0" text="Data inicio(aaaa/mm/dd)"/>
-        <Label fx:id="dataFLabel" layoutX="115.0" layoutY="124.0" text="Data fim(aaaa/mm/dd)"/>
-        <DatePicker fx:id="datePickerI" editable="false" layoutX="95.0" layoutY="93.0" onAction="#getDateI"
-                    style="-fx-background-color: gray;"/>
-        <DatePicker fx:id="datePickerF" editable="false" layoutX="95.0" layoutY="145.0" onAction="#getDateF"
-                    style="-fx-background-color: gray;"/>
-        <Label layoutX="478.0" layoutY="316.0" text="Preço Total (quarto+serviços):">
+        <Label fx:id="dataILabel" layoutX="69.0" layoutY="217.0" text="Data de início" />
+        <Label fx:id="dataFLabel" layoutX="206.0" layoutY="217.0" text="Data de fim" />
+        <DatePicker fx:id="datePickerI" editable="false" layoutX="66.0" layoutY="235.0" onAction="#getDateI" prefHeight="25.0" prefWidth="118.0" style="-fx-background-color: gray;" />
+        <DatePicker fx:id="datePickerF" editable="false" layoutX="207.0" layoutY="235.0" onAction="#getDateF" prefHeight="25.0" prefWidth="118.0" style="-fx-background-color: gray;" />
+        <Label layoutX="76.0" layoutY="470.0" text="Preço Total:">
             <font>
-                <Font size="16.0"/>
+                <Font size="15.0" />
             </font>
         </Label>
-        <TextField fx:id="textPrecoTotal" editable="false" layoutX="702.0" layoutY="313.0" prefHeight="30.0"
-                   prefWidth="91.0" text="0">
+        <TextField fx:id="textPrecoTotal" editable="false" layoutX="192.0" layoutY="465.0" prefHeight="30.0" prefWidth="73.0" text="0">
             <font>
-                <Font size="14.0"/>
+                <Font size="14.0" />
             </font>
         </TextField>
-        <Label layoutX="557.0" layoutY="256.0" text="Preço dos serviços:">
+        <Label layoutX="63.0" layoutY="368.0" text="Preço dos serviços:">
             <font>
-                <Font size="16.0"/>
+                <Font size="15.0" />
             </font>
         </Label>
-        <TextField fx:id="textPrecoServicos" editable="false" layoutX="701.0" layoutY="252.0" prefHeight="30.0"
-                   prefWidth="91.0" style="-fx-background-color: lightblue;" text="0">
+        <TextField fx:id="textPrecoServicos" editable="false" layoutX="192.0" layoutY="359.0" prefHeight="30.0" prefWidth="73.0" style="-fx-background-color: lightblue;" text="0">
             <font>
-                <Font size="14.0"/>
+                <Font size="14.0" />
             </font>
         </TextField>
-        <Label layoutX="574.0" layoutY="285.0" text="Preço do quarto:">
+        <Label layoutX="63.0" layoutY="400.0" text="Preço do quarto:">
             <font>
-                <Font size="16.0"/>
+                <Font size="15.0" />
             </font>
         </Label>
-        <TextField fx:id="textPrecoQuarto" editable="false" layoutX="701.0" layoutY="283.0" prefHeight="30.0"
-                   prefWidth="91.0" text="0">
+        <TextField fx:id="textPrecoQuarto" editable="false" layoutX="192.0" layoutY="390.0" prefHeight="30.0" prefWidth="73.0" text="0">
             <font>
-                <Font size="14.0"/>
+                <Font size="14.0" />
             </font>
         </TextField>
-        <Label layoutX="394.0" layoutY="256.0" text="Noites:">
+        <Label layoutX="62.0" layoutY="330.0" text="Noites:">
             <font>
-                <Font size="16.0"/>
+                <Font size="15.0" />
             </font>
         </Label>
-        <TextField fx:id="textNoites" editable="false" layoutX="450.0" layoutY="254.0" prefHeight="30.0"
-                   prefWidth="91.0" style="-fx-background-color: gray;">
+        <TextField fx:id="textNoites" editable="false" layoutX="115.0" layoutY="326.0" prefHeight="30.0" prefWidth="73.0" style="-fx-background-color: gray;">
             <font>
-                <Font size="14.0"/>
+                <Font size="14.0" />
             </font>
         </TextField>
-        <Button layoutX="670.0" layoutY="363.0" mnemonicParsing="false" onAction="#atualizarPrecos"
-                text="Atualizar preços">
+        <Button layoutX="555.0" layoutY="484.0" mnemonicParsing="false" onAction="#atualizarPrecos" text="Atualizar preços">
             <font>
-                <Font size="13.0"/>
+                <Font size="13.0" />
             </font>
         </Button>
-        <Label layoutX="90.0" layoutY="235.0" text="id Cliente"/>
-        <Label layoutX="798.0" layoutY="286.0" text="€">
+        <Label layoutX="62.0" layoutY="53.0" text="Nome do cliente:">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+        <Label layoutX="274.0" layoutY="393.0" text="€">
             <font>
-                <Font size="16.0"/>
+                <Font size="16.0" />
             </font>
         </Label>
-        <Label layoutX="798.0" layoutY="256.0" text="€">
+        <Label layoutX="274.0" layoutY="363.0" text="€">
             <font>
-                <Font size="16.0"/>
+                <Font size="16.0" />
             </font>
         </Label>
-        <Label layoutX="798.0" layoutY="316.0" text="€">
+        <Label layoutX="273.0" layoutY="468.0" text="€">
             <font>
-                <Font size="16.0"/>
+                <Font size="16.0" />
             </font>
         </Label>
-        <ListView fx:id="listidClienteInsere" layoutX="92.0" layoutY="257.0" prefHeight="119.0" prefWidth="267.0"/>
-        <TextField fx:id="nomeCliente" layoutX="143.0" layoutY="393.0" onAction="#onNomeCliente" prefHeight="25.0"
-                   prefWidth="217.0"/>
-        <Text layoutX="96.0" layoutY="410.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome :"/>
-        <Label layoutX="651.0" layoutY="368.0" text="1."/>
-        <Label layoutX="651.0" layoutY="410.0" text="2."/>
+        <ListView fx:id="listidClienteInsere" layoutX="62.0" layoutY="87.0" prefHeight="119.0" prefWidth="267.0" />
+        <TextField fx:id="nomeCliente" layoutX="197.0" layoutY="51.0" onAction="#onNomeCliente" prefHeight="25.0" prefWidth="134.0" />
+        <Label layoutX="536.0" layoutY="489.0" text="1." />
+        <Label layoutX="681.0" layoutY="489.0" text="2." />
+      <Label fx:id="dataFLabel1" layoutX="158.0" layoutY="264.0" text="(dd/mm/aaaa)" />
+      <TableView fx:id="tableParque" layoutX="392.0" layoutY="238.0" prefHeight="235.0" prefWidth="417.0">
+        <columns>
+          <TableColumn fx:id="columnLugar" prefWidth="97.0" text="Lugar no Park" />
+          <TableColumn fx:id="columnPreco" prefWidth="103.0" text="Preço" />
+            <TableColumn fx:id="columnTipoLugar" prefWidth="129.0" text="Tipo de lugar" />
+            <TableColumn fx:id="columnOcupado" prefWidth="84.0" text="Ocupado?" />
+        </columns>
+      </TableView>
+      <Label layoutX="392.0" layoutY="205.0" text="Parque de estacionamento:">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Button layoutX="438.0" layoutY="484.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="47.0">
+         <graphic>
+            <ImageView fitHeight="21.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Imagens/apagar.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Label layoutX="64.0" layoutY="431.0" text="Preço do Park:">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="textPrecoQuarto1" editable="false" layoutX="193.0" layoutY="421.0" prefHeight="30.0" prefWidth="73.0" text="0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <Label layoutX="275.0" layoutY="424.0" text="€">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Button layoutX="391.0" layoutY="485.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="37.0">
+         <graphic>
+            <ImageView fitHeight="29.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Imagens/carpark.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
     </children>
 </AnchorPane>

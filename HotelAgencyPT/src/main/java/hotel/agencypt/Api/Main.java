@@ -1,36 +1,22 @@
 package hotel.agencypt.Api;
 
+import Classes.GETparking;
+import Classes.objparking;
+import com.google.gson.Gson;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Base64;
-import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
-
-        Scanner myObj = new Scanner(System.in);  // Create a Scanner object
-
-        System.out.println("1 para todos os lugares, \n" +
-                "2 para todos os tickets, \n"+
-                "3 para todos os tickets, \n");
-        int escolha = Integer.parseInt(myObj.nextLine());  // Read user input
-
-        if(escolha==1) {
-            GetTodosLugares();
-        }
-        if(escolha==2){
-            GetTodosTickets();
-        }
-        if(escolha==3){
-            PostTeste();
-        }
-    }
-
-
-    public static void GetTodosLugares(){
+    static Gson gson = new Gson();
+    static ObservableList<objparking> obsPark = FXCollections.observableArrayList();
+    public static ObservableList<objparking> GetTodosLugares(){
         try {
             URL url = new URL(" https://services.inapa.com/parking4hotel/api/park/");
             String encoding = Base64.getEncoder().encodeToString(("EG2:SJ$pEgYO(Y").getBytes("UTF-8"));
@@ -43,12 +29,24 @@ public class Main {
             BufferedReader in =
                     new BufferedReader(new InputStreamReader(content));
             String line;
+            String line2="";
             while ((line = in.readLine()) != null) {
-                System.out.println(line);
+                line2 += line;
             }
+            //Passar o JSON encontrado para objetos com nomes iguais
+            GETparking gp = gson.fromJson(line2, GETparking.class);
+
+            //Colocar tudo em um ObservableList a ser usado no F_Reserva.java
+            int i=0;
+            for (i=0; i < gp.Parking.size(); i++) {
+                obsPark.add(new objparking(gp.getParking().get(i).ParkingSpot, gp.getParking().get(i).Price,
+                        gp.getParking().get(i).Indoor, gp.getParking().get(i).Occupied));
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return obsPark;
     }
 
     public static void GetTodosTickets(){
