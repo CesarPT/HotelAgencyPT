@@ -1,6 +1,7 @@
 package Classes.DAO;
 
 import Classes.QuartoStock;
+import Classes.Stock;
 import DataBase.ConnectionDB;
 import hotel.agencypt.Controller.Controller;
 import javafx.scene.control.Alert;
@@ -153,5 +154,22 @@ public class QuartoStockDAO {
             System.err.println("[ERRO]: deleteProdutoQuarto " + e.getMessage());
             return false;
         }
+    }
+
+    public List<QuartoStock> findPreco() {
+        String sql="select preco from QuartoStock\n" +
+                "INNER JOIN Stock \n" +
+                "ON QuartoStock.idstock = Stock.product_identifier\n" +
+                "WHERE QuartoStock.idquarto =" + Controller.getInstance().getIdQuarto() +
+                "and Stock.product_description =" + Controller.getInstance().getProdutosEscolhidos() + "'";
+        List<QuartoStock> listPreco = new ArrayList<>();
+
+        try {
+            PreparedStatement stmt = con.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+        } catch (SQLException e) {
+            System.err.println("[ERRO]: findPreco " + e.getMessage());
+        }
+        return listPreco;
     }
 }

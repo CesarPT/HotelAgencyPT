@@ -6,6 +6,7 @@ public class QuartoStock {
     private String product_description;
     private float quantidade;
     private String estado;
+    private float preco;
 
 
     public QuartoStock(String idstock, int idquarto, String productDescription, float quantidade) {
@@ -15,11 +16,11 @@ public class QuartoStock {
         this.quantidade = quantidade;
     }
 
-    public QuartoStock(int idquarto, String productDescription, float quantidade, String estado) {
+    public QuartoStock(int idquarto, String productDescription, float quantidade, float preco) {
         this.idquarto = idquarto;
         product_description = productDescription;
         this.quantidade = quantidade;
-        this.estado = estado;
+        this.preco = preco;
     }
 
     public QuartoStock() {
@@ -54,6 +55,12 @@ public class QuartoStock {
     public String getProduct_description() {
         return product_description;
     }
+    public float getPreco() {
+        return preco;
+    }
+     public void setPreco() {
+         this.preco = preco;
+     }
 
     public void setProduct_description(String product_description) {
         this.product_description = product_description;

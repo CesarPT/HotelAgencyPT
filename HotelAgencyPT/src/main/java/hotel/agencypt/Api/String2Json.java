@@ -1,4 +1,4 @@
-package hotel.agencypt.Api;
+/*package hotel.agencypt.Api;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -22,4 +22,4 @@ public class String2Json
         }
 
     }
-}  
+}  */

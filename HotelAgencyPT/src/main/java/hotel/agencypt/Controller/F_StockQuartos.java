@@ -62,7 +62,7 @@ public class F_StockQuartos implements Initializable {
                 qs.setEstado("Stock suficiente");
             }
             estado = qs.getEstado();
-            obsQuartoStock.add(new QuartoStock(idquarto, pd, qtd, estado));
+            obsQuartoStock.add(new QuartoStock(idquarto, pd, qtd, Float.parseFloat(estado)));
         }
         columnQuarto.setCellValueFactory(new PropertyValueFactory<>("idquarto"));
         columnDescricao.setCellValueFactory(new PropertyValueFactory<>("product_description"));

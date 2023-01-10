@@ -125,6 +125,11 @@
                         <Font size="18.0" />
                     </font>
                 </Button>
+            <TextArea fx:id="textPrecoProduto" editable="false" layoutX="572.0" layoutY="222.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="37.0" prefWidth="95.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextArea>
             </children>
         </Pane>
         <Label layoutX="565.0" layoutY="1.0" text="Configurar Quarto">

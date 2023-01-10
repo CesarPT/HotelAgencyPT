@@ -180,5 +180,19 @@ public class StockDAO {
         return null;
     }
 
+    public List<Stock> findPreco() {
+        String sql = "SELECT preco from Stock where product_description='" + Controller.getInstance().getProdutosEscolhidos() + "'";
+
+        List<Stock> listPreco = new ArrayList<>();
+
+        try {
+            PreparedStatement stmt = con.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+        } catch (SQLException e) {
+            System.err.println("[ERRO]: findPreco " + e.getMessage());
+        }
+        return listPreco;
+    }
+
 
 }

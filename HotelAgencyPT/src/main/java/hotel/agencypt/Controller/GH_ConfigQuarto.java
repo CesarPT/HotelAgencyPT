@@ -12,6 +12,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import org.w3c.dom.Text;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -43,6 +44,8 @@ public class GH_ConfigQuarto {
     @FXML
     private TextArea textPreco;
     @FXML
+    private TextArea textPrecoProduto;
+    @FXML
     private TextArea textAlterarPreco;
     @FXML
     private ListView<String> listProdutosStock;
@@ -57,6 +60,7 @@ public class GH_ConfigQuarto {
     List <QuartoStock> arrayQuartoStock = new ArrayList<>();
     String prodSelct;
     String prodSelct2;
+    List<QuartoStock> arrayPrecoProduto = new ArrayList<>();
 
     /**
      * Iniciar/Atualizar a scene
@@ -286,9 +290,12 @@ public class GH_ConfigQuarto {
         } else {
             prodFinal = prodSelct.substring(0, prodSelct.indexOf("||")).trim();
             Controller.getInstance().setProdutosEscolhidos(prodFinal);
-
             arrayStock = sDAO.decrementarStock();
             arrayQuartoStock = qsDAO.updateStockQuarto();
+            arrayPrecoProduto = qsDAO.findPreco();
+            for (QuartoStock qs : arrayPrecoProduto) {
+                textPrecoProduto.setText(String.valueOf(qs.getPreco()));
+            }
             limparTudo();
         }
     }
