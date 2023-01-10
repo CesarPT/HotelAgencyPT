@@ -117,7 +117,7 @@ public class RegisterController implements Initializable {
         //Encrpytação da password
         String encrypt = "";
         String password = setPasswordField.getText();
-        encrypt = encryption.encrypt(password, encrypt);
+        encrypt = encryption.encrypt(password);
 
         if (permissionComboBox.getSelectionModel().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
