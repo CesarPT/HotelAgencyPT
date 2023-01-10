@@ -80,7 +80,7 @@ public class LoginController implements Initializable {
         //Encyptação da password
         String encryptedpassword = "";
         String password = enterPasswordField.getText();
-        encryptedpassword = encryption.encrypt(password, encryptedpassword);
+        encryptedpassword = encryption.encrypt(password);
 
 
         // Verificação se existe na base dados
