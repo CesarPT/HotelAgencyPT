@@ -10,10 +10,12 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+
         Scanner myObj = new Scanner(System.in);  // Create a Scanner object
 
         System.out.println("1 para todos os lugares, \n" +
-                "2 para todos os tickets, \n");
+                "2 para todos os tickets, \n"+
+                "3 para todos os tickets, \n");
         int escolha = Integer.parseInt(myObj.nextLine());  // Read user input
 
         if(escolha==1) {
@@ -22,7 +24,9 @@ public class Main {
         if(escolha==2){
             GetTodosTickets();
         }
-
+        if(escolha==3){
+            PostTeste();
+        }
     }
 
 
@@ -68,4 +72,26 @@ public class Main {
         }
     }
 
+
+
+    public static void PostTeste(){
+        try {
+            URL url = new URL("https://services.inapa.com/parking4hotel/api/ticket/");
+            String encoding = Base64.getEncoder().encodeToString(("EG2:SJ$pEgYO(Y").getBytes("UTF-8"));
+
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("POST");
+            connection.setDoOutput(true);
+            connection.setRequestProperty("Authorization", "Basic " + encoding);
+            InputStream content = (InputStream) connection.getInputStream();
+            BufferedReader in =
+                    new BufferedReader(new InputStreamReader(content));
+            String line;
+            while ((line = in.readLine()) != null) {
+                System.out.println(line);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

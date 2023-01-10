@@ -5,6 +5,7 @@ module hotel.agencypt {
     requires javafx.graphics;
     requires java.desktop;
     requires com.google.gson;
+    requires com.fasterxml.jackson.databind;
 
     opens hotel.agencypt to javafx.fxml;
     opens Classes to javafx.base;
