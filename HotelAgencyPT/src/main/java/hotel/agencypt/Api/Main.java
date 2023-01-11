@@ -80,7 +80,7 @@ public class Main {
 
     public static void GetTodosTickets(){
         try {
-            URL url = new URL("https://services.inapa.com/parking4hotel/api/park/");
+            URL url = new URL("https://services.inapa.com/parking4hotel/api/ticket/");
             String encoding = Base64.getEncoder().encodeToString(("EG2:SJ$pEgYO(Y").getBytes("UTF-8"));
 
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -111,7 +111,7 @@ public class Main {
                     "    \"LicencePlate\": \"Rocket\",\n" +
                     "    \"StartDate\": \"2023-01-01 15:00\",\n" +
                     "    \"EndDate\": \"2023-01-02 15:00\",\n" +
-                    "    \"ParkingSpot\": \"P08\"\n" +
+                    "    \"ParkingSpot\": \"P07\"\n" +
                     "}";
             //informaçao tipo json que ira ser enviada nao vai ser preciso parsar o ficheiro
 
