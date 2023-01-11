@@ -13,7 +13,7 @@ public class objparking {
         this.ParkingSpot = parkingSpot;
         this.Price = price;
         this.Indoor = indoor;
-        this.IndoorString = indoor ? "Sim" : "Não";
+        this.IndoorString = indoor ? "Indoor" : "Outdoor";
         this.Occupied = occupied;
         this.OccupiedString = occupied ? "Sim" : "Não";
     }
