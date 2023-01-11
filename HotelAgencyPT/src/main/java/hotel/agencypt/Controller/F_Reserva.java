@@ -67,6 +67,10 @@ public class F_Reserva implements Initializable {
     public Label labelAviso;
     @FXML
     public ComboBox cboxTquarto;
+    @FXML
+    public TextField textPrecoLugar;
+    @FXML
+    public TextField textLugar;
 
     @FXML
     ObservableList<String> listTquarto = FXCollections.observableArrayList("Individual", "Duplo", "Familiar");
@@ -331,55 +335,6 @@ public class F_Reserva implements Initializable {
     int idClientV = 0;
     ClienteDAO clienteDAO = new ClienteDAO();
 
-    /**
-     * Botão de atualizar preços
-     * @param event
-     */
-    public void atualizarPrecos(ActionEvent event) {
-        if (datePickerI.getValue() == null || datePickerF.getValue() == null) {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Aviso");
-            alert.setHeaderText("Sem seleção");
-            alert.setContentText("Selecione uma data de inicio e fim.");
-            alert.showAndWait();
-        } else if (datePickerF.getValue().isBefore(datePickerI.getValue())) {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Aviso");
-            alert.setHeaderText("Datas inválidas");
-            alert.setContentText("A data de fim deve ser maior que a data de inicio.");
-            alert.showAndWait();
-        } else if (cboxTquarto.getSelectionModel().isEmpty()) {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Aviso");
-            alert.setHeaderText("Sem seleção");
-            alert.setContentText("Selecione um tipo de quarto e um quarto disponível.");
-            alert.showAndWait();
-        } else if (!listServesco.getItems().toString().contains("Base")) {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Aviso");
-            alert.setHeaderText("Sem o serviço Base");
-            alert.setContentText("A reserva tem que ter o serviço: base que está incluida em todos os quartos.");
-            alert.showAndWait();
-        } else {
-
-            //Preço do quarto, noites e Preço total
-            Controller.getInstance().setIdquarto(idQuartoesc);
-            arrayPrecoQuarto = quartoDAO.findPreco();
-            for (Quarto q : arrayPrecoQuarto) {
-                textPrecoQuarto.setText(String.valueOf(q.getPreco()));
-            }
-            Duration diff = Duration.between(datePickerF.getValue().atStartOfDay(), datePickerI.getValue().atStartOfDay());
-            long diffDays = diff.toDays();
-            textNoites.setText(String.valueOf(diffDays).replace("-", ""));
-
-            //SOMAR TUDO
-            int noites = Integer.parseInt(textNoites.getText());
-            float precoQuarto = Float.parseFloat(textPrecoQuarto.getText());
-            float precoServico = Float.parseFloat(textPrecoServicos.getText());
-            float precoTotal = precoQuarto * noites + precoServico;
-            textPrecoTotal.setText(String.valueOf(precoTotal));
-        }
-    }
 
     /**
      * Cliente escolhido na listview
@@ -428,6 +383,83 @@ public class F_Reserva implements Initializable {
             System.out.println("Erro ao abrir/fechar scene.");
         }
     }
+
+    //PARQUE DE ESTACIONAMENTO
+
+    /**
+     * Ao clicar no botão addPark adiciona o preço + o lugar
+     */
+    public void addPark(){
+        textPrecoLugar.setText(String.valueOf(tableParque.getSelectionModel().getSelectedItem().Price));
+        textLugar.setText(String.valueOf(tableParque.getSelectionModel().getSelectedItem().ParkingSpot));
+    }
+
+    /**
+     * Ao clicar no botão removePark
+     * @param event
+     */
+    public void removePark(ActionEvent event){
+        textPrecoLugar.setText("0");
+        textLugar.setText("---");
+    }
+
+    /**
+     * Botão de atualizar preços
+     * @param event
+     */
+    public void atualizarPrecos(ActionEvent event) {
+        if (datePickerI.getValue() == null || datePickerF.getValue() == null) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Aviso");
+            alert.setHeaderText("Sem seleção");
+            alert.setContentText("Selecione uma data de inicio e fim.");
+            alert.showAndWait();
+        } else if (datePickerF.getValue().isBefore(datePickerI.getValue())) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Aviso");
+            alert.setHeaderText("Datas inválidas");
+            alert.setContentText("A data de fim deve ser maior que a data de inicio.");
+            alert.showAndWait();
+        } else if (cboxTquarto.getSelectionModel().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Aviso");
+            alert.setHeaderText("Sem seleção");
+            alert.setContentText("Selecione um tipo de quarto e um quarto disponível.");
+            alert.showAndWait();
+        } else if (!listServesco.getItems().toString().contains("Base")) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Aviso");
+            alert.setHeaderText("Sem o serviço Base");
+            alert.setContentText("A reserva tem que ter o serviço: base que está incluida em todos os quartos.");
+            alert.showAndWait();
+        } else {
+
+            //Preço do quarto, noites e Preço total
+            Controller.getInstance().setIdquarto(idQuartoesc);
+            arrayPrecoQuarto = quartoDAO.findPreco();
+            for (Quarto q : arrayPrecoQuarto) {
+                textPrecoQuarto.setText(String.valueOf(q.getPreco()));
+            }
+            Duration diff = Duration.between(datePickerF.getValue().atStartOfDay(), datePickerI.getValue().atStartOfDay());
+            long diffDays = diff.toDays();
+            textNoites.setText(String.valueOf(diffDays).replace("-", ""));
+
+            //SOMAR TUDO
+            int noites = Integer.parseInt(textNoites.getText());
+            double precoQuarto = Double.parseDouble(textPrecoQuarto.getText());
+            double precoServico = Double.parseDouble(textPrecoServicos.getText());
+            double precoPark = Double.parseDouble(textPrecoLugar.getText());
+            precoPark = precoPark*noites;
+            textPrecoLugar.setText(String.valueOf(precoPark));
+            double precoTotal = (precoQuarto * noites) + precoPark + precoServico;
+            textPrecoTotal.setText(String.valueOf(precoTotal));
+        }
+    }
+
+
+
+    // CRIAR RESERVA
+
 
     /**
      * Verificações e criar a reserva para o cliente
@@ -545,6 +577,4 @@ public class F_Reserva implements Initializable {
         }
     }
 
-    public void onIdCliente(ActionEvent event) {
-    }
 }
