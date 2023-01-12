@@ -23,10 +23,14 @@ public class Main {
 
         Scanner myObj = new Scanner(System.in);  // Create a Scanner object
 
-        System.out.println("1 para todos os lugares, \n" +
-                "2 para todos os tickets, \n"+
-                "3 para todos os tickets, \n"+
-                "4 para todos os tickets, \n");
+        System.out.println("1 para todos os lugares, \n" +//primeito serviço
+                "2 para todos os tickets, \n"+ //Sexto serviço
+                "3 para insereir um ticket, \n"+ //segundo serviço
+                "4 para buscar um ticket \n"+ //terceiro serviço
+                "5 para apagar um ticket, \n"+ //quarto serviço
+                "6 para mudar estado de ticket \n"); //quinto serviço
+
+
         int escolha = Integer.parseInt(myObj.nextLine());  // Read user input
 
         if(escolha==1) {
@@ -36,10 +40,16 @@ public class Main {
             GetTodosTickets();
         }
         if(escolha==3){
-            PostTeste();
+            PostTicket();
         }
         if(escolha==4){
-            PostOutroTeste();
+            getUmTicket();
+        }
+        if(escolha==5){
+            deleteUmTicket();
+        }
+        if(escolha==6){
+            putUmTicket();
         }
     }
 
@@ -80,7 +90,7 @@ public class Main {
 
     public static void GetTodosTickets(){
         try {
-            URL url = new URL("https://services.inapa.com/parking4hotel/api/ticket/");
+            URL url = new URL("https://services.inapa.com/parking4hotel/api/park/");
             String encoding = Base64.getEncoder().encodeToString(("EG2:SJ$pEgYO(Y").getBytes("UTF-8"));
 
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -101,7 +111,7 @@ public class Main {
 
 
 
-    public static  void PostTeste() {
+    public static  void PostTicket() {
 
         try {
             URL url = new URL("https://services.inapa.com/parking4hotel/api/ticket/");
@@ -111,7 +121,7 @@ public class Main {
                     "    \"LicencePlate\": \"Rocket\",\n" +
                     "    \"StartDate\": \"2023-01-01 15:00\",\n" +
                     "    \"EndDate\": \"2023-01-02 15:00\",\n" +
-                    "    \"ParkingSpot\": \"P07\"\n" +
+                    "    \"ParkingSpot\": \"P05\"\n" +
                     "}";
             //informaçao tipo json que ira ser enviada nao vai ser preciso parsar o ficheiro
 
@@ -145,18 +155,24 @@ public class Main {
 
 
 
-    public static void PostOutroTeste(){
+    public static void getUmTicket() {
         try {
-            URL url = new URL("https://services.inapa.com/parking4hotel/api/park/");
+            Scanner myObj = new Scanner(System.in);  // Create a Scanner object
+            String test = "9b509d6b-b9ee-4a11-bac2-3506311cd15a";
+            System.out.println("escolha um ticket expemplo" + test);
+            String idticket = myObj.nextLine();  // Read user input
+
+
+            URL url = new URL("https://services.inapa.com/parking4hotel/api/ticket/" + idticket);
             String encoding = Base64.getEncoder().encodeToString(("EG2:SJ$pEgYO(Y").getBytes("UTF-8"));
 
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            connection.setRequestMethod("POST");
+            connection.setRequestMethod("GET");
             connection.setDoOutput(true);
             connection.setRequestProperty("Authorization", "Basic " + encoding);
             InputStream content = (InputStream) connection.getInputStream();
-            BufferedReader in =
-                    new BufferedReader(new InputStreamReader(content));
+            BufferedReader in = new BufferedReader(new InputStreamReader(content));
+
             String line;
             while ((line = in.readLine()) != null) {
                 System.out.println(line);
@@ -165,4 +181,73 @@ public class Main {
             e.printStackTrace();
         }
     }
+
+    public static void deleteUmTicket() {
+        try {
+            String test = "edd51405-a739-456a-b038-661b66b0cea0";
+
+            Scanner myObj = new Scanner(System.in);  // Create a Scanner object
+            System.out.println("escolha um ticket expemplo" + test);
+            String idticket = myObj.nextLine();  // Read user input
+
+
+            URL url = new URL("https://services.inapa.com/parking4hotel/api/ticket/"+idticket);
+            String encoding = Base64.getEncoder().encodeToString(("EG2:SJ$pEgYO(Y").getBytes("UTF-8"));
+
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("DELETE");
+            connection.setDoOutput(true);
+            connection.setRequestProperty("Authorization", "Basic " + encoding);
+
+            InputStream content = (InputStream) connection.getInputStream();
+            BufferedReader in = new BufferedReader(new InputStreamReader(content));
+
+            String line;
+            while ((line = in.readLine()) != null) {
+                System.out.println(line);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public static void putUmTicket() {
+        try {
+            String test = "f6eccd09-a1ac-4270-a34c-de1c9fbad8a2";
+/*
+            Scanner myObj = new Scanner(System.in);  // Create a Scanner object
+            System.out.println("escolha um ticket expemplo" + test);
+            String idticket = myObj.nextLine();  // Read user input
+ */
+            URL url = new URL("https://services.inapa.com/parking4hotel/api/ticket/"+test);
+            String encoding = Base64.getEncoder().encodeToString(("EG2:SJ$pEgYO(Y").getBytes("UTF-8"));
+            String putDATA = "{\n" +
+                    "    \"ClientId\": \"teste\",\n" +
+                    "    \"LicencePlate\": \"Rocket\",\n" +
+                    "    \"StartDate\": \"2023-01-01 15:00\",\n" +
+                    "    \"EndDate\": \"2023-01-02 15:00\",\n" +
+                    "    \"ParkingSpot\": \""+test+"\"\n" +
+                    "}";
+
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setDoOutput(true);
+            connection.setRequestMethod("PUT");
+
+            connection.setRequestProperty("Authorization", "Basic " + encoding);
+            connection.setRequestProperty("Content-Length", Integer.toString(putDATA.length()));
+
+            InputStream content = (InputStream) connection.getInputStream();
+            BufferedReader in = new BufferedReader(new InputStreamReader(content));
+
+            String line;
+            while ((line = in.readLine()) != null) {
+                System.out.println(line);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
 }
