@@ -2,6 +2,7 @@ package hotel.agencypt.Controller;
 
 //Bibliotecas
 
+import Classes.Cliente;
 import Classes.DAO.*;
 import Classes.*;
 import hotel.agencypt.Api.Main;
@@ -84,20 +85,12 @@ public class F_Reserva implements Initializable {
     //var para selecionar na Listview dos servicos
     String servicoselct;
     String servicoselce;
-    String servicoselct2;
-    String servicoselce2;
     String escolhaTquarto;
     String preco;
-    String produto;
     Integer index = -1;
-    Integer index2 = -1;
     List<Servico> arrayServico = new ArrayList<>();
-    List<Stock> arrayProduto = new ArrayList<>();
     List<Utilizador> arrayUtilizador = new ArrayList<>();
-    ServicoDAO servicoDAO = new ServicoDAO();
     QuartoDAO quartoDAO = new QuartoDAO();
-    StockDAO stockDAO = new StockDAO();
-    ArrayList<String> listaqq = new ArrayList<>();
 
     @FXML
     private ComboBox comboBoxQuantidade;
@@ -335,17 +328,16 @@ public class F_Reserva implements Initializable {
     int idClientV = 0;
     ClienteDAO clienteDAO = new ClienteDAO();
 
-
+    List<Classes.Cliente> arrayIDCliente = new ArrayList<>();
     /**
      * Cliente escolhido na listview
      */
     public void clientescolhido() {
-        listidClienteInsere.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                idClient = Integer.parseInt(listidClienteInsere.getSelectionModel().getSelectedItem());
-            }
-        });
+        Controller.getInstance().setNomeCliente(idCliente);
+        arrayIDCliente = clienteDAO.findIDClientePeloNome();
+        for (Cliente c : arrayIDCliente) {
+            idClient = c.getIdCliente();
+        }
     }
 
     String pesquisadcliente;
@@ -432,6 +424,12 @@ public class F_Reserva implements Initializable {
             alert.setHeaderText("Sem o serviço Base");
             alert.setContentText("A reserva tem que ter o serviço: base que está incluida em todos os quartos.");
             alert.showAndWait();
+        } else if (datePickerI.getValue().isBefore(java.time.LocalDate.now())) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Aviso");
+            alert.setHeaderText("Data de ínicio errada");
+            alert.setContentText("A data de ínicio tem que ser maior ou igual à data atual.");
+            alert.showAndWait();
         } else {
 
             //Preço do quarto, noites e Preço total
@@ -492,6 +490,12 @@ public class F_Reserva implements Initializable {
             alert.setHeaderText("Sem o serviço Base");
             alert.setContentText("A reserva tem que ter o serviço: base que está incluida em todos os quartos.");
             alert.showAndWait();
+        } else if (datePickerI.getValue().isBefore(java.time.LocalDate.now())) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Aviso");
+            alert.setHeaderText("Data de ínicio errada");
+            alert.setContentText("A data de ínicio tem que ser maior ou igual à data atual.");
+            alert.showAndWait();
         } else {
             onEsTquarto();
 
@@ -512,6 +516,17 @@ public class F_Reserva implements Initializable {
                 ReservaDAO.criaReserva(reserva);
                 //Relação de tabela
                 RelacionaResServ();
+
+                if (Objects.equals(textPrecoLugar.getText(), "0")){
+                    System.out.println("Não foi criado um ticket, sem seleção.");
+                } else {
+                    //Parque de estacionamento (API) POST - Criar ticket
+                    int idCliente = idClient;
+                    LocalDate StartDate = datePickerI.getValue();
+                    LocalDate EndDate = datePickerF.getValue();
+                    String ParkingSpot = textLugar.getText();
+                    hotel.agencypt.Api.Main.PostTicket(idCliente, StartDate, EndDate, ParkingSpot);
+                }
             }
         }
     }

@@ -12,6 +12,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.Base64;
 import java.util.Scanner;
 
@@ -25,7 +26,7 @@ public class Main {
 
         System.out.println("1 para todos os lugares, \n" +//primeito serviço
                 "2 para todos os tickets, \n"+ //Sexto serviço
-                "3 para insereir um ticket, \n"+ //segundo serviço
+                "3 para inserir um ticket, \n"+ //segundo serviço
                 "4 para buscar um ticket \n"+ //terceiro serviço
                 "5 para apagar um ticket, \n"+ //quarto serviço
                 "6 para mudar estado de ticket \n"); //quinto serviço
@@ -39,9 +40,7 @@ public class Main {
         if(escolha==2){
             GetTodosTickets();
         }
-        if(escolha==3){
-            PostTicket();
-        }
+
         if(escolha==4){
             getUmTicket();
         }
@@ -90,7 +89,7 @@ public class Main {
 
     public static void GetTodosTickets(){
         try {
-            URL url = new URL("https://services.inapa.com/parking4hotel/api/park/");
+            URL url = new URL("https://services.inapa.com/parking4hotel/api/ticket/");
             String encoding = Base64.getEncoder().encodeToString(("EG2:SJ$pEgYO(Y").getBytes("UTF-8"));
 
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -111,17 +110,19 @@ public class Main {
 
 
 
-    public static  void PostTicket() {
-
+    public static void PostTicket(int idCliente, LocalDate startDate, LocalDate endDate, String parkingSpot) {
+        String idCliente2 = String.valueOf(idCliente);
+        String startDate2 = String.valueOf(startDate);
+        String endDate2 = String.valueOf(endDate);
         try {
             URL url = new URL("https://services.inapa.com/parking4hotel/api/ticket/");
             String encoding = Base64.getEncoder().encodeToString(("EG2:SJ$pEgYO(Y").getBytes("UTF-8"));
             String postData = "{\n" +
-                    "    \"ClientId\": \"teste\",\n" +
+                    "    \"ClientId\": \""+idCliente2+"\",\n" +
                     "    \"LicencePlate\": \"Rocket\",\n" +
-                    "    \"StartDate\": \"2023-01-01 15:00\",\n" +
-                    "    \"EndDate\": \"2023-01-02 15:00\",\n" +
-                    "    \"ParkingSpot\": \"P05\"\n" +
+                    "    \"StartDate\": \""+startDate2+"\",\n" +
+                    "    \"EndDate\": \""+endDate2+"\",\n" +
+                    "    \"ParkingSpot\": \""+parkingSpot+"\"\n" +
                     "}";
             //informaçao tipo json que ira ser enviada nao vai ser preciso parsar o ficheiro
 
@@ -248,6 +249,5 @@ public class Main {
             e.printStackTrace();
         }
     }
-
 
 }

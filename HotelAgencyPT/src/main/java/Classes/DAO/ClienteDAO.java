@@ -65,12 +65,37 @@ public class ClienteDAO {
     }
 
 
+    public List<Cliente> findIDClientePeloNome() {
+        String sql = "SELECT idcliente\n" +
+                "FROM Cliente\n" +
+                "INNER JOIN Utilizador\n" +
+                "ON Utilizador.iduser = Cliente.iduser\n" +
+                "WHERE Utilizador.nomeuser = +'" + Controller.getInstance().getNomeCliente() + "'";
+
+        List<Cliente> listCliente = new ArrayList<>();
+        try {
+            PreparedStatement stmt = con.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                Cliente cliente = new Cliente();
+                cliente.setIdCliente(rs.getInt("idcliente"));
+                listCliente.add(cliente);
+            }
+
+        } catch (SQLException e) {
+            System.err.println("[ERRO]: findRegEntradaQuarto " + e.getMessage());
+        }
+        return listCliente;
+    }
+
+
     public List<Cliente> findIDCliente() {
         String sql = "SELECT idcliente\n" +
                 "FROM Cliente\n" +
                 "INNER JOIN Utilizador\n" +
                 "ON Utilizador.iduser = Cliente.iduser\n" +
-                "WHERE Utilizador.nomeuser = +'" + Controller.getInstance().getUsername() + "'";
+                "WHERE Utilizador.nomeuser = +" + Controller.getInstance().getUsername();
 
 
         List<Cliente> listCliente = new ArrayList<>();
@@ -90,5 +115,4 @@ public class ClienteDAO {
         }
         return listCliente;
     }
-
 }

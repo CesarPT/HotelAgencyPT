@@ -5,6 +5,7 @@ package hotel.agencypt.Controller;
  */
 public class Controller {
     private String username;
+    private String nomecliente;
     private char tipo_user;
     private int piso;
     private int idquarto;
@@ -74,5 +75,12 @@ public class Controller {
 
     public void setProdutosEscolhidos(String produtosEscolhidos) {
         this.produtosEscolhidos = produtosEscolhidos;
+    }
+    public String getNomeCliente() {
+        return nomecliente;
+    }
+
+    public void setNomeCliente(String nomeC) {
+        this.nomecliente = nomeC;
     }
 }
